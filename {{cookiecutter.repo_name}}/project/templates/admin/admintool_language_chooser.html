@@ -1,0 +1,19 @@
+{% load i18n admin_tools_menu_tags %}
+{% spaceless %}
+{% if not item.is_empty %}
+<li class="menu-item{% ifequal index 1 %} first{% endifequal %}{% if not item.enabled %} disabled{% endif %}{% if selected %} selected{% endif %}{% if item.css_classes %} {{ item.css_classes|join:' ' }}{% endif %}">{% spaceless %}
+    <form id="language-selecor" action="{% url 'set_language' %}" method="post" style="padding: 3px 0 2px;">
+        {% csrf_token %}
+        <label style="color: #555555; text-transform: uppercase; padding: 9px 15px;">
+            {{ item.title }} : 
+            <select name="language">
+            {% for lang in LANGUAGES %}
+            <option {% if lang.0 == LANGUAGE_CODE %}selected="selected"{% endif %} value="{{ lang.0 }}">{% trans lang.1 %}</option>
+            {% endfor %}
+            </select>
+        </label>
+        <input type="submit" value="Go">
+    </form>
+{% endspaceless %}</li>
+{% endif %}
+{% endspaceless %}

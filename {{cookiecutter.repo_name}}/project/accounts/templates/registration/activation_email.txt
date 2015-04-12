@@ -1,0 +1,21 @@
+{% load i18n %}
+
+{% trans "New inscription waiting for activate at" %} {{ site.domain }}:
+
+{% trans "Click here to autorize the user access (clicking on this will activate the user account)" %}
+http://{{ site.domain }}{% url 'registration_activate' activation_key %}
+
+{% trans "User informations" %}:
+
+{% trans "Username" %}: {{ username }}
+{% trans "E-mail" %}: {{ email }}
+
+{% trans "Firstname" %}: {{ first_name }}
+{% trans "Lastname" %}: {{ last_name }}
+{% trans "Company" %}: {{ user_info.company }}
+{% trans "Function" %}: {{ user_info.function }}
+{% trans "Address" %}: {{ user_info.address }}
+{% trans "Postal Code" %}: {{ user_info.postal_code }}
+{% trans "City" %}: {{ user_info.city }}
+{% trans "Country" %}: {{ user_info.country }}
+{% trans "Professional phone number" %}: {{ user_info.phone }}

@@ -1,0 +1,9 @@
+{% extends "registration/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h2>{% trans 'Register' %}</h2>
+    
+    <h3>{% trans "Thank you for your interest in" %} {{ SITE.name }}</h3>
+    <p>{% trans "Your request for access is being processed. You will be notified by email shortly" %}</p>
+{% endblock %}

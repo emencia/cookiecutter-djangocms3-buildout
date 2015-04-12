@@ -1,0 +1,26 @@
+{% extends change_form_template|default:"admin/cms/page/plugin/change_form.html" %}
+{% comment %}This template overwriting is needed to load the FB_CKEditor that is needed 
+to plug Filebrowser with CKEditor.
+Also we take advantage of this to add a line code to avoid self closing tag because we 
+want to enforce HTML5 again XHTML.
+And finally, we includes some javascripts frontend needed to have a better rendering.{% endcomment %}
+{% load admin_static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/minimal.css" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}ckeditor/editor.css" />{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<script>window.CKEDITOR_BASEPATH = "{{ CKEDITOR_BASEPATH }}";</script>
+<script src="{% static "cms/js/modules/cms.base.js" %}"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery/addons.js"></script>
+<script type="text/javascript">//<![CDATA[
+    (function($) {
+        // CMS.$ will be passed for $
+        $(document).ready(function () {
+            CMS.API.Helpers.csrf('{{ csrf_token }}');
+            $('#content-main img.background').swapImageToBackground();
+        });
+    })(CMS.$);
+//]]></script>
+{% endblock %}

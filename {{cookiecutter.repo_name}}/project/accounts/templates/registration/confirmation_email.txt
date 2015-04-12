@@ -1,0 +1,8 @@
+{% load i18n %}
+
+{% blocktrans with domain=site.domain %}
+Your inscription on {{ domain }} is validated.
+{% endblocktrans %}
+
+{% trans "You can login on this page" %}
+http://{{ site.domain }}{% url 'auth_login' %}

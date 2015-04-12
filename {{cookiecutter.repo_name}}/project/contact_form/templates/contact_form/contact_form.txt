@@ -1,0 +1,7 @@
+{% load i18n %}{% trans "identity" %} : {{ contact.get_civility_display }} {{ contact.first_name }} {{ contact.last_name }}
+{% trans "phone" %} : {{ contact.phone }}
+{% trans "email" %} : {{ contact.email }}
+{% trans "company" %} : {{ contact.company }}
+
+{% trans "comments" %} :
+{{ contact.comments }}

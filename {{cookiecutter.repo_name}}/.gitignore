@@ -1,0 +1,33 @@
+*.pyc
+
+# Various directory index, temp file and editor's config
+*.DS_Store
+*.idea
+.*.swp
+
+# virtualenv
+/bin
+/include
+/lib
+/lib64
+/build
+/local
+
+# buildout
+*.egg-info
+.installed.cfg
+/develop-eggs
+/django-apps-src
+/eggs
+/parts
+/etc
+# do not hide /var/log, if does not exist uwsgi refuses to start
+/var/log/uwsgi.log
+/var/log/error.log
+
+# project db
+*.sqlite3
+
+# Third party config files
+gestus.cfg
+po_projects.cfg

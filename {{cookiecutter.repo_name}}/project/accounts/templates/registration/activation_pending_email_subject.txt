@@ -1,0 +1,4 @@
+{% load i18n %}
+{% blocktrans with name=site.name %}
+[{{ name }}] Your request for registration is being processed.
+{% endblocktrans %}

@@ -1,0 +1,245 @@
+/*
+ * Various content styles
+ */
+
+// More readable pagination numbers
+ul.pagination li{
+    font-weight: 400;
+}
+
+// Forces white writing on black background
+.row.black{
+    color: $white;
+    background-color: $black;
+}
+&.on-black{
+    color: $white;
+    background-color: $black;
+    
+    h2, h3, h4, h5, h6, p, li{
+        color: $white;
+    }
+}
+
+// Forces black writing on white background
+.row.white{
+    color: $black;
+    background-color: $white;
+}
+&.on-white{
+    color: $black;
+    background-color: $white;
+    
+    h2, h3, h4, h5, h6, p, li{
+        color: $white;
+    }
+}
+
+/*
+ * Common styles for specific cms pages
+ */
+.cms-page{}
+
+// *****
+// Pour les pages d'index de présentation
+// *****
+// Bloc d'intro simple
+.index-intro{
+    border: 1px solid #CCCCCC;
+    
+    .visual{
+        padding: 0;
+        margin-bottom: rem-calc(15px);
+    }
+    
+    .item{
+        margin-bottom: rem-calc(15px);
+        
+        .alternate{
+            color: #7F7F7F;
+        }
+        
+        h2{
+            font-size: 30px;
+        }
+        
+        &+.item{
+            border-left: 2px solid #000000;
+        }
+    }
+}
+// Bloc d'intro utilisant une image de fond
+.index-intro-2{
+    padding: rem-calc(20px) rem-calc(20px) rem-calc(20px)*2;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: top left;
+    @include background-size(100% 100%);
+    
+    &.unpadded{
+        padding: 0;
+    }
+    
+    .background{
+        display: none;
+    }
+    
+    .white-wrap{
+        background-color: rgba(240, 240, 240, 0.5);
+    }
+    
+    .black-wrap{
+        color: #ffffff;
+        background-color: rgba(40, 40, 40, 0.5);
+        
+        h2, h3, h4, h5, div, dt, dd, li, p, blockquote, th, td{
+            color: #ffffff;
+        }
+    }
+    
+    .content{
+        div, dt, dd, li, p, blockquote, th, td{
+            font-size: 15px;
+            font-weight: 400;
+        }
+        ul{
+            list-style-type: square;
+            margin-#{$default-float}: $list-side-margin;
+            
+            li{
+                position: relative;
+                
+                &[class^="icon-"]:before{
+                    font-size: 1.1em;
+                    left: -1.2em;
+                    line-height: 1em;
+                    position: absolute;
+                    top: 0;
+                    width: 1em;
+                }
+            }
+        }
+        &.white-on-black{
+            div, dt, dd, li, p, blockquote, th, td{
+                color: #ffffff;
+            }
+        }
+        
+        &+.content{
+            margin-top: rem-calc(20px);
+        }
+    }
+}
+
+// Mosaic grid
+.mosaic-rows{
+    h2{
+        margin-bottom: 15px;
+        
+        /*@media (max-width: $screenSmall - 1) {
+            padding: 0 5px;
+        }*/
+    }
+    
+    .underlined{
+        border-bottom: 1px solid $black;
+        
+        /*@media (min-width: $screenSmall) {
+            strong{
+                background-color: white;
+                padding-right: 15px;
+            }
+        }*/
+    }
+    
+    .row{
+        .visual.columns{
+            padding: 5px;
+            
+            .badge-new{
+                padding: 12px 6px;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 12px;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: $white;
+                background-color: #F9F9F9;
+                @include background-image(linear-gradient(#999999, #7C7C7C 50%, #363636));
+                border: 3px solid $white;
+                @include border-radius(20px);
+                @include text-shadow(#606060 0 0 3px);
+                @include box-shadow(#606060 0 2px 4px 1px);
+            }
+            
+            .bottomline{
+                margin: 0;
+                padding: 5px 8px;
+                position: absolute;
+                bottom: 5px;
+                left: 5px;
+                right: 5px;
+                font-size: 14px;
+                font-weight: 600;
+                color: $white;
+                background-color: rgba(0, 0, 0, .7);
+                
+                a{
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+// Grille d'éléments
+.index-items{
+    .item{
+        img{
+            margin-bottom: rem-calc(20px);
+        }
+        
+        &+.item{
+            border-left: 1px dotted #000000;
+        }
+        
+        .content + div,
+        .content + p,
+        .content + ul{
+            margin-top: rem-calc(20px);
+        }
+        
+        .content ul{
+            list-style-type: square;
+            margin-#{$default-float}: $list-side-margin;
+            
+            li{
+                position: relative;
+                
+                &:before{
+                    position: absolute;
+                    left: -1.2em;
+                    top: 0.6em;
+                    width: 1em;
+                    font-size: 0.8em;
+                    line-height: 1em;
+                    color: inherit;
+                    font-family: 'fontawesome';
+                    content: "\f054";
+                }
+            }
+        }
+        
+        .black-wrap{
+            padding: 0 0 5px 0;
+            color: #ffffff;
+            background-color: #000000;
+            
+            p{
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+    }
+}

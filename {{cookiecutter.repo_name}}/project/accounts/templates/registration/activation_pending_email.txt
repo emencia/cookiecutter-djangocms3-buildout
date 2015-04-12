@@ -1,0 +1,21 @@
+{% load i18n %}
+
+{% blocktrans with name=site.name %}
+Your inscription on {{ name }} was recorded
+{% endblocktrans %}
+{% trans "It will be activated soon by an administrator. You will receive a new email when it will be active" %}
+
+{% trans "Your informations" %}:
+
+{% trans "Username" %}: {{ username }}
+{% trans "E-mail" %}: {{ email }}
+
+{% trans "Firstname" %}: {{ first_name }}
+{% trans "Lastname" %}: {{ last_name }}
+{% trans "Company" %}: {{ user_info.company }}
+{% trans "Function" %}: {{ user_info.function }}
+{% trans "Address" %}: {{ user_info.address }}
+{% trans "Postal Code" %}: {{ user_info.postal_code }}
+{% trans "City" %}: {{ user_info.city }}
+{% trans "Country" %}: {{ user_info.country }}
+{% trans "Professional phone number" %}: {{ user_info.phone }}

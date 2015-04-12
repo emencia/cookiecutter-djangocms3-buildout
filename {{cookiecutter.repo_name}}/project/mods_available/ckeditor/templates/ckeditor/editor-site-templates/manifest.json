@@ -1,0 +1,37 @@
+{
+    "button-dropdown.html": {
+        "title": "Bouton 'dropdown'",
+        "description": "Un bouton qui déroule une liste de liens lorsqu'il est cliqué.",
+        "image": "button-dropdown.png"
+    },
+    "grid_row_3_flyers.html": {
+        "title": "Une ligne de 3 flyers",
+        "description": "Une ligne de 3 colonnes contenant des flyers de contenu.",
+        "image": "grid_row_3_flyers.png"
+    },
+    "grid_row_4_flyers.html": {
+        "title": "Une ligne de 4 flyers",
+        "description": "Une ligne de 4 colonnes contenant des flyers de contenu.",
+        "image": "grid_row_4_flyers.png"
+    },
+    "intro_type-1.html": {
+        "title": "Bloc d'intro de type 1",
+        "description": "Un bloc contenant une colonne de contenu et une image de fond pour l'ensemble.",
+        "image": "intro_type-1.png"
+    },
+    "intro_type-2.html": {
+        "title": "Bloc d'intro de type 2",
+        "description": "Un bloc contenant un titre, du contenu (colonnes ou autres), une 'bottomline' et une image de fond pour l'ensemble.",
+        "image": "intro_type-2.png"
+    },
+    "intro_type-3.html": {
+        "title": "Bloc d'intro de type 3",
+        "description": "Un bloc contenant une image d'introduction puis trois colonnes, le tout entouré d'une bordure.",
+        "image": "intro_type-3.png"
+    },
+    "mosaic-rows.html": {
+        "title": "Mosaique de vignettes",
+        "description": "Une grille de vignettes, chacune comportant une image et un titre en bas",
+        "image": "mosaic-rows.png"
+    }
+}

@@ -1,0 +1,110 @@
+{% load i18n cms_tags menu_tags sekizai_tags assets %}
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="{% block html_attr_alt %}{% endblock %}no-js lt-ie9" lang="{{ LANGUAGE_CODE }}"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="{% block html_attr %}{% endblock %}no-js" lang="{{ LANGUAGE_CODE }}"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>{% block head_title %}{{ SITE.name }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico">
+    {% comment %}<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">{% endcomment %}
+    {% block header_content %}{% spaceless %}
+        {% block head_metas %}
+            <meta name="robots" content="index,follow,all">
+            {% comment %}<meta name="author" content="...">{% endcomment %}
+            {% comment %}<meta name="Revisit-after" content="15 days">{% endcomment %}
+            {% comment %}<meta property="fb:page_id" content="...">{% endcomment %}
+            <meta name="description" content="{% block meta-description %}{% endblock %}">
+            <meta name="Keywords" content="{% block meta-keywords %}{% endblock %}">
+        {% endblock %}
+
+        {% block head_base_links %}{% assets "main_css" %}
+            <link rel="stylesheet" href="{{ ASSET_URL }}">
+        {% endassets %}{% endblock %}
+        
+        {% block head_more_links %}{% endblock %}
+        
+    {% endspaceless %}{% endblock %}
+    {% render_block "css" %}
+</head>
+
+<body{% block body_attr %}{% endblock %}>
+    {% cms_toolbar %}
+    {% block header_topbar %}{% spaceless %}
+    <div id="header-container"{% block header_topbar_attr %} class="contain-to-grid"{% endblock %}>
+        <nav class="top-bar " data-topbar>
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="/" title="{{ SITE.name }}" class="logo">{{ SITE.name }}</a></h1>
+                </li>
+                {% block header_topbar_toggle %}<li class="toggle-topbar menu-icon">
+                    <a href="#"><span>{% blocktrans %}Menu{% endblocktrans %}</span></a>
+                </li>{% endblock %}
+            </ul>
+            {% block menu_general %}<section class="top-bar-section">
+                {# Left Nav Section #}
+                <ul class="left">
+                    {% show_menu 1 100 100 100 "menu/root_menu.html" %}
+                    <li{% block menu_item_zinnia %}{% endblock %}><a href="{% url 'zinnia:entry_archive_index' %}">{% trans "Weblog" %}</a></li>
+                    <li{% block menu_item_porticus %}{% endblock %}><a href="{% url 'porticus:galleries-index' %}">{% trans "Galleries" %}</a></li>
+                    <li{% block menu_item_contact %}{% endblock %}><a href="{% url 'contact_form' %}">{% trans "Contact" %}</a></li>
+                </ul>
+                <ul class="right">
+                    {% comment %}<li class="has-dropdown" id="auth-menu">
+                    {% if user.is_authenticated %}
+                        <strong><i class="icon-user"></i> {{ user.username }}</strong>
+                        <ul class="dropdown">
+                            <li><a href="{% url 'auth_logout' %}"><i class="icon-sign-out"></i> {% trans "Logout" %}</a></li>
+                        </ul>
+                    {% else %}
+                        <a href="{% url 'auth_login' %}?next={{ request.path }}"><i class="icon-sign-in"></i> {% trans "Login" %}</a>
+                        <ul class="dropdown">
+                            <li><a href="{% url 'registration_register' %}"><i class="icon-arrow-circle-o-down"></i> {% trans "Register" %}</a></li>
+                        </ul>
+                    {% endif %}
+                    </li>{% endcomment %}
+                
+                    <li class="divider"></li>
+                    {% block menu_general_language %}<li class="niv1 has-dropdown languages" id="languageChooser">
+                        {% for k,v in LANGUAGES %}{% if LANGUAGE_CODE == k %}<a href="/{{ k }}/" class="sprite-{{ LANGUAGE_CODE }}">{{ v }}</a>{% endif %}{% endfor %}
+                        <ul class="dropdown">{% language_chooser %}</ul>
+                    </li>{% endblock %}
+                </ul>
+                
+            </section>{% endblock %}
+        </nav>
+    </div>
+    {% endspaceless %}{% endblock %}
+    
+    {% block subheader_container %}{% endblock %}
+
+    {% block content_container %}<div id="body_content"{% block content_container_attrs %}{% endblock %}>
+        {% block base_content %}{% endblock %}
+    </div>{% endblock %}
+
+    {% block footer_container %}{% spaceless %}
+    <footer class="row">
+        <div class="large-12 columns">
+            <div class="inner">
+                <div class="row">
+                    <div class="large-12 columns last">
+                        <p>{% now "Y" %} &copy; {% blocktrans %}ACME SA. All Rights Reserved.{% endblocktrans %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% endspaceless %}{% endblock %}
+
+    {% render_block "js" %}
+    {% spaceless %}
+        {% block head_base_js %}
+            {% assets "app_modernizr_js" "main_js" %}
+                <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+            {% endassets %}
+        {% endblock %}
+        {% block foot_more_js %}{% endblock %}
+        {% block marketing_stuff %}{% if not DEBUG %}{% include 'marketing_tags.html' %}{% endif %}{% endblock %}
+    {% endspaceless %}
+</body>
+</html>

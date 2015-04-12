@@ -1,0 +1,9 @@
+/*
+ * Some CSS patchs
+ */
+
+/* Needed for the preview with minimal.css that contains Foundation set moz-box-sizing 
+ * for all elements, this causes troubles on the editor toolbar */
+.cke_reset *, .cke_reset *:before, .cke_reset *:after {
+    -moz-box-sizing: content-box;
+}

@@ -1,0 +1,6 @@
+{% load i18n menu_tags %}{% get_available_languages as languages %}
+{% for code, name in languages %}{% spaceless %}
+{% language code %}{% ifnotequal current_language code %}
+<li><a href="{% page_language_url code %}" class="sprite-{{ code }}">{{ name }}</a></li>
+{% endifnotequal %}{% endlanguage %}
+{% endspaceless %}{% endfor %}

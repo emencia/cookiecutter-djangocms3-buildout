@@ -1,0 +1,18 @@
+{% extends "skeleton.html" %}
+{% load i18n menu_tags %}
+
+{% block menu_cms_tag %}{% show_menu 0 100 100 100 "menu/root_menu_alternate.html" %}{% endblock %}
+{% block menu_item_contact %} class="active"{% endblock %}
+
+{% block intro_content %}{% endblock %}
+
+{% block base_content %}<div id="contact">
+    <div class="row container">
+        <div class="large-12 columns content-side">
+            {% block contact_content %}{% endblock %}
+        </div>
+        <div class="large-12 columns form-side">
+            {% block contact_form_container %}{% endblock %}
+        </div>
+    </div>
+</div>{% endblock %}

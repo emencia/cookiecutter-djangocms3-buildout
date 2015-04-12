@@ -1,0 +1,11 @@
+{% extends "pages/base.html" %}
+{% load cms_tags menu_tags %}
+
+{% block base_content %}<div class="row">
+    <div class="large-7 columns">{% placeholder "content" %}</div>
+    <div class="large-5 columns">{% spaceless %}
+    {% if request.current_page.level > 0 %}<ul class="nav-bar">
+            {% show_menu 2 100 0 1 "menu/menu_sidenav.html" %}
+        </ul>{% endif %}
+    {% endspaceless %}</div>
+</div>{% endblock %}

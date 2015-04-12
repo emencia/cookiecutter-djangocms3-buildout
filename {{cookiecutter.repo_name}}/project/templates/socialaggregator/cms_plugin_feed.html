@@ -1,0 +1,33 @@
+{% spaceless %}<div class="row row-fluid" id="isocontainer">
+    <div id="isospinner" class="spinner-block"></div>
+    <div id="isogrid" style="visibility:hidden;">
+        <div class="grid-base"></div>
+        {% for ressource_item in feed_ressources %}{% with ressource_item.get_unified_render as ressource %}
+        <div class="grid-item{% if ressource.css_classes %} {{ ressource.css_classes }}{% endif %}{% if not ressource.button %}no-button{% endif %}">
+        
+            {% if ressource.url %}<a href="{{ ressource.url }}">{% endif %}
+            <div class="containItem"{% if ressource.image %} style="background-image:url('{{ ressource.image }}')"{% endif %}>
+                <section class="contentBlock">
+                    <div class="contentInfo">
+                        {% if ressource.title %}<h2>{{ ressource.title }}</h2>{% endif %}
+                        {% if ressource.intro %}<p class="intro">{{ ressource.intro|safe|linebreaksbr }}</p>{% endif %}
+                        {% if ressource.description %}<p class="description">{{ ressource.description|safe|linebreaksbr }}</p>{% endif %}
+                        {% if ressource.button %}<p class="button_wrap">
+                            <button class="medium radius button go {{ ressource.button.color }}">{{ ressource.button.label }}</button>
+                        </p>{% endif %}
+                        {% comment %}{% if ressource.button %}<p class="button_wrap">
+                            <a href="{{ ressource.button.url }}" class="medium radius button go {{ ressource.button.color }}">{{ ressource.button.label }}</a>
+                        </p>{% endif %}{% endcomment %}
+                        {% comment %}{% if ressource.has_subblock %}<div class="block_posted">
+                            <h5>{{ ressource.author }}</h5>
+                            {{ ressource.date|date:"d N" }}
+                        </div>{% endif %}{% endcomment %}
+                    </div>
+                </section>
+            </div>
+            {% if ressource.url %}</a>{% endif %}
+            
+        </div>
+        {% endwith %}{% endfor %}
+    </div>
+</div>{% endspaceless %}

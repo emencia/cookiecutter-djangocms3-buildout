@@ -1,0 +1,287 @@
+/* 
+ * Socialaggregator grid with Masonry
+ */
+#isocontainer {
+    $masonry-brick-gutter: 12px;
+
+    #isogrid {
+        margin: $masonry-brick-gutter $masonry-brick-gutter 0 0;
+        
+        .grid-base {
+            width: 100%; // 1 colonne
+/*             @media #{$large-up} { */
+            @media #{$medium-up} {
+                width: 25%; // 4 colonnes
+                text-indent:-3000px;
+            }
+            @media #{$xlarge-up} {
+                width: 12.5%; // 8 colonnes
+                text-indent:-3000px;
+            }
+        }
+        
+        /*
+        * Grid item top container
+        */
+        .grid-item {
+            
+            background-color: transparent;
+            
+            &.clickable{
+                cursor: pointer;
+            }
+            
+            &:before {
+                color: #ffffff;
+                display: block;
+                position: absolute;
+                bottom: 1em;
+                right: .5em;
+                font-size: 1.6em;
+            }
+            
+            &>a{
+                color: #ffffff;
+                &:hover{
+                    color: inherit;
+                }
+            }
+
+            /*
+            * Grid item wrap container
+            */
+            .containItem {
+                width: 100%;
+                display: block;
+                float: left;
+                overflow: hidden;
+                margin-left: $masonry-brick-gutter;
+                background-color: #FF6A63;
+                background-repeat: no-repeat;
+                @include background-size(auto 68.5%);
+
+                .contentBlock {
+                    position: absolute;
+                    left: $masonry-brick-gutter;
+                    right: 0;
+                    top: 66%;
+                    bottom: $masonry-brick-gutter;
+                    padding: $masonry-brick-gutter;
+                    float: none;
+                    overflow: hidden;
+                    background-color: #FF6A63;
+                    @media #{$large-up} {
+                        top: 66%;
+                    }
+                    
+                    .contentInfo{
+                        padding-right: $masonry-brick-gutter;
+                        /*@media #{$large-up} {
+                            width: 70%;
+                            
+                            &:after {
+                                position: absolute;
+                                right: 0;
+                                top: $masonry-brick-gutter;
+                                width: 30%;
+                                content: "\e60f";
+                                font-family: 'icomoon';
+                                font-size: 5rem;
+                                color: #ffffff;
+                                text-align: center;
+                            }
+                        }*/
+                        
+                        h1,h2,h3,h4,h5,p,li,a{
+                            color: #ffffff;
+                            font-weight: 400;
+                        }
+                        h2{
+                            font-size: rem-calc(16px);
+                            text-transform: uppercase;
+                            font-weight: 900;
+                            font-style: italic;
+                            border-bottom: 1px solid #FFFFFF;
+                            padding-bottom: 0.7rem;
+                            @media #{$medium-up} {
+                                font-size: rem-calc(18px);
+                                padding-bottom: 0.5rem;
+                            }
+                            @media #{$large-up} {
+                                font-size: rem-calc(20px);
+                                padding-bottom: 1rem;
+                            }
+                        }
+                        
+                        h3{
+                            font-size: rem-calc(15px);
+                            text-transform: uppercase;
+                            font-weight: 700;
+                            @media #{$medium-up} {
+                                font-size: rem-calc(17px);
+                            }
+                            @media #{$large-up} {
+                                font-size: rem-calc(18px);
+                            }
+                        }
+                        
+                        p, li{
+                            font-size: rem-calc(12px);
+                            line-height: 1em;
+                            @media #{$medium-up} {
+                                font-size: rem-calc(14px);
+                            }
+                        }
+                            
+                        &:before{
+                            position: absolute;
+                            z-index: 5000;
+                            bottom: $masonry-brick-gutter + 5px;
+                            left: $masonry-brick-gutter;
+                            content: "\e610";
+                            font-family: 'icomoon';
+                            font-size: 1.5rem;
+                        }
+                
+                        .button_wrap{
+                            position: absolute;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            margin: 0;
+                            padding: 12px;
+                            text-align: right;
+                            background-color: #FF584F;
+                            
+                            .button {
+                                margin: 0;
+                                padding: 10px;
+                                font-size: rem-calc(12px);
+                                font-weight: 700 !important;
+                                text-transform: uppercase;
+                                background-color: transparent;
+                                border: 2px solid #ffffff;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            /*
+             * Different default background behavior when there is no button
+             */
+            &.no-button .containItem{
+                @include background-size(cover);
+            }
+            
+            /*
+             * Grid item variations from content type
+             */
+            &.article-event,
+            &.article-infos,
+            &.article-facebook,
+            &.article-youtube{
+                .block_posted {
+                    display: none;
+                }
+            }
+            
+            &.facebook .containItem .contentBlock .contentInfo:before,
+            &.article-facebook .containItem .contentBlock .contentInfo:before{
+                content: "\e60e";
+            }
+            &.youtube .containItem .contentBlock .contentInfo:before,
+            &.article-youtube .containItem .contentBlock .contentInfo:before{
+                content: "\e63f";
+            }
+            &.twitter .containItem .contentBlock .contentInfo:before,
+            &.article-twitter .containItem .contentBlock .contentInfo:before{
+                content: "\e600";
+            }
+
+            /*
+            * Grid item variations from box sizing type
+            */
+            &.w-sizer-1{
+                width:100%;
+                @media #{$large-up} {
+                    width: 25%; // 4 colonnes
+                }
+                @media #{$xlarge-up} {
+                    width: 12.5%; // 8 colonnes
+                }
+            }
+            
+        
+            &.w-sizer-2{
+                width:100%;
+                @media #{$medium-up} {
+                    width: 50%; // 4 colonnes
+                }
+                @media #{$xlarge-up} {
+                    width: 25%; // 8 colonnes
+                }
+            }
+            
+            /*
+             * Grid item variations from height size type
+             */
+            &.h-sizer-1{
+                overflow: hidden;
+                
+                .containItem{
+                    position: relative;
+                    @include background-size(cover);
+                    @media #{$medium-up} {
+                        @include background-size(auto 90%);
+                    }
+                    @media #{$xlarge-up} {
+                        @include background-size(auto 80%);
+                    }
+                    
+                    .contentBlock{
+                        position: static;
+                        background-color: transparent;
+                        
+                        .contentInfo .button_wrap{
+                            right: $masonry-brick-gutter;
+                            
+                            .button{
+                                position: relative;
+                            }
+                        }
+                    }
+                }
+                
+                &.no-button .containItem{
+                    @include background-size(cover);
+                }
+            }
+            
+            &.h-sizer-2{
+                overflow: hidden;
+                
+                &.no-button{
+                    .containItem{
+                        position: relative;
+                        
+                        .contentBlock{
+                            position: static;
+                            background-color: transparent;
+                            
+                            .contentInfo .button_wrap{
+                                right: $masonry-brick-gutter;
+                                
+                                .button{
+                                    position: relative;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+    }
+}

@@ -1,0 +1,9 @@
+check process {{ parts.VARS.NAME }} with pidfile {{ parts.uwsgi.pidfile }}
+   start program = "{{ bin_directory }}/uwsgi {{ uwsgi_xml }}"
+                    as uid {{ parts.env.USER }} and gid {{ parts.VARS.GID }}
+   stop  program = "/bin/bash -c 'kill -INT `/bin/cat {{ parts.uwsgi.pidfile }}`'"
+                    as uid {{ parts.env.USER }} and gid {{ parts.VARS.GID }}
+   group {{ mgroup }}
+   mode {{ mmode }}
+   if failed unixsocket {{ parts.uwsgi.socket }} type TCP then restart
+   if 5 restarts within 5 cycles then timeout

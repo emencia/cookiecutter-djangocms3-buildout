@@ -1,0 +1,19 @@
+{% extends "pages/base.html" %}
+{% load cms_tags menu_tags %}
+
+{% block subheader_container %}{% spaceless %}
+{% if request.current_page.level > 0 %}
+<div id="subheader-container" class="contain-to-grid">
+    <nav id="subheader">
+        <ul class="nav-bar">
+            {% show_menu 2 100 0 1 %}
+        </ul>
+    </nav>
+</div>{% endif %}
+{% endspaceless %}{% endblock %}
+
+{% block base_content %}<div class="row">
+    <div class="large-3 columns">{% placeholder "left" %}</div>
+    <div class="large-6 columns">{% placeholder "middle" %}</div>
+    <div class="large-3 columns">{% placeholder "right" %}</div>
+</div>{% endblock %}

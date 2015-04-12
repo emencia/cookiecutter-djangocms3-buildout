@@ -1,0 +1,16 @@
+<ul id="slideshow-container-{{ slideshow_instance.id }}" data-orbit>
+{% for slide in slideshow_slides %}
+    <li data-orbit-slide="item-{{ forloop.counter }}"{% if slide.url %} data-slide-url="{{ slide.url }}"{% endif %}>
+        {% if slide.image %}<img src="{{ slide.image.url }}" alt="">{% endif %}
+        {% if slide.content %}
+            <div class="orbit-caption">
+                <h2>{{ slide.title }}</h2>
+                {{ slide.content|safe }}
+            </div>
+        {% else %}
+            <div class="orbit-caption">{{ slide.title }}</div>
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+{% comment %}{% if slideshow_js_config %}{{ slideshow_js_config }}{% endif %}{% endcomment %}

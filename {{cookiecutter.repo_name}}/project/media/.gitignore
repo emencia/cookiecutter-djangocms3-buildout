@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.keep
+
+# Keep the uploads folder, but ignore its content
+!uploads/
+uploads/*
+!uploads/.keep

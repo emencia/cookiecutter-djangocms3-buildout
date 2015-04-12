@@ -1,0 +1,42 @@
+/* 
+ * Country flags sprites
+ */
+@import "compass/utilities/sprites";
+@import "compass/css3";
+
+// The magic way
+/* @import "flags/flags-24/*.png"; */
+/*@include all-flags-24-sprites;
+.flags-24-sprite:before{
+    content: "";
+    position: absolute;
+    left: 8px;
+    display: block;
+    width: flags-24-sprite-width(de);
+    height: flags-24-sprite-height(de);
+    text-indent: -10000px;
+}*/
+
+// The manual way
+$flagicons: sprite-map("flags/flags-24/*.png");
+.flags-sprite-base{
+    content: "";
+    position: absolute;
+    left: 8px;
+    display: block;
+    @include sprite-dimensions($flagicons, de);
+}
+
+/*.sprite_de:before {
+    @extend .flags-sprite-base;
+    background: sprite($flagicons, de) no-repeat;
+}*/
+
+$sprite-names: ar ar-ma cs de en-au en-gb en-nz en en-us es-cl es-co es fr hu-si it ja ko-kr nl pl pt-br ru ss-za tr zh-cn zh-hk;
+@each $sprite-name in $sprite-names {
+    $full-sprite-name: "sprite-#{$sprite-name}";
+    .#{$full-sprite-name}:before {
+        @extend .flags-sprite-base;
+        background: sprite($flagicons, $sprite-name) no-repeat;
+    }
+}

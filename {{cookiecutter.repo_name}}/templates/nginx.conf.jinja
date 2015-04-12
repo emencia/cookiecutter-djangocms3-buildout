@@ -1,0 +1,49 @@
+server {
+    listen       80;
+    server_name  {{ domain }}{% if other_domains %} {{ other_domains }}{% endif %};
+    charset      utf-8;
+    # To limit upload to 50Mb
+    #client_max_body_size 50M;
+
+    error_log  /var/log/nginx/{{ parts.VARS.NAME }}_error_log;
+    access_log  /var/log/nginx/{{ parts.VARS.NAME }}_access_log;
+
+    {% if parts.VARS.FORCE_REWRITE|as_bool %}
+    if ($host !~* ^{{ domain|replace(".","\.") }}) {
+        rewrite ^/(.*)     http://{{ domain }}/$1;
+    }
+
+    {% endif %}
+    location /media {
+        alias {{ parts.buildout.directory }}/project/media;
+    }
+
+    location /static {
+        alias {{ parts.buildout.directory }}/project/static;
+    }
+
+    {% if parts.VARS.SETTINGS == 'settings_integration' or parts.VARS.SETTINGS=='settings_production' %}
+    location /robots.txt {
+        alias {{ parts.buildout.directory }}/project/static/default_robots.txt;
+    }
+    
+    {% endif %}
+    #location /protected_medias{
+    #    internal;
+    #    alias {{ parts.buildout.directory }}/project/protected_medias;
+    #}
+
+    location /admin {
+        include                 /etc/nginx/uwsgi_params;
+        uwsgi_pass              unix:{{ parts.uwsgi.socket }};
+        client_max_body_size 350m;
+        uwsgi_read_timeout 600;
+    }
+
+    root {{ parts.buildout.directory }}/var/www;
+    try_files $uri @uwsgi;
+    location @uwsgi {
+        include                 /etc/nginx/uwsgi_params;
+        uwsgi_pass              unix:{{ parts.uwsgi.socket }};
+    }
+}

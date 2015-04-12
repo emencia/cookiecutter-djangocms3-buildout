@@ -1,0 +1,1 @@
+{% load i18n %}[{{ SITE.name }}] {% trans "Contact request" %}

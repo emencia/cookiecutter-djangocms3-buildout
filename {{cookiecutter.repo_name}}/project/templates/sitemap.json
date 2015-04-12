@@ -1,0 +1,7 @@
+{
+    "name": "Sample",
+    "urls": [
+        {% for url in urlset %}"{{ url.location }}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ]
+}

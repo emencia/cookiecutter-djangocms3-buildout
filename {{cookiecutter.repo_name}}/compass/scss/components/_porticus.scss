@@ -1,0 +1,124 @@
+
+// *****
+// Album d'images avec le label positionné à droite de son image
+// *****
+.album-details{
+    h2{
+        display: none;
+    }
+}
+
+.album-grid{
+    //.simple
+    @include clearfix;
+    margin: 0;
+    
+    &>.row{
+        border-top: 19px solid transparent;
+        border-bottom: 19px solid transparent;
+        &+.row{
+            border-top: 0;
+        }
+    }
+    
+    .item{
+        margin-bottom: rem-calc(25px);
+        text-align: center;
+        
+        &:last-child {
+            float: left;
+        }
+        
+        h3, h4, h5{
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        p{
+            margin-bottom: 0;
+            font-size: 11px;
+            font-weight: 400;
+            
+            &+p{
+                margin-top: 8px;
+            }
+        }
+        
+        img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    
+    &.condensed{
+        .item{
+            margin-bottom: 0;
+            text-align: left;
+            
+            .details{
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                padding: rem-calc(5px) rem-calc(15px);
+                background-color: rgba(0, 0, 0, 0.8);
+                
+                h3{
+                    color: #ff6c66;
+                    margin-bottom: 0;
+                }
+            
+                .description{
+                    color: #ffffff;
+                }
+            }
+            
+            .thumbnail{
+                position: relative;
+                border: rem-calc(2px) solid #000000;
+            }
+            
+            &+.item{
+                .thumbnail{
+                    border-left: rem-calc(1px) solid #000000;
+                }
+            }
+        }
+    }
+}
+/*
+.album-grid-aside{
+    @include clearfix;
+    
+    .item{
+        margin-bottom: rem-calc(15px);
+        
+        &:last-child{
+            float: left;
+        }
+        
+        a{
+            color: #000000;
+        }
+        
+        .thumb{
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        .content{
+            padding-top: 4%;
+            padding-left: rem-calc(10px);
+            padding-right: 0;
+            
+            p{
+                margin: 0;
+            }
+        }
+        
+        .brand{
+            display: block;
+        }
+    }
+}*/

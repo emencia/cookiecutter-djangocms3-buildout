@@ -1,0 +1,16 @@
+{% load i18n %}<div class="sliderContainer fullWidthslide clearfix rsDefault" id="sliderTop">
+    <div class="scroll"><a href="#isocontainer"><span>{% blocktrans %}scroll{% endblocktrans %} </span><span class="icon-typo">d</span></a></div>
+    <div class="spinner" style="display:none;"><img src="{{ STATIC_URL }}images/theme/loading_spinner.gif" alt=""></div>
+
+    <div id="full-width-slider" class="royalSlider heroSlider rsMinW">
+        <div class="rsContent">
+            <img class="rsImg" src="{{ slideshow_slide.image.url }}" alt="">
+            <div class="infoBlock infoBlockLeft rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
+                <h2>{{ slideshow_slide.title }}</h2>
+                {% if slideshow_slide.content %}
+                    {{ slideshow_slide.content|safe }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

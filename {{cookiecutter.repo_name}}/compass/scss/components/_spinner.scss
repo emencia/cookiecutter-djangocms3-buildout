@@ -1,0 +1,12 @@
+.spinner-block{
+    background-position: center;
+    background-repeat: no-repeat;
+    min-width: 66px;
+    // TODO: Try to use a webfont instead of this gif
+    //background-color: red; // dummy
+    
+    height: 200px;
+    @media #{$large-up} {
+        height: 500px;
+    }
+}

@@ -1,0 +1,1 @@
+{% load i18n %}{% trans "[{{ site.name }}] A request for registration needs your approval." %}

@@ -1,0 +1,2 @@
+{% for child in children %}<li{% if child.selected %} class="active"{% endif %}><a href="{{ child.get_absolute_url }}">{{ child.get_menu_title }}</a></li>
+{% endfor %}

@@ -1,0 +1,29 @@
+{% extends "registration/base.html" %}
+{% load i18n crispy_forms_tags %}
+
+{% block content %}
+    <div class="row">
+        <div class="small-12 medium-5 columns medium-centered">
+            <h2>{% trans "Login" %}</h2>
+            <form method="post" action="." class="simple">
+                <div class="row">
+                    <div class="small-12 columns">
+                    {% crispy form %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-12 medium-7 columns">
+                        {% comment %}<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>{% endcomment %}
+                        <p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+                    </div>
+                    <div class="small-12 medium-5 columns text-right">
+                        <input type="submit" class="submit button" value="{% trans 'Log in' %}">
+                        <input type="hidden" name="next" value="{{ next }}">
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

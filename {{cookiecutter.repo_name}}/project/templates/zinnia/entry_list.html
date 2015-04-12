@@ -1,0 +1,36 @@
+{% extends "zinnia/base.html" %}
+{% load i18n zinnia_tags %}
+
+{% block content %}
+
+    {% block content-title %}
+        {% if category %}
+            <h2>{% blocktrans %}{{ category }}{% endblocktrans %}</h2>
+            {% if category.description %}
+                <p>{{ category.description|striptags|safe }}</p>
+            {% endif %}
+        {% else %}
+            <h2>{% trans "News" %}</h2>
+        {% endif %}
+    {% endblock %}
+
+    {% block content-loop %}
+        {% for object in object_list %}
+        {% include object.content_template with object_content=object.html_content|truncatewords_html:100|safe continue_reading=1 %}
+        {% if not forloop.last %}<hr class="entry-separator">{% endif %}
+        {% empty %}
+        <p class="info">
+            <a href="{% url 'admin:zinnia_entry_add' %}">{% trans "No entries yet." %}</a>
+        </p>
+        {% endfor %}
+    {% endblock %}
+
+    {% block content-pagination %}
+        {% if is_paginated %}
+        {% zinnia_pagination page_obj %}
+        {% endif %}
+    {% endblock %}
+
+    {% block content-related %}{% endblock %}
+
+{% endblock %}

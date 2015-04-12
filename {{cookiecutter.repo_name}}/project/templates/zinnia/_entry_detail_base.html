@@ -1,0 +1,68 @@
+{% load i18n %}
+<div id="entry-{{ object.pk }}" class="hentry{% if object.featured %} featured{% endif %}">
+  {% block entry-header %}
+  <div class="entry-header">
+    {% block entry-title %}
+        {% if continue_reading %}
+        <h3 class="entry-title"><a href="{{ object.get_absolute_url }}" title="{{ object.title }}" rel="bookmark">{{ object.title }}</a></h3>
+        {% else %}
+        <h2 class="entry-title"><a href="{{ object.get_absolute_url }}" title="{{ object.title }}" rel="bookmark">{{ object.title }}</a></h2>
+        {% endif %}
+    {% endblock %}
+    <p class="entry-info">
+    {% block entry-info %}
+      {% trans "Written on" %}
+      <abbr class="published" title="{{ object.creation_date|date:"c" }}">{{ object.creation_date|date:"DATE_FORMAT" }}</abbr>
+    {% endblock %}
+    {% with categories=object.categories.all %}
+    {% if categories|length %}
+    {% trans "in" %}
+    {% for category in categories %}
+    <a href="{{ category.get_absolute_url }}"
+        title="{% blocktrans %}Show all entries in {{ category }}{% endblocktrans %}"
+        rel="tag category">{{ category }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}{% endif %}{% endwith %}
+    {% block entry-last-update %}{% if object.last_update != object.creation_date %}.
+      {% trans "Last update on" %}, <abbr class="updated" title="{{ object.last_update|date:"c" }}">{{ object.last_update|date:"DATE_FORMAT" }}</abbr>.
+    {% endif %}
+    {% endblock %}
+    </p>
+  </div>
+  {% endblock %}
+
+  {% block entry-body %}
+  <div class="entry-body">
+    {% block entry-image %}
+    {% if object.image %}
+    <div class="entry-image">
+      <p>
+        {% if continue_reading %}
+        <a href="{{ object.get_absolute_url }}" title="{{ object.title }}" rel="bookmark">
+          {% endif %}
+          <img src="{{ object.image.url }}" alt="{{ object.title }}">
+          {% if continue_reading %}
+        </a>
+        {% endif %}
+      </p>
+    </div>
+    {% endif %}
+    {% endblock %}
+    {% block entry-content %}
+    <div class="entry-content">
+      {{ object_content }}
+    </div>
+    {% endblock %}
+    {% block continue-reading %}
+    {% if continue_reading %}
+    <p class="continue-reading text-right">
+      <a href="{{ object.get_absolute_url }}"
+         class="button radius"
+         title="{% blocktrans with object=object.title %}Continue reading &ldquo;{{ object }}&rdquo;{% endblocktrans %}"
+         rel="bookmark">
+        {% trans "Continue reading" %}
+      </a>
+    </p>
+    {% endif %}
+    {% endblock %}
+  </div>
+  {% endblock %}
+</div>

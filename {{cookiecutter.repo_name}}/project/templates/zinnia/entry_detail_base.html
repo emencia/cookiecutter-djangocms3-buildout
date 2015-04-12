@@ -1,0 +1,18 @@
+{% extends "zinnia/base.html" %}
+{% load i18n zinnia_tags %}
+
+{% block head_title %}{{ object.title }}{% endblock %}
+{% block meta-description %}{% if object.excerpt %}{{ object.excerpt|striptags }}{% else %}{{ object.content|striptags|truncatewords:100 }}{% endif %}{% endblock %}
+{% block meta-keywords %}{% if object.tags %}{{ object.tags }}{% else %}{{ block.super }}{% endif %}{% endblock %}
+
+{% block link %}
+    {{ block.super }}
+    {% comment %}<link rel="shortlink" href="{{ object.short_url }}" />{% endcomment %}
+    <link rel="canonical" href="{{ object.get_absolute_url }}" />
+{% endblock %}
+
+{% block content %}
+    {% block entry-content %}
+        {% include object.content_template with object_content=object.html_content|safe %}
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,105 @@
+/* 
+ * Common addons
+ */
+// Raccourci de positionnement relatif
+.relative-position{
+    position: relative;
+}
+
+// Image en bloc centre
+img.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+// Etire proportionellement l'image a la largeur de son conteneur
+img.expanded{
+    width: 100%;
+    height: auto;
+}
+
+// Fluid row, take the full width but keep normal row and columns behaviors
+.row.row-fluid{
+    max-width: 100%;
+    // Restore the initial behavior restrained to the grid
+    .row{
+        margin: auto;
+        @include grid-row;
+        // Preserve nested fluid behavior
+        &.row-fluid{
+            max-width: 100%;
+        }
+    }
+}
+// Remove column padding for simple inner
+.row .columns > .row-inner{
+    margin-left: -($column-gutter/2);
+    margin-right: -($column-gutter/2);
+}
+
+// Remove padding on columns
+.columns{
+    &.unpadded{
+        padding: 0;
+    }
+    @media #{$small-only} {
+        &.small-unpadded{
+            padding: 0;
+        }
+    }
+    @media #{$medium-only} {
+        &.medium-unpadded{
+            padding: 0;
+        }
+    }
+    @media #{$large-only} {
+        &.large-unpadded{
+            padding: 0;
+        }
+    }
+}
+
+// Remove all margins
+.unmarged{
+    margin: 0;
+}
+
+/*
+ * Supplementary divider classes
+ */
+// Apply margin bottom on rows
+.row.divider{
+    margin-bottom: rem-calc(10px);
+    @media #{$medium-up} {
+        margin-bottom: rem-calc(30px);
+    }
+}
+// By default, columns dont needs of a divider in medium display and up, 
+// because they should probably floating
+.columns.divider{
+    margin-bottom: rem-calc(5px);
+    @media #{$medium-up} {
+        margin-bottom: 0;
+    }
+}
+
+// Sometime we need to separate an img from an another adjacent element
+img.divider{
+    margin-bottom: $paragraph-margin-bottom;
+}
+
+
+/*
+ * Visually transform a dropdown button into a select list with vertical 
+ * scrollbar. This is useful for long list items that can impact on page size
+ */
+.f-dropdown.overflow{
+    overflow: auto;
+    height: 200px;
+    // Various sizes
+    &.overflow-100{ height: 100px; }
+    &.overflow-150{ height: 150px; }
+    &.overflow-200{ height: 200px; }
+    &.overflow-250{ height: 250px; }
+    &.overflow-300{ height: 300px; }
+}

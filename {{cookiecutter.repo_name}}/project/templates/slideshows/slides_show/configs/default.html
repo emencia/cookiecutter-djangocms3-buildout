@@ -1,0 +1,23 @@
+<script type="text/javascript">
+//<![CDATA[
+$(window).load(function () {
+    $('#slideshow-container-{{ slideshow_instance.id }} .slide-item').each(function(){
+        if( $(this).attr('data-slide-url') ){
+            $(this).addClass("clickable");
+            $(this).click(function(){
+                window.location.href = $(this).attr('data-slide-url');
+                return false;
+            })
+        }
+    });
+    // Orbit slides
+    $('#slideshow-container-{{ slideshow_instance.id }}').orbit({ 
+        fluid: '16x9',
+        pauseOnHover:true,
+        startClockOnMouseOut:true,
+        timer: true,
+        bullets: true
+    });
+});
+//]]>
+</script>

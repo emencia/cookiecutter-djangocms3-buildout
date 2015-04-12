@@ -1,0 +1,152 @@
+/* 
+ * Country flags sprites
+ */
+/* @import "flags/flags-24/*.png"; */
+/*@include all-flags-24-sprites;
+.flags-24-sprite:before{
+    content: "";
+    position: absolute;
+    left: 8px;
+    display: block;
+    width: flags-24-sprite-width(de);
+    height: flags-24-sprite-height(de);
+    text-indent: -10000px;
+}*/
+/* line 22, ../../../compass/scss/flags.scss */
+.flags-sprite-base, .sprite-ar:before, .sprite-ar-ma:before, .sprite-cs:before, .sprite-de:before, .sprite-en-au:before, .sprite-en-gb:before, .sprite-en-nz:before, .sprite-en:before, .sprite-en-us:before, .sprite-es-cl:before, .sprite-es-co:before, .sprite-es:before, .sprite-fr:before, .sprite-hu-si:before, .sprite-it:before, .sprite-ja:before, .sprite-ko-kr:before, .sprite-nl:before, .sprite-pl:before, .sprite-pt-br:before, .sprite-ru:before, .sprite-ss-za:before, .sprite-tr:before, .sprite-zh-cn:before, .sprite-zh-hk:before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  display: block;
+  height: 16px;
+  width: 22px;
+}
+
+/*.sprite_de:before {
+    @extend .flags-sprite-base;
+    background: sprite($flagicons, de) no-repeat;
+}*/
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-ar:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 0 no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-ar-ma:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -176px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-cs:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -272px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-de:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -432px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-en-au:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -128px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-en-gb:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -48px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-en-nz:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -192px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-en:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -16px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-en-us:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -32px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-es-cl:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -304px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-es-co:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -352px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-es:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -288px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-fr:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -112px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-hu-si:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -336px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-it:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -144px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-ja:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -384px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-ko-kr:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -224px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-nl:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -400px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-pl:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -368px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-pt-br:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -64px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-ru:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -416px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-ss-za:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -96px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-tr:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -256px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-zh-cn:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -160px no-repeat;
+}
+
+/* line 38, ../../../compass/scss/flags.scss */
+.sprite-zh-hk:before {
+  background: url('../images/flags/flags-24-s1527fc25a8.png') 0 -80px no-repeat;
+}

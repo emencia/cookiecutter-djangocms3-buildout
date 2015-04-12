@@ -1,0 +1,24 @@
+/*
+ * Minimal CSS, contain all the content layout but not the header nor the
+ * footer. Used in djangocms page render in admin
+ */
+@import "settings";
+@import "compass";
+@import "foundation/settings";
+
+@import
+    "foundation/components/grid",
+    "foundation/components/button-groups",
+    "foundation/components/buttons",
+    "foundation/components/dropdown",
+    "foundation/components/dropdown-buttons",
+    "foundation/components/type",
+    "foundation/components/tabs";
+
+@import "components/mixins";
+@import "components/addons";
+
+#content-main{
+    @include foundation-content-base;
+    @import "components/contents";
+}

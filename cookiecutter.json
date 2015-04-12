@@ -1,0 +1,28 @@
+{
+        "author_name": "Emencia",
+        "author_email": "support@emencia.com",
+        "github_username": "emencia",
+        "project_name": "Project name",
+        "repo_name": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+        "version": "0.1.0",
+        
+        "enable_accounts": "yes",
+        "enable_contact_form": "yes",
+        "enable_porticus": "yes",
+        "enable_slideshows": "yes",
+        "enable_socialaggregator": "yes",
+        "enable_zinnia": "yes",
+        
+        "secret_key": "{% for column in items|slice(50) %}{{ 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'|random }}{% endfor %}",
+        
+        "_copy_without_render": [
+            "*.gitignore",
+            "compass",
+            "foundation5",
+            "templates",
+            "var",
+            "bootstrap.py",
+            "Makefile",
+            "project"
+        ]
+}

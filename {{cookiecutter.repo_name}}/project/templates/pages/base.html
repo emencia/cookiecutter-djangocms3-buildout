@@ -1,0 +1,6 @@
+{% extends "skeleton.html" %}
+{% load cms_tags %}
+
+{% block head_title %}{% page_attribute "page_title" %} - {{ block.super }}{% endblock %}
+{% block meta-description %}{% page_attribute meta_description %}{% endblock %}
+{% block meta-keywords %}{% page_attribute meta_keywords %}{% endblock %}
