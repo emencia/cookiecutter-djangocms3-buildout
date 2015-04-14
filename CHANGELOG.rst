@@ -3,7 +3,13 @@
 Changelog
 =========
 
-Versions come from git tags, not package version because, err.. This is not a Python package.
+Versions come from git tags, not package version because, err.. this is not a Python package.
+
+Version 0.2.0 - 2015/04/13
+--------------------------
+
+* Added post generation hook to enable mods after install;
+* Use cookiecutter context to remove eggs in ``buildout.cfg`` egg list;
 
 Version 0.1.0 - 2015/04/12
 --------------------------
