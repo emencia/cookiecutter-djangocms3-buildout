@@ -6,27 +6,45 @@ Post hooks to finish install
 When developing on this script, add "test" as first argument to use test mode with 
 a dummy context else the script will fails (because the context is empty).
 """
-import ast, json, os
+import ast, json, os, subprocess, sys
 
 # Capture cookiecutter context
 COOKIE_CONTEXT = """{{ cookiecutter }}"""
 
 # A sample of cookiecutter context used for test/dev purposes
 TEST_CONTEXT = {
-    "project_name": "Project name", 
-    "author_email": "support@emencia.com", 
-    "author_name": "Emencia", 
-    "version": "0.1.0", 
+    "project_name": "Project name",
+    "author_email": "support@emencia.com",
+    "author_name": "Emencia",
+    "version": "0.1.0",
     "repo_name": "project-name",
-    "github_username": "emencia", 
-    "secret_key": "DUMMY-KEY", 
-    "enable_accounts": "yes", 
-    "enable_contact_form": "no", 
-    "enable_porticus": "yes", 
-    "enable_slideshows": "yes", 
-    "enable_socialaggregator": "no", 
+    "repo_username": "emencia",
+    "repo_host": "github.com",
+    "secret_key": "DUMMY-KEY",
+    "enable_accounts": "yes",
+    "enable_contact_form": "no",
+    "enable_porticus": "yes",
+    "enable_slideshows": "yes",
+    "enable_socialaggregator": "no",
     "enable_zinnia": "yes"
 }
+
+
+class Caller(object):
+    """
+    Simple caller for Popen subprocess
+    """
+    def __init__(self, cwd=None):
+        self.cwd = cwd
+
+    def __call__(self, *args):
+        popen = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=self.cwd)
+        out, err = popen.communicate()
+        if popen.returncode != 0:
+            print args
+            print 'Exit %d' % popen.returncode
+            sys.exit(popen.returncode)
+        return out
 
 
 class AppManager(object):
@@ -63,6 +81,7 @@ class AppManager(object):
         'accounts': ['crispy_forms', 'recaptcha'],
         'contact_form': ['crispy_forms', 'recaptcha'],
     }
+    
     def __init__(self, context, test_mode=False):
         self.context = context
         self.test_mode = test_mode
@@ -111,6 +130,29 @@ class AppManager(object):
         return symlink_list
 
 
+def repository_init(context, test_mode=False):
+    """
+    Repository first initialization with Git
+    """
+    repository_path = "git@{host}:{username}/{name}.git".format(
+        host=context['repo_host'],
+        username=context['repo_username'],
+        name=context['repo_name'],
+    )
+    
+    call = Caller('.')
+    print "* Init"
+    call('git', 'init', '.')
+    print "* Adding files"
+    call('git', 'add', '.')
+    print "* First commit"
+    call('git', 'commit', '-m', "First commit from 'cookiecutter-djangocms3-buildout'")
+    print "* Configure remote origin on", repository_path
+    call('git', 'remote', 'add', 'origin', repository_path)
+    
+    return repository_path
+
+
 def print_part_title(title):
     print "="*len(title)
     print title
@@ -133,14 +175,22 @@ if __name__ == "__main__":
     apm.enable_mods(apps)
     print
     
-    #print_part_title("Init Git repository")
-    #print "TODO"
-    #print
+    print_part_title("Init Git repository")
+    repository_path = repository_init(context, test_mode)
+    print
     
-    #print_part_title("Go ahead")
-    #print "Your new project should be ready now."
-    #print
-    #print "Just enter to 'foo' directory then launch the following command to install it:"
-    #print
-    #print "    make install"
-    #print
+    print_part_title("Go ahead")
+    print "Your new project should be ready now."
+    print
+    print "Just enter to '{{cookiecutter.repo_name}}' directory then launch the following command to install it:"
+    print
+    print "    make install"
+    print
+    print "The project repository has been initialized, committed and configured for origin remote on:"
+    print
+    print "   ", repository_path
+    print
+    print "You can push it now with:"
+    print
+    print "    git push origin master"
+    print

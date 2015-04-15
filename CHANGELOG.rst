@@ -5,6 +5,13 @@ Changelog
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.3.0 - 2015/04/15
+--------------------------
+
+* Added Git repo initialization in the post generation hook;
+* Added a message at the end of the post generation hook to display some help;
+* Changed some variables from ``cookiecutter.json`` for repository infos;
+
 Version 0.2.0 - 2015/04/13
 --------------------------
 

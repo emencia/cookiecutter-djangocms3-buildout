@@ -1,8 +1,9 @@
 {
         "author_name": "Emencia",
         "author_email": "support@emencia.com",
-        "github_username": "emencia",
         "project_name": "Project name",
+        "repo_username": "emencia",
+        "repo_host": "github.com",
         "repo_name": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
         "version": "0.1.0",
         
