@@ -1,4 +1,4 @@
-{% load i18n cms_tags menu_tags sekizai_tags assets %}
+{% raw %}{% load i18n cms_tags menu_tags sekizai_tags assets %}
 <!DOCTYPE html>
 <!--[if IE 8]> <html class="{% block html_attr_alt %}{% endblock %}no-js lt-ie9" lang="{{ LANGUAGE_CODE }}"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="{% block html_attr %}{% endblock %}no-js" lang="{{ LANGUAGE_CODE }}"> <!--<![endif]-->
@@ -45,25 +45,14 @@
                 {# Left Nav Section #}
                 <ul class="left">
                     {% show_menu 1 100 100 100 "menu/root_menu.html" %}
-                    <li{% block menu_item_zinnia %}{% endblock %}><a href="{% url 'zinnia:entry_archive_index' %}">{% trans "Weblog" %}</a></li>
-                    <li{% block menu_item_porticus %}{% endblock %}><a href="{% url 'porticus:galleries-index' %}">{% trans "Galleries" %}</a></li>
-                    <li{% block menu_item_contact %}{% endblock %}><a href="{% url 'contact_form' %}">{% trans "Contact" %}</a></li>
+{% endraw %}
+                    {% if cookiecutter.enable_zinnia == 'yes' %}<li{{ '{%' }} block menu_item_zinnia {{ '%}' }}{{ '{%' }} endblock {{ '%}' }}><a href="{{ '{%' }} url 'zinnia:entry_archive_index' {{ '%}' }}">{{ '{%' }} trans "Weblog" {{ '%}' }}</a></li>{% endif %}
+                    {% if cookiecutter.enable_porticus == 'yes' %}<li{{ '{%' }} block menu_item_porticus {{ '%}' }}{{ '{%' }} endblock {{ '%}' }}><a href="{{ '{%' }} url 'porticus:galleries-index' {{ '%}' }}">{{ '{%' }} trans "Galleries" {{ '%}' }}</a></li>{% endif %}
+                    {% if cookiecutter.enable_contact_form == 'yes' %}<li{{ '{%' }} block menu_item_contact {{ '%}' }}{{ '{%' }} endblock {{ '%}' }}><a href="{{ '{%' }} url 'contact_form' {{ '%}' }}">{{ '{%' }} trans "Contact" {{ '%}' }}</a></li>{% endif %}
                 </ul>
                 <ul class="right">
-                    {% comment %}<li class="has-dropdown" id="auth-menu">
-                    {% if user.is_authenticated %}
-                        <strong><i class="icon-user"></i> {{ user.username }}</strong>
-                        <ul class="dropdown">
-                            <li><a href="{% url 'auth_logout' %}"><i class="icon-sign-out"></i> {% trans "Logout" %}</a></li>
-                        </ul>
-                    {% else %}
-                        <a href="{% url 'auth_login' %}?next={{ request.path }}"><i class="icon-sign-in"></i> {% trans "Login" %}</a>
-                        <ul class="dropdown">
-                            <li><a href="{% url 'registration_register' %}"><i class="icon-arrow-circle-o-down"></i> {% trans "Register" %}</a></li>
-                        </ul>
-                    {% endif %}
-                    </li>{% endcomment %}
-                
+                {% if cookiecutter.enable_accounts == 'yes' %}{{ '{%' }} include 'accounts_menu.html' {{ '%}' }}{% endif %}
+{% raw %}
                     <li class="divider"></li>
                     {% block menu_general_language %}<li class="niv1 has-dropdown languages" id="languageChooser">
                         {% for k,v in LANGUAGES %}{% if LANGUAGE_CODE == k %}<a href="/{{ k }}/" class="sprite-{{ LANGUAGE_CODE }}">{{ v }}</a>{% endif %}{% endfor %}
@@ -108,3 +97,4 @@
     {% endspaceless %}
 </body>
 </html>
+{% endraw %}

@@ -1,0 +1,14 @@
+{% load i18n %}
+<li class="has-dropdown" id="auth-menu">
+{% if user.is_authenticated %}
+    <strong><i class="icon-user"></i> {{ user.username }}</strong>
+    <ul class="dropdown">
+        <li><a href="{% url 'auth_logout' %}"><i class="icon-sign-out"></i> {% trans "Logout" %}</a></li>
+    </ul>
+{% else %}
+    <a href="{% url 'auth_login' %}?next={{ request.path }}"><i class="icon-sign-in"></i> {% trans "Login" %}</a>
+    <ul class="dropdown">
+        <li><a href="{% url 'registration_register' %}"><i class="icon-arrow-circle-o-down"></i> {% trans "Register" %}</a></li>
+    </ul>
+{% endif %}
+</li>

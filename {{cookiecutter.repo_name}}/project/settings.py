@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Django settings for project project.
+# Django settings for project '{{ cookiecutter.project_name }}'
 
 from os import listdir
 from os.path import abspath, dirname, isfile, join
@@ -132,7 +132,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '*wz)d1-*$^hdg-=^6%-zc^9(+nh)_xz33j5l9v)z^&*7^z)6in'
+SECRET_KEY = '{{ cookiecutter.secret_key }}'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -266,7 +266,9 @@ def add_to_tuple(var, *args, **kw):
 
     return tuple(var)
 
-
+# Shadow import using execfile for enabled mods
+# With execfile, the python script will be executed in the current context and so 
+# can directly access to it (like using/modifying its variables)
 mods = join(PROJECT_PATH, 'mods_enabled')
 mods = [ join(mods, x) for x in listdir(mods) ]
 mods.sort()

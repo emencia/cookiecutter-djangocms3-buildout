@@ -9,6 +9,6 @@ INTERNAL_IPS = ('127.0.0.1',)
 # Test emails by looking at the console
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# googletools is disabled when DEBUG=True, you can force to enable it with 
-# uncommenting this line
+# googletools is disabled when settings.DEBUG is True, you can force to enable it 
+# with uncommenting this line
 #GOOGLETOOLS_ENABLED = True

@@ -14,9 +14,6 @@ COOKIE_CONTEXT = """{{ cookiecutter }}"""
 # A sample of cookiecutter context used for test/dev purposes
 TEST_CONTEXT = {
     "project_name": "Project name",
-    "author_email": "support@emencia.com",
-    "author_name": "Emencia",
-    "version": "0.1.0",
     "repo_name": "project-name",
     "repo_username": "emencia",
     "repo_host": "github.com",
