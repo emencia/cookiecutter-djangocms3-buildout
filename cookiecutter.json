@@ -10,6 +10,7 @@
         "enable_slideshows": "yes",
         "enable_socialaggregator": "no",
         "enable_zinnia": "yes",
+        "enable_multiple_languages": "no",
         
         "secret_key": "{% for column in items|slice(50) %}{{ 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'|random }}{% endfor %}",
         
@@ -53,7 +54,7 @@
             "project/mods_available/admin_tools",
             "project/mods_available/assets",
             "project/mods_available/ckeditor",
-            "project/mods_available/cms",
+            "project/mods_available/cms/__init__.py",
             "project/mods_available/codemirror",
             "project/mods_available/contact_form",
             "project/mods_available/crispy_forms",

@@ -50,15 +50,12 @@
                     {% if cookiecutter.enable_porticus == 'yes' %}<li{{ '{%' }} block menu_item_porticus {{ '%}' }}{{ '{%' }} endblock {{ '%}' }}><a href="{{ '{%' }} url 'porticus:galleries-index' {{ '%}' }}">{{ '{%' }} trans "Galleries" {{ '%}' }}</a></li>{% endif %}
                     {% if cookiecutter.enable_contact_form == 'yes' %}<li{{ '{%' }} block menu_item_contact {{ '%}' }}{{ '{%' }} endblock {{ '%}' }}><a href="{{ '{%' }} url 'contact_form' {{ '%}' }}">{{ '{%' }} trans "Contact" {{ '%}' }}</a></li>{% endif %}
                 </ul>
-                <ul class="right">
-                {% if cookiecutter.enable_accounts == 'yes' %}{{ '{%' }} include 'accounts_menu.html' {{ '%}' }}{% endif %}
+                {% if cookiecutter.enable_accounts == 'yes' or cookiecutter.enable_multiple_languages == 'yes' %}<ul class="right">
+                    {% if cookiecutter.enable_accounts == 'yes' %}{{ '{%' }} include 'menu/accounts_menu.html' {{ '%}' }}{% endif %}
+                    {% if cookiecutter.enable_multiple_languages == 'yes' %}<li class="divider"></li>
+                    {{ '{%' }} block menu_general_language {{ '%}' }}{{ '{%' }} include 'menu/custom_language_chooser.html' {{ '%}' }}{{ '{%' }} endblock {{ '%}' }}{% endif %}
+                </ul>{% endif %}
 {% raw %}
-                    <li class="divider"></li>
-                    {% block menu_general_language %}<li class="niv1 has-dropdown languages" id="languageChooser">
-                        {% for k,v in LANGUAGES %}{% if LANGUAGE_CODE == k %}<a href="/{{ k }}/" class="sprite-{{ LANGUAGE_CODE }}">{{ v }}</a>{% endif %}{% endfor %}
-                        <ul class="dropdown">{% language_chooser %}</ul>
-                    </li>{% endblock %}
-                </ul>
                 
             </section>{% endblock %}
         </nav>

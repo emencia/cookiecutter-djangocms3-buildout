@@ -1,0 +1,4 @@
+{% load i18n menu_tags %}<li class="niv1 has-dropdown languages" id="languageChooser">
+    {% for k,v in LANGUAGES %}{% if LANGUAGE_CODE == k %}<a href="/{{ k }}/" class="sprite-{{ LANGUAGE_CODE }}">{{ v }}</a>{% endif %}{% endfor %}
+    <ul class="dropdown">{% language_chooser %}</ul>
+</li>

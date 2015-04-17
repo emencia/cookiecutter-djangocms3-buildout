@@ -9,17 +9,13 @@ INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
     #'reversion', # raise error on south migration, there is a bug with the last version and django1.6
 )
 
-MIDDLEWARE_CLASSES = add_to_tuple(MIDDLEWARE_CLASSES,
-    'django.middleware.locale.LocaleMiddleware',
-    before='django.middleware.common.CommonMiddleware')
-
-
 MIDDLEWARE_CLASSES += (
     'django.middleware.doc.XViewMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.language.LanguageCookieMiddleware',
+{% if cookiecutter.enable_multiple_languages == 'yes' %}
+    'cms.middleware.language.LanguageCookieMiddleware',{% endif %}
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = add_to_tuple(TEMPLATE_CONTEXT_PROCESSORS,

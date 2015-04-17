@@ -23,7 +23,8 @@ TEST_CONTEXT = {
     "enable_porticus": "yes",
     "enable_slideshows": "yes",
     "enable_socialaggregator": "no",
-    "enable_zinnia": "yes"
+    "enable_zinnia": "yes",
+    "enable_multiple_languages": "no"
 }
 
 

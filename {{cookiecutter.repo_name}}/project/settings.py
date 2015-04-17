@@ -53,9 +53,7 @@ LANGUAGES = (
     #("de", gettext(u"Deutschland")),
     #("es", gettext(u"España")),
     ("fr", gettext(u"France")),
-    #("zh-hk", gettext(u"Hong Kong")), # You can't enable this one without patching 
-                                       # django, see "patch-django-locale" part in the 
-                                       # buildout conf
+    #("zh-hk", gettext(u"Hong Kong")),
     #("it", gettext(u"Italia")),
     #("nl", gettext(u"Nederland")),
     #("pl", gettext(u"Polska")),
@@ -66,18 +64,18 @@ LANGUAGES = (
     #('zh-cn', gettext(u'中国')),
     #("ko-kr", gettext(u"한국")),
 )
-# More knowed country locales
-EXTRA_COUNTRY_LOCALES = LANGUAGES + (
-    ("pt-br", gettext(u"Brasil")),
-    ("es-cl", gettext(u"Chile")),
-    ("es-co", gettext(u"Colombia")),
-    ("cs", gettext(u"Czech Republic")),
-    ("ar-ma", gettext(u"Morocco")),
-    ("en-nz", gettext(u"New Zealand")),
-    ("hu-si", gettext(u"Slovenia")),
-    ("tr", gettext(u"Turkey")),
-    ("ss-za", gettext(u"South Africa")),
-)
+## More knowed country locales
+#EXTRA_COUNTRY_LOCALES = LANGUAGES + (
+    #("pt-br", gettext(u"Brasil")),
+    #("es-cl", gettext(u"Chile")),
+    #("es-co", gettext(u"Colombia")),
+    #("cs", gettext(u"Czech Republic")),
+    #("ar-ma", gettext(u"Morocco")),
+    #("en-nz", gettext(u"New Zealand")),
+    #("hu-si", gettext(u"Slovenia")),
+    #("tr", gettext(u"Turkey")),
+    #("ss-za", gettext(u"South Africa")),
+#)
 
 # A tuple of directories where Django looks for translation files
 LOCALE_PATHS = (
@@ -146,6 +144,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+{% if cookiecutter.enable_multiple_languages == 'yes' %}
+    'django.middleware.locale.LocaleMiddleware',{% endif %}
     'django.middleware.common.CommonMiddleware',
 )
 

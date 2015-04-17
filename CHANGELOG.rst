@@ -5,6 +5,11 @@ Changelog
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.5.0 - 2015/04/17
+--------------------------
+
+* Enable cms translation and some settings from cookiecutter context, close #4;
+
 Version 0.4.0 - 2015/04/16
 --------------------------
 
