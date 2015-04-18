@@ -1,0 +1,6 @@
+#Temporary commit for 1.1.0 until its release
+git+https://github.com/audreyr/cookiecutter.git@e016c0e#egg=cookiecutter
+# Sphinx for documentation
+Pygments==1.6
+Sphinx==1.2.3
+sphinx-rtd-theme==0.1.6

@@ -5,6 +5,11 @@ Changelog
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.6.0 - Unreleased
+--------------------------
+
+* Better documentation, close #3;
+
 Version 0.5.0 - 2015/04/17
 --------------------------
 

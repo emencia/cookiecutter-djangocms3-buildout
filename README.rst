@@ -15,7 +15,7 @@
 cookiecutter-djangocms3-buildout
 ================================
 
-`Cookiecutter`_ template to make a buildout structure for a Django project using `Django CMS`_, `Django Blog Zinnia`_, `Django CKEditor`_, `Django Filebrowser`_, and many other apps. All of them are allready configured and ready to work.
+This is a `Cookiecutter`_ template to make a buildout structure to deploy a Django project using `Django CMS`_, `Django Blog Zinnia`_, `Django CKEditor`_, `Django Filebrowser`_, and many other apps with Foundation5. All of them are allready configured and ready to work.
 
 `Emencia`_ uses this tool for web projects along with our techniques and procedures.
 
@@ -23,3 +23,7 @@ Its goal is to automatically create and initialize the project structure so you 
 
 Previously, this structure was used under `Epaster`_ and the content of this cookiecutter comes from last version of `emencia_paste_djangocms_3`_.
 
+.. WARNING::
+   This template require a feature only available since cookiecutter==1.1.0 that is not released yet. 
+   
+   The given PIP requirements file in this repository will help you to install the right version until the release is published.
