@@ -1,14 +1,14 @@
 .. _emencia_paste_djangocms_3: https://github.com/emencia/emencia_paste_djangocms_3
 
-Changelog
-=========
+History
+=======
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
-Version 0.6.0 - Unreleased
+Version 0.6.0 - 2015/04/19
 --------------------------
 
-* Better documentation, close #3;
+* Better documentation;
 
 Version 0.5.0 - 2015/04/17
 --------------------------
