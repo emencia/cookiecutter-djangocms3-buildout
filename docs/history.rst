@@ -5,6 +5,11 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.6.1 - 2015/04/20
+--------------------------
+
+* Add cookiecutter context in ``project/__init__.py`` file;
+
 Version 0.6.0 - 2015/04/19
 --------------------------
 

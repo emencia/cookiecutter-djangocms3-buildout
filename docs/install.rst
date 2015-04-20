@@ -34,7 +34,7 @@ Although the template itself don't need anything but `Cookiecutter`_, a project 
 
 The method to install them depends on your plateform :
 
-* On **Linux** systems you will install them with you package system like ``apt-get``, see `Pillow documentation for Linux <http://pillow.readthedocs.org/en/latest/installation.html#linux-installation>`_;
+* On **Linux** systems you will install them with your package system like ``apt-get``, see `Pillow documentation for Linux <http://pillow.readthedocs.org/en/latest/installation.html#linux-installation>`_;
 * On **MacOSX**, the recommended way is to use ``brew`` utility, see `Pillow documentation for OSX <http://pillow.readthedocs.org/en/latest/installation.html#os-x-installation>`_;
 * **Windows** system is not supported, you probably can install needed stuff but with some works on your own;
 

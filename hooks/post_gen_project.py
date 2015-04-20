@@ -6,7 +6,15 @@ Post hooks to finish install
 When developing on this script, add "test" as first argument to use test mode with 
 a dummy context else the script will fails (because the context is empty).
 """
-import ast, json, os, subprocess, sys
+import ast, copy, json, os, subprocess, sys
+
+# Sadly for now we dont have any clean way to automatically get the version from the 
+# template, either using "git describe" or package version because hooks are applied 
+# from the created project and are unaware of cookiecutter template location
+__version__ = "0.6.1"
+
+# Project directory path
+PROJECT_DIR = 'project'
 
 # Capture cookiecutter context
 COOKIE_CONTEXT = """{{ cookiecutter }}"""
@@ -45,6 +53,17 @@ class Caller(object):
         return out
 
 
+def print_part_title(title, line_chr='=', surrounded=True):
+    """
+    Display a nice title like RST style
+    """
+    if surrounded:
+        print line_chr*len(title)
+    print title
+    print line_chr*len(title)
+    print
+
+
 class AppManager(object):
     """
     Manage apps from given context
@@ -80,8 +99,9 @@ class AppManager(object):
         'contact_form': ['crispy_forms', 'recaptcha'],
     }
     
-    def __init__(self, context, test_mode=False):
+    def __init__(self, context, project_dir, test_mode=False):
         self.context = context
+        self.project_dir = project_dir
         self.test_mode = test_mode
 
     def get_enabled_apps(self):
@@ -109,12 +129,11 @@ class AppManager(object):
         """
         mods = set(apps)
         symlink_list = []
-        project_dir = './project'
         
         # Build a list of symlink to create for mods
         symlink_list = [(
             os.path.join('..', 'mods_available', name),
-            os.path.join(project_dir, 'mods_enabled', name)
+            os.path.join(self.project_dir, 'mods_enabled', name)
         ) for name in mods]
         
         #print json.dumps(symlink_list, indent=4)
@@ -128,7 +147,7 @@ class AppManager(object):
         return symlink_list
 
 
-def repository_init(context, test_mode=False):
+def repository_init(context, project_dir, test_mode=False):
     """
     Repository first initialization with Git
     """
@@ -140,22 +159,55 @@ def repository_init(context, test_mode=False):
     
     call = Caller('.')
     print "* Init"
-    call('git', 'init', '.')
+    if not test_mode:
+        call('git', 'init', '.')
     print "* Adding files"
-    call('git', 'add', '.')
+    if not test_mode:
+        call('git', 'add', '.')
     print "* First commit"
-    call('git', 'commit', '-m', "First commit from 'cookiecutter-djangocms3-buildout'")
+    if not test_mode:
+        call('git', 'commit', '-m', "First commit from 'cookiecutter-djangocms3-buildout'")
     print "* Configure remote origin on", repository_path
-    call('git', 'remote', 'add', 'origin', repository_path)
+    if not test_mode:
+        call('git', 'remote', 'add', 'origin', repository_path)
     
     return repository_path
 
 
-def print_part_title(title):
-    print "="*len(title)
-    print title
-    print "="*len(title)
-    print
+def store_project_context(context, project_dir, test_mode=False):
+    """
+    Store used context to create the project
+    """
+    c = copy.deepcopy(context)
+    del c['secret_key']
+    del c['_copy_without_render']
+    c.update({
+        #'generator': 'cookiecutter-djangocms3-buildout=={0}'.format(get_template_version())
+        'generator': 'cookiecutter-djangocms3-buildout=={0}'.format(__version__)
+    })
+    
+    destination = os.path.join(project_dir, '__init__.py')
+    
+    with open(destination, 'r') as infile:
+        content = infile.read().format(cookiecutter_context=json.dumps(c, indent=4))
+    
+    if not test_mode:
+        print "* Writing context into {0}".format(project_dir)
+        with open(destination, 'w') as outfile:
+            outfile.write(content)
+    else:
+        print "* Pretending to write context into: {0}".format(destination)
+        
+
+
+def get_template_version():
+    """
+    Return 'cookiecutter-djangocms3-buildout' version from git tag
+    """
+    call = Caller('.')
+    version = call('git', 'describe', '.')
+    return version.strip()
+
 
 if __name__ == "__main__":
     import sys
@@ -163,18 +215,24 @@ if __name__ == "__main__":
     test_mode = False
     if len(sys.argv)>1 and sys.argv[1].strip() == 'test':
         context = TEST_CONTEXT
+        PROJECT_DIR = os.path.join('..', '{{cookiecutter.repo_name}}', PROJECT_DIR)
         test_mode = True
     else:
         context = ast.literal_eval(COOKIE_CONTEXT)
+        PROJECT_DIR = os.path.join('.', PROJECT_DIR)
         
     print_part_title("Enable mods")
-    apm = AppManager(context, test_mode)
+    apm = AppManager(context, PROJECT_DIR, test_mode)
     apps = apm.get_enabled_apps()
     apm.enable_mods(apps)
     print
     
+    print_part_title("Store context")
+    store_project_context(context, PROJECT_DIR, test_mode)
+    print
+    
     print_part_title("Init Git repository")
-    repository_path = repository_init(context, test_mode)
+    repository_path = repository_init(context, PROJECT_DIR, test_mode)
     print
     
     print_part_title("Go ahead")
@@ -188,7 +246,7 @@ if __name__ == "__main__":
     print
     print "   ", repository_path
     print
-    print "You can push it now with:"
+    print "Create its repository on your host server then you can push it with:"
     print
     print "    git push origin master"
     print
