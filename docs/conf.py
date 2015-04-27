@@ -12,8 +12,18 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys
-import os
+import datetime, sys, os
+from subprocess import Popen, PIPE
+
+# Try to guess the version from the git tags
+def get_version():
+    popen = Popen(['git', 'describe', '--tags'], stdout=PIPE, stderr=PIPE, cwd=os.path.abspath(os.path.dirname(__file__)))
+    out, err = popen.communicate()
+    if popen.returncode != 0:
+        return "last repository version"
+    
+    return out.strip()
+
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -51,7 +61,7 @@ copyright = u'2015, Emencia'
 # built documents.
 #
 # The short X.Y version.
-version = '0.6.0'
+version = get_version()
 # The full version, including alpha/beta/rc tags.
 release = version
 

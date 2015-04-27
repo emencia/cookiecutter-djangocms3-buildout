@@ -5,6 +5,11 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.6.2 - Unreleased
+--------------------------
+
+* Fix doc config to get the right version number from git tags;
+
 Version 0.6.1 - 2015/04/20
 --------------------------
 

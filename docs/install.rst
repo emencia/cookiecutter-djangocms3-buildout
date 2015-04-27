@@ -16,7 +16,7 @@ There is no need to install anything but `Cookiecutter`_, when it's done you can
    
    So currently, you will have to install `Cookiecutter`_ using the given ``requirements.txt`` file in this cookiecutter template repository: ::
    
-       pip install -r https://github.com/emencia/cookiecutter-djangocms3-buildout/blob/master/requirements.txt
+       pip install -r https://raw.githubusercontent.com/emencia/cookiecutter-djangocms3-buildout/master/requirements.txt
 
 Created projects requirements
 *****************************
