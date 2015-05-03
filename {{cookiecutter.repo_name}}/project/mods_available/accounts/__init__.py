@@ -1,4 +1,7 @@
 """
+.. _Django reCaptcha: https://github.com/praekelt/django-recaptcha
+.. _Django registration: https://github.com/macropin/django-registration
+
 Enable `Django registration`_ and everything you need to allow users to request registration and to connect/disconnect. The views and forms are added so this part can be used. 
 
 It includes:

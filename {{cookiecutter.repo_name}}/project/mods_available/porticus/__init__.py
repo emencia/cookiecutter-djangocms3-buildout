@@ -1,4 +1,5 @@
 """
+.. _Django Porticus: https://github.com/emencia/porticus
 .. _DjangoCMS plugin for Porticus: https://github.com/emencia/cmsplugin-porticus
 
 Add `Django Porticus`_ to your project to manage file galleries.

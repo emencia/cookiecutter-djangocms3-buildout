@@ -5,15 +5,20 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
-Version 0.6.2 - Unreleased
+Version 0.6.5 - 2015/05/03
 --------------------------
 
-* Fix doc config to get the right version number from git tags;
+* Cleaning documentations;
+* Restored doc stuff to automatically build mod documentations;
+* Updated to ``django-cms==3.0.13``;
+* Enforce ``django-contrib-comments==1.5.0``;
+* Integrated ``django-logentry-admin`` as a default enabled mod, close #8;
+* Fixed doc config to get the right version number from git tags;
 
 Version 0.6.1 - 2015/04/20
 --------------------------
 
-* Add cookiecutter context in ``project/__init__.py`` file;
+* Added cookiecutter context in ``project/__init__.py`` file;
 
 Version 0.6.0 - 2015/04/19
 --------------------------
@@ -23,7 +28,7 @@ Version 0.6.0 - 2015/04/19
 Version 0.5.0 - 2015/04/17
 --------------------------
 
-* Enable cms translation and some settings from cookiecutter context, close #4;
+* Enabled cms translation and some settings from cookiecutter context, close #4;
 
 Version 0.4.0 - 2015/04/16
 --------------------------

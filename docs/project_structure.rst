@@ -1,3 +1,7 @@
+.. Never edit this file manually, instead edit its template in 
+   'templates/project_structure.rst' and use 'make grab' to build 
+   with mods documentations
+
 .. _buildout: http://www.buildout.org/
 .. _virtualenv: http://www.virtualenv.org/
 .. _pip: http://www.pip-installer.org
@@ -5,37 +9,9 @@
 .. _Compass: http://compass-style.org/
 .. _SCSS: http://sass-lang.com/
 .. _rvm: http://rvm.io/
-.. _Django: https://www.djangoproject.com/
-.. _django-admin-tools: https://bitbucket.org/izi/django-admin-tools/
-.. _Django CMS: https://www.django-cms.org/
-.. _django-assets: https://github.com/miracle2k/django-assets/
-.. _django-debug-toolbar: https://github.com/django-debug-toolbar/django-debug-toolbar/
-.. _Django Blog Zinnia: https://github.com/Fantomas42/django-blog-zinnia
-.. _Django CKEditor: https://github.com/divio/djangocms-text-ckeditor/
-.. _Django Filebrowser: https://github.com/wardi/django-filebrowser-no-grappelli
-.. _django-google-tools: https://pypi.python.org/pypi/django-google-tools
-.. _Django Porticus: https://github.com/emencia/porticus
-.. _Django PDB: https://github.com/tomchristie/django-pdb
-.. _Django flatpages app: https://docs.djangoproject.com/en/1.5/ref/contrib/flatpages/
-.. _Django sites app: https://docs.djangoproject.com/en/1.5/ref/contrib/sites/
-.. _Django reCaptcha: https://github.com/praekelt/django-recaptcha
-.. _Django registration: https://github.com/macropin/django-registration
 .. _CKEditor: http://ckeditor.com/
-.. _emencia-cms-snippet: https://github.com/emencia/emencia-cms-snippet
-.. _Service reCaptcha: http://www.google.com/recaptcha
-.. _Django Codemirror: https://github.com/sveetch/djangocodemirror
-.. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
-.. _crispy-forms-foundation: https://github.com/sveetch/crispy-forms-foundation
-.. _emencia-django-slideshows: https://github.com/emencia/emencia-django-slideshows
-.. _emencia-django-staticpages: https://github.com/emencia/emencia-django-staticpages
-.. _emencia-django-socialaggregator: https://github.com/emencia/emencia-django-socialaggregator
-.. _django-urls-map: https://github.com/sveetch/django-urls-map
-.. _Sitemap framework: https://docs.djangoproject.com/en/1.5/ref/contrib/sitemaps/
-.. _djangocms-admin-style: https://github.com/divio/djangocms-admin-style
-.. _django-admin-shortcuts: https://github.com/alesdotio/django-admin-shortcuts/
-.. _django-sendfile: https://github.com/johnsensible/django-sendfile
-.. _django-filer: https://github.com/stefanfoulis/django-filer
-.. _easy-thumbnails: https://github.com/SmileyChris/easy-thumbnails/
+.. _Django: https://www.djangoproject.com/
+.. _Django CKEditor: https://github.com/divio/djangocms-text-ckeditor
 .. _Dr Dump: https://github.com/emencia/dr-dump
 .. _emencia-recipe-drdump: https://github.com/emencia/emencia-recipe-drdump
 
@@ -104,6 +80,9 @@ Available mods
 accounts
 --------
 
+.. _Django reCaptcha: https://github.com/praekelt/django-recaptcha
+.. _Django registration: https://github.com/macropin/django-registration
+
 Enable `Django registration`_ and everything you need to allow users to request registration and to connect/disconnect. The views and forms are added so this part can be used. 
 
 It includes:
@@ -121,6 +100,9 @@ Also, note that this app use a dummy profile model linked to User object. This p
 admin_style
 -----------
 
+.. _djangocms-admin-style: https://github.com/divio/djangocms-admin-style
+.. _django-admin-shortcuts: https://github.com/alesdotio/django-admin-shortcuts/
+
 Enable `djangocms-admin-style`_ to enhance the administration interface. Also enable `django-admin-shortcuts`_.
 
 *admin-style* better fit with DjangoCMS than `admin_tools`_. 
@@ -131,13 +113,17 @@ Enable `djangocms-admin-style`_ to enhance the administration interface. Also en
 admin_tools
 -----------
 
-Enable `django-admin-tools`_ to enhance the administration interface. This enables three widgets to customize certain elements. `filebrowser`_ is used, so if your project has not enabled it, you need to remove the occurrences of these widgets.
+.. _django-admin-tools: https://bitbucket.org/izi/django-admin-tools/
+
+Enable `django-admin-tools`_ to enhance the administration interface. This enables three widgets to customize certain elements and link to `filebrowser`_ module (that should allready be enabled).
 
 .. warning::
         This mod cannot live with `admin_style`_, you have to choose only one of them.
 
 assets
 ------
+
+.. _django-assets: https://github.com/miracle2k/django-assets/
 
 Enable `django-assets`_ to combine and minify your *assets* (CSS, JS). The minification library used, *yuicompressor*, requires the installation of Java (the OpenJDK installed by default on most Linux systems is sufficient).
 
@@ -171,12 +157,17 @@ And some useful patches/fixes :
 cms
 ---
 
+.. _Django CMS: https://www.django-cms.org/
+.. _emencia-cms-snippet: https://github.com/emencia/emencia-cms-snippet
+
 `Django CMS`_ allows for the creation and management of the content pages that constitute your site's tree structure. By default, this component enables the use of `filebrowser`_, `Django CKEditor`_ and `emencia-cms-snippet`_ (a clone of the snippets' plugin with a few improvements).
 
 By default it is configured to use only one language. See its ``urls.py`` to find out how to enable the management of multiple languages.
 
 codemirror
 ----------
+
+.. _Django Codemirror: https://github.com/sveetch/djangocodemirror
 
 Enable `Django Codemirror`_ to apply the editor with syntax highlighting in your forms (or other content).
 
@@ -192,10 +183,22 @@ By default, it uses the `recaptcha`_ mods.
 crispy_forms
 ------------
 
-Enable the use of `django-crispy-forms`_ and `crispy-forms-foundation`_. **crispy_forms** is used to manage the HTML rendering of the forms in a finer and easier fashion than with the simple Django form API. **crispy-forms-foundation** is a supplement to implement the rendering with the structure (tags, styles, etc.) used in `Foundation`_.
+.. _Foundation: http://foundation.zurb.com/
+.. _django-crispy-forms: https://github.com/maraujop/django-crispy-forms
+.. _crispy-forms-foundation: https://github.com/sveetch/crispy-forms-foundation
+
+Enable the use of `django-crispy-forms`_ and `crispy-forms-foundation`_. 
+
+**crispy_forms** is used to manage the HTML rendering of the forms in a finer and easier 
+fashion than with the simple Django form API. 
+
+**crispy-forms-foundation** is a supplement to implement the rendering with the structure 
+(tags, styles, etc.) used in `Foundation`_.
 
 debug_toolbar
 -------------
+
+.. _django-debug-toolbar: https://github.com/django-debug-toolbar/django-debug-toolbar/
 
 Add `django-debug-toolbar`_ to your project to insert a tab on all of your project's HTML pages, which will allow you to track the information on each page, such as the template generation path, the  query arguments received, the number of SQL queries submitted, etc.
 
@@ -214,6 +217,8 @@ Group together some common and various utilities from ``project.utils``.
 filebrowser
 -----------
 
+.. _Django Filebrowser: https://github.com/wardi/django-filebrowser-no-grappelli
+
 Add `Django Filebrowser`_ to your project so you can use a centralized interface to manage the uploaded files to be used with other components (`cms`_, `zinnia`_, etc.).
 
 The version used is a special version called *no grappelli* that can be used outside of the *django-grapelli* environment.
@@ -226,6 +231,8 @@ Filebrowser manage files with a nice interface to centralize them and also manag
 filer
 -----
 
+.. _django-filer: https://github.com/stefanfoulis/django-filer
+
 Mod for `django-filer`_ and its DjangoCMS plugin
 
 Only enable it for specific usage because this can painful to manage files with Filebrowser and django-filer enabled in the same project.
@@ -233,22 +240,37 @@ Only enable it for specific usage because this can painful to manage files with 
 flatpages
 ---------
 
-Enable the use of `Django flatpages app`_ in your project. Once it has been enabled, go to the ``urls.py`` in this mod to configure the *map* of the urls to be used.
+.. _Django flatpages app: https://docs.djangoproject.com/en/1.5/ref/contrib/flatpages/
+
+Enable the use of `Django flatpages app`_ in your project. Once it has been enabled, go 
+to the ``urls.py`` in this mod to configure the *map* of the urls to be used.
 
 google_tools
 ------------
+
+.. _django-google-tools: https://pypi.python.org/pypi/django-google-tools
 
 Add `django-google-tools`_ to your project to manage the tags for *Google Analytics* and *Google Site Verification* from the site administration location.
 
 .. note::
         The project is filled with a custom template ``project/templates/googletools/analytics_code.html`` to use Google Universal Analytics, remove it to return to the old Google Analytics.
 
+logentry
+--------
+
+.. _django-logentry-admin: https://github.com/yprez/django-logentry-admin
+
+Enable `django-logentry-admin`_ to browse all admin log entries at contrary to default Django admin behavior that only display the last entries.
+
 pdb
 ---
 
+.. _pip: http://www.pip-installer.org
+.. _Django PDB: https://github.com/tomchristie/django-pdb
+
 Add `Django PDB`_ to your project for more precise debugging with breakpoints. 
 
-N.B. Neither ``django_pdb`` nor ``pdb`` are installed by the buildout. You must install 
+N.B. Neither ``django_pdb`` nor ``pdb`` are installed by buildout. You must install 
 them manually, for example with `pip`_, in your development environment so you do not 
 disrupt the installation of projects being integrated or in production. You must also 
 add the required breakpoints yourself.
@@ -256,17 +278,16 @@ add the required breakpoints yourself.
 See the the django-pdb Readme for more usage details.
 
 .. note::
-        django-pdb should be put at the end of settings.INSTALLED_APPS :
-        
-        "Make sure to put django_pdb after any conflicting apps in INSTALLED_APPS so 
-        that they have priority."
+        Make sure to put django_pdb after any conflicting apps in INSTALLED_APPS so 
+        that they have priority.
         
         So with the automatic loading system for the mods, you should enable it with a 
-        name like "zpdb", to assure that it is loaded at the end of the loading loop.
+        name like "zpdb", to ensure that it is loaded at the end of the loading loop.
 
 porticus
 --------
 
+.. _Django Porticus: https://github.com/emencia/porticus
 .. _DjangoCMS plugin for Porticus: https://github.com/emencia/cmsplugin-porticus
 
 Add `Django Porticus`_ to your project to manage file galleries.
@@ -276,14 +297,19 @@ There is a `DjangoCMS plugin for Porticus`_, it is not enabled by default, you w
 recaptcha
 ---------
 
+.. _Service reCaptcha: http://www.google.com/recaptcha
+
 Enable the `Django reCaptcha`_ module to integrate a field of the *captcha* type via the `Service reCaptcha`_. This integration uses a special template and CSS to make it *responsive*.
 
-If you do in fact use this module, go to its mods setting file (or that of your environment) to fill in the public key and the private key to be used to transmit the data required.
+.. note::
+   If you do in fact use this module, go to its mods setting file (or that of your environment) to fill in the public key and the private key to be used to transmit the data required.
 
-By default, these keys are filled in with a *fake* value and the captcha's form field therefore sends back a silent error (a message is inserted into the form without creating a Python *Exception*).
+   By default, these keys are filled in with a *fake* value and the captcha's form field therefore sends back a silent error (a message is inserted into the form without creating a Python *Exception*).
 
 sendfile
 --------
+
+.. _django-sendfile: https://github.com/johnsensible/django-sendfile
 
 Enable `django-sendfile`_ that is somewhat like a helper around the **X-SENDFILE headers**, a technic to process some requests before let them pass to the webserver.
 
@@ -305,6 +331,8 @@ Finally you will need to implement it in your code as this will require a custom
 site_metas
 ----------
 
+.. _Django sites app: https://docs.djangoproject.com/en/1.5/ref/contrib/sites/
+
 Enable a module in ``settings.TEMPLATE_CONTEXT_PROCESSORS`` to show a few variables linked to `Django sites app`_ in the context of the project views template.
 
 Common context available variables are:
@@ -318,6 +346,8 @@ Some projects can change this to add some other variables, you can see for them 
 sitemap
 -------
 
+.. _Sitemap framework: https://docs.djangoproject.com/en/1.5/ref/contrib/sitemaps/
+
 This mod use the Django's `Sitemap framework`_ to publish the ``sitemap.xml`` for various apps. The default config contains ressources for DjangoCMS, Zinnia, staticpages, contact form and Porticus but only ressource for DjangoCMS is enabled.
 
 Uncomment ressources or add new app ressources for your needs (see the Django documentation for more details).
@@ -325,23 +355,31 @@ Uncomment ressources or add new app ressources for your needs (see the Django do
 slideshows
 ----------
 
-Enable the `emencia-django-slideshows`_ app to manage slide animations (slider, carousel, etc.). This was initially provided for `Foundation Orbit` and *Royal Slider*, but can be used with other libraries if needed.
+.. _emencia-django-slideshows: https://github.com/emencia/emencia-django-slideshows
+
+Enable the `emencia-django-slideshows`_ app to manage slide animations (slider, carousel, etc.). This was initially provided for *Foundation Orbit* and *Royal Slider*, but can be used with other libraries if needed.
 
 socialaggregator
 ----------------
 
+.. _emencia-django-socialaggregator: https://github.com/emencia/emencia-django-socialaggregator
+
 Enable the `emencia-django-socialaggregator`_ app to manage social contents.
 
 .. note::
-        This app require some API key settings to be filled to work correctly.
+        This app require to fill some API keys settings (like for Twitter API, Facebook API, etc..) to work correctly.
 
 staticpages
 -----------
+
+.. _emencia-django-staticpages: https://github.com/emencia/emencia-django-staticpages
 
 This mod uses `emencia-django-staticpages`_ to use static pages with a direct to template process, it replace the deprecated mod *prototype*.
 
 thumbnails
 ----------
+
+.. _easy-thumbnails: https://github.com/SmileyChris/easy-thumbnails/
 
 Mod for `easy-thumbnails`_ a library to help for making thumbnails on the fly (or not).
 
@@ -350,9 +388,16 @@ Generally **this is not recommended**, because by default we allready enable Fil
 urlsmap
 -------
 
+.. _django-urls-map: https://github.com/sveetch/django-urls-map
+
 `django-urls-map`_ is a tiny Django app to embed a simple management command that will display the url map of your project.
 
 zinnia
 ------
 
+.. _Django Blog Zinnia: https://github.com/Fantomas42/django-blog-zinnia
+
 `Django Blog Zinnia`_ allows for the management of a blog in your project. It is well integrated into the `cms`_ component but can also be used independently.
+
+
+

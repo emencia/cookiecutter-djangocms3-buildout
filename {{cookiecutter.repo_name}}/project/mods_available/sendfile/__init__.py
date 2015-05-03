@@ -1,5 +1,5 @@
 """
-.. 
+.. _django-sendfile: https://github.com/johnsensible/django-sendfile
 
 Enable `django-sendfile`_ that is somewhat like a helper around the **X-SENDFILE headers**, a technic to process some requests before let them pass to the webserver.
 

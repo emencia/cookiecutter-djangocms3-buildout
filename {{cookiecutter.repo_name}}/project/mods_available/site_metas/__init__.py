@@ -1,4 +1,6 @@
 """
+.. _Django sites app: https://docs.djangoproject.com/en/1.5/ref/contrib/sites/
+
 Enable a module in ``settings.TEMPLATE_CONTEXT_PROCESSORS`` to show a few variables linked to `Django sites app`_ in the context of the project views template.
 
 Common context available variables are:

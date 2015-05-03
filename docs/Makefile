@@ -49,6 +49,13 @@ help:
 clean:
 	rm -rf $(BUILDDIR)/*
 
+all: grab html
+
+grab:
+	@python grab_mods_doc.py
+	@echo
+	@echo "Mods grab finished."
+
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo

@@ -1,6 +1,8 @@
 """
+.. _emencia-django-socialaggregator: https://github.com/emencia/emencia-django-socialaggregator
+
 Enable the `emencia-django-socialaggregator`_ app to manage social contents.
 
 .. note::
-        This app require some API key settings to be filled to work correctly.
+        This app require to fill some API keys settings (like for Twitter API, Facebook API, etc..) to work correctly.
 """

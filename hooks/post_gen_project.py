@@ -70,6 +70,7 @@ class AppManager(object):
     """
     # Base apps are always enabled
     BASE_APPS = [
+        # This is the mod name, not the package or module name
         'admin_style',
         'assets', # Used in templates
         'ckeditor', # Used in djangocms and another apps
@@ -77,7 +78,8 @@ class AppManager(object):
         'emencia_utils', # Useful utilities
         'filebrowser', # Used in djangocms and another apps
         'google_tools', # Used for almost customer projects
-        'site_metas', # Common sitemap for djangocms and another apps
+        'logentry', # Admin log entries browser
+        'site_metas', # Simple addon to expose some metas in all views
         'sitemap', # Common sitemap for djangocms and another apps
     ]
 

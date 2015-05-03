@@ -1,4 +1,6 @@
 """
+.. _django-debug-toolbar: https://github.com/django-debug-toolbar/django-debug-toolbar/
+
 Add `django-debug-toolbar`_ to your project to insert a tab on all of your project's HTML pages, which will allow you to track the information on each page, such as the template generation path, the  query arguments received, the number of SQL queries submitted, etc.
 
 This component can only be used in a development or integration environment and is always disabled during production.
