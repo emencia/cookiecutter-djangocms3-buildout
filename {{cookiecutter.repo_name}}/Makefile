@@ -40,7 +40,7 @@ install:
 
 tar_data:
 	bin/datadump
-	tar cvzf data_tryrelease.tar.gz dumps project/media/
+	tar cvzf data_{{ cookiecutter.repo_name }}.tar.gz dumps project/media/
 
 import_db:
 	bin/django-instance syncdb --all
