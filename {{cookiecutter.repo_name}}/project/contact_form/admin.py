@@ -1,51 +1,46 @@
 """
 Admins for contact forms
 """
-from datetime import datetime
 from django.contrib import admin
-from django.conf.urls import patterns, url
 from django.utils.translation import ugettext as _
 
-# Import from django-excel-response
-from excel_response import ExcelResponse
+# use django-import-export for export contact list
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 
 # Import from here
-from models import ContactBase, Contact
+from models import Contact
 
+class ContactResource(resources.ModelResource):
+    class Meta:
+        model = Contact
 
 class ContactBaseAdmin(admin.ModelAdmin):
     date_hierarchy = 'creation_date'
-    list_display = ('first_name', 'last_name', 'email', 'phone', 'creation_date')
+    list_display = ('last_name', 'first_name', 'email', 'creation_date')
     list_filter = ('creation_date',)
-    search_fields = ('first_name', 'last_name', 'email', 'phone', 'message')
+    search_fields = ('first_name', 'last_name', 'email', 'message')
     fieldsets = ((None, {'fields': ('civility', 'first_name', 'last_name',
-                                    'email', 'phone', 'company')}),
+                                    'email',)}),
                  (None, {'fields': ('message',)}),
         )
     actions_on_top = False
     actions_on_bottom = True
 
-    def export(self, request):
-        return ExcelResponse(
-            ContactBase.objects.all(),
-            'contact_form_%s' % datetime.now().strftime('%Y%m%d%H%M'))
 
-    def get_urls(self):
-        urls = super(ContactBaseAdmin, self).get_urls()
-        my_urls = patterns(
-            '',
-            url(r'^export/$', self.admin_site.admin_view(self.export))
-            )
-        return my_urls + urls
+class ContactAdmin(ImportExportModelAdmin):
+    resource_class = ContactResource
+    list_display = ('last_name', 'first_name', 'company', 'email', 'phone',
+                    'city', 'country', 'optin_newsletter', 'creation_date')
 
-class ContactAdmin(ContactBaseAdmin):
-    list_display = ('first_name', 'last_name', 'company', 'city', 'country', 'creation_date')
-
-    search_fields = ('first_name', 'last_name', 'company', 'email', 'phone', 'city', 'state')
-    fieldsets = ((None, {'fields': ('first_name', 'last_name',
+    list_filter = ('creation_date', 'optin_newsletter')
+    search_fields = ('first_name', 'last_name', 'company', 'email', 'phone',
+                     'city', 'state')
+    fieldsets = ((None, {'fields': ('civility', 'first_name', 'last_name',
                                     'company')}),
                  (None, {'fields': ('message',)}),
-                 (_('Contact'), {'fields': ('email', 'phone')}),
+                 (_('Contact'), {'fields': ('email', 'phone',
+                                 'optin_newsletter')}),
                  (_('Address'), {'fields': ('city', 'state', 'country')}),)
 
 admin.site.register(Contact, ContactAdmin)
