@@ -5,13 +5,25 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.6.6 - Unreleased
+--------------------------
+
+* Enforce ``django-tagging==0.3.4`` (to avoid a bug with django<=1.7);
+* Added missing default images for *Royal Slider*;
+* Big update on ``contact_form`` app:
+
+  * Fix print message on template;
+  * Reorganise admin view;
+  * Use ``django-import-export`` for exporting contact datas;
+  * Don't print captcha on form when ``settings.DEBUG`` is ``True``;
+
 Version 0.6.5 - 2015/05/03
 --------------------------
 
 * Cleaning documentations;
 * Restored doc stuff to automatically build mod documentations;
 * Updated to ``django-cms==3.0.13``;
-* Enforce ``django-contrib-comments==1.5.0``;
+* Enforce ``django-contrib-comments==1.5.0`` (to avoid a bug with django<=1.7);
 * Integrated ``django-logentry-admin`` as a default enabled mod, close #8;
 * Fixed doc config to get the right version number from git tags;
 
