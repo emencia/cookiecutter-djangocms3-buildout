@@ -30,17 +30,17 @@ def SimpleRowColumn(field, *args, **kwargs):
 
 class ContactFormBase(ModelForm):
     """
-    Contact base form, you cant use it directly because the used 
+    Contact base form, you cant use it directly because the used
     model ('ContactBase') is just an abstract model
     """
     error_css_class = 'error'
     required_css_class = 'required'
     mail_subject_template = 'contact_form/contact_form_subject.txt'
     mail_content_template = 'contact_form/contact_form.txt'
-   
+  
     def __init__(self, *args, **kwargs):
         super(ContactFormBase, self).__init__(*args, **kwargs)
-        
+       
         self.helper = FormHelper()
         self.helper.form_action = '.'
 
@@ -65,13 +65,14 @@ class ContactFormBase(ModelForm):
 
 class ContactForm(ContactFormBase):
     """Contact Form"""
-    captcha = ReCaptchaField(attrs={'theme' : 'clean'})
-    
+    if not settings.DEBUG:
+        captcha = ReCaptchaField(attrs={'theme' : 'clean'})
+   
     def __init__(self, *args, **kwargs):
         super(ContactFormBase, self).__init__(*args, **kwargs)
-        
+       
         self.fields['civility'].choices = (('', _('civility')),) + CIVILITY_CHOICES
-        
+       
         self.helper = FormHelper()
         self.helper.attrs = {'data_abide': ''}
         self.helper.form_action = '.'

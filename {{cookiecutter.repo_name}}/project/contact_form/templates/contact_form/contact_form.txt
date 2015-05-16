@@ -4,4 +4,4 @@
 {% trans "company" %} : {{ contact.company }}
 
 {% trans "comments" %} :
-{{ contact.comments }}
+{{ contact.message }}

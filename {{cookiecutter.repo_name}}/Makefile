@@ -45,7 +45,7 @@ tar_data:
 	@echo "Running data dump"
 	@bin/datadump
 	@echo "Running tarball create"
-	@tar cvzf {{ cookiecutter.repo_name }}.tar.gz dumps project/media/
+	@tar cvzf data_{{ cookiecutter.repo_name }}.tar.gz dumps project/media/
 
 import_db:
 	@bin/django-instance syncdb --all --noinput
