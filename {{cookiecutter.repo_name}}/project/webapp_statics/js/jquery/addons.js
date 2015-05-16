@@ -57,4 +57,69 @@ function column_equalizer(){
     // Equalize content text columns to the same height
     $('.equal-heights').equalize({'equalize':'outerHeight', children: '.equalized-item', reset: true, breakpoint: 750});
     return;
-}
+};
+
+/*
+ * MegaMenu default usage
+ *
+ * Attempt argument 'megamenu_container' that should be jQuery selector like:
+ * 
+ *     LeftMegaMenu($("#navabsleft"));
+ *
+ * The selector should point to the menu generated from MegaMenu 
+ * (usually '#navabsleft'), not the one that was used to trigger and build the 
+ * displayed menu
+ */
+function LeftMegaMenu(megamenu_container) {
+    megamenu_container.css('height','auto' );
+
+    if (megamenu_container) {
+        var block = [],
+            totalHeight = 0,
+            totalnavHeight = 0,
+            innerblock = [];
+        $( ".sectioninner" ).each(function( index ) {
+            $('.sectioninner').height('auto');
+            block.push($(this).height());
+        });
+        for (var i  = 0; i < block.length; i++) {
+            totalHeight = totalHeight + block[i];
+        }
+
+    }
+
+    if (megamenu_container.length > 0) {
+        if (megamenu_container.height()< totalHeight) {
+            megamenu_container.height(totalHeight);
+        }
+        megamenu_container.css('left',$('#posNavLeft').position().left+'px' );
+
+        megamenu_container.css('max-height',totalHeight+'px' );
+
+        megamenu_container.css('width',$('#posNavLeft').width()+'px' );
+
+        megamenu_container.nextAll().each(function( index ) {
+            innerblock.push($(this).outerHeight()+ parseInt($(this).css('margin-top'))+ parseInt($(this).css('margin-bottom')));
+        });
+
+        for (var i  = 0; i < innerblock.length; i++) {
+            totalnavHeight = totalnavHeight + innerblock[i];
+        }
+        if (totalnavHeight > totalHeight) {
+            megamenu_container.css('max-height',totalnavHeight+'px' );
+            $('.sectioninner').height(totalnavHeight);
+        }
+    }
+};
+
+
+/*
+ * Use html attribute to add links on elements without to use 
+ * real <a> href attribute
+ */
+function AddLinkFromAttribute(options) {
+    $('*[data-link]').click(function(event) {
+        window.location.href = $(this).attr('data-link');
+        event.preventDefault();
+    });
+};

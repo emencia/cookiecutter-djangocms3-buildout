@@ -5,11 +5,18 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
-Version 0.6.6 - Unreleased
+Version 0.6.6 - 2015/05/16
 --------------------------
 
 * Enforce ``django-tagging==0.3.4`` (to avoid a bug with django<=1.7);
-* Added missing default images for *Royal Slider*;
+* Review and update ``assets.py``, close #10;
+* Some assets cleanup, close #9;
+
+  * Added missing default images for *Royal Slider*;
+  * Removed Foundation3 Javascript stuff;
+  * Cleaning main frontend script ``app.js``;
+  * Added MegaMenu stuff;
+  
 * Big update on ``contact_form`` app:
 
   * Fix print message on template;

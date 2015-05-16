@@ -1,27 +1,16 @@
 /*
-// Part stuff for Emencia Browser Report
-*/
-
-function getParameterByName(name) {
-    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
-    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-}
-function extract_browser_report() {
-    var datas = [],
-        cookieEnabled=navigator.cookieEnabled?"Yes":"No",
-        viewport=window.innerWidth || document.documentElement.clientWidth;
-
-    datas.push("Url: "+ window.location.href);
-    datas.push("User agent: "+ navigator.userAgent);
-    datas.push("Plateform: "+ navigator.platform);
-    datas.push("Language: "+ navigator.language);
-    datas.push("Cookies enabled: "+ cookieEnabled);
-    datas.push("Viewport width: "+ viewport);
-
-    return datas;
-}
-
-
+ **
+ **
+ ** This is the main frontend Javascript where all components will be initialized
+ ** 
+ ** There is some sample code for some components that are not enabled by default, 
+ ** you will have to uncomment them and eventually edit them for your needs.
+ ** 
+ ** WARNING: Don't enable things that you don't need, keep your frontend script 
+ **          clean. You can clean unused stuff but note that uncommented code will 
+ **          be removed from final script in production by Javascript compressor.
+ **
+ */
 $(window).load(function () {
     // Equalize some columns after full page loading
     // NOTE: Needed to be in the $.load(), because webkit raise ready() even if it does not have
@@ -29,15 +18,18 @@ $(window).load(function () {
     //       have not yet be downloaded, so they doesn't set true dimensions on their
     //       parent and etc..
     column_equalizer();
-
+    //AddLinkFromAttribute();
+    //LeftMegaMenu( $("#navabsleft") );
 });
 
 $(window).resize(function() {
     column_equalizer();
+    //LeftMegaMenu( $("#navabsleft") );
 });
 
 $(document).ready(function($) {
-    var $wallgrid_container = $('#isogrid');
+    var $wallgrid_container = $('#isogrid'),
+        $interchanged_content_intro = $('#interchanged-content-intro');
 
     /*
     * Button dropdown trick
@@ -71,19 +63,19 @@ $(document).ready(function($) {
      * Pikaday for the common datepicker in form, note this use moment.js also
      * to have correct localized format
      */
-//     $('.datepicker').pikaday({
-//         format: 'DD/MM/YYYY',
-//         i18n: {
-//             previousMonth: 'Mois précédent',
-//             nextMonth: 'Mois suivant',
-//             months: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
-//             weekdays: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
-//             weekdaysShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam']
-//         }
-//     });
+    /*$('.datepicker').pikaday({
+        format: 'DD/MM/YYYY',
+        i18n: {
+            previousMonth: 'Mois précédent',
+            nextMonth: 'Mois suivant',
+            months: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+            weekdays: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+            weekdaysShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam']
+        }
+    });*/
 
     // Popin for image/iframe will not display on small media-query
-    if($(window).innerWidth()>640){
+    /*if($(window).innerWidth()>640){
         // Pop-in gallery for Porticus
         $('.album-grid').magnificPopup({
             delegate: '.row .item a',
@@ -105,7 +97,7 @@ $(document).ready(function($) {
                 srcAction: 'iframe_src', // Templating object key. First part defines CSS selector, second attribute. "iframe_src" means: find "iframe" and set attribute "src".
             }
         });
-    }
+    }*/
 
     /*
     * Initialize Foundation after all event is binded
@@ -115,7 +107,6 @@ $(document).ready(function($) {
     /*
     * Conditionnal contents loading from interchange being
     */
-    $interchanged_content_intro = $('#interchanged-content-intro');
     if($interchanged_content_intro.length>0){
         // Triggered event when Foundation 'interchange' plugin replace the content
         $interchanged_content_intro.on('replace', function (e, new_path, original_path) {
@@ -137,21 +128,24 @@ $(document).ready(function($) {
         // Use socialaggregator lib only if loaded
         $.fn.SocialWallGrid ? $wallgrid_container.SocialWallGrid() : null;
     }
-
-    // EBR: Emencia Browser Report
-    if(getParameterByName('ebr')){
-        console.log("Emencia Browser Report activated");
-
-        var html = '<div id="ebr_container" style="z-index:9999; position:absolute; top:10px; left:10px; padding:5px; border:2px solid red; background:#ffffff;">'+
-            '<p style="color:#000;"><strong>Emencia Browser Report</strong></p>'+
-            '<p style="color:#000;">Copy the text below and paste in your message</p>'+
-            '<textarea style="color:#000;">'+ extract_browser_report().join("\n") +'</textarea>'+
-            '<p style="color:#000;">If you resize your browser, you will have to reload the page again.</p>'+
-        '</div>';
-        $('body').append(html);
-    }
+    
+    /*
+    * Initialize MegaMenu
+    */
+    /*$("#menu_left").mmenu({
+            // options
+            classes: "mm-light"
+        }, {
+            // the configuration
+            pageSelector: "#page"
+        }
+    );*/
+    
+    /*
+     * Finally you can reflow some Foundation component when you have some code that 
+     * disturb/change their initial behaviors
+     * Don't use it this too much because it can cause some "display blinking".
+     */
+    //$(document).foundation('accordion', 'reflow');
+    //$(document).foundation('orbit', 'reflow');
 });
-
-// Foundation JavaScript
-// Documentation can be found at: http://foundation.zurb.com/docs
-$(document).foundation();

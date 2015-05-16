@@ -1,8 +1,11 @@
 """
 Available and enabled assets bundles for this project
 
-This use 'nested bundles' technic in the 'main available bundles' to regroup 
-app bundles into single files.
+It uses 'nested bundles' technic in the 'main available bundles' to regroup 
+app bundles into a single file.
+
+Commonly we don't use Asset bundle for CSS because regrouping is often managed 
+with Compass.
 """
 from django_assets import Bundle, register
 
@@ -50,7 +53,7 @@ AVALAIBLE_BUNDLES = {
     ),
     
     # App bundle for RoyalSlider instead of Orbit (remember to enable its foundation 
-    # component in your js app')
+    # component in your js app and scss')
     'app_royalslider_js': Bundle(
         "js/royalslider/dev/jquery.royalslider.js",
         "js/royalslider/dev/modules/jquery.rs.video.js",
@@ -70,19 +73,38 @@ AVALAIBLE_BUNDLES = {
         filters='yui_js',
         output='js/app_royalslider.%(version)s.js'
     ),
+
+    # App bundle for MegaMenu library
+    'mmenu_js': Bundle(
+        "js/mmenu/jquery.mmenu.oncanvas.js",
+        "js/mmenu/addon/jquery.mmenu.offcanvas.js",
+        "js/mmenu/addon/jquery.mmenu.buttonbars.js",
+        "js/mmenu/addon/jquery.mmenu.counters.js",
+        "js/mmenu/addon/jquery.mmenu.dragopen.js",
+        "js/mmenu/addon/jquery.mmenu.fixedelements.js",
+        "js/mmenu/addon/jquery.mmenu.footer.js",
+        "js/mmenu/addon/jquery.mmenu.header.js",
+        "js/mmenu/addon/jquery.mmenu.labels.js",
+        "js/mmenu/addon/jquery.mmenu.searchfield.js",
+        "js/mmenu/addon/jquery.mmenu.toggles.js",
+        filters='yui_js',
+        output='js/mmenu.min.js'
+    ),
     
     # App bundle for SocialAggregator
     'app_socialaggregator_js': Bundle(
         "js/masonry/masonry.pkgd.js",
-        "js/socialaggregator.js",
+        "js/jquery/socialaggregator.js",
         filters='yui_js',
         output='js/app_socialaggregator.%(version)s.js'
     ),
     
-    # App bundle for Pikaday jquery plugin (a datepicker)
+    # App bundle for Pikaday jquery plugin (a datepicker) and optional 
+    # jquery.timepicker (a timepicker)
     'app_pikaday_js': Bundle(
-        "js/pikaday.js",
-        "js/jquery/pikaday.jquery.js",
+        "js/pikaday/pikaday.js",
+        "js/pikaday/pikaday.jquery.js",
+        #"js/pikaday/jquery.timepicker.js",
         filters='yui_js',
         output='js/app_pikaday.%(version)s.js'
     ),
@@ -90,28 +112,55 @@ AVALAIBLE_BUNDLES = {
     
 
 """
-MAIN AVAILABLE BUNDLES, this is where you will register main bundles
+MAIN AVAILABLE BUNDLES, this is where you will register your main Asset bundles
 """
 AVALAIBLE_BUNDLES.update({
-    # CSS bundle For Foundation5
+    # Main CSS bundle
     'main_css': Bundle(
+        # Flag CSS map, only usefull for multilingual projects
         'css/flags.css',
+        
+        # Main CSS
         'css/app.css',
+        
         filters='yui_css',
         output='css/app.%(version)s.css'
     ),
     
-    # Javascript bundle For Foundation5
+    # JAVASCRIPT bundle common main frontend script
     'main_js': Bundle(
+        # Foundation5 bundle
         AVALAIBLE_BUNDLES['app_foundation5_js'],
+        
+        # equalize.js library
         "js/jquery/equalize.js",
-        #AVALAIBLE_BUNDLES['app_royalslider_js'],
-        #"js/moment.js",
-        "js/jquery/magnific-popup.js", # Magnific popup (modal window/pop-in)
-        AVALAIBLE_BUNDLES['app_socialaggregator_js'],
+        
+        # Jquery FitVids library
+        #"js/jquery/jquery.fitvids.js",
+        
+        # Pikaday bundle with Moment.js script
+        #"js/jquery/moment.js",
         #AVALAIBLE_BUNDLES['app_pikaday_js'],
+        
+        # RoyalSlider bundle
+        #AVALAIBLE_BUNDLES['app_royalslider_js'],
+        
+        # MegaMenu bundle
+        AVALAIBLE_BUNDLES['mmenu_js'],
+        
+        # Magnific popup library
+        #"js/jquery/magnific-popup.js",
+        
+        # SocialAggregator bundle
+        AVALAIBLE_BUNDLES['app_socialaggregator_js'],
+        
+        # Some common various addons you can use
         "js/jquery/addons.js",
+        
+        # Main frontend script where you should launch/init/configure all used 
+        # libraries from bundles
         "js/app.js",
+        
         filters='yui_js',
         output='js/app.%(version)s.js'
     ),

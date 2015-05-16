@@ -20,14 +20,6 @@ $.fn.RandomItem = function(method) {
 };
 
 /*
- * Simple image preloader method
- */
-var image_preloader = function(image) {
-    var img = new Image();
-    img.src = image;
-}
-
-/*
 * Plugin extension methods
 */
 var extensions = {
