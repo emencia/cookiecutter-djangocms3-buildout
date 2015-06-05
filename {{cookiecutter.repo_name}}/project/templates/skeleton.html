@@ -7,7 +7,7 @@
     <title>{% block head_title %}{{ SITE.name }}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico">
-    {% comment %}<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">{% endcomment %}
+    {% comment %}<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">{% endcomment %}
     {% block header_content %}{% spaceless %}
         {% block head_metas %}
             <meta name="robots" content="index,follow,all">
@@ -35,7 +35,7 @@
         <nav class="top-bar " data-topbar>
             <ul class="title-area">
                 <li class="name">
-                    <h1><a href="/" title="{{ SITE.name }}" class="logo">{{ SITE.name }}</a></h1>
+                    <p><a href="/" title="{{ SITE.name }}" class="logo">{{ SITE.name }}</a></p>
                 </li>
                 {% block header_topbar_toggle %}<li class="toggle-topbar menu-icon">
                     <a href="#"><span>{% blocktrans %}Menu{% endblocktrans %}</span></a>
