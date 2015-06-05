@@ -7,6 +7,7 @@ sass_dir = "scss"
 css_dir = "../project/webapp_statics/css"
 images_dir = "../project/webapp_statics/images"
 javascripts_dir = "../project/webapp_statics/js"
+fonts_dir = "../project/webapp_statics/fonts"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
