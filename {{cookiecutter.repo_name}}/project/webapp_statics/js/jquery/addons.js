@@ -10,37 +10,57 @@
      * Hide targeted images in DOMn then add it as an image background on 
      * their parent, so for example :
      * 
-     *      <p><img src="foo.jpg class="swap">Hello world</p>"
+     *     <p><img src="foo.jpg class="background">Hello world</p>"
      * 
      * With :
      * 
-     * $('.wrap').swapImageToBackground();
+     *     $('img.background').swapImageToBackground();
      * 
      * Will become :
      * 
-     *      <p class="with-background" style="background-image: url(foo.jpg);"><img src="foo.jpg class="swap" style="display:none;">Hello world</p>
+     *     <p class="with-background" style="background-image: url(foo.jpg);">
+     *         <img src="foo.jpg class="background" data-imgbg-status="processed" style="display:none;">
+     *     Hello world</p>
      * 
-     * Also some data-*-* attributes can be used to add some CSS properties to the parent :
+     * Additionally some 'data-*' attributes can be used to modify some behaviors:
      * 
-     * - data-imgbg-position for background-position
-     * - data-imgbg-repeat for background-repeat
-     * - data-imgbg-size for background-size
+     * data-imgbg-position
+     *     To define 'background-position' on parent
+     * 
+     * data-imgbg-height
+     *     To define 'min-height' from image height
+     * 
+     * data-imgbg-repeat
+     *     To define 'background-repeat' on parent
+     * 
+     * data-imgbg-size
+     *     To define 'background-size' on parent
+     * 
+     * data-imgbg-vacuum
+     *     To remove image element when it has been processed,
+     *     just add it anything like 'data-imgbg-vacuum="true"'
      */
     $.fn.swapImageToBackground = function() {
         return this.each(function() {
-            var $this = $(this),
-                url = $this.attr('src'),
-                position = $this.attr('data-imgbg-position') || null,
-                repeat = $this.attr('data-imgbg-repeat') || null,
-                size = $this.attr('data-imgbg-size') || null,
+            var $image = $(this),
+                url = $image.attr('src'),
+                position = $image.attr('data-imgbg-position') || null,
+                repeat = $image.attr('data-imgbg-repeat') || null,
+                size = $image.attr('data-imgbg-size') || null,
+                enforce_height = $image.attr('data-imgbg-height') || null,
                 css_opts = {"background-image": "url('"+url+"')"};
                 
                 if(position) css_opts['background-position'] = position;
                 if(repeat) css_opts['background-repeat'] = repeat;
                 if(size) css_opts['background-size'] = size;
+                if(enforce_height){
+                    css_opts['min-height'] = $image.height();
+                }
                 
-                $this.css({'display': 'none'}).parent().css(css_opts).addClass('with-background');
-                $this.remove();
+                $image.css({'display': 'none'}).attr('data-imgbg-status', 'processed').parent().css(css_opts).addClass('with-background');
+                if($image.attr('data-imgbg-vacuum')){
+                    $image.remove();
+                }
         });
     };
 }( jQuery ));
@@ -56,6 +76,8 @@
 function column_equalizer(){
     // Equalize content text columns to the same height
     $('.equal-heights').equalize({'equalize':'outerHeight', children: '.equalized-item', reset: true, breakpoint: 750});
+    // Like before but only as a fallback for browser without flexbox support (using Modernizr detection classes)
+    $('html.no-flexbox .equal-noflex-heights').equalize({'equalize':'outerHeight', children: '.equalized-noflex-item', reset: true, breakpoint: 750});
     return;
 };
 
@@ -116,6 +138,8 @@ function LeftMegaMenu(megamenu_container) {
 /*
  * Use html attribute to add links on elements without to use 
  * real <a> href attribute
+ * 
+ * WARNING: Using this is a BAD practice for ergonomy and SEO
  */
 function AddLinkFromAttribute(options) {
     $('*[data-link]').click(function(event) {

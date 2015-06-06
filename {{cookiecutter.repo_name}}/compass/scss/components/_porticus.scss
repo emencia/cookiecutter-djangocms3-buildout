@@ -87,38 +87,3 @@
         }
     }
 }
-/*
-.album-grid-aside{
-    @include clearfix;
-    
-    .item{
-        margin-bottom: rem-calc(15px);
-        
-        &:last-child{
-            float: left;
-        }
-        
-        a{
-            color: #000000;
-        }
-        
-        .thumb{
-            padding-left: 0;
-            padding-right: 0;
-        }
-        
-        .content{
-            padding-top: 4%;
-            padding-left: rem-calc(10px);
-            padding-right: 0;
-            
-            p{
-                margin: 0;
-            }
-        }
-        
-        .brand{
-            display: block;
-        }
-    }
-}*/

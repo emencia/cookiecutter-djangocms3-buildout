@@ -2,10 +2,10 @@
 Config 'config.rb'
 ------------------
 
-Currently Foundation5 is used.
+Site stylesheets is based on Foundation5.
 
-* **main.css** : The main CSS for layout to display in frontend;
-* **ckeditor.css** : CSS to be used to customize CKEditor;
+* **app.css** : The main CSS for layout to display in frontend;
+* **ckeditor.css** : CSS used to customize CKEditor;
 * **minimal.css** : Minimal CSS, essentially Foundation components without header and footer;
 * **flags.css** : *sprite-map* to generate an unique image for all available countries flags;
 

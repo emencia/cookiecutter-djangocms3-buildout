@@ -1,0 +1,98 @@
+@import "foundation/components/grid";
+@import "utils/flexbox_support";
+
+// Available percentage sizes
+// Sizes like 18 is when you want a 20% container but with 1% horizontal 
+// marging (1+18+1=20)
+$flex-inline-list-sizes: 18 20 23 25 31 33 48 50 73 75 98 100 !default;
+
+/*
+ * Mixin to create cells widths with flexbox
+ */
+@mixin flex-inline-list-classes($sizes, $viewport: small) {
+    @each $size in $sizes{
+        $width: $size / 100;
+        // Will name it like "&.small-50"
+        &>.#{$viewport}-#{$size} {
+            @include flex(1 0 percentage($width));
+            max-width: percentage($width);
+        }
+    }
+}
+
+/*
+ * Mixin to create "simple" cells widths
+ * Mixin to simulate inline list, used as a fallback
+ */
+@mixin simulate-inline-list-classes($sizes, $viewport: small) {
+    @each $size in $sizes{
+        $width: $size / 100;
+        // Will name it like "&.small-50"
+        &>.#{$viewport}-#{$size} {
+            width: percentage($width);
+        }
+    }
+}
+
+/*
+ * Inline list with flexbox
+ */
+// For browser with flexbox capability (detected from modernizr)
+html.flexbox{
+    .flex-inline-list{
+        @include display-flex;
+        @include flex-wrap(wrap);
+        
+        &>.cell{
+            // Default is to have the same width and height for all items using 
+            // the largest value from all items
+            @include flex(1 0 auto);
+            max-width: auto;
+            margin: 0;
+            list-style-type: none;
+            
+        }
+        @media #{$small-up} {
+            @include flex-inline-list-classes($flex-inline-list-sizes, $viewport: small);
+        }
+        @media #{$medium-up} {
+            @include flex-inline-list-classes($flex-inline-list-sizes, $viewport: medium);
+        }
+        @media #{$large-up} {
+            @include flex-inline-list-classes($flex-inline-list-sizes, $viewport: large);
+        }
+        @media #{$xlarge-up} {
+            @include flex-inline-list-classes($flex-inline-list-sizes, $viewport: xlarge);
+        }
+        @media #{$xxlarge-up} {
+            @include flex-inline-list-classes($flex-inline-list-sizes, $viewport: xxlarge);
+        }
+    }
+}
+
+// Fallback for browsers that dont have flexbox capability, we inherit from Foundation grid row
+html.no-flexbox{
+    .flex-inline-list{
+        list-style-type: none;
+        @extend .row;
+        
+        &>.cell{
+            @extend .columns;
+        }
+        @media #{$small-up} {
+            @include simulate-inline-list-classes($flex-inline-list-sizes, $viewport: small);
+        }
+        @media #{$medium-up} {
+            @include simulate-inline-list-classes($flex-inline-list-sizes, $viewport: medium);
+        }
+        @media #{$large-up} {
+            @include simulate-inline-list-classes($flex-inline-list-sizes, $viewport: large);
+        }
+        @media #{$xlarge-up} {
+            @include simulate-inline-list-classes($flex-inline-list-sizes, $viewport: xlarge);
+        }
+        @media #{$xxlarge-up} {
+            @include simulate-inline-list-classes($flex-inline-list-sizes, $viewport: xxlarge);
+        }
+    }
+}

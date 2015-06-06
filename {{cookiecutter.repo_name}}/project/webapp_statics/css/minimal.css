@@ -3080,9 +3080,13 @@ ul,
 ol,
 li,
 h1,
+p.title-1,
 h2,
+p.title-2,
 h3,
+p.title-3,
 h4,
+p.title-4,
 h5,
 h6,
 pre,
@@ -3135,7 +3139,7 @@ p aside {
 
 /* Default header styles */
 /* line 252, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
-h1, h2, h3, h4, h5, h6 {
+h1, p.title-1, h2, p.title-2, h3, p.title-3, h4, p.title-4, h5, h6 {
   font-family: "Open Sans", Arial, Helvetica, Verdana, sans-serif;
   font-weight: normal;
   font-style: normal;
@@ -3146,29 +3150,29 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.4;
 }
 /* line 262, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
-h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+h1 small, p.title-1 small, h2 small, p.title-2 small, h3 small, p.title-3 small, h4 small, p.title-4 small, h5 small, h6 small {
   font-size: 60%;
   color: #6f6f6f;
   line-height: 0;
 }
 
 /* line 269, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
-h1 {
+h1, p.title-1 {
   font-size: 2.125rem;
 }
 
 /* line 270, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
-h2 {
+h2, p.title-2 {
   font-size: 1.6875rem;
 }
 
 /* line 271, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
-h3 {
+h3, p.title-3 {
   font-size: 1.375rem;
 }
 
 /* line 272, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
-h4 {
+h4, p.title-4 {
   font-size: 1.125rem;
 }
 
@@ -3398,27 +3402,27 @@ blockquote p {
 
 @media only screen and (min-width: 40.063em) {
   /* line 455, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
-  h1, h2, h3, h4, h5, h6 {
+  h1, p.title-1, h2, p.title-2, h3, p.title-3, h4, p.title-4, h5, h6 {
     line-height: 1.4;
   }
 
   /* line 456, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
-  h1 {
+  h1, p.title-1 {
     font-size: 2.75rem;
   }
 
   /* line 457, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
-  h2 {
+  h2, p.title-2 {
     font-size: 2.3125rem;
   }
 
   /* line 458, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
-  h3 {
+  h3, p.title-3 {
     font-size: 1.6875rem;
   }
 
   /* line 459, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
-  h4 {
+  h4, p.title-4 {
     font-size: 1.4375rem;
   }
 
@@ -3507,14 +3511,17 @@ blockquote p {
   /* line 509, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
   p,
   h2,
-  h3 {
+  p.title-2,
+  h3,
+  p.title-3 {
     orphans: 3;
     widows: 3;
   }
 
   /* line 515, ../../../foundation5/bower_components/foundation/scss/foundation/components/_type.scss */
-  h2,
-  h3 {
+  h2, p.title-2,
+  h3,
+  p.title-3 {
     page-break-after: avoid;
   }
 
@@ -3663,32 +3670,229 @@ blockquote p {
   float: none;
 }
 
-/* 
- * Common addons
+/*
+ * Webfont for icons, font are commonly build from Icomoon service
  */
-/* line 5, ../../../compass/scss/components/_addons.scss */
-.relative-position {
-  position: relative;
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot');
+  src: url('../fonts/icomoon.eot?#iefix') format("embedded-opentype"), url('../fonts/icomoon.ttf') format("truetype"), url('../fonts/icomoon.woff') format("woff"), url('../fonts/icomoon.svg#icomoon') format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
-/* line 10, ../../../compass/scss/components/_addons.scss */
-img.centered {
+/* line 15, ../../../compass/scss/components/_icomoon.scss */
+[class^="icon-"], [class*=" icon-"], .icomoon-icon {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* line 28, ../../../compass/scss/components/_icomoon.scss */
+[class^="icon-"] .shim, [class*=" icon-"] .shim, .icomoon-icon .shim {
+  display: none;
+}
+
+/* line 34, ../../../compass/scss/components/_icomoon.scss */
+.sticked-icon {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  position: relative;
+  padding-left: 2.5rem;
+  font-family: inherit;
+}
+/* line 41, ../../../compass/scss/components/_icomoon.scss */
+.sticked-icon[class^="icon-"]:before, .sticked-icon[class*=" icon-"]:before {
+  position: absolute;
+  top: 0.9375rem;
+  left: 0.9375rem;
+  font-family: 'icomoon';
+}
+/* line 49, ../../../compass/scss/components/_icomoon.scss */
+.sticked-icon > .shim {
+  display: none;
 }
 
-/* line 16, ../../../compass/scss/components/_addons.scss */
-img.expanded {
-  width: 100%;
-  height: auto;
+/* line 55, ../../../compass/scss/components/_icomoon.scss */
+.button[class^="icon-"], .button[class*=" icon-"] {
+  font-family: inherit;
+}
+/* line 58, ../../../compass/scss/components/_icomoon.scss */
+.button[class^="icon-"]:before, .button[class*=" icon-"]:before {
+  font-family: 'icomoon';
+  margin-right: 0.3125rem;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* line 74, ../../../compass/scss/components/_icomoon.scss */
+.button[class^="icon-"].icoAft:before, .button[class*=" icon-"].icoAft:before {
+  position: reltive;
+  right: 0.5rem;
+  width: 2rem;
 }
 
-/* line 22, ../../../compass/scss/components/_addons.scss */
+/* line 86, ../../../compass/scss/components/_icomoon.scss */
+.icon-2x {
+  font-size: 2em;
+}
+/* line 89, ../../../compass/scss/components/_icomoon.scss */
+.icon-2x.sticked-icon {
+  font-size: inherit;
+  padding-left: 3.5em;
+}
+/* line 94, ../../../compass/scss/components/_icomoon.scss */
+.icon-2x.sticked-icon[class^="icon-"]:before, .icon-2x.sticked-icon[class*=" icon-"]:before {
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  font-family: 'icomoon';
+  font-size: 2em;
+}
+/* line 103, ../../../compass/scss/components/_icomoon.scss */
+.icon-2x > .shim {
+  display: none;
+}
+
+/* line 107, ../../../compass/scss/components/_icomoon.scss */
+.icon-3x {
+  font-size: 3em;
+}
+/* line 110, ../../../compass/scss/components/_icomoon.scss */
+.icon-3x.sticked-icon {
+  font-size: inherit;
+  padding-left: 5.5em;
+}
+/* line 115, ../../../compass/scss/components/_icomoon.scss */
+.icon-3x.sticked-icon[class^="icon-"]:before, .icon-3x.sticked-icon[class*=" icon-"]:before {
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  font-family: 'icomoon';
+  font-size: 3em;
+}
+/* line 124, ../../../compass/scss/components/_icomoon.scss */
+.icon-3x > .shim {
+  display: none;
+}
+
+/* line 128, ../../../compass/scss/components/_icomoon.scss */
+.icon-4x {
+  font-size: 4em;
+}
+/* line 131, ../../../compass/scss/components/_icomoon.scss */
+.icon-4x.sticked-icon {
+  font-size: inherit;
+  padding-left: 6.5em;
+}
+/* line 136, ../../../compass/scss/components/_icomoon.scss */
+.icon-4x.sticked-icon[class^="icon-"]:before, .icon-4x.sticked-icon[class*=" icon-"]:before {
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  font-family: 'icomoon';
+  font-size: 4em;
+}
+/* line 145, ../../../compass/scss/components/_icomoon.scss */
+.icon-4x > .shim {
+  display: none;
+}
+
+/* line 149, ../../../compass/scss/components/_icomoon.scss */
+.icon-2x-solo {
+  padding-left: 3rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+/* line 155, ../../../compass/scss/components/_icomoon.scss */
+.icon-2x-solo[class^="icon-"]:before, .icon-2x-solo[class*=" icon-"]:before {
+  font-size: 2rem;
+  position: absolute;
+  top: 0.25em;
+  left: 0.25em;
+  font-family: 'icomoon';
+}
+/* line 165, ../../../compass/scss/components/_icomoon.scss */
+.icon-2x-solo.icoAft[class^="icon-"]:before, .icon-2x-solo.icoAft[class*=" icon-"]:before {
+  top: 0.25em;
+  right: 0em;
+  left: auto;
+}
+/* line 171, ../../../compass/scss/components/_icomoon.scss */
+.icon-2x-solo.button.go {
+  margin-left: 1rem;
+  padding-right: 3rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/*
+ * 
+ * HERE GOES THE ICONS FROM THE style.css bundled in the icomoon archive
+ * 
+ */
+/*
+ * Mixin to remove unit from a number
+ */
+/*
+ * Buttons addons and improvements
+ */
+/* line 29, ../../../compass/scss/utils/_addons.scss */
+button.strong, .button.strong {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/*
+ * Visually transform a dropdown button into a select list with vertical 
+ * scrollbar. This is useful for long list items that can impact on page size
+ */
+/* line 39, ../../../compass/scss/utils/_addons.scss */
+.f-dropdown.overflow {
+  overflow: auto;
+  height: 12.5rem;
+}
+/* line 43, ../../../compass/scss/utils/_addons.scss */
+.f-dropdown.overflow.overflow-100 {
+  height: 6.25rem;
+}
+/* line 44, ../../../compass/scss/utils/_addons.scss */
+.f-dropdown.overflow.overflow-150 {
+  height: 9.375rem;
+}
+/* line 45, ../../../compass/scss/utils/_addons.scss */
+.f-dropdown.overflow.overflow-200 {
+  height: 12.5rem;
+}
+/* line 46, ../../../compass/scss/utils/_addons.scss */
+.f-dropdown.overflow.overflow-250 {
+  height: 15.625rem;
+}
+/* line 47, ../../../compass/scss/utils/_addons.scss */
+.f-dropdown.overflow.overflow-300 {
+  height: 18.75rem;
+}
+
+/* 
+ * Some usefull stuff for Grids
+ */
+/* line 54, ../../../compass/scss/utils/_addons.scss */
 .row.row-fluid {
   max-width: 100%;
 }
-/* line 25, ../../../compass/scss/components/_addons.scss */
+/* line 57, ../../../compass/scss/utils/_addons.scss */
 .row.row-fluid .row {
   margin: auto;
   width: 100%;
@@ -3707,41 +3911,48 @@ img.expanded {
 .row.row-fluid .row:after {
   clear: both;
 }
-/* line 29, ../../../compass/scss/components/_addons.scss */
+/* line 61, ../../../compass/scss/utils/_addons.scss */
 .row.row-fluid .row.row-fluid {
   max-width: 100%;
 }
 
-/* line 35, ../../../compass/scss/components/_addons.scss */
+@media only screen and (min-width: 90.063em) {
+  /* line 70, ../../../compass/scss/utils/_addons.scss */
+  .row.larger {
+    max-width: 83rem;
+  }
+}
+
+/* line 77, ../../../compass/scss/utils/_addons.scss */
 .row .columns > .row-inner {
   margin-left: -0.9375rem;
   margin-right: -0.9375rem;
 }
 
-/* line 42, ../../../compass/scss/components/_addons.scss */
+/* line 84, ../../../compass/scss/utils/_addons.scss */
 .columns.unpadded {
   padding: 0;
 }
 @media only screen and (max-width: 40em) {
-  /* line 46, ../../../compass/scss/components/_addons.scss */
+  /* line 88, ../../../compass/scss/utils/_addons.scss */
   .columns.small-unpadded {
     padding: 0;
   }
 }
 @media only screen and (min-width: 40.063em) and (max-width: 64em) {
-  /* line 51, ../../../compass/scss/components/_addons.scss */
+  /* line 93, ../../../compass/scss/utils/_addons.scss */
   .columns.medium-unpadded {
     padding: 0;
   }
 }
 @media only screen and (min-width: 64.063em) and (max-width: 90em) {
-  /* line 56, ../../../compass/scss/components/_addons.scss */
+  /* line 98, ../../../compass/scss/utils/_addons.scss */
   .columns.large-unpadded {
     padding: 0;
   }
 }
 
-/* line 63, ../../../compass/scss/components/_addons.scss */
+/* line 105, ../../../compass/scss/utils/_addons.scss */
 .unmarged {
   margin: 0;
 }
@@ -3749,61 +3960,54 @@ img.expanded {
 /*
  * Supplementary divider classes
  */
-/* line 71, ../../../compass/scss/components/_addons.scss */
+/* line 113, ../../../compass/scss/utils/_addons.scss */
 .row.divider {
   margin-bottom: 0.625rem;
 }
 @media only screen and (min-width: 40.063em) {
-  /* line 71, ../../../compass/scss/components/_addons.scss */
+  /* line 113, ../../../compass/scss/utils/_addons.scss */
   .row.divider {
     margin-bottom: 1.875rem;
   }
 }
 
-/* line 79, ../../../compass/scss/components/_addons.scss */
+/* line 121, ../../../compass/scss/utils/_addons.scss */
 .columns.divider {
   margin-bottom: 0.3125rem;
 }
 @media only screen and (min-width: 40.063em) {
-  /* line 79, ../../../compass/scss/components/_addons.scss */
+  /* line 121, ../../../compass/scss/utils/_addons.scss */
   .columns.divider {
     margin-bottom: 0;
   }
 }
 
-/* line 87, ../../../compass/scss/components/_addons.scss */
-img.divider {
-  margin-bottom: 1.25rem;
+/* 
+ * **
+ * Common addons
+ * **
+ */
+/* line 136, ../../../compass/scss/utils/_addons.scss */
+.relative-position {
+  position: relative;
 }
 
-/*
- * Visually transform a dropdown button into a select list with vertical 
- * scrollbar. This is useful for long list items that can impact on page size
- */
-/* line 96, ../../../compass/scss/components/_addons.scss */
-.f-dropdown.overflow {
-  overflow: auto;
-  height: 200px;
+/* line 141, ../../../compass/scss/utils/_addons.scss */
+img.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-/* line 100, ../../../compass/scss/components/_addons.scss */
-.f-dropdown.overflow.overflow-100 {
-  height: 100px;
+
+/* line 147, ../../../compass/scss/utils/_addons.scss */
+img.expanded {
+  width: 100%;
+  height: auto;
 }
-/* line 101, ../../../compass/scss/components/_addons.scss */
-.f-dropdown.overflow.overflow-150 {
-  height: 150px;
-}
-/* line 102, ../../../compass/scss/components/_addons.scss */
-.f-dropdown.overflow.overflow-200 {
-  height: 200px;
-}
-/* line 103, ../../../compass/scss/components/_addons.scss */
-.f-dropdown.overflow.overflow-250 {
-  height: 250px;
-}
-/* line 104, ../../../compass/scss/components/_addons.scss */
-.f-dropdown.overflow.overflow-300 {
-  height: 300px;
+
+/* line 153, ../../../compass/scss/utils/_addons.scss */
+img.divider {
+  margin-bottom: 1.25rem;
 }
 
 /* line 21, ../../../compass/scss/minimal.scss */
@@ -3815,92 +4019,88 @@ img.divider {
    * Common styles for specific cms pages
    */
 }
-/* line 45, ../../../compass/scss/components/_mixins.scss */
+/* line 45, ../../../compass/scss/utils/_mixins.scss */
 #content-main .nontabular-table {
   vertical-align: top;
 }
-/* line 48, ../../../compass/scss/components/_mixins.scss */
+/* line 48, ../../../compass/scss/utils/_mixins.scss */
 #content-main .table-fiftyfifty td {
   width: 50%;
 }
-/* line 52, ../../../compass/scss/components/_mixins.scss */
-#content-main h1, #content-main h2, #content-main h3, #content-main h4, #content-main h5, #content-main h6 {
+/* line 52, ../../../compass/scss/utils/_mixins.scss */
+#content-main h1, #content-main p.title-1, #content-main h2, #content-main p.title-2, #content-main h3, #content-main p.title-3, #content-main h4, #content-main p.title-4, #content-main h5, #content-main h6 {
   font-weight: 400;
 }
-/* line 53, ../../../compass/scss/components/_mixins.scss */
-#content-main h1 {
+/* line 53, ../../../compass/scss/utils/_mixins.scss */
+#content-main h1, #content-main p.title-1 {
   font-size: 30px;
 }
-/* line 54, ../../../compass/scss/components/_mixins.scss */
-#content-main h2 {
+/* line 54, ../../../compass/scss/utils/_mixins.scss */
+#content-main h2, #content-main p.title-2 {
   font-size: 26px;
 }
-/* line 55, ../../../compass/scss/components/_mixins.scss */
-#content-main h3 {
+/* line 55, ../../../compass/scss/utils/_mixins.scss */
+#content-main h3, #content-main p.title-3 {
   font-size: 21px;
 }
-/* line 56, ../../../compass/scss/components/_mixins.scss */
-#content-main h4 {
+/* line 56, ../../../compass/scss/utils/_mixins.scss */
+#content-main h4, #content-main p.title-4 {
   font-size: 18px;
 }
 /* line 6, ../../../compass/scss/components/_contents.scss */
-#content-main ul.pagination li {
-  font-weight: 400;
-}
-/* line 11, ../../../compass/scss/components/_contents.scss */
 #content-main .row.black {
   color: white;
   background-color: black;
 }
-/* line 15, ../../../compass/scss/components/_contents.scss */
+/* line 10, ../../../compass/scss/components/_contents.scss */
 #content-main.on-black {
   color: white;
   background-color: black;
 }
-/* line 19, ../../../compass/scss/components/_contents.scss */
-#content-main.on-black h2, #content-main.on-black h3, #content-main.on-black h4, #content-main.on-black h5, #content-main.on-black h6, #content-main.on-black p, #content-main.on-black li {
+/* line 14, ../../../compass/scss/components/_contents.scss */
+#content-main.on-black h2, #content-main.on-black p.title-2, #content-main.on-black h3, #content-main.on-black p.title-3, #content-main.on-black h4, #content-main.on-black p.title-4, #content-main.on-black h5, #content-main.on-black h6, #content-main.on-black p, #content-main.on-black li {
   color: white;
 }
-/* line 25, ../../../compass/scss/components/_contents.scss */
+/* line 20, ../../../compass/scss/components/_contents.scss */
 #content-main .row.white {
   color: black;
   background-color: white;
 }
-/* line 29, ../../../compass/scss/components/_contents.scss */
+/* line 24, ../../../compass/scss/components/_contents.scss */
 #content-main.on-white {
   color: black;
   background-color: white;
 }
-/* line 33, ../../../compass/scss/components/_contents.scss */
-#content-main.on-white h2, #content-main.on-white h3, #content-main.on-white h4, #content-main.on-white h5, #content-main.on-white h6, #content-main.on-white p, #content-main.on-white li {
+/* line 28, ../../../compass/scss/components/_contents.scss */
+#content-main.on-white h2, #content-main.on-white p.title-2, #content-main.on-white h3, #content-main.on-white p.title-3, #content-main.on-white h4, #content-main.on-white p.title-4, #content-main.on-white h5, #content-main.on-white h6, #content-main.on-white p, #content-main.on-white li {
   color: white;
 }
-/* line 47, ../../../compass/scss/components/_contents.scss */
+/* line 42, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro {
   border: 1px solid #CCCCCC;
 }
-/* line 50, ../../../compass/scss/components/_contents.scss */
+/* line 45, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro .visual {
   padding: 0;
   margin-bottom: 0.9375rem;
 }
-/* line 55, ../../../compass/scss/components/_contents.scss */
+/* line 50, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro .item {
   margin-bottom: 0.9375rem;
 }
-/* line 58, ../../../compass/scss/components/_contents.scss */
+/* line 53, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro .item .alternate {
   color: #7F7F7F;
 }
-/* line 62, ../../../compass/scss/components/_contents.scss */
-#content-main .index-intro .item h2 {
+/* line 57, ../../../compass/scss/components/_contents.scss */
+#content-main .index-intro .item h2, #content-main .index-intro .item p.title-2 {
   font-size: 30px;
 }
-/* line 66, ../../../compass/scss/components/_contents.scss */
+/* line 61, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro .item + .item {
   border-left: 2px solid #000000;
 }
-/* line 72, ../../../compass/scss/components/_contents.scss */
+/* line 67, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro-2 {
   padding: 1.25rem 1.25rem 2.5rem;
   position: relative;
@@ -3911,42 +4111,42 @@ img.divider {
   -o-background-size: 100% 100%;
   background-size: 100% 100%;
 }
-/* line 79, ../../../compass/scss/components/_contents.scss */
+/* line 74, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro-2.unpadded {
   padding: 0;
 }
-/* line 83, ../../../compass/scss/components/_contents.scss */
+/* line 78, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro-2 .background {
   display: none;
 }
-/* line 87, ../../../compass/scss/components/_contents.scss */
+/* line 82, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro-2 .white-wrap {
   background-color: rgba(240, 240, 240, 0.5);
 }
-/* line 91, ../../../compass/scss/components/_contents.scss */
+/* line 86, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro-2 .black-wrap {
   color: #ffffff;
   background-color: rgba(40, 40, 40, 0.5);
 }
-/* line 95, ../../../compass/scss/components/_contents.scss */
-#content-main .index-intro-2 .black-wrap h2, #content-main .index-intro-2 .black-wrap h3, #content-main .index-intro-2 .black-wrap h4, #content-main .index-intro-2 .black-wrap h5, #content-main .index-intro-2 .black-wrap div, #content-main .index-intro-2 .black-wrap dt, #content-main .index-intro-2 .black-wrap dd, #content-main .index-intro-2 .black-wrap li, #content-main .index-intro-2 .black-wrap p, #content-main .index-intro-2 .black-wrap blockquote, #content-main .index-intro-2 .black-wrap th, #content-main .index-intro-2 .black-wrap td {
+/* line 90, ../../../compass/scss/components/_contents.scss */
+#content-main .index-intro-2 .black-wrap h2, #content-main .index-intro-2 .black-wrap p.title-2, #content-main .index-intro-2 .black-wrap h3, #content-main .index-intro-2 .black-wrap p.title-3, #content-main .index-intro-2 .black-wrap h4, #content-main .index-intro-2 .black-wrap p.title-4, #content-main .index-intro-2 .black-wrap h5, #content-main .index-intro-2 .black-wrap div, #content-main .index-intro-2 .black-wrap dt, #content-main .index-intro-2 .black-wrap dd, #content-main .index-intro-2 .black-wrap li, #content-main .index-intro-2 .black-wrap p, #content-main .index-intro-2 .black-wrap blockquote, #content-main .index-intro-2 .black-wrap th, #content-main .index-intro-2 .black-wrap td {
   color: #ffffff;
 }
-/* line 101, ../../../compass/scss/components/_contents.scss */
+/* line 96, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro-2 .content div, #content-main .index-intro-2 .content dt, #content-main .index-intro-2 .content dd, #content-main .index-intro-2 .content li, #content-main .index-intro-2 .content p, #content-main .index-intro-2 .content blockquote, #content-main .index-intro-2 .content th, #content-main .index-intro-2 .content td {
   font-size: 15px;
   font-weight: 400;
 }
-/* line 105, ../../../compass/scss/components/_contents.scss */
+/* line 100, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro-2 .content ul {
   list-style-type: square;
   margin-left: 1.1rem;
 }
-/* line 109, ../../../compass/scss/components/_contents.scss */
+/* line 104, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro-2 .content ul li {
   position: relative;
 }
-/* line 112, ../../../compass/scss/components/_contents.scss */
+/* line 107, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro-2 .content ul li[class^="icon-"]:before {
   font-size: 1.1em;
   left: -1.2em;
@@ -3955,22 +4155,22 @@ img.divider {
   top: 0;
   width: 1em;
 }
-/* line 123, ../../../compass/scss/components/_contents.scss */
+/* line 118, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro-2 .content.white-on-black div, #content-main .index-intro-2 .content.white-on-black dt, #content-main .index-intro-2 .content.white-on-black dd, #content-main .index-intro-2 .content.white-on-black li, #content-main .index-intro-2 .content.white-on-black p, #content-main .index-intro-2 .content.white-on-black blockquote, #content-main .index-intro-2 .content.white-on-black th, #content-main .index-intro-2 .content.white-on-black td {
   color: #ffffff;
 }
-/* line 128, ../../../compass/scss/components/_contents.scss */
+/* line 123, ../../../compass/scss/components/_contents.scss */
 #content-main .index-intro-2 .content + .content {
   margin-top: 1.25rem;
 }
-/* line 136, ../../../compass/scss/components/_contents.scss */
-#content-main .mosaic-rows h2 {
+/* line 131, ../../../compass/scss/components/_contents.scss */
+#content-main .mosaic-rows h2, #content-main .mosaic-rows p.title-2 {
   margin-bottom: 15px;
   /*@media (max-width: $screenSmall - 1) {
       padding: 0 5px;
   }*/
 }
-/* line 144, ../../../compass/scss/components/_contents.scss */
+/* line 139, ../../../compass/scss/components/_contents.scss */
 #content-main .mosaic-rows .underlined {
   border-bottom: 1px solid black;
   /*@media (min-width: $screenSmall) {
@@ -3980,11 +4180,11 @@ img.divider {
       }
   }*/
 }
-/* line 156, ../../../compass/scss/components/_contents.scss */
+/* line 151, ../../../compass/scss/components/_contents.scss */
 #content-main .mosaic-rows .row .visual.columns {
   padding: 5px;
 }
-/* line 159, ../../../compass/scss/components/_contents.scss */
+/* line 154, ../../../compass/scss/components/_contents.scss */
 #content-main .mosaic-rows .row .visual.columns .badge-new {
   padding: 12px 6px;
   position: absolute;
@@ -4011,7 +4211,7 @@ img.divider {
   -moz-box-shadow: #606060 0 2px 4px 1px;
   box-shadow: #606060 0 2px 4px 1px;
 }
-/* line 176, ../../../compass/scss/components/_contents.scss */
+/* line 171, ../../../compass/scss/components/_contents.scss */
 #content-main .mosaic-rows .row .visual.columns .bottomline {
   margin: 0;
   padding: 5px 8px;
@@ -4024,34 +4224,34 @@ img.divider {
   color: white;
   background-color: rgba(0, 0, 0, 0.7);
 }
-/* line 188, ../../../compass/scss/components/_contents.scss */
+/* line 183, ../../../compass/scss/components/_contents.scss */
 #content-main .mosaic-rows .row .visual.columns .bottomline a {
   color: white;
 }
-/* line 199, ../../../compass/scss/components/_contents.scss */
+/* line 194, ../../../compass/scss/components/_contents.scss */
 #content-main .index-items .item img {
   margin-bottom: 1.25rem;
 }
-/* line 203, ../../../compass/scss/components/_contents.scss */
+/* line 198, ../../../compass/scss/components/_contents.scss */
 #content-main .index-items .item + .item {
   border-left: 1px dotted #000000;
 }
-/* line 209, ../../../compass/scss/components/_contents.scss */
+/* line 204, ../../../compass/scss/components/_contents.scss */
 #content-main .index-items .item .content + div,
 #content-main .index-items .item .content + p,
 #content-main .index-items .item .content + ul {
   margin-top: 1.25rem;
 }
-/* line 213, ../../../compass/scss/components/_contents.scss */
+/* line 208, ../../../compass/scss/components/_contents.scss */
 #content-main .index-items .item .content ul {
   list-style-type: square;
   margin-left: 1.1rem;
 }
-/* line 217, ../../../compass/scss/components/_contents.scss */
+/* line 212, ../../../compass/scss/components/_contents.scss */
 #content-main .index-items .item .content ul li {
   position: relative;
 }
-/* line 220, ../../../compass/scss/components/_contents.scss */
+/* line 215, ../../../compass/scss/components/_contents.scss */
 #content-main .index-items .item .content ul li:before {
   position: absolute;
   left: -1.2em;
@@ -4063,13 +4263,13 @@ img.divider {
   font-family: 'fontawesome';
   content: "\f054";
 }
-/* line 234, ../../../compass/scss/components/_contents.scss */
+/* line 229, ../../../compass/scss/components/_contents.scss */
 #content-main .index-items .item .black-wrap {
   padding: 0 0 5px 0;
   color: #ffffff;
   background-color: #000000;
 }
-/* line 239, ../../../compass/scss/components/_contents.scss */
+/* line 234, ../../../compass/scss/components/_contents.scss */
 #content-main .index-items .item .black-wrap p {
   padding-left: 10px;
   padding-right: 10px;

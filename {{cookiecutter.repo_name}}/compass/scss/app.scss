@@ -3,8 +3,14 @@
 @import "settings";
 @import "compass";
 
-// Full foundation components import
+/*
+ * Full Foundation components import for development process
+ * 
+ * WARNING: Do not use this full import when passing to production, 
+ * instead select all needed component one by one
+ */
 @import "foundation";
+
 /*
  * All foundation components, one by one
 */
@@ -50,33 +56,33 @@
 */
 
 /* 
- * Addon Components
+ * Used components
+ * 
+ * Load only what is needed, not all components
  */
-@import "components/addons";
-//@import "components/icomoon";
-//@import "components/spinner";
-//@import "components/magnific-popup";
-//@import "components/royalSlider";
+@import "utils/patchs";
+@import "components/icomoon";
+@import "utils/addons";
+@import "utils/flex";
+//@import "utils/spinner";
+//@import "vendor/magnific-popup";
+//@import "vendor/royalSlider";
+//@import "vendor/mmenu_load";
+//@import "vendor/pickaday";
+@import "vendor/slick";
+@import "vendor/slick-theme";
 
-.top-bar-section{
-    // Auth menu
-    #auth-menu > strong{
-        color: $topbar-link-color;
-        line-height: $topbar-height;
-        padding: 0 $topbar-link-padding;
-    }
-    #languageChooser{
-        a{
-            position: relative;
-            line-height: 1;
-            padding: 15px 40px;
-        }
-    }
-}
-
+@import "components/header";
+@import "components/footer";
 #body_content{
-    @import "components/porticus";
-    @import "components/socialaggregator";
-    @import "components/zinnia";
+    //@import "components/porticus";
+    //@import "components/socialaggregator";
+    //@import "components/zinnia";
     @import "components/contents";
 }
+
+/*
+ * Sometime, you need fallback hacks for some specific browsers, it should allways be 
+ * at the end to be able to override every others components
+ */
+@import "utils/browser_fallbacks";

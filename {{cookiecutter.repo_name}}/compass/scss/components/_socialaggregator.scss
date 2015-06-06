@@ -2,14 +2,13 @@
  * Socialaggregator grid with Masonry
  */
 #isocontainer {
-    $masonry-brick-gutter: 12px;
+    $masonry-brick-gutter: 12px !default;
 
     #isogrid {
         margin: $masonry-brick-gutter $masonry-brick-gutter 0 0;
         
         .grid-base {
             width: 100%; // 1 colonne
-/*             @media #{$large-up} { */
             @media #{$medium-up} {
                 width: 25%; // 4 colonnes
                 text-indent:-3000px;

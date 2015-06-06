@@ -14,7 +14,7 @@ plugin. But we include some SCSS from Foundation's components.
 @import "compass";
 @import "foundation/components/grid";
 
-@import "components/mixins";
+@import "utils/mixins";
 
 body
 {

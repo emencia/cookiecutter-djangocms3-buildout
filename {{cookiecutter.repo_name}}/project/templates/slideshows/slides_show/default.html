@@ -1,16 +1,24 @@
-<ul id="slideshow-container-{{ slideshow_instance.id }}" data-orbit>
+<div id="slideshow-container-{{ slideshow_instance.id }}" class="slick-container">
 {% for slide in slideshow_slides %}
-    <li data-orbit-slide="item-{{ forloop.counter }}"{% if slide.url %} data-slide-url="{{ slide.url }}"{% endif %}>
-        {% if slide.image %}<img src="{{ slide.image.url }}" alt="">{% endif %}
+    {% if slide.image or slide.content %}
+    <div class="item"{% if slide.url %} data-slide-url="{{ slide.url }}"{% endif %}>
         {% if slide.content %}
-            <div class="orbit-caption">
-                <h2>{{ slide.title }}</h2>
+            {% if slide.image %}
+                <img src="{{ slide.image.url }}" class="background" alt=""
+                data-imgbg-position="50% 50%"
+                data-imgbg-repeat="no-repeat"
+                data-imgbg-size="cover">
+            {% endif %}
+            <div class="caption">
+                {% comment %}<h2>{{ slide.title }}</h2>{% endcomment %}
                 {{ slide.content|safe }}
             </div>
         {% else %}
-            <div class="orbit-caption">{{ slide.title }}</div>
+            <img src="{{ slide.image.url }}" alt="">
         {% endif %}
-    </li>
+    </div>
+    {% endif %}
+    
 {% endfor %}
-</ul>
+</div>
 {% comment %}{% if slideshow_js_config %}{{ slideshow_js_config }}{% endif %}{% endcomment %}

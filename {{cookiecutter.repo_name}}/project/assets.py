@@ -46,8 +46,8 @@ AVALAIBLE_BUNDLES = {
         "js/foundation5/foundation/foundation.tab.js",
         "js/foundation5/foundation/foundation.tooltip.js",
         "js/foundation5/foundation/foundation.topbar.js",
-        # For Orbit Slider (default used)
-        "js/foundation5/foundation/foundation.orbit.js",
+        # For Orbit Slider (deprecated)
+        #"js/foundation5/foundation/foundation.orbit.js",
         filters='yui_js',
         output='js/app_foundation5.%(version)s.js'
     ),
@@ -74,7 +74,7 @@ AVALAIBLE_BUNDLES = {
         output='js/app_royalslider.%(version)s.js'
     ),
 
-    # App bundle for MegaMenu library
+    # App bundle for jQuery.mmenu plugin
     'mmenu_js': Bundle(
         "js/mmenu/jquery.mmenu.oncanvas.js",
         "js/mmenu/addon/jquery.mmenu.offcanvas.js",
@@ -84,9 +84,9 @@ AVALAIBLE_BUNDLES = {
         "js/mmenu/addon/jquery.mmenu.fixedelements.js",
         "js/mmenu/addon/jquery.mmenu.footer.js",
         "js/mmenu/addon/jquery.mmenu.header.js",
-        "js/mmenu/addon/jquery.mmenu.labels.js",
         "js/mmenu/addon/jquery.mmenu.searchfield.js",
         "js/mmenu/addon/jquery.mmenu.toggles.js",
+
         filters='yui_js',
         output='js/mmenu.min.js'
     ),
@@ -145,14 +145,17 @@ AVALAIBLE_BUNDLES.update({
         # RoyalSlider bundle
         #AVALAIBLE_BUNDLES['app_royalslider_js'],
         
-        # MegaMenu bundle
-        AVALAIBLE_BUNDLES['mmenu_js'],
+        # jQuery.mmenu bundle
+        #AVALAIBLE_BUNDLES['mmenu_js'],
         
         # Magnific popup library
         #"js/jquery/magnific-popup.js",
         
         # SocialAggregator bundle
-        AVALAIBLE_BUNDLES['app_socialaggregator_js'],
+        {% if cookiecutter.enable_socialaggregator != 'yes' %}#{% endif %}AVALAIBLE_BUNDLES['app_socialaggregator_js'],
+        
+        # Slick.js library
+        "js/jquery/slick.js",
         
         # Some common various addons you can use
         "js/jquery/addons.js",

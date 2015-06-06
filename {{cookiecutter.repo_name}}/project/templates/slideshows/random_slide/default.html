@@ -1,16 +1,20 @@
-{% load i18n %}<div class="sliderContainer fullWidthslide clearfix rsDefault" id="sliderTop">
-    <div class="scroll"><a href="#isocontainer"><span>{% blocktrans %}scroll{% endblocktrans %} </span><span class="icon-typo">d</span></a></div>
-    <div class="spinner" style="display:none;"><img src="{{ STATIC_URL }}images/theme/loading_spinner.gif" alt=""></div>
-
-    <div id="full-width-slider" class="royalSlider heroSlider rsMinW">
-        <div class="rsContent">
-            <img class="rsImg" src="{{ slideshow_slide.image.url }}" alt="">
-            <div class="infoBlock infoBlockLeft rsABlock" data-fade-effect="" data-move-offset="10" data-move-effect="bottom" data-speed="200">
-                <h2>{{ slideshow_slide.title }}</h2>
-                {% if slideshow_slide.content %}
-                    {{ slideshow_slide.content|safe }}
-                {% endif %}
+<div class="slick-container">
+    {% if slideshow_slide.image or slideshow_slide.content %}
+    <div class="item"{% if slideshow_slide.url %} data-slide-url="{{ slideshow_slide.url }}"{% endif %}>
+        {% if slideshow_slide.content %}
+            {% if slideshow_slide.image %}
+                <img src="{{ slideshow_slide.image.url }}" class="background" alt=""
+                data-imgbg-position="50% 50%"
+                data-imgbg-repeat="no-repeat"
+                data-imgbg-size="cover">
+            {% endif %}
+            <div class="caption">
+                {% comment %}<h2>{{ slideshow_slide.title }}</h2>{% endcomment %}
+                {{ slideshow_slide.content|safe }}
             </div>
-        </div>
+        {% else %}
+            <img src="{{ slideshow_slide.image.url }}" alt="">
+        {% endif %}
     </div>
+    {% endif %}
 </div>

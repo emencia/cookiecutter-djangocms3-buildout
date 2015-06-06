@@ -5,6 +5,28 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.7.0 - 2015/06/06
+--------------------------
+
+* Use ``fonts_dir`` setting in compass config, close #13
+* Use *lazy protocole prefix* to load googlefont, close #12;
+* Remove ``<h1>`` usage in topbar for a better semantic (``<h1>`` should not be identical to ``<title>``), **WARNING: now all cms page must define their own h1, also other app template have to define the right h1**;
+* Get back our CMS snippet plugin, temporary using our fork as a develop source, close #19;
+* Upgrade ``django-admin-style`` to ``0.2.7``, close #18;
+* Fix to ``djangocms_text_ckeditor==2.4.3``, close #16;
+* Include Slick.js, close #17;
+* Remove Foundation Orbit usage because it is deprecated and Slick.js works better;
+* ``project/assets.py`` is now processed by cookiecutter+Jinja so we can disable assets from user choices like for socialaggregator Javascript library;
+* Reorganize SCSS sources:
+  
+  * ``components/`` directory is for page parts or specific Django apps layout;
+  * ``vendor/`` directory contains all SCSS for included library (like mmenu, royalslider, etc..);
+  * ``utils/`` directory contains all utils stuff like mixins, basic addons, Foundation patches, etc..;
+  * Added Flexbox support;
+
+* Remove interchange template for slideshows;
+* Cleaning ``app.js`` since Orbit is not used anymore;
+
 Version 0.6.6 - 2015/05/16
 --------------------------
 

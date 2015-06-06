@@ -7,7 +7,7 @@
  ** you will have to uncomment them and eventually edit them for your needs.
  ** 
  ** WARNING: Don't enable things that you don't need, keep your frontend script 
- **          clean. You can clean unused stuff but note that uncommented code will 
+ **          clean. You can remove unused code but note that uncommented code will 
  **          be removed from final script in production by Javascript compressor.
  **
  */
@@ -20,6 +20,19 @@ $(window).load(function () {
     column_equalizer();
     //AddLinkFromAttribute();
     //LeftMegaMenu( $("#navabsleft") );
+
+    /*
+     * Apply the trick to swap <img> elements into their container background
+     */
+    $('img.background').swapImageToBackground();
+    
+    /*
+     * Init Slick.js slider
+     */
+    $('.slick-container').slick({
+        'adaptiveHeight': true,
+        'lazyLoad': 'ondemand'
+    });
 });
 
 $(window).resize(function() {
@@ -53,11 +66,6 @@ $(document).ready(function($) {
             dropdown_menu.attr('id', dropdown_id).attr('data-dropdown-content', '');
         }
     });
-
-    /*
-     * Apply the trick to swap <img> elements into their container background
-     */
-    $('img.background').swapImageToBackground();
 
     /*
      * Pikaday for the common datepicker in form, note this use moment.js also
@@ -111,14 +119,14 @@ $(document).ready(function($) {
         // Triggered event when Foundation 'interchange' plugin replace the content
         $interchanged_content_intro.on('replace', function (e, new_path, original_path) {
             // Inits postorious contents
-            $('#slideshow-container').foundation('orbit');
+            //$('#slideshow-container').foundation('orbit');
             // Use socialaggregator lib only if loaded
             $.fn.SocialWallGrid ? $wallgrid_container.SocialWallGrid() : null;
         });
         // Fallback for small resolution which is excluded from the interchange content
         // (and so does not trigger a 'replace')
         if(matchMedia(Foundation.media_queries.small).matches){
-            $('#slideshow-container').foundation('orbit');
+            //$('#slideshow-container').foundation('orbit');
             // Use socialaggregator lib only if loaded
             $.fn.SocialWallGrid ? $wallgrid_container.SocialWallGrid() : null;
         }

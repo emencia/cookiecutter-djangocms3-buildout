@@ -29,7 +29,6 @@
             "project/static",
             "project/utils",
             "project/webapp_statics",
-            "project/assets.py",
             "project/settings_*",
             "project/urls.py",
             "project/wsgi.py",

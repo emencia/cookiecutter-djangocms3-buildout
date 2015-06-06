@@ -15,8 +15,8 @@
     "foundation/components/type",
     "foundation/components/tabs";
 
-@import "components/mixins";
-@import "components/addons";
+@import "utils/mixins";
+@import "utils/addons";
 
 #content-main{
     @include foundation-content-base;
