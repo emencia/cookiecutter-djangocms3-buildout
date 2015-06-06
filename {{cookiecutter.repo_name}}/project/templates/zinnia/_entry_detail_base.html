@@ -4,9 +4,9 @@
   <div class="entry-header">
     {% block entry-title %}
         {% if continue_reading %}
-        <h3 class="entry-title"><a href="{{ object.get_absolute_url }}" title="{{ object.title }}" rel="bookmark">{{ object.title }}</a></h3>
-        {% else %}
         <h2 class="entry-title"><a href="{{ object.get_absolute_url }}" title="{{ object.title }}" rel="bookmark">{{ object.title }}</a></h2>
+        {% else %}
+        <h1 class="entry-title"><a href="{{ object.get_absolute_url }}" title="{{ object.title }}" rel="bookmark">{{ object.title }}</a></h1>
         {% endif %}
     {% endblock %}
     <p class="entry-info">

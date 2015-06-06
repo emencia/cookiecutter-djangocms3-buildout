@@ -7,8 +7,8 @@
 
 {% block link %}
     {{ block.super }}
-    {% comment %}<link rel="shortlink" href="{{ object.short_url }}" />{% endcomment %}
-    <link rel="canonical" href="{{ object.get_absolute_url }}" />
+    {% comment %}<link rel="shortlink" href="{{ object.short_url }}">{% endcomment %}
+    <link rel="canonical" href="{{ object.get_absolute_url }}">
 {% endblock %}
 
 {% block content %}

@@ -5,12 +5,12 @@
 
     {% block content-title %}
         {% if category %}
-            <h2>{% blocktrans %}{{ category }}{% endblocktrans %}</h2>
+            <h1>{% blocktrans %}{{ category }}{% endblocktrans %}</h1>
             {% if category.description %}
                 <p>{{ category.description|striptags|safe }}</p>
             {% endif %}
         {% else %}
-            <h2>{% trans "News" %}</h2>
+            <h1>{% trans "News" %}</h1>
         {% endif %}
     {% endblock %}
 

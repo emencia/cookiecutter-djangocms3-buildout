@@ -5,6 +5,11 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.7.1 - 2015/06/06
+--------------------------
+
+* Fix some included html templates to use ``<h1>`` instead of ``<h2>``, although Django apps templates probably all use ``<h2>`` again, so we will need to override them;
+
 Version 0.7.0 - 2015/06/06
 --------------------------
 

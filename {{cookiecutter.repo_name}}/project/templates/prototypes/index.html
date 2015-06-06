@@ -2,7 +2,7 @@
 
 {% block base_content %}
 <div class="row">
-    <h2>Prototypes</h2>
+    <h1>Prototypes</h1>
 
     <ul>{% for url_pattern,template_name,url_name in page_map %}
         <li><a href="{% url url_name %}">{{ template_name }}</a></li>
