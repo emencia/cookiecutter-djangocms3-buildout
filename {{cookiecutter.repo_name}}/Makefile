@@ -24,6 +24,7 @@ clean: delpyc
 	rm -Rf bin include eggs lib parts django-apps-src develop-eggs local .installed.cfg compass/.sass-cache project/webapp_statics/.webassets-cache
 
 assets:
+	rm -f project/static/css/app.*.css project/static/css/modernizr.*.css project/static/js/app.*.js
 	django-instance collectstatic --pythonpath=project/ --noinput
 	django-instance assets build --pythonpath=project/
 	django-instance collectstatic --pythonpath=project/ --noinput
