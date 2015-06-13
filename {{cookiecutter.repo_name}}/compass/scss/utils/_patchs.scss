@@ -27,3 +27,8 @@ ul.pagination li{
     font-weight: 400;
 }
 
+// Remove unecessary bottom margin from buttons into paragraphs
+p > .button,
+p > button{
+    margin-bottom: 0;
+}

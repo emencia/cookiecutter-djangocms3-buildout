@@ -4,16 +4,17 @@
 // Available percentage sizes
 // Sizes like 18 is when you want a 20% container but with 1% horizontal 
 // marging (1+18+1=20)
-$flex-inline-list-sizes: 18 20 23 25 31 33 48 50 73 75 98 100 !default;
+$flex-inline-list-sizes: 18 20 23 25 31.3333 33.3333 48 50 73 75 98 100 !default;
 
 /*
  * Mixin to create cells widths with flexbox
  */
-@mixin flex-inline-list-classes($sizes, $viewport: small) {
+@mixin -emencia-flex-inline-list-classes($sizes, $viewport: small) {
     @each $size in $sizes{
         $width: $size / 100;
+        $name: floor($size);
         // Will name it like "&.small-50"
-        &>.#{$viewport}-#{$size} {
+        &>.#{$viewport}-#{$name} {
             @include flex(1 0 percentage($width));
             max-width: percentage($width);
         }
@@ -24,11 +25,12 @@ $flex-inline-list-sizes: 18 20 23 25 31 33 48 50 73 75 98 100 !default;
  * Mixin to create "simple" cells widths
  * Mixin to simulate inline list, used as a fallback
  */
-@mixin simulate-inline-list-classes($sizes, $viewport: small) {
+@mixin -emencia-simulate-inline-list-classes($sizes, $viewport: small) {
     @each $size in $sizes{
         $width: $size / 100;
+        $name: floor($size);
         // Will name it like "&.small-50"
-        &>.#{$viewport}-#{$size} {
+        &>.#{$viewport}-#{$name} {
             width: percentage($width);
         }
     }
@@ -51,21 +53,85 @@ html.flexbox{
             margin: 0;
             list-style-type: none;
             
+            &>.row{
+                margin: 0;
+            }
         }
+        
         @media #{$small-up} {
-            @include flex-inline-list-classes($flex-inline-list-sizes, $viewport: small);
+            @include -emencia-flex-inline-list-classes($flex-inline-list-sizes, $viewport: small);
         }
         @media #{$medium-up} {
-            @include flex-inline-list-classes($flex-inline-list-sizes, $viewport: medium);
+            @include -emencia-flex-inline-list-classes($flex-inline-list-sizes, $viewport: medium);
         }
         @media #{$large-up} {
-            @include flex-inline-list-classes($flex-inline-list-sizes, $viewport: large);
+            @include -emencia-flex-inline-list-classes($flex-inline-list-sizes, $viewport: large);
         }
         @media #{$xlarge-up} {
-            @include flex-inline-list-classes($flex-inline-list-sizes, $viewport: xlarge);
+            @include -emencia-flex-inline-list-classes($flex-inline-list-sizes, $viewport: xlarge);
         }
         @media #{$xxlarge-up} {
-            @include flex-inline-list-classes($flex-inline-list-sizes, $viewport: xxlarge);
+            @include -emencia-flex-inline-list-classes($flex-inline-list-sizes, $viewport: xxlarge);
+        }
+        
+        // Some inner padding on cells
+        &.padded .cell{
+            padding: 0 1%;
+        }
+        @media #{$small-up} {
+            &.small-padded .cell{
+                padding: 0 1%;
+            }
+        }
+        @media #{$medium-up} {
+            &.medium-padded .cell{
+                padding: 0 1%;
+            }
+        }
+        @media #{$large-up} {
+            &.large-padded .cell{
+                padding: 0 1%;
+            }
+        }
+        @media #{$xlarge-up} {
+            &.xlarge-padded .cell{
+                padding: 0 1%;
+            }
+        }
+        @media #{$xxlarge-up} {
+            &.xxlarge-padded .cell{
+                padding: 0 1%;
+            }
+        }
+        
+        // Some inner padding on cells
+        &.marged .cell{
+            margin: 0 1%;
+        }
+        @media #{$small-up} {
+            &.small-marged .cell{
+                margin: 0 1%;
+            }
+        }
+        @media #{$medium-up} {
+            &.medium-marged .cell{
+                margin: 0 1%;
+            }
+        }
+        @media #{$large-up} {
+            &.large-marged .cell{
+                margin: 0 1%;
+            }
+        }
+        @media #{$xlarge-up} {
+            &.xlarge-marged .cell{
+                margin: 0 1%;
+            }
+        }
+        @media #{$xxlarge-up} {
+            &.xxlarge-marged .cell{
+                margin: 0 1%;
+            }
         }
     }
 }
@@ -80,19 +146,19 @@ html.no-flexbox{
             @extend .columns;
         }
         @media #{$small-up} {
-            @include simulate-inline-list-classes($flex-inline-list-sizes, $viewport: small);
+            @include -emencia-simulate-inline-list-classes($flex-inline-list-sizes, $viewport: small);
         }
         @media #{$medium-up} {
-            @include simulate-inline-list-classes($flex-inline-list-sizes, $viewport: medium);
+            @include -emencia-simulate-inline-list-classes($flex-inline-list-sizes, $viewport: medium);
         }
         @media #{$large-up} {
-            @include simulate-inline-list-classes($flex-inline-list-sizes, $viewport: large);
+            @include -emencia-simulate-inline-list-classes($flex-inline-list-sizes, $viewport: large);
         }
         @media #{$xlarge-up} {
-            @include simulate-inline-list-classes($flex-inline-list-sizes, $viewport: xlarge);
+            @include -emencia-simulate-inline-list-classes($flex-inline-list-sizes, $viewport: xlarge);
         }
         @media #{$xxlarge-up} {
-            @include simulate-inline-list-classes($flex-inline-list-sizes, $viewport: xxlarge);
+            @include -emencia-simulate-inline-list-classes($flex-inline-list-sizes, $viewport: xxlarge);
         }
     }
 }

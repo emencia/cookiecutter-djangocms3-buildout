@@ -1,13 +1,12 @@
 @import "components/icomoon";
 
-/*
- * Mixin to remove unit from a number
+/* 
+ * **
+ * Common addons
+ * **
  */
-@function strip-units($number) {
-    @return $number / ($number * 0 + 1);
-}
 
-// Duplicate hX behaviors for paragraph
+// Duplicate titles behavior for simple paragraph
 p.title-1{
     @extend h1;
 }
@@ -20,11 +19,116 @@ p.title-3{
 p.title-4{
     @extend h4;
 }
+p.title-5{
+    @extend h5;
+}
+p.title-6{
+    @extend h6;
+}
+
+// Remove all margins
+.unmarged{
+    margin: 0;
+}
+
+// Panel addons
+.panel{
+    h1:first-child,
+    h2:first-child,
+    h3:first-child,
+    h4:first-child,
+    h5:first-child,
+    h6:first-child,
+    p:first-child{
+        margin-top: 0 !important;
+    }
+}
+
+// Underlined title
+.underline{
+    &:after{
+        content:"";
+        display: block;
+        width: 5%;
+        height: rem-calc(3px);
+        border-bottom: rem-calc(3px) solid $black;
+    }
+    &.text-center:after{
+        margin: 0 auto 0;
+    }
+}
+.tiny-underline{
+    &:after{
+        @extend .underline:after;
+        width: 5%;
+        border-bottom: rem-calc(1px) solid $black;
+    }
+    &.text-center:after{
+        margin: rem-calc(15px) auto 0;
+    }
+}
+
+
+// Marked title (with a transparent background)
+.highlighted{
+    padding: 0.2em;
+    //font-family: $domine-font-family;
+    color: $LightGrey1;
+    line-height: 1.65;
+    @include text-shadow(rgba(0, 0, 0, 0.5) 1px 1px 1px);
+    box-decoration-break: clone;
+    background-color: rgba(35, 31, 32, 0.8);
+}
+
+
+// Raccourci de positionnement relatif
+.relative-position{
+    position: relative;
+}
+
+// Image en bloc centre
+img.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+// Etire proportionellement l'image a la largeur de son conteneur
+img.expanded{
+    width: 100%;
+    height: auto;
+}
+
+// Sometime we need to separate an img from an another adjacent element
+img.divider{
+    margin-bottom: $paragraph-margin-bottom;
+}
+
+// Easy text shadow class
+.shadow{
+    @include text-shadow(rgba(30, 30, 30, 0.5) 2px 2px 3px);
+}
+
+// Easy uppercase text class
+.upper{
+    text-transform: uppercase;
 
 /*
  * Buttons addons and improvements
  */
 button, .button{
+    /*&.tertiary {
+        color: $RedSoft;
+        background-color: $white;
+        border-color: $RedSoft;
+        border-style: solid;
+        border-width: 1px;
+        
+        &:hover {
+            color: $white;
+            background-color: $RedSoft;
+        }
+    }*/
+
     // Make stronger button
     &.strong{
         font-weight: bold;
@@ -101,11 +205,6 @@ $row-larger-width: 83rem !default;
     }
 }
 
-// Remove all margins
-.unmarged{
-    margin: 0;
-}
-
 /*
  * Supplementary divider classes
  */
@@ -125,31 +224,22 @@ $row-larger-width: 83rem !default;
     }
 }
 
- 
-/* 
- * **
- * Common addons
- * **
+
+
+/*
+ * Define sections containers
  */
-
-// Raccourci de positionnement relatif
-.relative-position{
-    position: relative;
-}
-
-// Image en bloc centre
-img.centered{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-// Etire proportionellement l'image a la largeur de son conteneur
-img.expanded{
-    width: 100%;
-    height: auto;
-}
-
-// Sometime we need to separate an img from an another adjacent element
-img.divider{
-    margin-bottom: $paragraph-margin-bottom;
+.section{
+    padding: rem-calc(15px) 0;
+    background-color: $white;
+    
+    @media #{$medium-up} {
+        padding: rem-calc(30px) 0;
+    }
+    @media #{$large-up} {
+        padding: rem-calc(50px) 0;
+    }
+    @media #{$xlarge-up} {
+        padding: rem-calc(65px) 0;
+    }
 }
