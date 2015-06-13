@@ -5,6 +5,13 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.7.2 - 2015/06/13
+--------------------------
+
+* Added some cleaning when using 'make assets' command;
+* Updated some scss, Enabled default icomoon webfont;
+* Updated some docs;
+
 Version 0.7.1 - 2015/06/06
 --------------------------
 

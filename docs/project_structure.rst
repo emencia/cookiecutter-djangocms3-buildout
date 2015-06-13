@@ -43,11 +43,15 @@ Project embeds a ``Makefile`` file that contains some usefull commands to build 
 * ``delpyc`` to remove all ``*.pyc`` files, this is recursive from the current directory;
 * ``assets`` to minify all assets and collect static files;
 * ``scss`` to compile all SCSS stuffs with Compass;
+* ``tar_data`` to dump applications datas to json files and copying medias then put them all in a tarball;
+* ``import_db`` to import dumped datas, this will use syncdb so remove/drop your database before;
 
-Foundation
-**********
+Compass+Foundation
+******************
 
-Default SCSS are made for `Foundation`_ and all templates are integrated using `Foundation`_ components. A complete `Foundation`_ 5 install is embedded into the project to work from the first time.
+Default SCSS are made for `Foundation`_ (version 5.4.7) and compiled with `Compass`_ (version >= 0.12, <1.0). 
+
+Shipped templates are integrated using `Foundation`_ components and created project embeds css compiled with the SCSS sources from the ``compass`` directory.
 
 Adding application
 ******************

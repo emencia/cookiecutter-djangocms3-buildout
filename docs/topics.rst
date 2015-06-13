@@ -141,9 +141,9 @@ Assets management
 Why
 ---
 
-In the past, assets management was painful with some projects, because their includes was often divided in many different templates. This causing issues like to update some library or retrieve effective code that was working on some template by inherit.
+In the past, assets management was painful with some projects, because their includes was often divided in many different templates. This was causing issues to update some library or retrieve some code.
 
-Also, this often results in pages loading dozen of asset files and sometime much more. This is a really bad behavior because it slows page loading and add useless performance charge on the web server.
+Often it resulted also in pages loading dozen of asset files and sometime much more. This was really a bad behavior because it slowed pages loading and added useless performance charge on the web server.
 
 This is why we use an **asset manager** called `django-assets`_ which is a subproject of `webassets`_. Firstly read the `webassets`_ documentation to understand how is working its **Bundle** system. Then you can read the `django-assets`_ that is only related about `Django`_ usage with the settings, templatetags, etc..
 
@@ -169,6 +169,7 @@ Project have a ``make assets`` command that is useful **on integration and produ
 
 What does this command :
 
+#. Remove some previous minified assets;
 #. Collecting all static files from your project and installed apps to your ``settings.STATIC_ROOT`` directory;
 #. Use `django-assets`_ to *compile* all defined bundles using previously collected files;
 #. Re-collecting static files again to collect the compiled bundle files;
@@ -191,12 +192,12 @@ All static files sources will go in the ``project/webapp_statics`` directory, it
     ASSETS_ROOT = join(PROJECT_PATH, 'webapp_statics/')
     STATICFILES_DIRS += (ASSETS_ROOT,)
 
-This way we allways have separated directories for the sources and the compiled files. This is required to never commit compiled files and avoid conflict between development and production.
+This way, we allways have separated directories for the sources and the compiled files. This is required to never commit compiled files and avoid conflicts between development and production environments.
 
 The rule
 --------
 
-Never, ever, put CSS stylesheets in your templates, NEVER. You can forget it, this will go in production and forgeted for a long time, this can be painful for other developers that coming after you. So **always add CSS stylesheets by the way of SCSS sources** using `Compass`_.
+Never, ever, put CSS stylesheets in your templates, NEVER. You can forget them and they will be deployed in production and forgeted, this can be painful for other developers that coming after you. So **always add CSS stylesheets by the way of SCSS sources** using `Compass`_.
 
 For Javascript code this is different, sometime we need to generate some code using `Django`_ templates for some specific cases. But if you use a same Javascript code in more than one template (using inheriting or so), you must move the code to a Javascript file.
 
