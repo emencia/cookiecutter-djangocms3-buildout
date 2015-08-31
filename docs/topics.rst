@@ -6,6 +6,7 @@
 .. _Compass: http://compass-style.org/
 .. _SCSS: http://sass-lang.com/
 .. _rvm: http://rvm.io/
+.. _rvm gemsets: https://rvm.io/gemsets
 .. _icomoon: http://icomoon.io/
 .. _django-assets: http://django-assets.readthedocs.org/en/latest/
 .. _webassets: http://webassets.readthedocs.org/en/latest/
@@ -49,7 +50,60 @@ RVM
 
 Difference is that it's intended for parallel installations of different **Ruby** versions without mixing gems (the **Ruby** application packages) from all Ruby version. In our scenario, it allows you to install a recent version of **Ruby** without affecting your system installation.
 
-This is not required, just an usefull tip to know when developing on old systems with outdated packages.
+This is not required, just an usefull tip to know when developing on old systems with outdated packages or to be able to develop on various projects that don't share the same Compass/Foundation versions.
+
+Gem sets
+........
+
+Another usefull feature from `rvm`_, it allows you to have multiple environments for specific Ruby versions, each of those environments will have their own Gems (that is called a Gemset).
+
+This is really usefull for case where you have to manage projects which depends on differents Foundation versions so you don't have to scratch your head with dependancies conflicts and so be able to develop on multiple Foundation versions.
+
+So once rvm is installed you can do the following command: ::
+
+    rvm list gemsets
+
+It should displays the following results: ::
+
+    rvm gemsets
+
+       ruby-1.9.3-p545 [ x86_64 ]
+       ruby-1.9.3-p545@global [ x86_64 ]
+    => ruby-2.1.1 [ x86_64 ]
+       ruby-2.1.1@global [ x86_64 ]
+
+Ruby version may depends on your system. The current enabled Ruby version is prefixed with ``=>``.
+
+Our sample scenario is Ruby version 2.1.1 with Foundation 5.4.x installed that depends on Compass 0.12.x or better and we need to be able to work also with Foundation 5.5.x that depends on Compass 1.x or better.
+
+So first create the new Gemset to receive Foundation 5.5.x install, we will call it ``foundation55``: ::
+
+    rvm gemset create foundation55
+
+It should results on something like that: ::
+
+    ruby-2.1.1 - #gemset created /home/emencia/.rvm/gems/ruby-2.1.1@foundation55
+    ruby-2.1.1 - #generating foundation55 wrappers.........
+
+So now the ``foundation55`` gemset is created, we can switch to it: ::
+
+    rvm 2.1.1@foundation55
+
+This is a fresh new install with only very basic gems, you can see them doing (you can compare with default gemsets switching again to it): ::
+
+    gem list --local
+
+And finally we will install the needed gems: ::
+
+    gem install sass -v 3.4.0
+    gem install compass -v 1.0
+    gem install foundation -v 1.0.4
+
+It's done now you can compile SCSS using Foundation 5.5.x. If you want to switch back on the gemset to compile Foundation 5.4.x, you just have to do: ::
+
+    rvm 2.1.1
+
+More details can be finded on documentation `rvm gemsets`_.
 
 Webfonts
 ********

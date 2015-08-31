@@ -83,14 +83,14 @@ Be careful TO NOT ENABLE IN PRODUCTION some integration stuff like page prototyp
 
 if sitemaps:
     # Full sitemap
-    urlpatterns += patterns('django.contrib.sitemaps.views',
+    urlpatterns = patterns('django.contrib.sitemaps.views',
         url(r'^sitemap\.xml$', 'sitemap', {'sitemaps': sitemaps}),
         ## Use sitemap framework to build a JSON map of all resssources
         #url(r'^sitemap\.json$', 'sitemap', {'sitemaps': sitemaps, 'template_name': 'sitemap.json', 'content_type': 'application/json; charset=utf-8'}),
     ) + urlpatterns
 
     ## Sitemap divised into an index + sections
-    #urlpatterns += patterns('django.contrib.sitemaps.views',
+    #urlpatterns = patterns('django.contrib.sitemaps.views',
         #url(r'^sitemap.xml$', 'index', {'sitemaps': sitemaps}),
         #url(r'^sitemap-(?P<section>.+)\.xml$', 'sitemap', {'sitemaps': sitemaps}),
     #) + urlpatterns

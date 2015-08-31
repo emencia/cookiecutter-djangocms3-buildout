@@ -5,6 +5,14 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.7.3 - 2015/08/31
+--------------------------
+
+* Updated docs to add tips about *RVM Gemsets*;
+* Fixed ``django-reversion==1.8.7`` for issue #27;
+* Fixed *sitemap* mod ``urls.py``, close #28;
+
+
 Version 0.7.2 - 2015/06/13
 --------------------------
 
