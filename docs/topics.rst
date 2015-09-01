@@ -22,29 +22,8 @@ Common topics around project usage
 
 Additionally to `Django`_ a created project is based on many other tools you should know, here are their topics.
 
-Compass
-*******
-
-`Compass`_ is a **Ruby** tool used to compile `SCSS`_ sources in **CSS**.
-
-By default, a `Django`_ project has its `SCSS`_ sources in the ``compass/scss/`` directory. The CSS `Foundation`_ framework is used as the database.
-
-A recent install of Ruby and Compass is required first for this purpose (see `RVM`_ if your system installation is not up to date).
-
-Once installed, you can then compile the sources on demand. Simply go to the ``compass/`` directory and launch this command: ::
-
-    compass compile
-
-When you are working uninterruptedly on the sources, you can simply launch the following command: ::
-
-    compass watch
-
-`Compass`_ will monitor the directory of sources and recompile the modified sources automatically.
-
-By default the ``compass/config.rb`` configuration file (the equivalent of `settings.py`` in `Django`_) is used. If needed, you can create another one and specify it to `Compass`_ in its command (for more details, see the documentation).
-
 RVM
----
+***
 
 `rvm`_ is somewhat like what `virtualenv`_ is to Python: a virtual environment. 
 
@@ -53,7 +32,7 @@ Difference is that it's intended for parallel installations of different **Ruby*
 This is not required, just an usefull tip to know when developing on old systems with outdated packages or to be able to develop on various projects that don't share the same Compass/Foundation versions.
 
 Gem sets
-........
+--------
 
 Another usefull feature from `rvm`_, it allows you to have multiple environments for specific Ruby versions, each of those environments will have their own Gems (that is called a Gemset).
 
@@ -96,6 +75,7 @@ This is a fresh new install with only very basic gems, you can see them doing (y
 And finally we will install the needed gems: ::
 
     gem install sass -v 3.4.0
+    gem install chunky_png -v 1.3.3
     gem install compass -v 1.0
     gem install foundation -v 1.0.4
 
@@ -104,6 +84,52 @@ It's done now you can compile SCSS using Foundation 5.5.x. If you want to switch
     rvm 2.1.1
 
 More details can be finded on documentation `rvm gemsets`_.
+
+Usefull various commands
+------------------------
+
+*This sample use the scenario previously saw in `Gem sets`_.*
+
+List the installed gems on the current environment: ::
+
+    gem list --local
+
+Launch a minimal webserver to display some usefull details about installed gems (it will be reachable in your webbrowser using the machine IP and port 8808): ::
+
+    gem server -b 0.0.0.0
+
+Want to empty a gemsets from all installed gems (except the basic ones): ::
+
+    rvm gemset empty foundation55
+
+Backup your gems list to a file: ::
+
+    rvm gemset export foundation55.gems
+
+Import your backuped gem list file: ::
+
+    rvm gemset import foundation55.gems
+
+Compass
+*******
+
+`Compass`_ is a **Ruby** tool used to compile `SCSS`_ sources in **CSS**.
+
+By default, a `Django`_ project has its `SCSS`_ sources in the ``compass/scss/`` directory. The CSS `Foundation`_ framework is used as the database.
+
+A recent install of Ruby and Compass is required first for this purpose (see `RVM`_ if your system installation is not up to date).
+
+Once installed, you can then compile the sources on demand. Simply go to the ``compass/`` directory and launch this command: ::
+
+    compass compile
+
+When you are working uninterruptedly on the sources, you can simply launch the following command: ::
+
+    compass watch
+
+`Compass`_ will monitor the directory of sources and recompile the modified sources automatically.
+
+By default the ``compass/config.rb`` configuration file (the equivalent of `settings.py`` in `Django`_) is used. If needed, you can create another one and specify it to `Compass`_ in its command (for more details, see the documentation).
 
 Webfonts
 ********
