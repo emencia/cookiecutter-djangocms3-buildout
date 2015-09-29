@@ -54,3 +54,5 @@ import_db:
 	@echo "Running data loading from dump directory"
 	@bin/dataload
 
+reload:
+	echo r > var/uwsgi.fifo
