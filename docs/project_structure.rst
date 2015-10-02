@@ -184,6 +184,17 @@ A simple contact form that is more of a standard template than a full-blown appl
 
 By default, it uses the `recaptcha`_ mods.
 
+cookie_law
+----------
+
+.. _Emencia Cookie Law: https://github.com/emencia/emencia-cookie-law
+
+To comply to the *European Cookie Law*, `Emencia Cookie Law`_ contain a 
+simple kit to easily display a banner about the Cookie law.
+
+You can easily style the banner elements using CSS or even override the 
+banner template to fit to the project design.
+
 crispy_forms
 ------------
 
@@ -258,6 +269,23 @@ Add `django-google-tools`_ to your project to manage the tags for *Google Analyt
 
 .. note::
         The project is filled with a custom template ``project/templates/googletools/analytics_code.html`` to use Google Universal Analytics, remove it to return to the old Google Analytics.
+
+icomoon
+-------
+
+.. _Django Icomoon: https://github.com/sveetch/django-icomoon
+
+`Django Icomoon`_ display a gallery of all your defined Icomoon webfonts. It won't work with a webfont not generated on Icomoon site because it depends on a JSON manifest file.
+
+Default behavior is to search for the JSON manifest file at ``project/webapp_statics/fonts/selection.json``, so when you deploy an icomoon webfont you have to put there the ``selection.json`` file given into the download ZIP archive.
+
+If you have more than one Icomoon webfont in your project, you can define more manifest to search for, read the documentation for more details.
+
+Once the JSON manifest installed, along the webfont files, you can reach the gallery at : ::
+
+    /icomoon/
+
+Default behavior is to required to be authenticated to access to the gallery.
 
 logentry
 --------

@@ -72,8 +72,7 @@ p.title-6{
 // Marked title (with a transparent background)
 .highlighted{
     padding: 0.2em;
-    //font-family: $domine-font-family;
-    color: $LightGrey1;
+    color: $white;
     line-height: 1.65;
     @include text-shadow(rgba(0, 0, 0, 0.5) 1px 1px 1px);
     box-decoration-break: clone;
@@ -109,26 +108,14 @@ img.divider{
 }
 
 // Easy uppercase text class
-.upper{
+.text-upper{
     text-transform: uppercase;
+}
 
 /*
  * Buttons addons and improvements
  */
 button, .button{
-    /*&.tertiary {
-        color: $RedSoft;
-        background-color: $white;
-        border-color: $RedSoft;
-        border-style: solid;
-        border-width: 1px;
-        
-        &:hover {
-            color: $white;
-            background-color: $RedSoft;
-        }
-    }*/
-
     // Make stronger button
     &.strong{
         font-weight: bold;

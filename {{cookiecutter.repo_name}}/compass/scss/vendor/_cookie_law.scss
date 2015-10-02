@@ -1,0 +1,16 @@
+/*
+ * Cookie Law banner
+ */
+#cookie-law-container{
+    padding: rem-calc(10px) 0;
+    
+    .explain p{
+        font-size: rem-calc(12px);
+        margin-bottom: rem-calc(5px) !important;
+        
+        &:last-child{
+            margin-bottom: 0 !important;
+        }
+
+    }
+}

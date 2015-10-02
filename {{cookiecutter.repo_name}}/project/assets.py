@@ -157,6 +157,9 @@ AVALAIBLE_BUNDLES.update({
         # Slick.js library
         "js/jquery/slick.js",
         
+        # Emencia Cookie Law plugin
+        "js/cookie_law/cookie_law.js",
+        
         # Some common various addons you can use
         "js/jquery/addons.js",
         

@@ -4025,29 +4025,14 @@ img.divider {
 }
 
 /* line 111, ../../../compass/scss/utils/_addons.scss */
-.upper {
+.text-upper {
   text-transform: uppercase;
 }
 
 /*
  * Buttons addons and improvements
  */
-/* line 118, ../../../compass/scss/utils/_addons.scss */
-button, .button {
-  /*&.tertiary {
-      color: $RedSoft;
-      background-color: $white;
-      border-color: $RedSoft;
-      border-style: solid;
-      border-width: 1px;
-      
-      &:hover {
-          color: $white;
-          background-color: $RedSoft;
-      }
-  }*/
-}
-/* line 133, ../../../compass/scss/utils/_addons.scss */
+/* line 120, ../../../compass/scss/utils/_addons.scss */
 button.strong, .button.strong {
   font-weight: bold;
   text-transform: uppercase;
@@ -4057,28 +4042,28 @@ button.strong, .button.strong {
  * Visually transform a dropdown button into a select list with vertical 
  * scrollbar. This is useful for long list items that can impact on page size
  */
-/* line 143, ../../../compass/scss/utils/_addons.scss */
+/* line 130, ../../../compass/scss/utils/_addons.scss */
 .f-dropdown.overflow {
   overflow: auto;
   height: 12.5rem;
 }
-/* line 147, ../../../compass/scss/utils/_addons.scss */
+/* line 134, ../../../compass/scss/utils/_addons.scss */
 .f-dropdown.overflow.overflow-100 {
   height: 6.25rem;
 }
-/* line 148, ../../../compass/scss/utils/_addons.scss */
+/* line 135, ../../../compass/scss/utils/_addons.scss */
 .f-dropdown.overflow.overflow-150 {
   height: 9.375rem;
 }
-/* line 149, ../../../compass/scss/utils/_addons.scss */
+/* line 136, ../../../compass/scss/utils/_addons.scss */
 .f-dropdown.overflow.overflow-200 {
   height: 12.5rem;
 }
-/* line 150, ../../../compass/scss/utils/_addons.scss */
+/* line 137, ../../../compass/scss/utils/_addons.scss */
 .f-dropdown.overflow.overflow-250 {
   height: 15.625rem;
 }
-/* line 151, ../../../compass/scss/utils/_addons.scss */
+/* line 138, ../../../compass/scss/utils/_addons.scss */
 .f-dropdown.overflow.overflow-300 {
   height: 18.75rem;
 }
@@ -4086,11 +4071,11 @@ button.strong, .button.strong {
 /* 
  * Some usefull stuff for Grids
  */
-/* line 158, ../../../compass/scss/utils/_addons.scss */
+/* line 145, ../../../compass/scss/utils/_addons.scss */
 .row.row-fluid {
   max-width: 100%;
 }
-/* line 161, ../../../compass/scss/utils/_addons.scss */
+/* line 148, ../../../compass/scss/utils/_addons.scss */
 .row.row-fluid .row {
   margin: auto;
   width: 100%;
@@ -4109,42 +4094,42 @@ button.strong, .button.strong {
 .row.row-fluid .row:after {
   clear: both;
 }
-/* line 165, ../../../compass/scss/utils/_addons.scss */
+/* line 152, ../../../compass/scss/utils/_addons.scss */
 .row.row-fluid .row.row-fluid {
   max-width: 100%;
 }
 
 @media only screen and (min-width: 90.063em) {
-  /* line 174, ../../../compass/scss/utils/_addons.scss */
+  /* line 161, ../../../compass/scss/utils/_addons.scss */
   .row.larger {
     max-width: 83rem;
   }
 }
 
-/* line 181, ../../../compass/scss/utils/_addons.scss */
+/* line 168, ../../../compass/scss/utils/_addons.scss */
 .row .columns > .row-inner {
   margin-left: -0.9375rem;
   margin-right: -0.9375rem;
 }
 
-/* line 188, ../../../compass/scss/utils/_addons.scss */
+/* line 175, ../../../compass/scss/utils/_addons.scss */
 .columns.unpadded {
   padding: 0;
 }
 @media only screen and (max-width: 40em) {
-  /* line 192, ../../../compass/scss/utils/_addons.scss */
+  /* line 179, ../../../compass/scss/utils/_addons.scss */
   .columns.small-unpadded {
     padding: 0;
   }
 }
 @media only screen and (min-width: 40.063em) and (max-width: 64em) {
-  /* line 197, ../../../compass/scss/utils/_addons.scss */
+  /* line 184, ../../../compass/scss/utils/_addons.scss */
   .columns.medium-unpadded {
     padding: 0;
   }
 }
 @media only screen and (min-width: 64.063em) and (max-width: 90em) {
-  /* line 202, ../../../compass/scss/utils/_addons.scss */
+  /* line 189, ../../../compass/scss/utils/_addons.scss */
   .columns.large-unpadded {
     padding: 0;
   }
@@ -4153,23 +4138,23 @@ button.strong, .button.strong {
 /*
  * Supplementary divider classes
  */
-/* line 212, ../../../compass/scss/utils/_addons.scss */
+/* line 199, ../../../compass/scss/utils/_addons.scss */
 .row.divider {
   margin-bottom: 0.625rem;
 }
 @media only screen and (min-width: 40.063em) {
-  /* line 212, ../../../compass/scss/utils/_addons.scss */
+  /* line 199, ../../../compass/scss/utils/_addons.scss */
   .row.divider {
     margin-bottom: 1.875rem;
   }
 }
 
-/* line 220, ../../../compass/scss/utils/_addons.scss */
+/* line 207, ../../../compass/scss/utils/_addons.scss */
 .columns.divider {
   margin-bottom: 0.3125rem;
 }
 @media only screen and (min-width: 40.063em) {
-  /* line 220, ../../../compass/scss/utils/_addons.scss */
+  /* line 207, ../../../compass/scss/utils/_addons.scss */
   .columns.divider {
     margin-bottom: 0;
   }
@@ -4178,25 +4163,25 @@ button.strong, .button.strong {
 /*
  * Define sections containers
  */
-/* line 232, ../../../compass/scss/utils/_addons.scss */
+/* line 219, ../../../compass/scss/utils/_addons.scss */
 .section {
   padding: 0.9375rem 0;
   background-color: white;
 }
 @media only screen and (min-width: 40.063em) {
-  /* line 232, ../../../compass/scss/utils/_addons.scss */
+  /* line 219, ../../../compass/scss/utils/_addons.scss */
   .section {
     padding: 1.875rem 0;
   }
 }
 @media only screen and (min-width: 64.063em) {
-  /* line 232, ../../../compass/scss/utils/_addons.scss */
+  /* line 219, ../../../compass/scss/utils/_addons.scss */
   .section {
     padding: 3.125rem 0;
   }
 }
 @media only screen and (min-width: 90.063em) {
-  /* line 232, ../../../compass/scss/utils/_addons.scss */
+  /* line 219, ../../../compass/scss/utils/_addons.scss */
   .section {
     padding: 4.0625rem 0;
   }

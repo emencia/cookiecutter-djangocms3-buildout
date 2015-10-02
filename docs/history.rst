@@ -5,6 +5,16 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.7.6 - 2015/10/01
+--------------------------
+
+* Added and enabled mod for ``emencia-cookie-law``, close #32;
+* Added and enabled mod for ``django-icomoon``, close #31;
+* Updated documentation, close #33 
+* Fixed ``django-crispy-forms`` mod settings for last release, updated to ``crispy-forms-foundation==0.5.3``, #29;
+* Added ``reload`` action to the Makefile, to restart the uwsgi instance on integration or production environment;
+
+
 Version 0.7.3 - 2015/08/31
 --------------------------
 

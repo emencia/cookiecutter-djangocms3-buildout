@@ -7,22 +7,17 @@
 Install
 =======
 
-There is no need to install anything but `Cookiecutter`_, when it's done you can use any `Cookiecutter`_ template directly from a repository (local, hosted on github, etc..).
+There is no need to install anything but `Cookiecutter`_, when it's done you can use any `Cookiecutter`_ templates directly from a repository (local, hosted on github, etc..): ::
 
-.. WARNING::
-   This template require a feature only available since ``cookiecutter==1.1.0`` that is not released yet. 
-   
-   The given PIP requirements file in this repository will help you to install the right version until the release is published.
-   
-   So currently, you will have to install `Cookiecutter`_ using the given ``requirements.txt`` file in this cookiecutter template repository: ::
-   
-       pip install -r https://raw.githubusercontent.com/emencia/cookiecutter-djangocms3-buildout/master/requirements.txt
+    pip install cookiecutter==1.1.0
+
+It's done.
 
 Created projects requirements
 *****************************
 
 .. NOTE::
-   If previously you allready have installed `Epaster`_, you don't have to worry about this.
+   If you allready have installed `Epaster`_, don't worry about this part.
 
 Although the template itself don't need anything but `Cookiecutter`_, a project created with this template will requires some libraries to build it and use it:
 
