@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
+from icomoon.settings import *
 
 INSTALLED_APPS = add_to_tuple(INSTALLED_APPS, 'icomoon')
 
-ICOMOON_MANIFEST_FILEPATH = join(PROJECT_PATH, 'webapp_statics/fonts/selection.json')
-
+ICOMOON_WEBFONTS = {
+    'Default': {
+        'fontdir_path': join(PROJECT_PATH, 'webapp_statics/fonts'),
+        'csspart_path': join(PROJECT_PATH, '..', "compass/scss/components/_icomoon_icons.scss"),
+    },
+}

@@ -5,6 +5,12 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.8.0 Pre release 1 - 2015/10/13
+----------------------------------------
+
+* Updated to ``django-icomoon==0.3.0``;
+* Updated documentation for new methodology with webfont since ``django-icomoon`` usage;
+
 Version 0.7.6 - 2015/10/01
 --------------------------
 

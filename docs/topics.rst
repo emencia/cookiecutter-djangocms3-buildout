@@ -7,7 +7,7 @@
 .. _SCSS: http://sass-lang.com/
 .. _rvm: http://rvm.io/
 .. _rvm gemsets: https://rvm.io/gemsets
-.. _icomoon: http://icomoon.io/
+.. _Icomoon: http://icomoon.io/
 .. _django-assets: http://django-assets.readthedocs.org/en/latest/
 .. _webassets: http://webassets.readthedocs.org/en/latest/
 .. _yuicompressor: http://yui.github.io/yuicompressor/
@@ -15,6 +15,7 @@
 .. _PO-Projects client: https://github.com/sveetch/PO-Projects-client
 .. _Dr Dump: https://github.com/emencia/dr-dump
 .. _emencia-recipe-drdump: https://github.com/emencia/emencia-recipe-drdump
+.. _Django Icomoon: https://github.com/sveetch/django-icomoon
 
 ==================================
 Common topics around project usage
@@ -134,86 +135,31 @@ By default the ``compass/config.rb`` configuration file (the equivalent of `sett
 Webfonts
 ********
 
-Often, we use webfonts to display icons instead of images, because a webfont is more flexible to use (it can take any size without to re-upload it) and more light on file size. It is also more *CSS friendly*.
+Often, we use webfonts to display icons instead of images because this is more flexible to use (can take any size without to re-upload it) and results on less files. It's also more *CSS friendly*.
 
-Commonly we use `icomoon`_ that is a service to pack a selected set of webfonts to a ZIP archive that you can use to easily embed it in your project.
+We use `Icomoon`_ service to build webfont because we can centralize their sources and the service generate a clean ZIP archive containing all needed stuff (all font kind, icon manifest, sample css, etc..).
 
-The first thing is to go on `icomoon`_, create a webfont project and select the needed item from fonts. Then you have a webfont project, you have to download it as a ZIP archive and open it when it's done.
+Within our project We manage it through `Django Icomoon`_ to deploy webfont updates (using the downloaded ZIP) and to display an icon gallery.
 
-When you open the archive, you should something like that : ::
+.. NOTE::
+   `Django Icomoon`_ usage is a new feature (see History for details), it may not be allready configured in your project if too old. But you can easily add it to, it should be compatible from Django '1.4.x' to '1.8.x'.
 
-    icomoon/
-    ├── demo-files
-    │   ├── demo.css
-    │   └── demo.js
-    ├── demo.html
-    ├── fonts
-    │   ├── icomoon.eot
-    │   ├── icomoon.svg
-    │   ├── icomoon.ttf
-    │   └── icomoon.woff
-    ├── Read Me.txt
-    ├── selection.json
-    └── style.css
 
-What we need here is the ``fonts`` directory because it contains the font we need to put in our project assets, and the ``style.css`` file that contain the icons class name *map*.
+Just download the webfont ZIP from your `Icomoon`_ project, put it in your Django project and use the command line (adjust zip file path if needed): ::
 
-So for a created project, first you will copy the fonts directory in ``project/webapp_statics`` into your project, there should allready be a ``fonts`` directory with a default dummy font that is not really used, you can safely overwrite it.
+    django-instance icomoon_deploy Default icomoon.zip
 
-Now open the ``style.css`` from the archive, it should look like this :
+Font files will be deployed to their directory in statics (defined in mod settings) then a SCSS file will be generated so you can directly recompile them to build your CSS.
 
-..  sourcecode:: css
-    :linenos:
+When it's done you can reach the gallery on: ::
 
-    @font-face {
-            font-family: 'icomoon';
-            src:url('fonts/icomoon.eot?n45w4u');
-            src:url('fonts/icomoon.eot?#iefixn45w4u') format('embedded-opentype'),
-                    url('fonts/icomoon.woff?n45w4u') format('woff'),
-                    url('fonts/icomoon.ttf?n45w4u') format('truetype'),
-                    url('fonts/icomoon.svg?n45w4u#icomoon') format('svg');
-            font-weight: normal;
-            font-style: normal;
-    }
-    [class^="icon-"], [class*=" icon-"] {
-            font-family: 'icomoon';
-            speak: none;
-            font-style: normal;
-            font-weight: normal;
-            font-variant: normal;
-            text-transform: none;
-            line-height: 1;
-
-            /* Better Font Rendering =========== */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-    }
+    /icomoon/
     
+.. warning::
+   You need to be authenticated to view the gallery.
 
-    .icon-left:before {
-            content: "\e622";
-    }
-    .icon-right:before {
-            content: "\e623";
-    }
-    .icon-play:before {
-            content: "\e62b";
-    }
-
-Not that there are two parts, the first with ``@font-face`` and ``[class^="icon-"], [class*=" icon-"]``, and the second part with some icon class names. Don't mind about the first part, we allready define it in our SCSS component, just copy the whole second part with all class names for your icons.
-
-Then you will have to fill the class names used in the SCSS components ``compass/scss/components/_icomoon.scss`` in your project, search for this pattern at the end of the file : ::
-
-    // Icon list
-    /*
-    * 
-    * HERE GOES THE ICONS FROM THE style.css bundled in the icomoon archive
-    * 
-    */
-
-And put the pasted icon class names after this pattern.
-
-Finally in ``compass/scss/app.scss`` search for the line containing ``@import "components/icomoon";`` and uncomment it, now you can compile your SCSS and the webfont icons will be available from your ``app.css`` file.
+.. NOTE::
+   There is allready a default webfont installed in your project with some default used icons like those ones required for **Slick.js** plugin. 
 
 Assets management
 *****************
