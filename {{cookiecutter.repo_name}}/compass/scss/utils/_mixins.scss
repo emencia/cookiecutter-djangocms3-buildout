@@ -55,3 +55,55 @@
     h3{ font-size: 21px; }
     h4{ font-size: 18px; }
 }
+
+/*
+ * Mixin to enforce colors (mostly for background and font colors) on elements 
+ * like section, grid row, grid column, etc..
+ * 
+ * Classes names use the background color for reference
+ */
+@mixin emencia-block-color(){
+    // White content on black background
+    &.black{
+        color: $white;
+        background-color: $black;
+        
+        h1,h2,h3,h4,h5,h6,
+        p, li, dd, dt,
+        a, a:hover{
+            color: inherit;
+        }
+        
+        .underline{
+            &:after{
+                border-color: $white;
+            }
+        }
+    }
+    // Black content on white background
+    &.white{
+        color: $black;
+        background-color: $white;
+        
+        h1,h2,h3,h4,h5,h6,
+        p, li, dd, dt,
+        a, a:hover{
+            color: inherit;
+        }
+        
+        .underline{
+            &:after{
+                border-color: $black;
+            }
+        }
+        
+        p, li, dd, dt,
+        a, a:hover{
+            color: inherit;
+        }
+    }
+    // To remove the background color, keeping only border/font colors
+    &.transparent{
+        background-color: transparent;
+    }
+}

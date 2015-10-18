@@ -1,22 +1,25 @@
+@import "foundation/functions";
+
 // 
 // FOUNDATION SETTINGS
 // See utils/_sample_settings.scss for a full list of available settings
 //
 
-// Uncomment to use rem-calc() in your settings
-@import "foundation/functions";
+//
+// Settings overrides goes below
+//
 
-// Control wether a link to google open-sans font is included or not, default is true
+// Control wether a link to google open-sans font is included or not, default 
+// is true. Change value to 'false' if you dont use Open Sans in profit of 
+// other another font, to avoid loading OpenSans for nothing
 $include-open-sans: true;
+
+// Consistant colors names facility
+$white: #ffffff;
+$black: #000000;
 
 // Enable xlarge and xxlarge columns class names into the grid
 $include-xl-html-grid-classes: false;
 
-// Consistant colors names facility, put your color schemes here with color names so you 
-// dont have to search for every colour in all your stylesheets
-$white: #ffffff;
-$black: #000000;
-
-// We use these to control various global styles, put your font names below so dont have 
-// to search for every font name in all of your stylesheets
-$body-font-family: 'Open Sans', Arial, Helvetica, Verdana, sans-serif;
+// Larger row width for xlarge screens and more
+$row-larger-width: rem-calc(1328px);

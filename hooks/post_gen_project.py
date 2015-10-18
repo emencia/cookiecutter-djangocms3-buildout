@@ -11,7 +11,7 @@ import ast, copy, json, os, subprocess, sys
 # Sadly for now we dont have any clean way to automatically get the version from the 
 # template, either using "git describe" or package version because hooks are applied 
 # from the created project and are unaware of cookiecutter template location
-__version__ = "0.8.0-pre1"
+__version__ = "0.8.0"
 
 # Project directory path
 PROJECT_DIR = 'project'
@@ -170,7 +170,7 @@ def repository_init(context, project_dir, test_mode=False):
         call('git', 'add', '.')
     print "* First commit"
     if not test_mode:
-        call('git', 'commit', '-m', "First commit from 'cookiecutter-djangocms3-buildout'")
+        call('git', 'commit', '-m', "First commit from 'cookiecutter-djangocms3-buildout=={}'".format(__version__))
     print "* Configure remote origin on", repository_path
     if not test_mode:
         call('git', 'remote', 'add', 'origin', repository_path)
@@ -186,8 +186,8 @@ def store_project_context(context, project_dir, test_mode=False):
     del c['secret_key']
     del c['_copy_without_render']
     c.update({
-        #'generator': 'cookiecutter-djangocms3-buildout=={0}'.format(get_template_version())
-        'generator': 'cookiecutter-djangocms3-buildout=={0}'.format(__version__)
+        #'generator': 'cookiecutter-djangocms3-buildout=={}'.format(get_template_version())
+        'generator': 'cookiecutter-djangocms3-buildout=={}'.format(__version__)
     })
     
     destination = os.path.join(project_dir, '__init__.py')
@@ -196,11 +196,11 @@ def store_project_context(context, project_dir, test_mode=False):
         content = infile.read().format(cookiecutter_context=json.dumps(c, indent=4))
     
     if not test_mode:
-        print "* Writing context into {0}".format(project_dir)
+        print "* Writing context into {}".format(project_dir)
         with open(destination, 'w') as outfile:
             outfile.write(content)
     else:
-        print "* Pretending to write context into: {0}".format(destination)
+        print "* Pretending to write context into: {}".format(destination)
         
 
 

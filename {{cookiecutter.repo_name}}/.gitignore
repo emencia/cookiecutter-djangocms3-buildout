@@ -25,6 +25,10 @@
 /var/log/uwsgi.log
 /var/log/error.log
 
+# Ruby & Compass
+Gemfile.lock
+.sass-cache
+
 # project db
 *.sqlite3
 

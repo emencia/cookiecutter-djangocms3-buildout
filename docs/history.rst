@@ -5,9 +5,12 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
-Version 0.8.0 Pre release 1 - 2015/10/13
-----------------------------------------
+Version 0.8.0 - 2015/10/18
+--------------------------
 
+* Updated Foundation to ``5.5.3`` version, this require now Compass 1.x install to compile, close #22;
+* Updated Makefile for some Foundation install strategy changes;
+* Updated SCSS to fit to Foundation changes;
 * Updated to ``django-icomoon==0.3.0``;
 * Updated documentation for new methodology with webfont since ``django-icomoon`` usage;
 

@@ -7,18 +7,20 @@ FOUNDATION_VERSION=5.5.3
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo
-	@echo "  install -- to proceed to a new install of this project. Use clean command before if you want to reset a current install"
-	@echo "  install-dev -- to proceed to a new install of this project with additional sources for development"
-	@echo "  clean  -- to clean your local repository from all stuff created by buildout and instance usage"
-	@echo "  delpyc  -- to remove all *.pyc files, this is recursive from the current directory"
+	@echo "  install              -- to proceed to a new install of this project. Use clean command before if you want to reset a current install"
+	@echo "  install-dev          -- to proceed to a new install of this project with additional sources for development"
+	@echo "  install-foundation   -- to install (or re-install) Foundation 5 sources"
+	
+	@echo "  clean                -- to clean your local repository from all stuff created by buildout and instance usage"
+	@echo "  delpyc               -- to remove all *.pyc files, this is recursive from the current directory"
 	@echo
-	@echo "  tar_data   -- to dump applications datas to json files then put them in a tarball"
-	@echo "  import_db  -- to import dumped datas, you should empty the database before"
+	@echo "  assets               -- to minify all assets and collect static files"
+	@echo "  scss                 -- to compile all SCSS stuffs with compass"
 	@echo
-	@echo "  assets -- to minify all assets and collect static files"
-	@echo "  scss -- to compile all SCSS stuffs with compass"
+	@echo "  tar_data             -- to dump applications datas to json files then put them in a tarball"
+	@echo "  import_db            -- to import dumped datas, you should empty the database before"
 	@echo
-	@echo "  reload -- to reload uwsgi instance (for integration and production only)"
+	@echo "  reload               -- to reload uwsgi instance (for integration and production only)"
 	@echo
 
 delpyc:
@@ -51,14 +53,15 @@ install:
 install-dev: install install-foundation syncf5
 
 syncf5:
-	rm -f foundation5/bower_components/foundation/js/vendor/jquery.js
+	@echo "* Updating jQuery sources"
 	cp foundation5/bower_components/jquery/dist/jquery.js foundation5/bower_components/foundation/js/vendor/jquery.js
+	@echo "* Updating Foundation static files"
 	rm -Rf project/webapp_statics/js/foundation5
 	cp -r foundation5/bower_components/foundation/js project/webapp_statics/js/foundation5
-	# Cleaning vendor libs
+	@echo "* Cleaning vendor libs"
 	rm -Rf project/webapp_statics/js/foundation5/vendor
 	mkdir -p project/webapp_statics/js/foundation5/vendor
-	# Getting the real sources for updated vendor libs
+	@echo "* Getting the real sources for updated vendor libs"
 	cp foundation5/bower_components/fastclick/lib/fastclick.js project/webapp_statics/js/foundation5/vendor/
 	cp foundation5/bower_components/foundation/js/vendor/jquery.js project/webapp_statics/js/foundation5/vendor/
 	cp foundation5/bower_components/jquery-placeholder/jquery.placeholder.js project/webapp_statics/js/foundation5/vendor/

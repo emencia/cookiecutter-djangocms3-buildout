@@ -6,7 +6,7 @@ http_path = "/"
 css_dir = "stylesheets"
 sass_dir = "scss"
 images_dir = "images"
-javascripts_dir = "javascripts"
+javascripts_dir = "js"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
@@ -16,7 +16,6 @@ javascripts_dir = "javascripts"
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 # line_comments = false
-
 
 # If you prefer the indented syntax, you might want to regenerate this
 # project again passing --syntax sass, or you can uncomment this:

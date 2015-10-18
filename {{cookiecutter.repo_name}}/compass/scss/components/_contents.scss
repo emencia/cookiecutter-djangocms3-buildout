@@ -1,35 +1,6 @@
 /*
  * Various content styles
  */
-
-// Forces white writing on black background
-.row.black{
-    color: $white;
-    background-color: $black;
-}
-&.on-black{
-    color: $white;
-    background-color: $black;
-    
-    h2, h3, h4, h5, h6, p, li{
-        color: $white;
-    }
-}
-
-// Forces black writing on white background
-.row.white{
-    color: $black;
-    background-color: $white;
-}
-&.on-white{
-    color: $black;
-    background-color: $white;
-    
-    h2, h3, h4, h5, h6, p, li{
-        color: $white;
-    }
-}
-
 /*
  * Common styles for specific cms pages
  */
