@@ -5,6 +5,12 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.8.1 - 2015/10/22
+--------------------------
+
+* Fixed missing ``__init__.py`` in ``project/utils/templatetags``, close #34;
+* Update to ``zinnia-wysiwyg-ckeditor==1.2`` to get rid of ``django-ckeditor-updated`` dependancy and now stands only on ``django-ckeditor``. Note that we don't go to ``zinnia-wysiwyg-ckeditor==1.3`` because it depends on ``django-ckeditor=5.x`` that we didn't audit yet;
+
 Version 0.8.0 - 2015/10/18
 --------------------------
 
