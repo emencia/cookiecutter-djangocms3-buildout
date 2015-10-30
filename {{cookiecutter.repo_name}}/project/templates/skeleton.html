@@ -1,4 +1,4 @@
-{% raw %}{% load i18n cms_tags menu_tags sekizai_tags assets cookie_law %}
+{% raw %}{% load i18n cms_tags menu_tags sekizai_tags assets cookie_law %}{% load static from staticfiles %}
 <!DOCTYPE html>
 <!--[if IE 8]> <html class="{% block html_attr_alt %}{% endblock %}no-js lt-ie9" lang="{{ LANGUAGE_CODE }}"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="{% block html_attr %}{% endblock %}no-js" lang="{{ LANGUAGE_CODE }}"> <!--<![endif]-->
@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>{% block head_title %}{{ SITE.name }}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static "favicon.ico" %}">
     {% comment %}<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">{% endcomment %}
     {% block header_content %}{% spaceless %}
         {% block head_metas %}
@@ -91,7 +91,7 @@
             {% endassets %}
         {% endblock %}
         {% block foot_more_js %}{% endblock %}
-        {% block marketing_stuff %}{% if not DEBUG %}{% include 'marketing_tags.html' %}{% endif %}{% endblock %}
+        {% block marketing_stuff %}{% if not debug %}{% include 'marketing_tags.html' %}{% endif %}{% endblock %}
     {% endspaceless %}
 </body>
 </html>

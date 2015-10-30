@@ -38,13 +38,28 @@ Makefile
 
 Project embeds a ``Makefile`` file that contains some usefull commands to build your project.
 
-* ``install`` to proceed to a new install of this project. Use clean command before if you want to reset a current install;
-* ``clean`` to clean your local repository from all stuff created by buildout and instance usage;
-* ``delpyc`` to remove all ``*.pyc`` files, this is recursive from the current directory;
-* ``assets`` to minify all assets and collect static files;
-* ``scss`` to compile all SCSS stuffs with Compass;
-* ``tar_data`` to dump applications datas to json files and copying medias then put them all in a tarball;
-* ``import_db`` to import dumped datas, this will use syncdb so remove/drop your database before;
+``install``
+    to proceed to a new install of this project. Use clean command before if you want to reset a current install
+``install-dev``
+    to proceed to a new install of this project with additional sources for development
+``install-foundation``
+    to install (or re-install) Foundation 5 sources
+``clean``
+    to clean your local repository from all stuff created by buildout and instance usage
+``delpyc``
+    to remove all *.pyc files, this is recursive from the current directory
+``assets``
+    to minify all assets and collect static files
+``scss``
+    to compile all SCSS stuffs with compass
+``syncf5``
+    to update staticfiles with Foundation sources (use this is you upgrade Foundation sources)
+``tar_data``
+    to dump applications datas to json files then put them in a tarball
+``import_db``
+    to import dumped datas, you should empty the database before
+``reload``
+    to reload uwsgi instance (for integration and production only)
 
 Compass+Foundation
 ******************

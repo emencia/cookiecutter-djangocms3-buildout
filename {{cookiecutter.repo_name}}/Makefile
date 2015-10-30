@@ -9,13 +9,14 @@ help:
 	@echo
 	@echo "  install              -- to proceed to a new install of this project. Use clean command before if you want to reset a current install"
 	@echo "  install-dev          -- to proceed to a new install of this project with additional sources for development"
-	@echo "  install-foundation   -- to install (or re-install) Foundation 5 sources"
+	@echo "  install-foundation   -- to install (or re-install) Foundation sources"
 	
 	@echo "  clean                -- to clean your local repository from all stuff created by buildout and instance usage"
 	@echo "  delpyc               -- to remove all *.pyc files, this is recursive from the current directory"
 	@echo
 	@echo "  assets               -- to minify all assets and collect static files"
 	@echo "  scss                 -- to compile all SCSS stuffs with compass"
+	@echo "  syncf5               -- to update staticfiles with Foundation sources (use this is you upgrade Foundation sources)"
 	@echo
 	@echo "  tar_data             -- to dump applications datas to json files then put them in a tarball"
 	@echo "  import_db            -- to import dumped datas, you should empty the database before"

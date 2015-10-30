@@ -5,6 +5,16 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.8.2 - 2015/10/30
+--------------------------
+
+* Fixed usage of template context variable for ``DEBUG`` setting, seems it's not exposed in context as uppercase since a long time (if even been), it's lowercase now;
+* Fixed Ckeditor custom ``styles.js`` not loaded from mod, close #35;
+* Use staticfiles template tag instead of STATIC_URL in our shipped templates, close #36;
+* Fixed wrong gitignore that caused uncommited foundation5 sources when pushing created new projects to their repository (will need to watch for this gignore changes when eventually update foundation sources from last their version), close #38;
+* Updated to ``emencia-cookie-law==0.2.3``;
+* Added ``django-xiti==0.1.0`` structure (template, mod, etc..) but not installed or enabled on defaut install;
+
 Version 0.8.1 - 2015/10/22
 --------------------------
 

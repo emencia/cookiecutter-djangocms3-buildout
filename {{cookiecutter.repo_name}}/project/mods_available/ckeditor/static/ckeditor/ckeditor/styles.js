@@ -61,7 +61,6 @@ CKEDITOR.stylesSet.add( 'default', [
     { name: 'Subscript',  element: 'sub' },
     { name: 'Superscript',  element: 'sup' },
     */
-    { name: 'Brand',   element: 'span', attributes: { 'class': 'brand' } },
 
     { name: 'Label default',   element: 'span', attributes: { 'class': 'label radius' } },
     { name: 'Label secondary',   element: 'span', attributes: { 'class': 'label radius secondary' } },
