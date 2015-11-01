@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
-    'cms',  # django CMS itself
-    'mptt',  # utilities for implementing a modified pre-order traversal tree
+    'cms',  # Django CMS core
+    'treebeard',  # utilities for implementing a modified pre-order traversal tree
     'menus',  # helper for model independent hierarchical website navigation
-    'south',  # intelligent schema and data migrations
     'sekizai',  # for javascript and css management
     'djangocms_snippet',
-    #'reversion', # raise error on south migration, there is a bug with the last version and django1.6
+    #'reversion', # not really needed for now
 )
 
 MIDDLEWARE_CLASSES += (
@@ -33,3 +32,8 @@ CMS_TEMPLATES = (
 # Uncomment this to enable per-object user permission
 # See http://docs.django-cms.org/en/latest/advanced/permissions_reference.html
 #CMS_PERMISSION = True
+
+# Temporary until all apps have definitively migrated to django migration as default
+MIGRATION_MODULES.update({
+    'djangocms_snippet': 'djangocms_snippet.migrations_django',
+})

@@ -7,8 +7,12 @@ from os.path import abspath, dirname, isfile, join
 
 gettext = lambda s: s
 
-PROJECT_PATH = abspath(dirname(__file__))
-VAR_PATH = join(PROJECT_PATH, '..', 'var')
+# Root of buildout project
+BASE_DIR = dirname(dirname(abspath(__file__)))
+
+# Django project
+PROJECT_PATH = join(BASE_DIR, 'project')
+VAR_PATH = join(BASE_DIR, 'var')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -24,7 +28,7 @@ DATABASES = {
         # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'ENGINE': 'django.db.backends.sqlite3',
         # Database name. Or path to database file if using sqlite3.
-        'NAME': join(PROJECT_PATH, '..', 'database.sqlite3'),
+        'NAME': join(BASE_DIR, 'database.sqlite3'),
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -121,32 +125,18 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
-# List of finder classes that know how to find static files in
-# various locations.
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-)
-
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '{{ cookiecutter.secret_key }}'
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
-)
-
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-{% if cookiecutter.enable_multiple_languages == 'yes' %}
-    'django.middleware.locale.LocaleMiddleware',{% endif %}
-    'django.middleware.common.CommonMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'project.urls'
@@ -160,19 +150,28 @@ TEMPLATE_DIRS = (
     join(PROJECT_PATH, "templates"),
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+)
+
 INSTALLED_APPS = (
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # admin
-    'django.contrib.admin',
-    'django.contrib.admindocs',
-    # South
-    'south',
 )
+
+MIGRATION_MODULES = {}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -213,17 +212,6 @@ LOGGING = {
         },
     }
 }
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.request',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-)
 
 # Otherwise uploaded files larger than FILE_UPLOAD_MAX_MEMORY_SIZE will be
 # written with 0600 permissions, and so Nginx won't be able to serve them.

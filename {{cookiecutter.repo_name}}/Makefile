@@ -48,8 +48,8 @@ install:
 	mkdir -p eggs
 	bin/python bootstrap.py --setuptools-version=7.0 --config-file=buildout.cfg --version=2.2.5
 	bin/buildout -v
-	bin/django-instance syncdb --all
-	bin/django-instance migrate --fake
+	bin/django-instance migrate
+	bin/django-instance createsuperuser
 
 install-dev: install install-foundation syncf5
 

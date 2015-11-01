@@ -1,5 +1,5 @@
 {% extends "zinnia/base.html" %}
-{% load i18n zinnia_tags %}
+{% load i18n zinnia %}
 
 {% block head_title %}{{ object.title }}{% endblock %}
 {% block meta-description %}{% if object.excerpt %}{{ object.excerpt|striptags }}{% else %}{{ object.content|striptags|truncatewords:100 }}{% endif %}{% endblock %}

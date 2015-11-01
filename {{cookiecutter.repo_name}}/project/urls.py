@@ -1,24 +1,19 @@
 # -*- coding: utf-8 -*-
-
-# Import from the Standard Library
 import os
 
-# Import from django
-from django.conf.urls import patterns, include, url
 from django.conf import settings
-from django.views.generic import TemplateView
-
-# Uncomment the next two lines to enable the admin:
+from django.conf.urls import patterns, include, url
 from django.contrib import admin
-admin.autodiscover()
 
 
+# Default base urls
 urlpatterns = patterns('',
     #url(r'^admin/doc/', include('django.contrib.admindocs.urls')), # Cause troubles with docutils usage like with codemirror
     url(r'^admin/', include(admin.site.urls)),
 )
 
-# Mods system
+
+# Mount mods 'urls.py' contents
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 mods = os.path.join(PROJECT_PATH, 'mods_enabled')
 mods = [ os.path.join(mods, x) for x in os.listdir(mods) ]
@@ -28,8 +23,11 @@ for mod in mods:
     if os.path.isfile(mod):
         execfile(mod)
 
-# Debug
+
+# Addditional stuff for enabled Debug mode
 if settings.DEBUG:
+    from django.views.generic import TemplateView
+    
     urlpatterns = patterns('',
         url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),

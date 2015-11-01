@@ -47,7 +47,7 @@ Project embeds a ``Makefile`` file that contains some usefull commands to build 
 ``clean``
     to clean your local repository from all stuff created by buildout and instance usage
 ``delpyc``
-    to remove all *.pyc files, this is recursive from the current directory
+    to remove all ``*.pyc`` files, this is recursive from the current directory
 ``assets``
     to minify all assets and collect static files
 ``scss``
