@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-INSTALLED_APPS = add_to_tuple(INSTALLED_APPS, 'mptt', 'tagging', 'porticus', 'cmsplugin_porticus')
+INSTALLED_APPS = add_to_tuple(INSTALLED_APPS, 'mptt', 'tagging', 'porticus')#, 'cmsplugin_porticus')
 
 PORTICUS_GALLERIES_PAGINATION = PORTICUS_ALBUMS_PAGINATION = PORTICUS_RESSOURCES_PAGINATION = 16
 

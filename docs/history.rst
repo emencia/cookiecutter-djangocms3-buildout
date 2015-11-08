@@ -5,6 +5,12 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.9.0 Pre-release 2 - 2015/11/08
+----------------------------------------
+
+* Enabled again ``porticus`` with Django 1.7 support;
+* Upgraded to ``django-filebrowser-no-grappelli==3.5.8``;
+
 Version 0.9.0 Pre-release 1 - 2015/11/01
 ----------------------------------------
 

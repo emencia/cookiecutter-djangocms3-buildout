@@ -6,7 +6,7 @@
        
         "enable_accounts": "no",
         "enable_contact_form": "no",
-        "enable_porticus": "no",
+        "enable_porticus": "yes",
         "enable_slideshows": "no",
         "enable_socialaggregator": "no",
         "enable_zinnia": "yes",
