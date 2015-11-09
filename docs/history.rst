@@ -5,6 +5,12 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.9.0 Pre-release 3 - 2015/11/08
+----------------------------------------
+
+* Enabled again ``cmsplugin-porticus`` with Django 1.7 support;
+* Upgraded to ``django-cms==3.1.3``;
+
 Version 0.9.0 Pre-release 2 - 2015/11/08
 ----------------------------------------
 
