@@ -5,8 +5,8 @@ server {
     # To limit upload to 50Mb
     #client_max_body_size 50M;
 
-    error_log  /var/log/nginx/{{ parts.VARS.NAME }}_error_log;
-    access_log  /var/log/nginx/{{ parts.VARS.NAME }}_access_log;
+    error_log  /var/log/nginx/{{ parts.VARS.NAME }}_error.log;
+    access_log  /var/log/nginx/{{ parts.VARS.NAME }}_access.log;
 
     {% if parts.VARS.FORCE_REWRITE|as_bool %}
     if ($host !~* ^{{ domain|replace(".","\.") }}) {
@@ -26,7 +26,7 @@ server {
     location /robots.txt {
         alias {{ parts.buildout.directory }}/project/static/default_robots.txt;
     }
-    
+   
     {% endif %}
     #location /protected_medias{
     #    internal;
