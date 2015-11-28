@@ -5,6 +5,13 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.9.0 Pre-release 4 - 2015/11/28
+----------------------------------------
+
+* Upgraded to ``django==1.7.11`` for last security release;
+* Upgraded to ``emencia-django-slideshows==1.0.0`` and enable its mod;
+* Added ``cmsplugin-slideshows==0.1.0``;
+
 Version 0.9.0 Pre-release 3 - 2015/11/08
 ----------------------------------------
 
