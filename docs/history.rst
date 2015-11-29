@@ -5,6 +5,11 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.9.0 Pre-release 5 - 2015/11/29
+----------------------------------------
+
+* Enabled ``djangocms-snippet`` since it has been correctly ported to ``django==1.7.x``. Note that the port result in incompatible migrations and models states with our previous fork snippet;
+
 Version 0.9.0 Pre-release 4 - 2015/11/28
 ----------------------------------------
 
@@ -16,18 +21,19 @@ Version 0.9.0 Pre-release 3 - 2015/11/08
 ----------------------------------------
 
 * Enabled again ``cmsplugin-porticus`` with Django 1.7 support;
+* Upgraded to ``cmsplugin-porticus==0.3`` and enable it;
 * Upgraded to ``django-cms==3.1.3``;
 
 Version 0.9.0 Pre-release 2 - 2015/11/08
 ----------------------------------------
 
-* Enabled again ``porticus`` with Django 1.7 support;
+* Upgraded to ``porticus==1.0.1`` and enable its mod;
 * Upgraded to ``django-filebrowser-no-grappelli==3.5.8``;
 
 Version 0.9.0 Pre-release 1 - 2015/11/01
 ----------------------------------------
 
-From these pre-release, the buildout project install, Django run, CMS and Zinnia works. Still all disabled apps to return at life.
+From this pre-release: the buildout project install, Django run, CMS and Zinnia works. Still have all disabled apps to return to life.
 
 * Disabled many eggs and mods, just keeping DjangoCMS base stuff and knowed apps as compatible >= 1.7;
 * Makefile changes:
@@ -38,7 +44,7 @@ From these pre-release, the buildout project install, Django run, CMS and Zinnia
   
   * Removed ``south`` egg;
   * Disabled eggs ``porticus``, ``emencia-django-slideshows``, ``emencia-django-socialaggregator`` and their dependancy egg versions;
-  * Disabled fixed version for egg ``djangocms-text-ckeditor``, ``djangocms-snippet``, ``django-tagging``, ``django-contrib-comments``, ``oooo``, ``oooo``, ``oooo``;
+  * Disabled fixed version for egg ``djangocms-text-ckeditor``, ``djangocms-snippet``, ``django-tagging``, ``django-contrib-comments``;
   * Upgraded egg ``django`` to ``1.7.10``;
   * Upgraded egg ``djangorecipe`` to ``2.1.1``;
   * Upgraded egg ``django-cms`` to ``3.1.2``;
@@ -59,7 +65,7 @@ From these pre-release, the buildout project install, Django run, CMS and Zinnia
   * Removed ``admin.autodiscover()`` because now Django admin is allready enabled by default;
 
 * Updated ``wsgi.py`` (almost the same, mostly for comments);
-* Fixed default zinnia templates to load tag ``zinnia`` instead of old name ``zinnia_tags``;
+* Fixed default zinnia templates to load tag library ``zinnia`` instead of old name ``zinnia_tags``;
 
 Version 0.8.2 - 2015/10/30
 --------------------------

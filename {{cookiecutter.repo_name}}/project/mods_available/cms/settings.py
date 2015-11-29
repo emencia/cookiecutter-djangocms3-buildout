@@ -9,7 +9,7 @@ INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
 )
 
 MIDDLEWARE_CLASSES += (
-    'django.middleware.doc.XViewMiddleware',
+    'django.middleware.doc.XViewMiddleware', # Provoke some Django deprecation warning for 1.8
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
