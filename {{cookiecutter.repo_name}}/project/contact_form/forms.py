@@ -3,18 +3,17 @@
 Forms for contact forms
 """
 from django.conf import settings
-from django.contrib.sites.models import Site
 from django.core.mail import send_mail
-from django.forms import ModelForm, Textarea
+from django.forms import ModelForm
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 
 from project.utils.context_processors import get_site_metas
 
 from crispy_forms.helper import FormHelper
-from crispy_forms_foundation.layout import Layout, Field, Fieldset, Row, Column, HTML, ButtonHolder, ButtonHolderPanel, Submit, InlineField, InlineJustifiedField
+from crispy_forms_foundation.layout import Field, Row, Column, Submit
 
-from captcha.fields import ReCaptchaField
+#from captcha.fields import ReCaptchaField
 
 from .models import CIVILITY_CHOICES, ContactBase, Contact
 
@@ -62,6 +61,7 @@ class ContactFormBase(ModelForm):
 
     class Meta:
         model = ContactBase
+        fields = ('civility','first_name','last_name','email','message',)
 
 class ContactForm(ContactFormBase):
     """Contact Form"""
@@ -80,3 +80,6 @@ class ContactForm(ContactFormBase):
 
     class Meta:
         model = Contact
+        fields = ('civility','first_name','last_name','email','message',
+                  'phone','company','city','state','country',
+                  'optin_newsletter',)

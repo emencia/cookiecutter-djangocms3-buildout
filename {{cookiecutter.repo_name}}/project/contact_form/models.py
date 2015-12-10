@@ -13,8 +13,9 @@ CIVILITY_CHOICES = (
     (2, _('mr')),
 )
 
+
 class ContactBase(models.Model):
-    """Models for storing contact message"""
+    """Basic model structure for storing contact message"""
     creation_date = models.DateTimeField(_('creation date'), auto_now_add=True)
 
     civility = models.IntegerField(_('civility'), choices=CIVILITY_CHOICES)
@@ -31,8 +32,13 @@ class ContactBase(models.Model):
         verbose_name = _('contact')
         verbose_name_plural = _('contacts')
 
+
 class Contact(ContactBase):
-    """Default enabled model"""
+    """
+    Default enabled model
+    
+    Contains common infos
+    """
     phone = models.CharField(_('phone'), max_length=15)
     company = models.CharField(_('company'), max_length=250, blank=True)
     city = models.CharField(_('city'), max_length=255, blank=True)

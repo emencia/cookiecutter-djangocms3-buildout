@@ -11,7 +11,7 @@ import ast, copy, json, os, subprocess, sys
 # Sadly for now we dont have any clean way to automatically get the version from the 
 # template, either using "git describe" or package version because hooks are applied 
 # from the created project and are unaware of cookiecutter template location
-__version__ = "0.9.0pre5"
+__version__ = "0.9.0pre6"
 
 # Project directory path
 PROJECT_DIR = 'project'
@@ -27,10 +27,9 @@ TEST_CONTEXT = {
     "repo_host": "github.com",
     "secret_key": "DUMMY-KEY",
     "enable_accounts": "yes",
-    "enable_contact_form": "no",
+    "enable_contact_form": "yes",
     "enable_porticus": "yes",
     "enable_slideshows": "yes",
-    "enable_socialaggregator": "no",
     "enable_zinnia": "yes",
     "enable_multiple_languages": "no"
 }

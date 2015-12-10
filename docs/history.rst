@@ -5,6 +5,18 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.9.0 Pre-release 6 - 2015/12/11
+----------------------------------------
+
+* Don't use our ``djangocms-snippet`` fork anymore, instead use the legacy egg in last version ``1.7.1``;
+* Upgraded to ``django-import-export==0.4.0`` and enable it;
+* Upgraded to ``django-recaptcha==1.0.4`` and enable it;
+* Upgraded to ``emencia.django.countries==0.2.1`` and enable it;
+* Enable again the ``contact_form`` mod;
+* Now use new system 'NoCaptcha ReCaptcha' in ``recaptcha`` mod;
+* Add deprecation message in ``socialaggregator`` mod;
+* Fixed ``cms`` mod: changed middleware path from ``django.middleware.doc.XViewMiddleware`` to ``django.contrib.admindocs.middleware.XViewMiddleware`` to avoid deprecation warning;
+
 Version 0.9.0 Pre-release 5 - 2015/11/29
 ----------------------------------------
 

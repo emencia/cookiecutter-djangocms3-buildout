@@ -4,7 +4,7 @@ Admins for contact forms
 from django.contrib import admin
 from django.utils.translation import ugettext as _
 
-# use django-import-export for export contact list
+# use django-import-export to export contact list
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 

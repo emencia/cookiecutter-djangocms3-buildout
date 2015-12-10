@@ -9,7 +9,7 @@ INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
 )
 
 MIDDLEWARE_CLASSES += (
-    'django.middleware.doc.XViewMiddleware', # Provoke some Django deprecation warning for 1.8
+    'django.contrib.admindocs.middleware.XViewMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
@@ -32,8 +32,3 @@ CMS_TEMPLATES = (
 # Uncomment this to enable per-object user permission
 # See http://docs.django-cms.org/en/latest/advanced/permissions_reference.html
 #CMS_PERMISSION = True
-
-# Temporary until all apps have definitively migrated to django migration as default
-MIGRATION_MODULES.update({
-    'djangocms_snippet': 'djangocms_snippet.migrations_django',
-})

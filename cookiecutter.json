@@ -5,10 +5,9 @@
         "repo_host": "github.com",
        
         "enable_accounts": "no",
-        "enable_contact_form": "no",
+        "enable_contact_form": "yes",
         "enable_porticus": "yes",
-        "enable_slideshows": "no",
-        "enable_socialaggregator": "no",
+        "enable_slideshows": "yes",
         "enable_zinnia": "yes",
         "enable_multiple_languages": "no",
        
