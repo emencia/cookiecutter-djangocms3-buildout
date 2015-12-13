@@ -1,9 +1,15 @@
 .. _emencia_paste_djangocms_3: https://github.com/emencia/emencia_paste_djangocms_3
+.. _jquery-smartresize: https://github.com/louisremi/jquery-smartresize
 
 History
 =======
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
+
+Version 0.9.1 - 2015/12/13
+--------------------------
+
+* Added Javascript library `jquery-smartresize`_ for **Debounced and Throttled Resize Events for jQuery**. Not enabled by default. This close #42;
 
 Version 0.9.0 - 2015/12/13
 --------------------------

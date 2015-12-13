@@ -132,6 +132,12 @@ AVALAIBLE_BUNDLES.update({
         # Foundation5 bundle
         AVALAIBLE_BUNDLES['app_foundation5_js'],
         
+        ## Debounce event from jquery-smartresize
+        #"js/jquery/jquery.debouncedresize.js",
+        
+        ## Throttling event from jquery-smartresize
+        #"js/jquery/jquery.throttledresize.js",
+        
         # equalize.js library
         "js/jquery/equalize.js",
         
