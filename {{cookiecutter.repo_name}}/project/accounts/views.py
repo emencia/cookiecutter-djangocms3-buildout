@@ -12,7 +12,7 @@ from registration.backends.default.views import ActivationView as ActView
 from registration.models import RegistrationProfile
 from registration import signals
 
-from .models import UserInfo
+from .models import UserProfile
 from .forms import AuthenticationFormAccounts, PasswordChangeFormAccounts, PasswordResetFormAccounts, SetPasswordFormAccounts, RegistrationFormAccounts
 
 from .email_sender import send_activation_email, send_activation_pending_email, send_confirmation_email
@@ -49,75 +49,61 @@ def password_reset_confirm(*args, **kwargs):
 
 class RegistrationView(RegisView):
     """
-    Overload on Registration class
+    Overload Registration class to fill additional user profile datas and 
+    send activation email to admins
     """
     form_class = RegistrationFormAccounts
+    SEND_ACTIVATION_EMAIL = False
 
-    def register(self, request, **cleaned_data):
-        """
-        Given a username, email address and password, register a new
-        user account, which will initially be inactive.
-
-        Along with the new ``User`` object, a new
-        ``registration.models.RegistrationProfile`` will be created,
-        tied to that ``User``, containing the activation key which
-        will be used for this account.
-
-        Two emails will be sent. First one to the admin; this email should
-        contain an activation link and a resume of the new user infos.
-        Second one, to the user, for inform him that his request is pending.
-
-        After the ``User`` and ``RegistrationProfile`` are created and
-        the activation email is sent, the signal
-        ``registration.signals.user_registered`` will be sent, with
-        the new ``User`` as the keyword argument ``user`` and the
-        class of this backend as the sender.
-
-        """
+    def register(self, request, form):
+        # Note than the 'register' ancestor method will send 'user_registered' 
+        # signal, but at this point all datas are not filled yet. So you 
+        # better not rely on this signal.
+        new_user = super(RegistrationView, self).register(request, form)
+        
         if Site._meta.installed:
             site = Site.objects.get_current()
         else:
             site = RequestSite(request)
-            
-        create_user = RegistrationProfile.objects.create_inactive_user
-        new_user = create_user(
-            cleaned_data['username'],
-            cleaned_data['email'],
-            cleaned_data['password1'],
-            site,
-            send_email=False
-        )
-        new_user.first_name = cleaned_data['first_name']
-        new_user.last_name = cleaned_data['last_name']
+        
+        # Damned 'register' ancestor does not save first and last name..
+        new_user.first_name = form.cleaned_data['first_name']
+        new_user.last_name = form.cleaned_data['last_name']
         new_user.save()
         
-        user_info = UserInfo(
+        # Fill profile
+        user_profile = UserProfile(
             user=new_user,
-            company=cleaned_data['company'],
-            function=cleaned_data['function'],
-            address=cleaned_data['address'],
-            postal_code=cleaned_data['postal_code'],
-            city=cleaned_data['city'],
-            country=cleaned_data['country'],
-            phone=cleaned_data['phone'],
+            company=form.cleaned_data['company'],
+            function=form.cleaned_data['function'],
+            address=form.cleaned_data['address'],
+            postal_code=form.cleaned_data['postal_code'],
+            city=form.cleaned_data['city'],
+            country=form.cleaned_data['country'],
+            phone=form.cleaned_data['phone'],
         )
-        user_info.save()
+        user_profile.save()
         
-        send_activation_email(new_user, site, user_info)
-        send_activation_pending_email(new_user, site, user_info)
-        
-        signals.user_registered.send(sender=self.__class__, user=new_user, request=request)
+        # Send emails to user and admin(s)
+        send_activation_email(new_user, site, user_profile)
+        send_activation_pending_email(new_user, site, user_profile)
         
         return new_user
 
 
 class ActivationView(ActView):
+    """
+    Overload Activation view to send confirmation email when succeeded
+    """
     def activate(self, request, activation_key):
         user = super(ActivationView, self).activate(request, activation_key)
+        
         if Site._meta.installed:
             site = Site.objects.get_current()
         else:
             site = RequestSite(request)
+            
         if user:
             send_confirmation_email(user, site)
+            
         return user

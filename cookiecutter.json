@@ -4,7 +4,7 @@
         "repo_username": "emencia",
         "repo_host": "github.com",
        
-        "enable_accounts": "no",
+        "enable_accounts": "yes",
         "enable_contact_form": "yes",
         "enable_porticus": "yes",
         "enable_slideshows": "yes",

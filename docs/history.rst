@@ -5,13 +5,21 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.9.0 Pre-release 7 - 2015/12/13
+----------------------------------------
+
+* Upgraded to ``django-registration==1.2`` and enable it;
+* Refurbished ``project.accounts`` so it's compatible with ``django-registration==1.2`` and cleaner;
+* Enable again the ``accounts`` mod;
+* This is the last pre release since all components have been proudly ported to ``Django>=1.7``;
+
 Version 0.9.0 Pre-release 6 - 2015/12/11
 ----------------------------------------
 
 * Don't use our ``djangocms-snippet`` fork anymore, instead use the legacy egg in last version ``1.7.1``;
 * Upgraded to ``django-import-export==0.4.0`` and enable it;
 * Upgraded to ``django-recaptcha==1.0.4`` and enable it;
-* Upgraded to ``emencia.django.countries==0.2.1`` and enable it;
+* Upgraded to ``emencia.django.countries==0.2.2`` and enable it;
 * Enable again the ``contact_form`` mod;
 * Now use new system 'NoCaptcha ReCaptcha' in ``recaptcha`` mod;
 * Add deprecation message in ``socialaggregator`` mod;

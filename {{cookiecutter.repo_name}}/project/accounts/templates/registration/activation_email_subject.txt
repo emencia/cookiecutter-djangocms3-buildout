@@ -1,1 +1,1 @@
-{% load i18n %}{% trans "[{{ site.name }}] A request for registration needs your approval." %}
+{% load i18n %}{% blocktrans with site_name=site.name %}[{{ site_name }}] A request for registration needs your approval.{% endblocktrans %}

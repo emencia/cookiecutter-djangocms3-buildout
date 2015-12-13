@@ -2,12 +2,15 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-class UserInfo(models.Model):
+class UserProfile(models.Model):
     """
-    To deprecate, this is not accurate with "Custom model user" capacities 
-    since django 1.5, better should implement it instead
+    User profile datas
+    
+    This is a simple extend to user model:
+    
+        https://docs.djangoproject.com/en/1.7/topics/auth/customizing/#extending-the-existing-user-model
     """
-    user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
+    user = models.OneToOneField(User, verbose_name=_('user'))
 
     company = models.CharField(_('Company'), max_length=100)
     function = models.CharField(_('Function'), max_length=256)

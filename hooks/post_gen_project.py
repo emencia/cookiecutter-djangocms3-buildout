@@ -11,7 +11,7 @@ import ast, copy, json, os, subprocess, sys
 # Sadly for now we dont have any clean way to automatically get the version from the 
 # template, either using "git describe" or package version because hooks are applied 
 # from the created project and are unaware of cookiecutter template location
-__version__ = "0.9.0pre6"
+__version__ = "0.9.0pre7"
 
 # Project directory path
 PROJECT_DIR = 'project'
@@ -249,7 +249,7 @@ if __name__ == "__main__":
     print
     print "   ", repository_path
     print
-    print "Create its repository on your host server then you can push it with:"
+    print "Create its repository on your host server then push it with:"
     print
     print "    git push origin master"
     print
