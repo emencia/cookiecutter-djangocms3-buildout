@@ -28,7 +28,7 @@ delpyc:
 	find . -name "*\.pyc"|xargs rm -f
 
 clean: delpyc
-	rm -Rf bin include eggs lib parts django-apps-src develop-eggs local .installed.cfg compass/.sass-cache project/webapp_statics/.webassets-cache
+	rm -Rf bin pip-selfcheck.json gestus.cfg po_projects.cfg include eggs lib parts django-apps-src develop-eggs local .installed.cfg compass/.sass-cache project/webapp_statics/.webassets-cache
 
 assets:
 	rm -f project/static/css/app.*.css project/static/css/modernizr.*.css project/static/js/app.*.js
@@ -43,10 +43,10 @@ install-foundation:
 
 install:
 	virtualenv --no-site-packages --setuptools $(VIRTUALENV_PYTHON2_ARG) .
-	bin/pip install 'setuptools==7.0'
-	bin/pip install 'pip==1.5.6'
 	mkdir -p eggs
-	bin/python bootstrap.py --setuptools-version=7.0 --config-file=buildout.cfg --version=2.2.5
+	bin/pip install 'setuptools>=19.1'
+	bin/pip install 'pip>=7.1.2'
+	bin/pip install 'zc.buildout==2.5.0'
 	bin/buildout -v
 	bin/django-instance migrate
 	bin/django-instance createsuperuser

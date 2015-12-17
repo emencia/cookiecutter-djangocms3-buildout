@@ -6,6 +6,26 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.9.2 - 2015/12/17
+--------------------------
+
+**Upgrade to buildout 2.5.0** and dependancies:
+
+* Removed ``bootstrap.py``, now we just install buildout throught pip;
+* Upgraded to ``setuptools>=19.1``;
+* Upgraded to ``pip>=7.1.2``;
+* Upgraded to ``buildout==2.5.0``, close #41;
+* Upgraded to ``zc.recipe.egg==2.0.3``;
+* Upgraded to ``buildout.recipe.uwsgi==0.1.1``;
+* Upgraded to ``collective.recipe.cmd==0.11``;
+* Upgraded to ``collective.recipe.template==1.13``;
+* Upgraded to ``djangorecipe==2.1.2``;
+* Updated Makefile ``install`` action for theses changes;
+* Updated ``[uwsgi]`` buildout part since ``buildout.recipe.uwsgi==0.1.1`` deprecate option prefix ``xml-`` in profit of ``config-``;
+* Added ``pip-selfcheck.json``, ``gestus.cfg`` and ``po_projects.cfg`` to Makefile ``clean`` action;
+
+For now we are relaxing again ``setuptools`` and ``pip`` to a knowed working version or better. We may fix a version again in future if we encounter some bug.
+
 Version 0.9.1 - 2015/12/13
 --------------------------
 
