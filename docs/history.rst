@@ -6,6 +6,15 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.9.3 - 2015/12/19
+--------------------------
+
+* Upgraded to ``django-cms==3.1.4``;
+* Upgraded to ``django-admin-shortcuts==1.2.6``;
+* Upgraded to ``djangocms-admin-style==0.2.8``;
+* Updated ``djangocms-admin-style`` SCSS source and recompile them again, it should definitively close issue #39;
+* Removed ``compass/Gemfile`` because it cause too many issues when switching between rvm gemset (like to compile the main scss then the admin one);
+
 Version 0.9.2 - 2015/12/17
 --------------------------
 
