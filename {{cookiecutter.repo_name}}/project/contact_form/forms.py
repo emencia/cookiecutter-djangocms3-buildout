@@ -13,7 +13,7 @@ from project.utils.context_processors import get_site_metas
 from crispy_forms.helper import FormHelper
 from crispy_forms_foundation.layout import Field, Row, Column, Submit
 
-#from captcha.fields import ReCaptchaField
+from captcha.fields import ReCaptchaField
 
 from .models import CIVILITY_CHOICES, ContactBase, Contact
 
@@ -36,10 +36,10 @@ class ContactFormBase(ModelForm):
     required_css_class = 'required'
     mail_subject_template = 'contact_form/contact_form_subject.txt'
     mail_content_template = 'contact_form/contact_form.txt'
-  
+ 
     def __init__(self, *args, **kwargs):
         super(ContactFormBase, self).__init__(*args, **kwargs)
-       
+      
         self.helper = FormHelper()
         self.helper.form_action = '.'
 
@@ -67,12 +67,12 @@ class ContactForm(ContactFormBase):
     """Contact Form"""
     if not settings.DEBUG:
         captcha = ReCaptchaField(attrs={'theme' : 'clean'})
-   
+  
     def __init__(self, *args, **kwargs):
         super(ContactFormBase, self).__init__(*args, **kwargs)
-       
+      
         self.fields['civility'].choices = (('', _('civility')),) + CIVILITY_CHOICES
-       
+      
         self.helper = FormHelper()
         self.helper.attrs = {'data_abide': ''}
         self.helper.form_action = '.'
