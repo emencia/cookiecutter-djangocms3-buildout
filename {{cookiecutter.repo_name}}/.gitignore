@@ -13,7 +13,7 @@
 /build
 /local
 
-# buildout
+# setuptools, buildout, pip, etc..
 *.egg-info
 .installed.cfg
 /develop-eggs
@@ -21,6 +21,7 @@
 /eggs
 /parts
 /etc
+pip-selfcheck.json
 # do not hide /var/log, if does not exist uwsgi refuses to start
 /var/log/uwsgi.log
 /var/log/error.log
