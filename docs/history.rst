@@ -6,6 +6,12 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 0.9.4 - 2016/01/27
+--------------------------
+
+* Enabled again the captcha stuff into basic contact form;
+* Disabled 'codemirror' ckeditor plugin because it caused Javascript error when editing CMS content in source mode. Fact is codemirror plugin is not supported from ckeditor apps, we ship the same version since some times, it probably don't be compatible anymore with current ckeditor lib from ckeditor apps;
+
 Version 0.9.3 - 2015/12/19
 --------------------------
 

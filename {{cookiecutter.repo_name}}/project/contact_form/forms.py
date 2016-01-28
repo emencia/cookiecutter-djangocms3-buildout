@@ -65,8 +65,7 @@ class ContactFormBase(ModelForm):
 
 class ContactForm(ContactFormBase):
     """Contact Form"""
-    if not settings.DEBUG:
-        captcha = ReCaptchaField(attrs={'theme' : 'clean'})
+    captcha = ReCaptchaField(attrs={'theme' : 'clean'})
   
     def __init__(self, *args, **kwargs):
         super(ContactFormBase, self).__init__(*args, **kwargs)
@@ -82,4 +81,4 @@ class ContactForm(ContactFormBase):
         model = Contact
         fields = ('civility','first_name','last_name','email','message',
                   'phone','company','city','state','country',
-                  'optin_newsletter',)
+                  'optin_newsletter', 'captcha')

@@ -20,8 +20,9 @@ CKEDITOR_CONFIGS = CKEDITOR_SETTINGS = {
     # append any code, even bad syntax and malicious code, so be careful
     "removePlugins": "stylesheetparser",
     "allowedContent": True,
-    # Enable some plugins
-    'extraPlugins': 'cmsplugins,codemirror,blockquote,div,justify,showblocks,templates',
+    # Enable some plugins (codemirror is currently disabled because it cause Javascript error)
+    #'extraPlugins': 'cmsplugins,codemirror,blockquote,div,justify,showblocks,templates',
+    'extraPlugins': 'cmsplugins,blockquote,div,justify,showblocks,templates',
     # Justify text using foundation's dedicated class names
     'justifyClasses': [ 'text-left', 'text-center', 'text-right', 'AlignJustify' ],
     # Uncheck the checkbox that replace whole content with the selected template (if any)
@@ -75,7 +76,9 @@ CKEDITOR_CONFIGS = CKEDITOR_SETTINGS = {
         'startupOutlineBlocks': True,
         "removePlugins": "stylesheetparser",
         "allowedContent": True,
-        'extraPlugins': 'blockquote,codemirror,div,justify,magicline,showblocks,templates',
+        # Enable some plugins (codemirror is currently disabled because it cause Javascript error)
+        #'extraPlugins': 'blockquote,codemirror,div,justify,magicline,showblocks,templates',
+        'extraPlugins': 'blockquote,div,justify,magicline,showblocks,templates',
         'justifyClasses': [ 'text-left', 'text-center', 'text-right', 'AlignJustify' ],
         'templates_replaceContent': False,
         'filebrowserBrowseUrl': "/admin/filebrowser/browse?pop=3",
