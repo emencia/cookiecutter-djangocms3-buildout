@@ -1,0 +1,74 @@
+/*
+ * Some usefull stuff for Grids
+ */
+// Larger row max width, default around ~1328px instead of 1000px (depends on your base body font)
+$row-larger-width: 83rem !default;
+
+.row{
+    // Fluid row, take the full width but keep normal row and columns behaviors
+    &.fluid {
+        max-width: 100%;
+        // Restore the initial behavior restrained to the grid
+        .row {
+            margin: auto;
+            @include grid-row;
+            // Preserve nested fluid behavior
+            &.fluid {
+                max-width: 100%;
+            }
+        }
+    }
+
+    // More larger row for extra 
+    // large screens
+    &.larger {
+        @media #{$xlarge-up} {
+            max-width: $row-larger-width;
+        }
+    }
+    
+    // Apply margin bottom on rows
+    &.divider {
+        margin-bottom: rem-calc(10px);
+        @media #{$medium-up} {
+            margin-bottom: rem-calc(30px);
+        }
+    }
+
+    .columns {
+        // By default, columns dont needs of a divider in medium display and up,
+        // because they should probably floating
+        &.divider {
+            margin-bottom: rem-calc(5px);
+            @media #{$medium-up} {
+                margin-bottom: 0;
+            }
+        }
+        
+        // Remove column padding for simple inner
+        &> .row-inner {
+            margin-left: -($column-gutter / 2);
+            margin-right: -($column-gutter / 2);
+        }
+
+        // Remove padding on columns
+        &.unpadded {
+            padding: 0;
+        }
+        @media #{$small-only} {
+            &.small-unpadded {
+                padding: 0;
+            }
+        }
+        @media #{$medium-only} {
+            &.medium-unpadded {
+                padding: 0;
+            }
+        }
+        @media #{$large-only} {
+            &.large-unpadded {
+                padding: 0;
+            }
+        }
+    }
+}

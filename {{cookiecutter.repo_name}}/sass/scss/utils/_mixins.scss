@@ -1,0 +1,201 @@
+//@import "compass/css3";
+// Strip unit from a number value
+// Usage :
+//    strip-units(16px);
+// Will return "16" (as a number)
+@function strip-units($number) {
+    @return $number / ($number * 0 + 1);
+}
+
+// Mixin to make positionning
+@mixin positionning($name: absolute, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $name;
+    @if $top {
+        top: $top;
+    }
+    @if $right {
+        right: $right;
+    }
+    @if $bottom {
+        bottom: $bottom;
+    }
+    @if $left {
+        left: $left;
+    }
+}
+
+// Base stuff to add for content with Foundation
+@mixin global-addons(){
+    // Image en bloc centré
+    img.centered{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    // Etire proportionellement l'image à la largeur de son conteneur
+    img.expanded{
+        width: 100%;
+        height: auto;
+    }
+}
+
+// Shorthand for full border radius (all corners)
+@mixin border-radius($radii){
+    @include border-top-radius($radii);
+    @include border-bottom-radius($radii);
+}
+
+
+
+/*
+ * Mixin to add font and background colors into a container and enforce these 
+ * colors on its elements
+ */
+@mixin emencia-container-colors($font-color, $background-color, $h1-color: null, $h2-color: null, $h3-color: null, $h4-color: null, $h5-color: null, $link-color: null, $link-hover-color: null) {
+    color: $font-color;
+    background-color: $background-color;
+    // optionnal custom titles font color, fallback to common font color
+    $title-level-1-color: if($h1-color, $h1-color, $font-color);
+    $title-level-2-color: if($h2-color, $h2-color, $font-color);
+    $title-level-3-color: if($h3-color, $h3-color, $font-color);
+    $title-level-4-color: if($h4-color, $h4-color, $font-color);
+    $title-level-5-color: if($h5-color, $h5-color, $font-color);
+    $common-link-color: if($link-color, $link-color, inherit);
+    $common-link-hover-color: if($link-hover-color, $link-hover-color, inherit);
+    
+    h1, .title-1{
+        color: $title-level-1-color;
+    }
+    h2, .title-2{
+        color: $title-level-2-color;
+    }
+    h3, .title-3{
+        color: $title-level-3-color;
+    }
+    h4, .title-4{
+        color: $title-level-4-color;
+    }
+    h5, .title-5{
+        color: $title-level-5-color;
+    }
+    h6, .title-6{
+        color: inherit;
+    }
+    
+    a:not(.button){
+        color: $common-link-color;
+        &:hover{
+            color: $common-link-hover-color;
+        }
+    }
+}
+
+
+/*
+ * Vendor prefix for last break-inside syntax (not supported in Compass 0.x)
+ */
+@mixin break-inside($keyword: auto) {
+    -webkit-column-break-inside: $keyword;
+            page-break-inside: $keyword;
+                break-inside: $keyword;
+}
+
+// Base stuff to add for content with Foundation
+@mixin global-addons {
+    // Image en bloc centré
+    img.centered {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    // Etire proportionellement l'image à la largeur de son conteneur
+    img.expanded {
+        width: 100%;
+        height: auto;
+    }
+}
+
+// Base stuff to add for content with Foundation
+@mixin foundation-content-base {
+    .nontabular-table {
+        vertical-align: top;
+    }
+    .table-fiftyfifty td {
+        width: 50%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 400;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 26px;
+    }
+    h3 {
+        font-size: 21px;
+    }
+    h4 {
+        font-size: 18px;
+    }
+}
+
+
+//Calc plugin
+@mixin calc($property, $expression) {
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: calc(#{$expression});
+}
+
+//translate plugin
+@mixin translate($x, $y) {
+    -webkit-transform: translate($x, $y);
+    -moz-transform: translate($x, $y);
+    -o-transform: translate($x, $y);
+    -ms-transform: translate($x, $y);
+    transform: translate($x, $y);
+}
+
+/*
+ * Mixin to render list item pseudo element with custom bullet
+ * 
+ * Default behavior without any arguments is to simply add character '>' as 
+ * the bullet
+ * 
+ * If needed you can use a webfont character instead of a character
+ */
+@mixin -emencia-list-arrow-type(
+    $width: rem-calc(12px),
+    $top-position: 0.75rem,
+    $left-position: rem-calc(-2px),
+    $font-size: null,
+    $font-weight: null,
+    $content: ">",
+    $content-color: $black,
+    $vertical-translate: true,
+    $extended-icon: null
+) {
+    position: absolute;
+    @if $top-position {
+        top: $top-position;
+    }
+    left: $left-position;
+    width: $width;
+    font-family: icomoon;
+    @if $font-size {
+        font-size: $font-size;
+    }
+    @if $font-weight {
+        font-weight: $font-weight;
+    }
+    @if $extended-icon {
+        @extend #{$extended-icon};
+    } @else {
+        content: $content;
+    }
+    color: $content-color;
+    @if $vertical-translate {
+        @include translate(0%, -50%);
+    }
+}

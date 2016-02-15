@@ -15,7 +15,7 @@ help:
 	@echo "  delpyc               -- to remove all *.pyc files, this is recursive from the current directory"
 	@echo
 	@echo "  assets               -- to minify all assets and collect static files"
-	@echo "  scss                 -- to compile all SCSS stuffs with compass"
+	@echo "  scss                 -- to compile all SCSS stuffs with libsass"
 	@echo "  syncf5               -- to update staticfiles with Foundation sources (use this is you upgrade Foundation sources)"
 	@echo
 	@echo "  tar_data             -- to dump applications datas to json files then put them in a tarball"
@@ -68,9 +68,18 @@ syncf5:
 	cp foundation5/bower_components/jquery-placeholder/jquery.placeholder.js project/webapp_statics/js/foundation5/vendor/
 	cp foundation5/bower_components/jquery.cookie/jquery.cookie.js project/webapp_statics/js/foundation5/vendor/
 	cp foundation5/bower_components/modernizr/modernizr.js project/webapp_statics/js/foundation5/vendor/
+	@echo "* Updating Foundation SASS sources"
+	rm -Rf sass/foundation5
+	cp -r foundation5/bower_components/foundation/scss sass/foundation5
 
 scss:
-	compass compile -c compass/config.rb compass/
+	@echo "- Compile 'project/webapp_statics/css/app.css' from 'sass/scss/app.scss'"
+	@sassc --include-path=sass/bourbon --include-path=sass/foundation5 sass/scss/app.scss project/webapp_statics/css/app.css
+	@echo "- Compile 'project/webapp_statics/css/minimal.css' from 'sass/scss/minimal.scss'"
+	@sassc --include-path=sass/bourbon --include-path=sass/foundation5 sass/scss/minimal.scss project/webapp_statics/css/minimal.css
+	@echo "- Compile 'project/webapp_statics/css/ckeditor.css' from 'sass/scss/ckeditor.scss'"
+	@sassc --include-path=sass/bourbon --include-path=sass/foundation5 sass/scss/ckeditor.scss project/webapp_statics/css/ckeditor.css
+	@echo "> Finished"
 
 tar_data:
 	@echo "Running data dump"

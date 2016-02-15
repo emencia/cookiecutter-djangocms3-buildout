@@ -1,0 +1,35 @@
+/*
+ * 
+ * Panels
+ * 
+ */
+.panel {
+    /*
+     * Remove additional titles top margin
+     */
+    h1:first-child,
+    h2:first-child,
+    h3:first-child,
+    h4:first-child,
+    h5:first-child,
+    h6:first-child,
+    p:first-child{
+        margin-top: 0 !important;
+    }
+    
+    /*
+     * Last paragraph in any container never have bottom margin
+     */
+    p:last-child{
+        margin-bottom: 0;
+    }
+    
+    /*
+     * Remove negative children for direct .row elements
+     */
+    &>.row,
+    &> * > .row{
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

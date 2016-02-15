@@ -1,0 +1,86 @@
+/*
+ * 
+ * Sections and colors
+ * 
+ */
+.section {
+    padding: rem-calc(15px) 0;
+    @include emencia-container-colors($black, $white);
+        
+    @media #{$medium-up} {
+        padding: rem-calc(30px) 0;
+    }
+    @media #{$large-up} {
+        padding: rem-calc(50px) 0;
+    }
+    @media #{$xlarge-up} {
+        padding: rem-calc(65px) 0;
+    }
+    // Replicate section padding to direct inner element
+    // TODO: settings responsive padding should be done from a common mixin
+    .inner{
+        @media #{$medium-up} {
+            padding: rem-calc(30px) 0;
+        }
+        @media #{$large-up} {
+            padding: rem-calc(50px) 0;
+        }
+        @media #{$xlarge-up} {
+            padding: rem-calc(65px) 0;
+        }
+    }
+    
+    // Thin padding
+    &.thin,
+    & > .inner.thin{
+        padding: rem-calc(10px) 0;
+        @media #{$medium-up} {
+            padding: rem-calc(15px) 0;
+        }
+    }
+    
+    // Tiny padding
+    &.tiny,
+    & > .inner.tiny{
+        padding: rem-calc(10px) 0;
+        @media #{$medium-up} {
+            padding: rem-calc(15px) 0;
+        }
+        @media #{$large-up} {
+            padding: rem-calc(30px) 0;
+        }
+    }
+    
+    // Taller padding
+    &.tall,
+    & > .inner.tall{
+        padding: rem-calc(20px) 0;
+        @media #{$medium-up} {
+            padding: rem-calc(45px) 0;
+        }
+        @media #{$large-up} {
+            padding: rem-calc(80px) 0;
+        }
+        @media #{$xlarge-up} {
+            padding: rem-calc(90px) 0;
+        }
+    }
+    
+    // Unpadded section or inner element
+    &.unpadded,
+    & > .inner.unpadded{
+        padding:0;
+    }
+    
+    // Color variants
+    &.black{
+        @include emencia-container-colors($white, $black,
+                                          $link-color: $white,
+                                          $h1-color: $white, 
+                                          $h2-color: $white, 
+                                          $h3-color: $white, 
+                                          $h4-color: $white, 
+                                          $h5-color: $white);
+    }
+    
+}

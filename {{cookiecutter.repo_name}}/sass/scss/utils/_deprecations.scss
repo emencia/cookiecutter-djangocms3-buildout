@@ -1,0 +1,40 @@
+/*
+ * To notice about pending deprecation on Compass functions and mixins
+ * 
+ * Some are just convenient/temporary replacement with just a warning 
+ * you can silent when setting '$emencia-compass-deprecation-warning' to 'false'
+ */
+$emencia-compass-deprecation-warning: true !default;
+$emencia-image-directory: 'images/' !default;
+$emencia-font-directory: 'fonts/' !default;
+
+/*
+ * Warning deprecation, can be silented from setting 'sdss' and keep an 'somewhat alike' behavior 
+ * using settings
+ */
+@function font-url($url) {
+    @if $emencia-compass-deprecation-warning {
+        @warn "'font-url' mixin was a Compass custom mixin, it is deprecated now, use conventional 'url(..)' css rule instead.";
+    }
+    @return url($emencia-font-directory + $url);
+}
+
+@function image-url($url) {
+    @if $emencia-compass-deprecation-warning {
+        @warn "'image-url' mixin was a Compass custom mixin, it is deprecated now, use conventional 'url(..)' css rule instead.";
+    }
+    @return url($emencia-image-directory + $url);
+}
+
+/*
+ * Error deprecation, those ones must not be used anymore because we can't reproduce their behavior
+ */
+@function sprite-map($x) {
+    @error "'sprite-map' mixin was a Compass custom mixin, it is now an error to use it, please remove it.";
+    @return $x;
+}
+
+@function sprite-dimensions($x) {
+    @error "'sprite-dimensions' mixin was a Compass custom mixin, it is now an error to use it, please remove it.";
+    @return $x;
+}

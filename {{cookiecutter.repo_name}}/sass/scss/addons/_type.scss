@@ -1,0 +1,178 @@
+/*
+ * Typography and alike
+ */
+
+// Dont use the same font weight for b/strong
+b{
+    font-weight: 600;
+}
+strong{
+    font-weight: 700;
+}
+
+// text-*** name formats
+.text-upper{
+    text-transform: uppercase !important;
+}
+.text-important{
+    text-decoration: underline !important;
+}
+
+.text-thin{
+    font-weight: 300 !important;
+}
+.text-bold{
+    font-weight: 400 !important;
+}
+.text-strong{
+    font-weight: 600 !important;
+}
+
+// Text colors
+.text-black{
+    color: $black !important;
+}
+.text-white{
+    color: $white !important;
+}
+
+// Various <small> modifier
+small{
+    .small{
+        font-size: 40%;
+    }
+    .medium{
+        font-size: 60%; //equivalent to default <small> behavior
+    }
+    .big{
+        font-size: 80%;
+    }
+}
+
+h1, h2, h3, h4, h5, h6{
+    &.text-thin{
+        font-weight: 300 !important;
+    }
+    &.text-normal{
+        font-weight: 400 !important;
+    }
+    &.text-strong{
+        font-weight: 600 !important;
+    }
+}
+
+.title-1{
+    @extend h1;
+}
+.title-2{
+    @extend h2;
+}
+.title-3{
+    @extend h3;
+}
+.title-4{
+    @extend h4;
+}
+.title-5{
+    @extend h5;
+}
+
+// Bigger text
+.big {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+// Underlined element
+.underline{
+    // Base
+    &:after{
+        content:"";
+        display: block;
+        width: 50%;
+        height: rem-calc(3px);
+        margin: 1rem 0;
+        border-bottom: rem-calc(3px) solid $black;
+    }
+    
+    // On centered text
+    &.text-center{
+        &:after{
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    
+    // Border weight
+    &.thin{
+        &:after{
+            height: rem-calc(1px);
+            border-bottom: rem-calc(1px) solid $black;
+        }
+    }
+    &.bold{
+        &:after{
+            height: rem-calc(5px);
+            border-bottom: rem-calc(5px) solid $black;
+        }
+    }
+    
+    // Border width size
+    &.tiny{
+        &:after{
+            width: 5%;
+        }
+    }
+    &.short{
+        &:after{
+            width: 15%;
+        }
+    }
+    &.normal{
+        &:after{
+            width: 40%;
+        }
+    }
+    &.large{
+        &:after{
+            width: 70%;
+        }
+    }
+    &.full{
+        &:after{
+            width: 100%;
+        }
+    }
+    
+    // Border distance from text
+    &.far{
+        &:after{
+            margin: 2rem 0;
+        }
+        &.text-center{
+            &:after{
+                margin: 2rem auto;
+            }
+        }
+    }
+    &.near{
+        &:after{
+            margin: 0.5rem 0;
+        }
+        &.text-center{
+            &:after{
+                margin: 0.5rem auto;
+            }
+        }
+    }
+    &.sticked{
+        &:after{
+            margin: 0 0;
+        }
+        &.text-center{
+            &:after{
+                margin: 0 auto;
+            }
+        }
+    }
+}

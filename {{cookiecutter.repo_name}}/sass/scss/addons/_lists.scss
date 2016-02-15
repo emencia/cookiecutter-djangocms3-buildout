@@ -1,0 +1,32 @@
+/* 
+ * Bullet list using arrow icon as bullet
+ */
+ul.arrow{
+    list-style-type: none;
+    
+    &:not(.defer){
+        li {
+            position: relative;
+            padding-left: 1rem;
+            
+            &:before {
+                @include -emencia-list-arrow-type;
+            }
+        }
+    }
+    // Defer arrow pseudo element to first direct child element of list items
+    &.defer{
+        li {
+            position: relative;
+            
+            &>*:first-child{
+                position: relative;
+                padding-left: 1.5rem;
+                
+                &:before {
+                    @include -emencia-list-arrow-type($top-position: 0.60rem);
+                }
+            }
+        }
+    }
+}

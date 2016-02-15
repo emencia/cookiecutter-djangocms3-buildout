@@ -1,0 +1,61 @@
+/*
+ * Button enhancements
+ */
+button,
+.button{
+    /*
+     * Explicitely remove all button margins
+     */
+    &.unmarged {
+        margin: 0;
+    }
+    
+    /*
+     * Make stronger button
+     */
+    &.strong{
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    
+    /*
+     * Fullwidth (like '.expand' but keeping padding)
+     */
+    &.full {
+        width: 100%;
+    }
+}
+
+// Never add bottom margin for last element in container that allready have a 
+// bottom margin
+p, dd{
+    button:last-child,
+    .button:last-child{
+        margin-bottom: 0;
+    }
+}
+
+/*
+ * Visually transform a dropdown button into a select list with vertical
+ * scrollbar. This is useful for long list items that can impact on page size
+ */
+.f-dropdown.overflow {
+    overflow: auto;
+    height: rem-calc(200px);
+    // Various sizes
+    &.overflow-100 {
+        height: rem-calc(100px);
+    }
+    &.overflow-150 {
+        height: rem-calc(150px);
+    }
+    &.overflow-200 {
+        height: rem-calc(200px);
+    }
+    &.overflow-250 {
+        height: rem-calc(250px);
+    }
+    &.overflow-300 {
+        height: rem-calc(300px);
+    }
+}

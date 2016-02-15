@@ -1,0 +1,19 @@
+/*
+ * Load minimal addons component in the right order
+ * 
+ * Addons are addons for Foundation5 or added new components
+ * 
+ * This has to be considered like a library as Foundation is, avoid 
+ * specific site layout styles and never use id.
+ */
+@import "global";
+@import "buttons";
+@import "sections";
+@import "flex";
+@import "svgs";
+@import "tables";
+@import "type";
+@import "grid";
+@import "lists";
+@import "panels";
+@import "tabs";

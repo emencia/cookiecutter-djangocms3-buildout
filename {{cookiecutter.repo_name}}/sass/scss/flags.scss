@@ -1,0 +1,62 @@
+/* 
+ * 
+ * DEPRECATED: This sheet has been done under Compass sprite feature, have to find 
+ * another solution instead.
+ * 
+ * Country flags sprites
+ * 
+ * Caveat: This will recompile this component for every enabled language locale, the 
+ * more you have, the more it will recompile
+ * 
+ * If you add new flag image(s), remember than in a sprite they must have an identical 
+ * size
+ * 
+ * If you don't need flags, rename this file to '_flags.css' or simply remove it to 
+ * avoid to be compiled
+ * 
+ */
+@import "compass/utilities/sprites";
+@import "compass/css3";
+
+// Path in your images directory (see config.rb) where Compass will search for flag 
+// images
+$flagicons: sprite-map("flags/flags-24/*.png") !default;
+
+// The magic way, magic but heavy because it processes ALL images in the flags directory
+/* @import $flagicons; */
+/*@include all-flags-24-sprites;
+.flags-24-sprite:before{
+    content: "";
+    position: absolute;
+    left: 8px;
+    display: block;
+    width: flags-24-sprite-width(de);
+    height: flags-24-sprite-height(de);
+    text-indent: -10000px;
+}*/
+
+// The manual way
+.flags-sprite-base{
+    content: "";
+    position: absolute;
+    left: 8px;
+    display: block;
+    // We allways use the 'fr' flag size as a reference
+    @include sprite-dimensions($flagicons, fr);
+}
+
+// Available language for whom we have image flag, this is a full sample, dont use it 
+// if you dont need all of them
+//$sprite-names: ar ar-ma cs da-dk de de-at en-au el-gr en-ca en-gb en-ie en-nz en en-us es-ar es-cl es-co es-mx es fi fr fr-be fr-lu hu hu-si it ja ko-kr lv nl no pl pt pt-br ru ss-za tr sv-se zh-cn zh-hk;
+
+// Enabled languages
+$sprite-names: en fr;
+
+// Process all enabled language to compute their flag image
+@each $sprite-name in $sprite-names {
+    $full-sprite-name: "sprite-#{$sprite-name}";
+    .#{$full-sprite-name}:before {
+        @extend .flags-sprite-base;
+        background: sprite($flagicons, $sprite-name) no-repeat;
+    }
+}
