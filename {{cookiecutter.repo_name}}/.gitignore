@@ -29,6 +29,7 @@ pip-selfcheck.json
 # Ruby & Compass
 Gemfile.lock
 .sass-cache
+/foundation5
 
 # project db
 *.sqlite3
