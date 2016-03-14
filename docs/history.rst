@@ -6,11 +6,41 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
-Version 0.9.4 - 2016/01/27
+Version 1.0.0 - Unreleased
 --------------------------
 
-* Enabled again the captcha stuff into basic contact form;
-* Disabled 'codemirror' ckeditor plugin because it caused Javascript error when editing CMS content in source mode. Fact is codemirror plugin is not supported from ckeditor apps, we ship the same version since some times, it probably don't be compatible anymore with current ckeditor lib from ckeditor apps;
+RC.1
+....
+
+* Upgraded dependencies versions for upgrade to ``Django==1.8``;
+
+    * ``django==1.8.11``;
+    * ``psycopg2==2.6.1``;
+    * ``Pillow==3.1.1``;
+    * ``django-mptt==0.7.4``;
+    * ``django-cms==3.2.3``;
+    * ``django-registration-redux==1.4``;
+    * ``djangocms-admin-style==1.1.0``;
+    * ``django-admin-tools==0.7.2``;
+    * ``django-filebrowser-no-grappelli==3.6.1``;
+    * ``django-assets==0.11``;
+    * ``django-recaptcha==1.0.5``;
+    * ``django-debug-toolbar==1.4``;
+    * ``django-extensions==1.6.1``;
+    * ``django-filer==1.1.1``;
+    * ``cmsplugin-filer==1.0.1``;
+    * ``django-icomoon==0.3.1``;
+    * ``django-sendfile==0.3.10``;
+    * ``easy-thumbnails==1.5``;
+    * ``django-contrib-comments==1.6.2``;
+    * ``django-blog-zinnia==0.16``;
+    * ``django-tagging==0.4.1``;
+    * ``django-taggit==0.18.0``;
+    * ``sorl-thumbnail==12.2``;
+
+* Removed all occurences to ``socialaggregator`` that is not supported anymore (not compatible ``Django>=1.6``);
+
+Project is currently broken because migration to ``Django==1.8`` require to achieve some changes on mods settings.
 
 Version 0.9.3 - 2015/12/19
 --------------------------
