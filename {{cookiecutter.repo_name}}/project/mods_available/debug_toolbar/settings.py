@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Settings to enable the django-debug-toolbar
 """
@@ -26,5 +27,6 @@ DEBUG_TOOLBAR_PANELS = [
 
 
 # Registering the debug_toolbar app and middleware
-MIDDLEWARE_CLASSES = ('debug_toolbar.middleware.DebugToolbarMiddleware',) \
-                     + MIDDLEWARE_CLASSES
+MIDDLEWARE_CLASSES = add_to_tuple(MIDDLEWARE_CLASSES, 
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+)

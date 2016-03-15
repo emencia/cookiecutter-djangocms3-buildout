@@ -42,6 +42,14 @@ RC.1
 
 Project is currently broken because migration to ``Django==1.8`` require to achieve some changes on mods settings.
 
+RC.2
+....
+
+* Updated project settings and mods settings to use the new ``TEMPLATE`` setting that contain all template backends settings;
+* Added empty ``TEXT_ADDITIONAL_ATTRIBUTES`` setting for ckeditor;
+* Some minor changes and cleaning in mods settings;
+
+
 Version 0.9.3 - 2015/12/19
 --------------------------
 

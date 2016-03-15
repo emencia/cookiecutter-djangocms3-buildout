@@ -13,6 +13,7 @@ INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
     'admin_tools.dashboard',
     before='django.contrib.admin')
 
-TEMPLATE_CONTEXT_PROCESSORS = add_to_tuple(TEMPLATE_CONTEXT_PROCESSORS,
+TEMPLATES[0]['OPTIONS']['context_processors'] = add_to_tuple(
+    TEMPLATES[0]['OPTIONS']['context_processors'],
     'django.core.context_processors.request',
 )

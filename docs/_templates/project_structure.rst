@@ -93,6 +93,12 @@ The advantage of centralizing app configurations in their mods is to safely gath
 
 **To enable a new mods**, you need to create its symbolic link (**a relative path** to the available mod) in ``project/mods_enabled``. To disable it, simply delete the symbolic link.
 
+Since Django 1.8, every template settings are contained in their backend entry in ``settings.TEMPLATES``. We actually assume to only use the default Django template backend in our project. So mods will be able to manipulate template settings using the default backend that will be the index 0 of the backends list: ::
+
+    TEMPLATES[0]['OPTIONS']['context_processors'] = ....
+
+Trying to use the old template settings will result in an error.
+
 Available mods
 **************
 

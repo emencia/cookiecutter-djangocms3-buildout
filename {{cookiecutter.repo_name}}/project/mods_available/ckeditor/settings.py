@@ -4,7 +4,11 @@ import os
 INSTALLED_APPS = add_to_tuple(INSTALLED_APPS, 'ckeditor', 'djangocms_text_ckeditor', before='cms')
 
 STATICFILES_DIRS += ( os.path.join(MOD_FILE, "static"),)
-TEMPLATE_DIRS += (os.path.join(MOD_FILE, "templates"),)
+
+TEMPLATES[0]['DIRS'] = add_to_tuple(
+    TEMPLATES[0]['DIRS'],
+    os.path.join(MOD_FILE, "templates")
+)
 
 # Defining CKEDITOR configs, note that django_ckeditor use CKEDITOR_CONFIGS 
 # settings but cmsplugin_ckeditor use CKEDITOR_SETTINGS so we must mirroring it
@@ -97,3 +101,11 @@ CKEDITOR_EDITOR_TEMPLATES_IMAGES_PATH = "ckeditor/editor-site-templates/"
 CKEDITOR_EDITOR_TEMPLATES_NAMES_FILE = "manifest.json"
 # Template string for Javascript that inject template definition
 CKEDITOR_EDITOR_JS_TEMPLATE = u"""CKEDITOR.addTemplates( 'default', {{imagesPath:"{imagespath}", templates: {json_list}}});"""
+
+# Changing some settings of html5lib sanitizer
+# This is only related to the cms ckeditor text plugin, not the simple
+# ckeditor one
+TEXT_ADDITIONAL_ATTRIBUTES = (
+    # For internal awful hack to not have href links in html (sic , but usefull)
+    #'data-link',
+)

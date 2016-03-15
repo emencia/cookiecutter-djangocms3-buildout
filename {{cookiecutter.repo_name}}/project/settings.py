@@ -15,7 +15,6 @@ PROJECT_PATH = join(BASE_DIR, 'project')
 VAR_PATH = join(BASE_DIR, 'var')
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     #('Emencia', 'PUT_ADMIN_EMAIL_HERE'),
@@ -136,7 +135,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    #'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
 )
 
 ROOT_URLCONF = 'project.urls'
@@ -144,22 +145,29 @@ ROOT_URLCONF = 'project.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'project.wsgi.application'
 
-TEMPLATE_DIRS = (
-    # The docs say it should be absolute path: PROJECT_PATH is precisely one.
-    # Life is wonderful!
-    join(PROJECT_PATH, "templates"),
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.contrib.messages.context_processors.messages',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.request',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'django.core.context_processors.tz',
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': (
+            join(PROJECT_PATH, "templates"),
+        ),
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'debug': DEBUG,
+            'context_processors': (
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
+                'django.core.context_processors.debug',
+                'django.core.context_processors.i18n',
+                'django.core.context_processors.request',
+                'django.core.context_processors.media',
+                'django.core.context_processors.static',
+                'django.core.context_processors.tz',
+            )
+        }
+    },
+]
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -258,7 +266,7 @@ def add_to_tuple(var, *args, **kw):
 # With execfile, the python script will be executed in the current context and so 
 # can directly access to it (like using/modifying its variables)
 mods = join(PROJECT_PATH, 'mods_enabled')
-mods = [ join(mods, x) for x in listdir(mods) ]
+mods = [join(mods, x) for x in listdir(mods)]
 mods.sort()
 for MOD_FILE in mods:
     mod = join(MOD_FILE, 'settings.py')

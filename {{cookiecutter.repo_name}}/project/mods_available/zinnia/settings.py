@@ -7,9 +7,18 @@ INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
     'zinnia_ckeditor',
 )
 
+TEMPLATES[0]['OPTIONS']['context_processors'] = add_to_tuple(
+    TEMPLATES[0]['OPTIONS']['context_processors'],
+    'zinnia.context_processors.version',
+)
+
 # List entries by ..
 ZINNIA_PAGINATION = 3
 
-TEMPLATE_CONTEXT_PROCESSORS += (
-    'zinnia.context_processors.version',
-)
+## Comments disabled by default
+#ZINNA_AUTO_CLOSE_COMMENTS_AFTER = 0
+
+# Optional additional zinnia cms plugin templates
+CMSPLUGIN_ZINNIA_TEMPLATES = [
+    #('cmsplugin_zinnia/homepage_entry_list.html', 'home'),
+]

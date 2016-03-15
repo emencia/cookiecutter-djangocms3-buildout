@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 INSTALLED_APPS = add_to_tuple(INSTALLED_APPS, 
     'admin_shortcuts',
     'djangocms_admin_style',
