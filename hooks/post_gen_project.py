@@ -3,15 +3,15 @@
 """
 Post hooks to finish install
 
-When developing on this script, add "test" as first argument to use test mode with 
+When developing on this script, add "test" as first argument to use test mode with
 a dummy context else the script will fails (because the context is empty).
 """
 import ast, copy, json, os, subprocess, sys
 
-# Sadly for now we dont have any clean way to automatically get the version from the 
-# template, either using "git describe" or package version because hooks are applied 
+# Sadly for now we dont have any clean way to automatically get the version from the
+# template, either using "git describe" or package version because hooks are applied
 # from the created project and are unaware of cookiecutter template location
-__version__ = "0.9.4-django18-rc2"
+__version__ = "1.0.0"
 
 # Project directory path
 PROJECT_DIR = 'project'
@@ -100,7 +100,7 @@ class AppManager(object):
         'accounts': ['crispy_forms', 'recaptcha'],
         'contact_form': ['crispy_forms', 'recaptcha'],
     }
-    
+
     def __init__(self, context, project_dir, test_mode=False):
         self.context = context
         self.project_dir = project_dir
@@ -108,21 +108,21 @@ class AppManager(object):
 
     def get_enabled_apps(self):
         """
-        Return a list of all enabled apps from base apps, optional apps, 
+        Return a list of all enabled apps from base apps, optional apps,
         dependancies, etc..
         """
         apps = [k for k in self.BASE_APPS]
-        
+
         # Search for optional app variable name in context
         for varname,appname in self.OPTIONAL_APPS.items():
             if varname in self.context and self.context.get(varname) == 'yes':
                 apps.append(appname)
-        
+
         # Search for dependancies
         for item in apps:
             if item in self.DEPENDANCIES:
                 apps.extend(self.DEPENDANCIES.get(item))
-        
+
         return set(apps)
 
     def enable_mods(self, apps):
@@ -131,21 +131,21 @@ class AppManager(object):
         """
         mods = set(apps)
         symlink_list = []
-        
+
         # Build a list of symlink to create for mods
         symlink_list = [(
             os.path.join('..', 'mods_available', name),
             os.path.join(self.project_dir, 'mods_enabled', name)
         ) for name in mods]
-        
+
         #print json.dumps(symlink_list, indent=4)
-        
+
         # Create symlinks
         for target, linkfile in symlink_list:
             print "* Symlink TO:", target, 'INTO:', linkfile
             if not self.test_mode:
                 os.symlink(target, linkfile)
-        
+
         return symlink_list
 
 
@@ -158,7 +158,7 @@ def repository_init(context, project_dir, test_mode=False):
         username=context['repo_username'],
         name=context['repo_name'],
     )
-    
+
     call = Caller('.')
     print "* Init"
     if not test_mode:
@@ -172,7 +172,7 @@ def repository_init(context, project_dir, test_mode=False):
     print "* Configure remote origin on", repository_path
     if not test_mode:
         call('git', 'remote', 'add', 'origin', repository_path)
-    
+
     return repository_path
 
 
@@ -187,19 +187,19 @@ def store_project_context(context, project_dir, test_mode=False):
         #'generator': 'cookiecutter-djangocms3-buildout=={}'.format(get_template_version())
         'generator': 'cookiecutter-djangocms3-buildout=={}'.format(__version__)
     })
-    
+
     destination = os.path.join(project_dir, '__init__.py')
-    
+
     with open(destination, 'r') as infile:
         content = infile.read().format(cookiecutter_context=json.dumps(c, indent=4))
-    
+
     if not test_mode:
         print "* Writing context into {}".format(project_dir)
         with open(destination, 'w') as outfile:
             outfile.write(content)
     else:
         print "* Pretending to write context into: {}".format(destination)
-        
+
 
 
 def get_template_version():
@@ -222,21 +222,21 @@ if __name__ == "__main__":
     else:
         context = ast.literal_eval(COOKIE_CONTEXT)
         PROJECT_DIR = os.path.join('.', PROJECT_DIR)
-        
+
     print_part_title("Enable mods")
     apm = AppManager(context, PROJECT_DIR, test_mode)
     apps = apm.get_enabled_apps()
     apm.enable_mods(apps)
     print
-    
+
     print_part_title("Store context")
     store_project_context(context, PROJECT_DIR, test_mode)
     print
-    
+
     print_part_title("Init Git repository")
     repository_path = repository_init(context, PROJECT_DIR, test_mode)
     print
-    
+
     print_part_title("Go ahead")
     print "Your new project should be ready now."
     print

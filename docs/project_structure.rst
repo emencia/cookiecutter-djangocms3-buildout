@@ -93,6 +93,12 @@ The advantage of centralizing app configurations in their mods is to safely gath
 
 **To enable a new mods**, you need to create its symbolic link (**a relative path** to the available mod) in ``project/mods_enabled``. To disable it, simply delete the symbolic link.
 
+Since Django 1.8, every template settings are contained in their backend entry in ``settings.TEMPLATES``. We actually assume to only use the default Django template backend in our project. So mods will be able to manipulate template settings using the default backend that will be the index 0 of the backends list: ::
+
+    TEMPLATES[0]['OPTIONS']['context_processors'] = ....
+
+Trying to use the old template settings will result in an error.
+
 Available mods
 **************
 
@@ -161,6 +167,13 @@ Our ``asset.py`` file is divised in three parts :
 * BASE BUNDLES: Only for app bundle like Foundation Javascript files or RoyalSlider files;
 * MAIN AVAILABLE BUNDLES: Where you defined main bundles for the frontend, use app bundles previously defined;
 * ENABLE NEEDED BUNDLE: Bundle you effectively want to use. Bundle that are not defined here will not be reachable from templates and won't be compiled;
+
+autobreadcrumbs
+---------------
+
+.. _autobreadcrumbs: https://github.com/sveetch/autobreadcrumbs
+
+Enable `autobreadcrumbs`_ to add automatic breadcrumbs building in templates and applications.
 
 ckeditor
 --------
@@ -408,19 +421,6 @@ slideshows
 .. _emencia-django-slideshows: https://github.com/emencia/emencia-django-slideshows
 
 Enable the `emencia-django-slideshows`_ app to manage slide animations (slider, carousel, etc.). This was initially provided for *Foundation Orbit* and *Royal Slider*, but can be used with other libraries if needed.
-
-socialaggregator
-----------------
-
-.. _emencia-django-socialaggregator: https://github.com/emencia/emencia-django-socialaggregator
-
-Enable the `emencia-django-socialaggregator`_ app to manage social contents.
-
-.. note::
-        This app require to fill some API keys settings (like for Twitter API, Facebook API, etc..) to work correctly.
-
-.. warning::
-        This mod is deprecated since socialaggregator has not been ported to ``Django>=1.7``
 
 staticpages
 -----------

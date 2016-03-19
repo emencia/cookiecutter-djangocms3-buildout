@@ -6,11 +6,8 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
-Version 1.0.0 - Unreleased
+Version 1.0.0 - 2016/03/19
 --------------------------
-
-RC.1
-....
 
 * Upgraded dependencies versions for upgrade to ``Django==1.8``;
 
@@ -38,17 +35,15 @@ RC.1
     * ``django-taggit==0.18.0``;
     * ``sorl-thumbnail==12.2``;
 
-* Removed all occurences to ``socialaggregator`` that is not supported anymore (not compatible ``Django>=1.6``);
-
-Project is currently broken because migration to ``Django==1.8`` require to achieve some changes on mods settings.
-
-RC.2
-....
-
+* Removed all occurences to ``socialaggregator`` that is not supported anymore;
 * Updated project settings and mods settings to use the new ``TEMPLATE`` setting that contain all template backends settings;
 * Added empty ``TEXT_ADDITIONAL_ATTRIBUTES`` setting for ckeditor;
 * Some minor changes and cleaning in mods settings;
-
+* Added mod for ``autobreadcrumbs``;
+* Updated ``djangocms_admin_style`` Sass and CSS stylesheets to the app version 1.1.0;
+* Patched them for Filebrowser and also for a bug regression with libsass 3.3.3;
+* Although these Sass stylesheets are in compass directory, they can only be compiled with libsass;
+* Upgraded to ``django-crispy-forms==1.6.0`` to remove some warnings from django checks;
 
 Version 0.9.3 - 2015/12/19
 --------------------------
@@ -123,7 +118,7 @@ Version 0.7.6 - 2015/10/01
 
 * Added and enabled mod for ``emencia-cookie-law``, close #32;
 * Added and enabled mod for ``django-icomoon``, close #31;
-* Updated documentation, close #33 
+* Updated documentation, close #33
 * Fixed ``django-crispy-forms`` mod settings for last release, updated to ``crispy-forms-foundation==0.5.3``, #29;
 * Added ``reload`` action to the Makefile, to restart the uwsgi instance on integration or production environment;
 
@@ -161,7 +156,7 @@ Version 0.7.0 - 2015/06/06
 * Remove Foundation Orbit usage because it is deprecated and Slick.js works better;
 * ``project/assets.py`` is now processed by cookiecutter+Jinja so we can disable assets from user choices like for socialaggregator Javascript library;
 * Reorganize SCSS sources:
-  
+
   * ``components/`` directory is for page parts or specific Django apps layout;
   * ``vendor/`` directory contains all SCSS for included library (like mmenu, royalslider, etc..);
   * ``utils/`` directory contains all utils stuff like mixins, basic addons, Foundation patches, etc..;
@@ -181,7 +176,7 @@ Version 0.6.6 - 2015/05/16
   * Removed Foundation3 Javascript stuff;
   * Cleaning main frontend script ``app.js``;
   * Added MegaMenu stuff;
-  
+
 * Big update on ``contact_form`` app:
 
   * Fix print message on template;
