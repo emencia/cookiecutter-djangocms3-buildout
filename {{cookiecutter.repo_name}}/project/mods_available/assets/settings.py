@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 INSTALLED_APPS = add_to_tuple(INSTALLED_APPS, 'django_assets')
 
 # Asset debugging is linked to settings.DEBUG, when True no bundle will be compiled (use directly its source files)

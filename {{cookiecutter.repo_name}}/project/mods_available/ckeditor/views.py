@@ -100,7 +100,7 @@ class EditorTemplatesListView(StaffuserRequiredMixin, View):
         }
         
         # Perform scanning on all knowed templates directory
-        for dir in settings.TEMPLATE_DIRS:
+        for dir in settings.TEMPLATES[0]['DIRS']:
             templates_dir = os.path.join(dir, settings.CKEDITOR_EDITOR_TEMPLATES_PATH)
             if os.path.exists(templates_dir):
                 # Trying to find the optional manifest JSON file that describes templates

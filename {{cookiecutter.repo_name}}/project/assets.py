@@ -91,14 +91,6 @@ AVALAIBLE_BUNDLES = {
         output='js/mmenu.min.js'
     ),
     
-    # App bundle for SocialAggregator
-    'app_socialaggregator_js': Bundle(
-        "js/masonry/masonry.pkgd.js",
-        "js/jquery/socialaggregator.js",
-        filters='yui_js',
-        output='js/app_socialaggregator.%(version)s.js'
-    ),
-    
     # App bundle for Pikaday jquery plugin (a datepicker) and optional 
     # jquery.timepicker (a timepicker)
     'app_pikaday_js': Bundle(
@@ -156,9 +148,6 @@ AVALAIBLE_BUNDLES.update({
         
         # Magnific popup library
         #"js/jquery/magnific-popup.js",
-        
-        # SocialAggregator bundle
-        {% if cookiecutter.enable_socialaggregator != 'yes' %}#{% endif %}AVALAIBLE_BUNDLES['app_socialaggregator_js'],
         
         # Slick.js library
         "js/jquery/slick.js",

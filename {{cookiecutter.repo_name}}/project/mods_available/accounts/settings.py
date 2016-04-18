@@ -13,6 +13,6 @@ LOGIN_REDIRECT_URL = "/"
 DEFAULT_ACTIVE_SUBSCRIBE_EMAILS = []
 CONTACT_FORM_EMAILS = []
 
-# Wether we send email with mixed content type plain/text+html (True) or just 
+# Wether we send email with mixed content type plain/text+html (True) or just
 # plain/text (False)
 REGISTRATION_EMAIL_HTML = False

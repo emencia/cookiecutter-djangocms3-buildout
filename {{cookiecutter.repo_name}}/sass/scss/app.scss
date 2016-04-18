@@ -4,8 +4,8 @@
 
 /*
  * Full Foundation components import for development process
- * 
- * WARNING: Do not use this full import when passing to production, 
+ *
+ * WARNING: Do not use this full import when passing to production,
  * instead select all needed component one by one
  */
 @import "foundation";
@@ -56,12 +56,12 @@
  */
 @import "bourbon";
 
-/* 
+/*
  * Deprecations about Compass mixins and functions
  */
 @import "utils/deprecations";
 
-/* 
+/*
  * Used components
  */
 
@@ -82,15 +82,16 @@
 @import "components/footer";
 //@import "components/cms";
 //@import "components/porticus";
-//@import "components/socialaggregator";
 //@import "components/zinnia";
 
 #body_content{
+    //@import "components/porticus";
+    //@import "components/zinnia";
     @import "components/contents";
 }
 
 /*
- * Sometime, you need fallback hacks for some specific browsers, it should allways be 
+ * Sometime, you need fallback hacks for some specific browsers, it should allways be
  * at the end to be able to override every others components
  */
 @import "utils/browser_fallbacks";

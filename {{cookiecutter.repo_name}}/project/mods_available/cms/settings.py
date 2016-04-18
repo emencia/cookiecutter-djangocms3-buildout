@@ -8,7 +8,7 @@ INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
     #'reversion', # not really needed for now
 )
 
-MIDDLEWARE_CLASSES += (
+MIDDLEWARE_CLASSES = add_to_tuple(MIDDLEWARE_CLASSES, 
     'django.contrib.admindocs.middleware.XViewMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
@@ -17,7 +17,8 @@ MIDDLEWARE_CLASSES += (
     'cms.middleware.language.LanguageCookieMiddleware',{% endif %}
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = add_to_tuple(TEMPLATE_CONTEXT_PROCESSORS,
+TEMPLATES[0]['OPTIONS']['context_processors'] = add_to_tuple(
+    TEMPLATES[0]['OPTIONS']['context_processors'],
     'sekizai.context_processors.sekizai',
     'cms.context_processors.cms_settings',
 )
