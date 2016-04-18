@@ -6,6 +6,14 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 1.1.0 - 2016/04/19
+--------------------------
+
+* Upgraded to ``django==1.8.12``;
+* Upgraded to ``django-icomoon==0.4.0``;
+* Upgraded to ``django-xiti==0.1.1``;
+
+
 Version 1.0.0 - 2016/03/19
 --------------------------
 
