@@ -6,6 +6,25 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 1.2.0 - Unreleased
+--------------------------
+
+Move to full libsass support, staying compatible with "Compass 1.x".
+
+This is related to issue #43
+
+* Moved ``compass`` directory to ``sass`` directory with a new structure;
+
+    * Divided addons files;
+    * Added Bourbon 4.2.6;
+    * Foundation5 SASS sources now lives in sass directory;
+    * Keep a config file for Compass support;
+
+* Removed Foundation5 sources directory, now we only ship SASS and Javascripts sources in their respective location;
+* Updated Makefile action ``syncf5`` to synchronize SASS sources to the ``sass`` directory;
+* flags stylesheet is not supported for now because it stand Compass sprites;
+* admin_styles stylesheet is not supported for now;
+
 Version 1.1.0 - 2016/04/19
 --------------------------
 
