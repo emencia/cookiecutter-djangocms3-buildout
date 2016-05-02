@@ -20,47 +20,51 @@ You will be prompted to anwser to some inputs about your project and other input
 project_name
     [Default:*Project name*]
 
-    Project name, should be unique into your repository host;
+    Project name, should be unique into your repository host.
 repo_name
     [Default:A slug created from project name]
 
-    This will be used as the repository name;
+    This will be used as the repository name.
 repo_username
     [Default:*emencia*]
 
-    Your username to use to push the repository;
+    Your username to use to push the repository.
 repo_host
     [Default:*github.com*]
 
-    The hostname of the repository host;
+    The hostname of the repository host.
 secret_key
     [Default:A random key]
 
-    The secret key to use in Django settings, you should let the default value;
+    The secret key to use in Django settings, you should let the default value.
 enable_accounts
     [Default:*no*]
 
-    Enable the accounts component;
+    Enable the accounts component.
 enable_contact_form
     [Default:*yes*]
 
-    Enable a basic contact form with an optional captcha field;
+    Enable a basic contact form with an optional captcha field.
 enable_porticus
     [Default:*yes*]
 
-    Enable Porticus application;
+    Enable Porticus application.
 enable_slideshows
     [Default:*yes*]
 
-    Enable Slideshows application;
+    Enable Slideshows application.
 enable_zinnia
     [Default:*no*]
 
-    Enable Zinnia application;
+    Enable Zinnia application.
 enable_multiple_languages
     [Default:*no*]
 
-    Enable CMS internationalization;
+    Enable CMS internationalization.
+enable_https
+    [Default:*yes*]
+
+    Use a dedicated nginx configuration to enable https only through *let's encrypt*.
 
 Take care that question about applications require a strict "yes" value to enable them, all other value are considered as a "no".
 

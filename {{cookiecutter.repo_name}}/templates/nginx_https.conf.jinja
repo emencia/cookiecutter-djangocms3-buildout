@@ -1,0 +1,85 @@
+server {
+    listen       80;
+    server_name  {{ domain }}{% if other_domains %} {{ other_domains }}{% endif %};
+    charset      utf-8;
+    # To limit upload to 50Mb
+    #client_max_body_size 50M;
+
+    error_log  /var/log/nginx/{{ parts.VARS.NAME }}_error.log;
+    access_log  /var/log/nginx/{{ parts.VARS.NAME }}_access.log;
+
+    location /.well-known/ {
+        root /usr/share/nginx/www;
+    }
+
+    location / {
+         rewrite /(.*) https://{{ domain }}/$1 permanent;
+    }
+}
+
+
+server {
+    listen      443 ssl;
+    server_name  {{ domain }}{% if other_domains %} {{ other_domains }}{% endif %};
+    charset      utf-8;
+    # To limit upload to 50Mb
+    #client_max_body_size 50M;
+
+    error_log  /var/log/nginx/{{ parts.VARS.NAME }}_ssl_error.log;
+    access_log  /var/log/nginx/{{ parts.VARS.NAME }}_ssl_access.log;
+
+    ssl                  on;
+    ssl_certificate     /etc/letsencrypt/live/{{ domain }}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{ domain }}/privkey.pem;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:AES:CAMELLIA:DES-CBC3-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!aECDH:!EDH-DSS-DES-CBC3-SHA:!EDH-RSA-DES-CBC3-SHA:!KRB5-DES-CBC3-SHA';
+    ssl_dhparam ssl/dhparams.pem;
+    ssl_session_cache shared:SSL:10m;
+    add_header Strict-Transport-Security "max-age=63072000; includeSubDomains";
+    add_header X-Frame-Options SAMEORIGIN;
+    add_header X-Content-Type-Options nosniff;
+#    ssl_stapling on; # Requires nginx >= 1.3.7
+#    ssl_stapling_verify on; # Requires nginx => 1.3.7
+    resolver 62.210.16.6 62.210.16.7 valid=300s;
+    resolver_timeout 5s;
+
+
+    {% if parts.VARS.FORCE_REWRITE|as_bool %}
+    if ($host !~* ^{{ domain|replace(".","\.") }}) {
+        rewrite ^/(.*)     https://{{ domain }}/$1;
+    }
+
+    {% endif %}
+    location /media {
+        alias {{ parts.buildout.directory }}/project/media;
+    }
+
+    location /static {
+        alias {{ parts.buildout.directory }}/project/static;
+    }
+
+    {% if parts.VARS.SETTINGS == 'settings_integration' or parts.VARS.SETTINGS=='settings_production' %}
+    location /robots.txt {
+        alias {{ parts.buildout.directory }}/project/static/default_robots.txt;
+    }
+    {% endif %}
+    #location /protected_medias{
+    #    internal;
+    #    alias {{ parts.buildout.directory }}/project/protected_medias;
+    #}
+
+    location /admin {
+        include                 /etc/nginx/uwsgi_params;
+        uwsgi_pass              unix:{{ parts.uwsgi.socket }};
+        client_max_body_size 350m;
+        uwsgi_read_timeout 600;
+    }
+
+    root {{ parts.buildout.directory }}/var/www;
+    try_files $uri @uwsgi;
+    location @uwsgi {
+        include                 /etc/nginx/uwsgi_params;
+        uwsgi_pass              unix:{{ parts.uwsgi.socket }};
+    }
+}

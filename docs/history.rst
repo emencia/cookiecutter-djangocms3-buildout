@@ -27,6 +27,12 @@ This is related to issue #43
 * Updated documentation;
 * Dropped ``admin_tools`` mod that is not supported anymore;
 
+Version 1.1.1 - 2016/05/02
+--------------------------
+
+* Add option to use https within nginx conf;
+>>>>>>> master
+
 Version 1.1.0 - 2016/04/19
 --------------------------
 
