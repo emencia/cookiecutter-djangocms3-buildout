@@ -59,6 +59,10 @@ enable_multiple_languages
     [Default:*no*]
 
     Enable CMS internationalization;
+enable_https
+    [Default:*yes*]
+
+    Use a nginx conf that be compatible with https/let's encrypt deployment;
 
 Take care that question about applications require a strict "yes" value to enable them, all other value are considered as a "no".
 

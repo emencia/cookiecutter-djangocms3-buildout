@@ -3,16 +3,18 @@
         "repo_name": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
         "repo_username": "emencia",
         "repo_host": "github.com",
-       
+      
         "enable_accounts": "yes",
         "enable_contact_form": "yes",
         "enable_porticus": "yes",
         "enable_slideshows": "yes",
         "enable_zinnia": "yes",
         "enable_multiple_languages": "no",
-       
+
+        "enable_https": "yes",
+      
         "secret_key": "{% for column in items|slice(50) %}{{ 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'|random }}{% endfor %}",
-       
+      
         "_copy_without_render": [
             "*.gitignore",
             "compass",

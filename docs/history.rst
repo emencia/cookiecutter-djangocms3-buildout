@@ -6,6 +6,11 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version Master
+--------------
+
+* Add an option for use https nginx conf
+
 Version 1.1.0 - 2016/04/19
 --------------------------
 

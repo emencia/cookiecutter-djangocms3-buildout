@@ -26,12 +26,14 @@ TEST_CONTEXT = {
     "repo_username": "emencia",
     "repo_host": "github.com",
     "secret_key": "DUMMY-KEY",
+    "_copy_without_render": "yes",
     "enable_accounts": "yes",
     "enable_contact_form": "yes",
     "enable_porticus": "yes",
     "enable_slideshows": "yes",
     "enable_zinnia": "yes",
-    "enable_multiple_languages": "no"
+    "enable_multiple_languages": "no",
+    "enable_https": "yes",
 }
 
 
