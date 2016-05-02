@@ -9,7 +9,7 @@ Install
 
 There is no need to install anything but `Cookiecutter`_, when it's done you can use any `Cookiecutter`_ templates directly from a repository (local, hosted on github, etc..): ::
 
-    pip install cookiecutter==1.1.0
+    pip install cookiecutter
 
 It's done.
 

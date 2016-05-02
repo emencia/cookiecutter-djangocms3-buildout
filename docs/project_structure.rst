@@ -1,5 +1,5 @@
-.. Never edit this file manually, instead edit its template in 
-   'templates/project_structure.rst' and use 'make grab' to build 
+.. Never edit this file manually, instead edit its template in
+   'templates/project_structure.rst' and use 'make grab' to build
    with mods documentations
 
 .. _buildout: http://www.buildout.org/
@@ -7,8 +7,10 @@
 .. _pip: http://www.pip-installer.org
 .. _Foundation: http://foundation.zurb.com/
 .. _Compass: http://compass-style.org/
+.. _Boussole: http://boussole.readthedocs.io/
 .. _SCSS: http://sass-lang.com/
-.. _rvm: http://rvm.io/
+.. _SASS: http://sass-lang.com/
+.. _Bourbon: http://bourbon.io/
 .. _CKEditor: http://ckeditor.com/
 .. _Django: https://www.djangoproject.com/
 .. _Django CKEditor: https://github.com/divio/djangocms-text-ckeditor
@@ -31,7 +33,7 @@ Git ignore
 
 Project embeds many ``.gitignore`` files to avoid to commit some files into your repository.
 
-Principle is to never commit files created from buildout (installed packages, app development sources, etc..), compiled static files, project media files and database.
+Aim is to never commit files created from buildout (installed packages, app development sources, etc..), compiled static files, project media files and database.
 
 Makefile
 ********
@@ -43,7 +45,7 @@ Project embeds a ``Makefile`` file that contains some usefull commands to build 
 ``install-dev``
     to proceed to a new install of this project with additional sources for development
 ``install-foundation``
-    to install (or re-install) Foundation 5 sources
+    to install (or re-install) Foundation sources
 ``clean``
     to clean your local repository from all stuff created by buildout and instance usage
 ``delpyc``
@@ -61,17 +63,29 @@ Project embeds a ``Makefile`` file that contains some usefull commands to build 
 ``reload``
     to reload uwsgi instance (for integration and production only)
 
-Compass+Foundation
-******************
+SASS
+****
 
-Default SCSS are made for `Foundation`_ (version 5.4.7) and compiled with `Compass`_ (version >= 0.12, <1.0). 
+Produced project contain a `SASS`_ structure ready to use and contains `Foundation`_ and `Bourbon`_ libraries.
 
-Shipped templates are integrated using `Foundation`_ components and created project embeds css compiled with the SCSS sources from the ``compass`` directory.
+Included HTML templates was done using `Foundation`_, so you will need to change them if you plan to use another SASS framework.
+
+SASS sources and libraries are compatible with any compiler which implement SASS >= 3.2.x references.
+
+We strongly advise you to use `Boussole`_ to avoid messing with some Ruby or Node.js installation. `Compass`_ 1.x is still supported. In the SASS sources directory a default configuration is available for both of them.
+
+.. WARNING::
+   Compass was not only a compiler, it include also some SASS framework we were using. It's most important feature was *vendor prefix* for many CSS3 properties but this is not needed for almost all of them.
+
+   If you use Compass, **never use any Compass mixin or stuff** in your SASS sources, it will break compatibility people using Boussole.
+
+   For CSS3 properties requiring vendor prefix, we include `Bourbon`_ framework instead. If you are not sure about vendor prefix needs, search in `Can I Use <http://caniuse.com/>`_ database.
+
 
 Adding application
 ******************
 
-If you plan to integrate a new app into a project, always use the `buildout`_ system to ensure its portability (`pip`_ requirements file is not used in our system). 
+If you plan to integrate a new app into a project, always use the `buildout`_ system to ensure its portability (`pip`_ requirements file is not used in our system).
 
 To do this, just open and edit the ``buildout.cfg`` file to add the new egg name to be installed. For more details, read the `buildout`_ documentation.
 
@@ -98,6 +112,8 @@ Since Django 1.8, every template settings are contained in their backend entry i
     TEMPLATES[0]['OPTIONS']['context_processors'] = ....
 
 Trying to use the old template settings will result in an error.
+
+.. _available_mods:
 
 Available mods
 **************
@@ -136,20 +152,7 @@ admin_style
 
 Enable `djangocms-admin-style`_ to enhance the administration interface. Also enable `django-admin-shortcuts`_.
 
-*admin-style* better fit with DjangoCMS than `admin_tools`_. 
-
-.. warning::
-        This mod cannot live with `admin_tools`_, you have to choose only one of them.
-
-admin_tools
------------
-
-.. _django-admin-tools: https://bitbucket.org/izi/django-admin-tools/
-
-Enable `django-admin-tools`_ to enhance the administration interface. This enables three widgets to customize certain elements and link to `filebrowser`_ module (that should allready be enabled).
-
-.. warning::
-        This mod cannot live with `admin_style`_, you have to choose only one of them.
+*admin-style* is an enhancement for Django admin that have been developed by Django CMS team.
 
 assets
 ------
@@ -285,7 +288,7 @@ filer
 
 Mod for `django-filer`_ and its DjangoCMS plugin
 
-Only enable it for specific usage because this can painful to manage files with Filebrowser and django-filer enabled in the same project.
+Only enable it for specific usage because this can be painful to manage files when Filebrowser and django-filer are enabled in the same project.
 
 flatpages
 ---------

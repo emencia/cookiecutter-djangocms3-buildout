@@ -6,11 +6,16 @@
 Usage
 =====
 
-This is quite simple, just invoke the `Cookiecutter`_ template to create a new project: ::
+Firstly, you produce the new project structure then deploy it locally and finally enjoy it (webdesign integration, development, etc..).
+
+Produce project structure
+*************************
+
+Quite simple, just invoke the `Cookiecutter`_ template to create a new project: ::
 
     cookiecutter https://github.com/emencia/cookiecutter-djangocms3-buildout
 
-You will be prompted to anwser to some inputs about your project:
+You will be prompted to anwser to some inputs about your project and other inputs to enable some applications:
 
 project_name
     [Default:*Project name*]
@@ -32,9 +37,6 @@ secret_key
     [Default:A random key]
 
     The secret key to use in Django settings, you should let the default value;
-
-Then you will be prompted to define the application to enable within your project:
-
 enable_accounts
     [Default:*no*]
 
@@ -51,7 +53,7 @@ enable_slideshows
     [Default:*yes*]
 
     Enable Slideshows application;
-enable_socialaggregator
+enable_zinnia
     [Default:*no*]
 
     Enable Zinnia application;
@@ -62,8 +64,11 @@ enable_multiple_languages
 
 Take care that question about applications require a strict "yes" value to enable them, all other value are considered as a "no".
 
-Created projects usage
-**********************
+.. NOTE::
+   Once structure has been created, a git repository will be initialized on with a first commit.
+
+Deploy produced project
+***********************
 
 Once a project has been created, you need to build it to use it. The process is simple. Do it in your project directory: ::
 
@@ -84,6 +89,6 @@ You can then use the project on the development server: ::
         Note the ``:8001`` that mean "bind the server on this port", this is a required part when you specify an IP. Commonly you can't bind on the port 80 so allways prefer to use a port starting from *8001*.
 
 .. note::
-        If you don't know your local IP, you can use ``127.0.0.1`` that is an internal alias to mean "my own network card", but this IP cannot be reached from other computers (because they have also this alias linked to their own network card).
+        If you don't know your local IP, you can use ``127.0.0.1`` that is an internal alias to mean "my own network card", but this IP cannot be reached from other computers.
 
 The first required action is the creation of a CMS page for the home page and also you should fill-in the site name and its domain under ``Administration > Sites > Sites > Add site``.

@@ -24,6 +24,8 @@ This is related to issue #43
 * Updated Makefile action ``syncf5`` to synchronize SASS sources to the ``sass`` directory;
 * flags stylesheet is not supported for now because it stand Compass sprites;
 * admin_styles stylesheet is not supported for now;
+* Updated documentation;
+* Dropped ``admin_tools`` mod that is not supported anymore;
 
 Version 1.1.0 - 2016/04/19
 --------------------------

@@ -3,7 +3,9 @@
 .. _virtualenv: http://www.virtualenv.org/
 .. _Django: https://www.djangoproject.com/
 .. _Foundation: http://foundation.zurb.com/
+.. _Boussole: http://boussole.readthedocs.io/
 .. _Compass: http://compass-style.org/
+.. _SASS: http://sass-lang.com/
 .. _SCSS: http://sass-lang.com/
 .. _rvm: http://rvm.io/
 .. _rvm gemsets: https://rvm.io/gemsets
@@ -21,125 +23,23 @@
 Common topics around project usage
 ==================================
 
-Additionally to `Django`_ a created project is based on many other tools you should know, here are their topics.
+Additionally to `Django`_, a created project is based on many other tools you should know, here are their topics.
 
-RVM
-***
+Boussole
+********
 
-`rvm`_ is somewhat like what `virtualenv`_ is to Python: a virtual environment. 
+Previously we were using `Compass`_ that was a pain to manage with Ruby environment.
 
-Difference is that it's intended for parallel installations of different **Ruby** versions without mixing gems (the **Ruby** application packages) from all Ruby version. In our scenario, it allows you to install a recent version of **Ruby** without affecting your system installation.
+`Boussole`_ is full Python solution to build your CSS stylesheets from SASS sources.
 
-This is not required, just an usefull tip to know when developing on old systems with outdated packages or to be able to develop on various projects that don't share the same Compass/Foundation versions.
-
-Gem sets
---------
-
-Another usefull feature from `rvm`_, it allows you to have multiple environments for specific Ruby versions, each of those environments will have their own Gems (that is called a Gemset).
-
-This is really usefull for case where you have to manage projects which depends on differents Foundation versions so you don't have to scratch your head with dependancies conflicts and so be able to develop on multiple Foundation versions.
-
-.. NOTE::
-   This tutorial sample use some path and ruby versions you may not have or need on your install. Adapt paths and versions to your needs.
-
-Once `rvm`_ is installed you can do the following command: ::
-
-    rvm list gemsets
-
-It should displays something like: ::
-
-    rvm gemsets
-
-       ruby-1.9.3-p545 [ x86_64 ]
-       ruby-1.9.3-p545@global [ x86_64 ]
-    => ruby-2.1.1 [ x86_64 ]
-       ruby-2.1.1@global [ x86_64 ]
-
-See the current enabled Ruby version is prefixed with ``=>``.
-
-Our sample scenario is Ruby version 2.1.1 with Foundation 5.4.x installed that depends on Compass 0.12.x or better. And we need to be able to work also with Foundation 5.5.x that depends on Compass 1.x or better.
-
-So first create the new Gemset to receive Foundation 5.5.x install, we will call it ``foundation55``: ::
-
-    rvm gemset create foundation55
-
-It should results on something like: ::
-
-    ruby-2.1.1 - #gemset created /home/emencia/.rvm/gems/ruby-2.1.1@foundation55
-    ruby-2.1.1 - #generating foundation55 wrappers.........
-
-So now the ``foundation55`` gemset is created, we can switch to it: ::
-
-    rvm 2.1.1@foundation55
-
-This is a fresh new install with only very basic gems, you can see them doing (you can compare with default gemsets switching again to it): ::
-
-    gem list --local
-
-And finally install the needed gems: ::
-
-    gem install sass -v 3.4.9
-    gem install chunky_png -v 1.3.3
-    gem install compass -v 1.0.1
-    gem install compass-core -v 1.0.1
-    gem install multi_json -v 1.10.1
-    gem install foundation -v 1.0.4
-    gem install rb-fsevent -v 0.9.4
-    gem install ffi -v 1.9.6
-
-*Dependancy management can be a real mess with Ruby Gem, actually foundation tool and Compass require some different versions of same gems, that's why you should see many versions for some installed gem in your gemset.*
-
-It's done now you can compile Foundation 5.5.x projects. If you want to switch back on the gemset to compile Foundation 5.4.x, you just have to do: ::
-
-    rvm 2.1.1
-
-More details can be finded on documentation `rvm gemsets`_.
-
-Usefull various commands
-------------------------
-
-*This sample use the scenario previously saw in `Gem sets`_.*
-
-List the installed gems on the current environment: ::
-
-    gem list --local
-
-Launch a minimal webserver to display some usefull details about installed gems (it will be reachable in your webbrowser using the machine IP and port 8808): ::
-
-    gem server -b 0.0.0.0
-
-Want to empty a gemsets from all installed gems (except the basic ones): ::
-
-    rvm gemset empty foundation55
-
-Backup your gems list to a file: ::
-
-    rvm gemset export foundation55.gems
-
-Import your backuped gem list file: ::
-
-    rvm gemset import foundation55.gems
+You can install it in your virtualenv if you need a specific version or install globally at your system level.
 
 Compass
 *******
 
-`Compass`_ is a **Ruby** tool used to compile `SCSS`_ sources in **CSS**.
+`Compass`_ is a Ruby tool used to compile `SASS`_ sources in **CSS**.
 
-By default, a `Django`_ project has its `SCSS`_ sources in the ``compass/scss/`` directory. The CSS `Foundation`_ framework is used as the database.
-
-A recent install of Ruby and Compass is required first for this purpose (see `RVM`_ if your system installation is not up to date).
-
-Once installed, you can then compile the sources on demand. Simply go to the ``compass/`` directory and launch this command: ::
-
-    compass compile
-
-When you are working uninterruptedly on the sources, you can simply launch the following command: ::
-
-    compass watch
-
-`Compass`_ will monitor the directory of sources and recompile the modified sources automatically.
-
-By default the ``compass/config.rb`` configuration file (the equivalent of `settings.py`` in `Django`_) is used. If needed, you can create another one and specify it to `Compass`_ in its command (for more details, see the documentation).
+A recent install of Ruby and Compass is required first for this purpose.
 
 Webfonts
 ********
@@ -163,12 +63,12 @@ Font files will be deployed to their directory in statics (defined in mod settin
 When it's done you can reach the gallery on: ::
 
     /icomoon/
-    
+
 .. warning::
    You need to be authenticated to view the gallery.
 
 .. NOTE::
-   There is allready a default webfont installed in your project with some default used icons like those ones required for **Slick.js** plugin. 
+   There is allready a default webfont installed in your project with some default used icons like those ones required for **Slick.js** plugin.
 
 Assets management
 *****************
@@ -215,7 +115,7 @@ Static files directories
 In your ``settings.py`` file you should see :
 
 ..  sourcecode:: python
-    
+
     STATIC_ROOT = join(PROJECT_PATH, 'static')
 
 It define the *front* static file directory. But **never put yourself a file in this directory**, it is **reserved** for collected files in **integration and production environment** only.
@@ -223,7 +123,7 @@ It define the *front* static file directory. But **never put yourself a file in 
 All static files sources will go in the ``project/webapp_statics`` directory, it is defined in the *assets* mod:
 
 ..  sourcecode:: python
-    
+
     ASSETS_ROOT = join(PROJECT_PATH, 'webapp_statics/')
     STATICFILES_DIRS += (ASSETS_ROOT,)
 
@@ -268,7 +168,7 @@ Take care, an Egg that is installed from a repository url is validated on its ve
 PO-Projects
 ***********
 
-**It aims to ease PO translations management** between developpers and translation managers. 
+**It aims to ease PO translations management** between developpers and translation managers.
 
 The `PO-Projects client`_ is pre-configured in all created projects but disabled by default. When enabled, its config file is automatically generated (in ``po_projects.cfg``), don't edit this file because it will be regenerated each time buildout is used.
 
@@ -280,11 +180,11 @@ There is only two available actions from the client :
 
 Push action
     The ``push`` action role is to send updated PO (from `Django`_ extracts) from the project to the PO-Project webservice.
-    
+
     Technically, the client will archive the locale directory into a tarball then send it to the webservice, that will use it to update its stored PO for each defined locales.
-    
+
     Common way is (from the root of your project): ::
-    
+
         cd project
         django-instance makemessages -a
         cd ..
@@ -293,13 +193,13 @@ Push action
 
 Pull action
     The ``pull`` action role is to get the updated translations from the webservice and install into the project.
-    
+
     Technically, the client will download a tarball of the latest locale translations from the webservice and deploy it to your project, note that it will totally overwrite the project's locale directory.
-    
+
     Common way is (from the root of your project): ::
-    
+
         po_projects pull
-        
+
     Then reload your webserver.
 
 Note that the client does not manage your repository, each time you change your PO files (from `Django`_ ``makemessages`` action or ``pull`` client action) you still have to commit them.
