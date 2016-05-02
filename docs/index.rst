@@ -24,8 +24,8 @@ cookiecutter-djangocms3-buildout
 
 A `Cookiecutter`_ template to produce a structure for a `Django CMS`_ project.
 
-Introduction
-************
+Features
+********
 
 * Many Django apps pre-configured and ready to work (see :ref:`available_mods`);
 * Django project is based on:

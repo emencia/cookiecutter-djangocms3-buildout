@@ -6,10 +6,10 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
-Version 1.2.0 - Unreleased
+Version 1.2.0 - 2016/05/02
 --------------------------
 
-Move to full libsass support, staying compatible with "Compass 1.x".
+Move to full libsass support but stay compatible with "Compass 1.x".
 
 This is related to issue #43
 
@@ -26,12 +26,13 @@ This is related to issue #43
 * admin_styles stylesheet is not supported for now;
 * Updated documentation;
 * Dropped ``admin_tools`` mod that is not supported anymore;
+* Fixed a bug with a wrong import path for icomoon fonts;
+* Upgrade to django-icomoon 0.4.0, close #47;
 
 Version 1.1.1 - 2016/05/02
 --------------------------
 
 * Add option to use https within nginx conf;
->>>>>>> master
 
 Version 1.1.0 - 2016/04/19
 --------------------------

@@ -1,15 +1,15 @@
 /*
  * To notice about pending deprecation on Compass functions and mixins
- * 
- * Some are just convenient/temporary replacement with just a warning 
+ *
+ * Some are just convenient/temporary replacement with just a warning
  * you can silent when setting '$emencia-compass-deprecation-warning' to 'false'
  */
 $emencia-compass-deprecation-warning: true !default;
-$emencia-image-directory: 'images/' !default;
-$emencia-font-directory: 'fonts/' !default;
+$emencia-image-directory: '../images/' !default;
+$emencia-font-directory: '../fonts/' !default;
 
 /*
- * Warning deprecation, can be silented from setting 'sdss' and keep an 'somewhat alike' behavior 
+ * Warning deprecation, can be silented from setting 'sdss' and keep an 'somewhat alike' behavior
  * using settings
  */
 @function font-url($url) {

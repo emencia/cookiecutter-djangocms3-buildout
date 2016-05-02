@@ -66,18 +66,23 @@ Project embeds a ``Makefile`` file that contains some usefull commands to build 
 SASS
 ****
 
-Produced project contain a `SASS`_ structure ready to use and contains `Foundation`_ and `Bourbon`_ libraries.
+Produced project contain a `SASS`_ structure ready to use and contains `Foundation`_ and `Bourbon`_ libraries. You should find a structure like this: ::
+
+    sass/
+    ├── bourbon
+    ├── foundation5
+    └── scss
+
+The ``scss`` directory is where live your SASS sources to compile to CSS. SASS sources and libraries must be compatible with any compiler which implement SASS >= 3.2.x references.
 
 Included HTML templates was done using `Foundation`_, so you will need to change them if you plan to use another SASS framework.
-
-SASS sources and libraries are compatible with any compiler which implement SASS >= 3.2.x references.
 
 We strongly advise you to use `Boussole`_ to avoid messing with some Ruby or Node.js installation. `Compass`_ 1.x is still supported. In the SASS sources directory a default configuration is available for both of them.
 
 .. WARNING::
-   Compass was not only a compiler, it include also some SASS framework we were using. It's most important feature was *vendor prefix* for many CSS3 properties but this is not needed for almost all of them.
+   Compass include also a SASS framework. It's most important feature is *vendor prefix* for many CSS3 properties but this is not needed anymore with recent browsers.
 
-   If you use Compass, **never use any Compass mixin or stuff** in your SASS sources, it will break compatibility people using Boussole.
+   If you use still use Compass compiler, **never use any Compass mixin or stuff** in your SASS sources, it will break compatibility for people using another compiler.
 
    For CSS3 properties requiring vendor prefix, we include `Bourbon`_ framework instead. If you are not sure about vendor prefix needs, search in `Can I Use <http://caniuse.com/>`_ database.
 
