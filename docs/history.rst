@@ -6,6 +6,17 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 1.2.1 - 2016/05/17
+--------------------------
+
+* Dropped assets (Javascript, SASS and CSS) for RoyalSlider, Masonry and MMenu since they are not really used anymore;
+* Changed ``sass/scss/addons/_type.scss`` to override Foundation types for titles instead of using extend;
+* Upgrade filebrowser to 3.6.4, close #51;
+* Close #48:
+
+  * Cleaning ``js/app.js``: removed unused code, moved sample plugins code to their own file within ``js/jquery/``;
+  * Fix broken Ckeditor within cms text plugin introduced since Image-swapper plugin has been moved to its own file (``js/jquery/jquery.image-swapper.js``);
+
 Version 1.2.0 - 2016/05/02
 --------------------------
 

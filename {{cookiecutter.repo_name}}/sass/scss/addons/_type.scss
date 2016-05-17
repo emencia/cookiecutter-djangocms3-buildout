@@ -10,25 +10,35 @@ strong{
     font-weight: 700;
 }
 
-// text-*** name formats
+// No trailing margin on last paragraph in their container
+p {
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+
+// Transform and decoration
 .text-upper{
     text-transform: uppercase !important;
 }
 .text-important{
     text-decoration: underline !important;
 }
-
+// Various font weight
 .text-thin{
     font-weight: 300 !important;
 }
-.text-bold{
+.text-normal{
     font-weight: 400 !important;
 }
 .text-strong{
     font-weight: 600 !important;
 }
+.text-stronger{
+    font-weight: 800 !important;
+}
 
-// Text colors
+// Various text colors
 .text-black{
     color: $black !important;
 }
@@ -49,38 +59,51 @@ small{
     }
 }
 
-h1, h2, h3, h4, h5, h6{
-    &.text-thin{
-        font-weight: 300 !important;
-    }
-    &.text-normal{
-        font-weight: 400 !important;
-    }
-    &.text-strong{
-        font-weight: 600 !important;
-    }
+/* Rewrite titles adding paragraph classes so we can have the same behaviors
+ * without troubling SEO/semantic
+ */
+h1, h2, h3, h4, h5, h6,
+.title-1, .title-2, .title-3, .title-4, .title-5, .title-6 {
+    font-family: $header-font-family;
+    font-weight: $header-font-weight;
+    font-style: $header-font-style;
+    color: $header-font-color;
+    text-rendering: $header-text-rendering;
+    margin-top: $header-top-margin;
+    margin-bottom: $header-bottom-margin;
+    line-height: $header-line-height;
 }
 
-.title-1{
-    @extend h1;
-}
-.title-2{
-    @extend h2;
-}
-.title-3{
-    @extend h3;
-}
-.title-4{
-    @extend h4;
-}
-.title-5{
-    @extend h5;
-}
+// From small size to upper
+//p, li, dd, dt{ font-size: $paragraph-font-size; }
+h1, .title-1 { font-size: $h1-font-size - $h1-font-reduction; }
+h2, .title-2 { font-size: $h2-font-size - $h2-font-reduction; }
+h3, .title-3 { font-size: $h3-font-size - $h3-font-reduction; }
+h4, .title-4 { font-size: $h4-font-size - $h4-font-reduction; }
+h5, .title-5 { font-size: $h5-font-size - $h5-font-reduction; }
+h6, .title-6 { font-size: $h6-font-size - $h6-font-reduction; }
 
-// Bigger text
-.big {
-    font-size: 1.4rem;
-    font-weight: 600;
+// Additional transition if needed
+/*@media #{$medium-up} {
+    //p, li, dd, dt{
+    //    font-size: $paragraph-font-size;
+    //}
+    h1, .title-1 { font-size: $h1-font-size - ($h1-font-reduction*0.75); }
+    h2, .title-2 { font-size: $h2-font-size - ($h2-font-reduction*0.75); }
+    h3, .title-3 { font-size: $h3-font-size - ($h3-font-reduction*0.75); }
+    h4, .title-4 { font-size: $h4-font-size - ($h4-font-reduction*0.75); }
+    h5, .title-5 { font-size: $h5-font-size - ($h5-font-reduction*0.75); }
+    h6, .title-6 { font-size: $h6-font-size - ($h6-font-reduction*0.75); }
+}*/
+
+// Final size for large screen and up
+@media #{$xlarge-up} {
+    h1, .title-1 { font-size: $h1-font-size; }
+    h2, .title-2 { font-size: $h2-font-size; }
+    h3, .title-3 { font-size: $h3-font-size; }
+    h4, .title-4 { font-size: $h4-font-size; }
+    h5, .title-5 { font-size: $h5-font-size; }
+    h6, .title-6 { font-size: $h6-font-size; }
 }
 
 // Underlined element
@@ -94,7 +117,7 @@ h1, h2, h3, h4, h5, h6{
         margin: 1rem 0;
         border-bottom: rem-calc(3px) solid $black;
     }
-    
+
     // On centered text
     &.text-center{
         &:after{
@@ -102,7 +125,7 @@ h1, h2, h3, h4, h5, h6{
             margin-right: auto;
         }
     }
-    
+
     // Border weight
     &.thin{
         &:after{
@@ -116,7 +139,7 @@ h1, h2, h3, h4, h5, h6{
             border-bottom: rem-calc(5px) solid $black;
         }
     }
-    
+
     // Border width size
     &.tiny{
         &:after{
@@ -143,7 +166,7 @@ h1, h2, h3, h4, h5, h6{
             width: 100%;
         }
     }
-    
+
     // Border distance from text
     &.far{
         &:after{

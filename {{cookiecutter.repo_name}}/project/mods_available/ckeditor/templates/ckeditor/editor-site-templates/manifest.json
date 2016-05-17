@@ -1,9 +1,4 @@
 {
-    "button-dropdown.html": {
-        "title": "Bouton 'dropdown'",
-        "description": "Un bouton qui déroule une liste de liens lorsqu'il est cliqué.",
-        "image": "button-dropdown.png"
-    },
     "grid_row_3_flyers.html": {
         "title": "Une ligne de 3 flyers",
         "description": "Une ligne de 3 colonnes contenant des flyers de contenu.",

@@ -11,7 +11,7 @@ import ast, copy, json, os, subprocess, sys
 # Sadly for now we dont have any clean way to automatically get the version from the
 # template, either using "git describe" or package version because hooks are applied
 # from the created project and are unaware of cookiecutter template location
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 
 # Project directory path
 PROJECT_DIR = 'project'

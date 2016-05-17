@@ -2,30 +2,43 @@
  **
  **
  ** This is the main frontend Javascript where all components will be initialized
- ** 
- ** There is some sample code for some components that are not enabled by default, 
- ** you will have to uncomment them and eventually edit them for your needs.
- ** 
- ** WARNING: Don't enable things that you don't need, keep your frontend script 
- **          clean. You can remove unused code but note that uncommented code will 
- **          be removed from final script in production by Javascript compressor.
+ **
+ ** WARNING: Don't enable things that you don't need, keep your frontend script
+ **          clean.
  **
  */
-$(window).load(function () {
-    // Equalize some columns after full page loading
-    // NOTE: Needed to be in the $.load(), because webkit raise ready() even if it does not have
-    //       downloaded all ressources, this cause false dimensions because all images
-    //       have not yet be downloaded, so they doesn't set true dimensions on their
-    //       parent and etc..
-    column_equalizer();
-    //AddLinkFromAttribute();
-    //LeftMegaMenu( $("#navabsleft") );
-
+jQuery(window).load(function () {
     /*
-     * Apply the trick to swap <img> elements into their container background
-     */
+    * Apply the trick to swap <img> elements into their container
+    * background and set a minimal height from image height
+    */
+    // Shortcuts using class
+    $('img.auto-background-cover').swapImageToBackground({
+        "position": '50% 50%',
+        "repeat": 'no-repeat',
+        "size": 'cover'
+    });
+    $('img.auto-background-auto').swapImageToBackground({
+        "position": '50% 50%',
+        "repeat": 'no-repeat',
+        "size": 'auto'
+    });
+    $('img.auto-background-contain').swapImageToBackground({
+        "position": '50% 50%',
+        "repeat": 'no-repeat',
+        "size": 'contain'
+    });
+    // Normal way using html attributes
     $('img.background').swapImageToBackground();
-    
+
+    // Let the initial image loading, when it's done, replace the initial image with
+    // its replacement url given in "data-lazy-replacement" attribute
+    $('img.lazy-replacement').each(function() {
+        if($(this).attr('data-lazy-replacement')){
+            $(this).attr('src', $(this).attr('data-lazy-replacement'));
+        }
+    });
+
     /*
      * Init Slick.js slider
      */
@@ -35,125 +48,42 @@ $(window).load(function () {
     });
 });
 
-$(window).resize(function() {
-    column_equalizer();
-    //LeftMegaMenu( $("#navabsleft") );
-});
-
-$(document).ready(function($) {
-    var $wallgrid_container = $('#isogrid'),
-        $interchanged_content_intro = $('#interchanged-content-intro');
-
+jQuery(document).ready(function($) {
     /*
-    * Button dropdown trick
-    */
-    // We can't use "data-***" html5 attibutes with ckeditor, but Foundation5
-    // requires them for Button Dropdown, so we add them on the fly for these
-    // buttons that have the "trick" class. Also their "id" is automatically
-    // added so you don't have to manage them.
-    $('a.button.dropdown.trick').each(function( index ) {
-        var dropdown_id = "dropdown-trick-"+index,
-            dropdown_menu,
-            container;
-        if( $( this ).parent().get(0).tagName == 'P' || $( this ).parent().get(0).tagName == 'LI' ) {
-            container = $(this).parent();
-        } else {
-            container = $(this);
-        }
-        dropdown_menu = container.next("ul.f-dropdown");
-        if(dropdown_menu){
-            $(this).attr('data-dropdown', dropdown_id);
-            dropdown_menu.attr('id', dropdown_id).attr('data-dropdown-content', '');
-        }
-    });
-
-    /*
-     * Pikaday for the common datepicker in form, note this use moment.js also
-     * to have correct localized format
-     */
-    /*$('.datepicker').pikaday({
-        format: 'DD/MM/YYYY',
-        i18n: {
-            previousMonth: 'Mois précédent',
-            nextMonth: 'Mois suivant',
-            months: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
-            weekdays: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
-            weekdaysShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam']
-        }
-    });*/
-
-    // Popin for image/iframe will not display on small media-query
-    /*if($(window).innerWidth()>640){
-        // Pop-in gallery for Porticus
-        $('.album-grid').magnificPopup({
-            delegate: '.row .item a',
-            type: 'image',
-            gallery:{
-                enabled:true
-            }
-        });
-        // Common Pop in, any url is fully passed to the iframe src
-        $('.pop-in').magnificPopup({
-            type: 'iframe',
-            iframe: {
-                patterns: {
-                    customsource: {
-                        index: '',
-                        src: '%id%'
-                    }
-                },
-                srcAction: 'iframe_src', // Templating object key. First part defines CSS selector, second attribute. "iframe_src" means: find "iframe" and set attribute "src".
-            }
-        });
-    }*/
-
-    /*
-    * Initialize Foundation after all event is binded
+    * Initialize Foundation
     */
     $(document).foundation();
 
     /*
-    * Conditionnal contents loading from interchange being
-    */
-    if($interchanged_content_intro.length>0){
-        // Triggered event when Foundation 'interchange' plugin replace the content
-        $interchanged_content_intro.on('replace', function (e, new_path, original_path) {
-            // Inits postorious contents
-            //$('#slideshow-container').foundation('orbit');
-            // Use socialaggregator lib only if loaded
-            $.fn.SocialWallGrid ? $wallgrid_container.SocialWallGrid() : null;
-        });
-        // Fallback for small resolution which is excluded from the interchange content
-        // (and so does not trigger a 'replace')
-        if(matchMedia(Foundation.media_queries.small).matches){
-            //$('#slideshow-container').foundation('orbit');
-            // Use socialaggregator lib only if loaded
-            $.fn.SocialWallGrid ? $wallgrid_container.SocialWallGrid() : null;
+     * Naive stuff for debugging elements
+     *
+     * Just add element name as prefix on each element
+     */
+    /*$('h1,h2,h3,h4,h5,h6,p,li,dd,dt', '.prefix-dom-items').each(function() {
+        var $this = $(this),
+            prefix = this.tagName;
+        if( this.tagName == 'P') {
+            if($this.hasClass("title-1")){
+                prefix += ".title-1";
+            } else if($this.hasClass("title-2")){
+                prefix += ".title-2";
+            } else if($this.hasClass("title-3")){
+                prefix += ".title-3";
+            } else if($this.hasClass("title-4")){
+                prefix += ".title-4";
+            } else if($this.hasClass("title-5")){
+                prefix += ".title-5";
+            } else if($this.hasClass("title-6")){
+                prefix += ".title-6";
+            }
         }
 
-    } else {
-        // If there is no interchange content
-        // Use socialaggregator lib only if loaded
-        $.fn.SocialWallGrid ? $wallgrid_container.SocialWallGrid() : null;
-    }
-    
-    /*
-    * Initialize MegaMenu
-    */
-    /*$("#menu_left").mmenu({
-            // options
-            classes: "mm-light"
-        }, {
-            // the configuration
-            pageSelector: "#page"
-        }
-    );*/
-    
-    /*
-     * Finally you can reflow some Foundation component when you have some code that 
-     * disturb/change their initial behaviors
-     * Don't use it this too much because it can cause some "display blinking".
-     */
-    //$(document).foundation('accordion', 'reflow');
-    //$(document).foundation('orbit', 'reflow');
+        if(prefix){ $this.html(prefix+': '+$this.html()); }
+    });*/
+
+    // Reflow the 'swapImageToBackground' plugin on debounced
+    // resize event to recalculate min-height for background image container
+    $(window).on("debouncedresize", function( event ) {
+        $("img[data-imgbg-status='processed']").swapImageToBackground('resize_height');
+    });
 });

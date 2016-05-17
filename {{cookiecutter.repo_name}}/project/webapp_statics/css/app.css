@@ -4512,15 +4512,11 @@ label.error {
 }
 
 /* Typography */
-.joyride-tip-guide h1, .joyride-tip-guide .title-1,
+.joyride-tip-guide h1,
 .joyride-tip-guide h2,
-.joyride-tip-guide .title-2,
 .joyride-tip-guide h3,
-.joyride-tip-guide .title-3,
 .joyride-tip-guide h4,
-.joyride-tip-guide .title-4,
 .joyride-tip-guide h5,
-.joyride-tip-guide .title-5,
 .joyride-tip-guide h6 {
   color: #ffffff;
   font-weight: bold;
@@ -5123,16 +5119,16 @@ ul.pagination li {
   margin-bottom: 0;
 }
 
-.panel h1, .panel .title-1, .panel h2, .panel .title-2, .panel h3, .panel .title-3, .panel h4, .panel .title-4, .panel h5, .panel .title-5, .panel h6, .panel p, .panel li, .panel dl {
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p, .panel li, .panel dl {
   color: #333333;
 }
 
-.panel h1, .panel .title-1, .panel h2, .panel .title-2, .panel h3, .panel .title-3, .panel h4, .panel .title-4, .panel h5, .panel .title-5, .panel h6 {
+.panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
   line-height: 1;
   margin-bottom: 0.625rem;
 }
 
-.panel h1.subheader, .panel .subheader.title-1, .panel h2.subheader, .panel .subheader.title-2, .panel h3.subheader, .panel .subheader.title-3, .panel h4.subheader, .panel .subheader.title-4, .panel h5.subheader, .panel .subheader.title-5, .panel h6.subheader {
+.panel h1.subheader, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
   line-height: 1.4;
 }
 
@@ -5154,16 +5150,16 @@ ul.pagination li {
   margin-bottom: 0;
 }
 
-.panel.callout h1, .panel.callout .title-1, .panel.callout h2, .panel.callout .title-2, .panel.callout h3, .panel.callout .title-3, .panel.callout h4, .panel.callout .title-4, .panel.callout h5, .panel.callout .title-5, .panel.callout h6, .panel.callout p, .panel.callout li, .panel.callout dl {
+.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p, .panel.callout li, .panel.callout dl {
   color: #333333;
 }
 
-.panel.callout h1, .panel.callout .title-1, .panel.callout h2, .panel.callout .title-2, .panel.callout h3, .panel.callout .title-3, .panel.callout h4, .panel.callout .title-4, .panel.callout h5, .panel.callout .title-5, .panel.callout h6 {
+.panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
   line-height: 1;
   margin-bottom: 0.625rem;
 }
 
-.panel.callout h1.subheader, .panel.callout .subheader.title-1, .panel.callout h2.subheader, .panel.callout .subheader.title-2, .panel.callout h3.subheader, .panel.callout .subheader.title-3, .panel.callout h4.subheader, .panel.callout .subheader.title-4, .panel.callout h5.subheader, .panel.callout .subheader.title-5, .panel.callout h6.subheader {
+.panel.callout h1.subheader, .panel.callout h2.subheader, .panel.callout h3.subheader, .panel.callout h4.subheader, .panel.callout h5.subheader, .panel.callout h6.subheader {
   line-height: 1.4;
 }
 
@@ -6406,13 +6402,13 @@ meta.foundation-mq-topbar {
   margin: 0;
 }
 
-.top-bar .name h1, .top-bar .name .title-1, .top-bar .name h2, .top-bar .name .title-2, .top-bar .name h3, .top-bar .name .title-3, .top-bar .name h4, .top-bar .name .title-4, .top-bar .name p, .top-bar .name span {
+.top-bar .name h1, .top-bar .name h2, .top-bar .name h3, .top-bar .name h4, .top-bar .name p, .top-bar .name span {
   font-size: 1.0625rem;
   line-height: 2.8125rem;
   margin: 0;
 }
 
-.top-bar .name h1 a, .top-bar .name .title-1 a, .top-bar .name h2 a, .top-bar .name .title-2 a, .top-bar .name h3 a, .top-bar .name .title-3 a, .top-bar .name h4 a, .top-bar .name .title-4 a, .top-bar .name p a, .top-bar .name span a {
+.top-bar .name h1 a, .top-bar .name h2 a, .top-bar .name h3 a, .top-bar .name h4 a, .top-bar .name p a, .top-bar .name span a {
   color: #ffffff;
   display: block;
   font-weight: normal;
@@ -6794,18 +6790,18 @@ meta.foundation-mq-topbar {
   font-weight: normal;
 }
 
-.top-bar-section .dropdown li.title h5, .top-bar-section .dropdown li.title .title-5, .top-bar-section .dropdown li.parent-link {
+.top-bar-section .dropdown li.title h5, .top-bar-section .dropdown li.parent-link {
   margin-bottom: 0;
   margin-top: 0;
   font-size: 1.125rem;
 }
 
-.top-bar-section .dropdown li.title h5 a, .top-bar-section .dropdown li.title .title-5 a, .top-bar-section .dropdown li.parent-link a {
+.top-bar-section .dropdown li.title h5 a, .top-bar-section .dropdown li.parent-link a {
   color: #ffffff;
   display: block;
 }
 
-.top-bar-section .dropdown li.title h5 a:hover, .top-bar-section .dropdown li.title .title-5 a:hover, .top-bar-section .dropdown li.parent-link a:hover {
+.top-bar-section .dropdown li.title h5 a:hover, .top-bar-section .dropdown li.parent-link a:hover {
   background: none;
 }
 
@@ -6849,15 +6845,11 @@ meta.foundation-mq-topbar {
   .top-bar .title-area {
     float: left;
   }
-  .top-bar .name h1 a, .top-bar .name .title-1 a,
+  .top-bar .name h1 a,
   .top-bar .name h2 a,
-  .top-bar .name .title-2 a,
   .top-bar .name h3 a,
-  .top-bar .name .title-3 a,
   .top-bar .name h4 a,
-  .top-bar .name .title-4 a,
   .top-bar .name h5 a,
-  .top-bar .name .title-5 a,
   .top-bar .name h6 a {
     width: auto;
   }
@@ -7235,15 +7227,10 @@ ul,
 ol,
 li,
 h1,
-.title-1,
 h2,
-.title-2,
 h3,
-.title-3,
 h4,
-.title-4,
 h5,
-.title-5,
 h6,
 pre,
 form,
@@ -7292,7 +7279,7 @@ p aside {
 }
 
 /* Default header styles */
-h1, .title-1, h2, .title-2, h3, .title-3, h4, .title-4, h5, .title-5, h6 {
+h1, h2, h3, h4, h5, h6 {
   color: #222222;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-style: normal;
@@ -7303,29 +7290,29 @@ h1, .title-1, h2, .title-2, h3, .title-3, h4, .title-4, h5, .title-5, h6 {
   text-rendering: optimizeLegibility;
 }
 
-h1 small, .title-1 small, h2 small, .title-2 small, h3 small, .title-3 small, h4 small, .title-4 small, h5 small, .title-5 small, h6 small {
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   color: #6f6f6f;
   font-size: 60%;
   line-height: 0;
 }
 
-h1, .title-1 {
+h1 {
   font-size: 2.125rem;
 }
 
-h2, .title-2 {
+h2 {
   font-size: 1.6875rem;
 }
 
-h3, .title-3 {
+h3 {
   font-size: 1.375rem;
 }
 
-h4, .title-4 {
+h4 {
   font-size: 1.125rem;
 }
 
-h5, .title-5 {
+h5 {
   font-size: 1.125rem;
 }
 
@@ -7528,22 +7515,22 @@ blockquote p {
 }
 
 @media only screen and (min-width: 40.0625em) {
-  h1, .title-1, h2, .title-2, h3, .title-3, h4, .title-4, h5, .title-5, h6 {
+  h1, h2, h3, h4, h5, h6 {
     line-height: 1.4;
   }
-  h1, .title-1 {
+  h1 {
     font-size: 2.75rem;
   }
-  h2, .title-2 {
+  h2 {
     font-size: 2.3125rem;
   }
-  h3, .title-3 {
+  h3 {
     font-size: 1.6875rem;
   }
-  h4, .title-4 {
+  h4 {
     font-size: 1.4375rem;
   }
-  h5, .title-5 {
+  h5 {
     font-size: 1.125rem;
   }
   h6 {
@@ -7601,15 +7588,12 @@ blockquote p {
   }
   p,
   h2,
-  .title-2,
-  h3,
-  .title-3 {
+  h3 {
     orphans: 3;
     widows: 3;
   }
-  h2, .title-2,
-  h3,
-  .title-3 {
+  h2,
+  h3 {
     page-break-after: avoid;
   }
 }
@@ -7654,14 +7638,14 @@ blockquote p {
   position: relative;
 }
 
-.tab-bar h1, .tab-bar .title-1, .tab-bar h2, .tab-bar .title-2, .tab-bar h3, .tab-bar .title-3, .tab-bar h4, .tab-bar .title-4, .tab-bar h5, .tab-bar .title-5, .tab-bar h6 {
+.tab-bar h1, .tab-bar h2, .tab-bar h3, .tab-bar h4, .tab-bar h5, .tab-bar h6 {
   color: #ffffff;
   font-weight: bold;
   line-height: 2.8125rem;
   margin: 0;
 }
 
-.tab-bar h1, .tab-bar .title-1, .tab-bar h2, .tab-bar .title-2, .tab-bar h3, .tab-bar .title-3, .tab-bar h4, .tab-bar .title-4 {
+.tab-bar h1, .tab-bar h2, .tab-bar h3, .tab-bar h4 {
   font-size: 1.125rem;
 }
 
@@ -8875,7 +8859,6 @@ th.hide-for-touch {
   "foundation/components/keystrokes",
   "foundation/components/labels",
   "foundation/components/magellan",
-  "foundation/components/orbit",
   "foundation/components/pagination",
   "foundation/components/panels",
   "foundation/components/pricing-tables",
@@ -9215,23 +9198,23 @@ dd .button:last-child {
   background-color: #ffffff;
 }
 
-.section h1, .section .title-1, .section .title-1 {
+.section h1, .section .title-1 {
   color: #000000;
 }
 
-.section h2, .section .title-2, .section .title-2 {
+.section h2, .section .title-2 {
   color: #000000;
 }
 
-.section h3, .section .title-3, .section .title-3 {
+.section h3, .section .title-3 {
   color: #000000;
 }
 
-.section h4, .section .title-4, .section .title-4 {
+.section h4, .section .title-4 {
   color: #000000;
 }
 
-.section h5, .section .title-5, .section .title-5 {
+.section h5, .section .title-5 {
   color: #000000;
 }
 
@@ -9350,23 +9333,23 @@ dd .button:last-child {
   background-color: #000000;
 }
 
-.section.black h1, .section.black .title-1, .section.black .title-1 {
+.section.black h1, .section.black .title-1 {
   color: #ffffff;
 }
 
-.section.black h2, .section.black .title-2, .section.black .title-2 {
+.section.black h2, .section.black .title-2 {
   color: #ffffff;
 }
 
-.section.black h3, .section.black .title-3, .section.black .title-3 {
+.section.black h3, .section.black .title-3 {
   color: #ffffff;
 }
 
-.section.black h4, .section.black .title-4, .section.black .title-4 {
+.section.black h4, .section.black .title-4 {
   color: #ffffff;
 }
 
-.section.black h5, .section.black .title-5, .section.black .title-5 {
+.section.black h5, .section.black .title-5 {
   color: #ffffff;
 }
 
@@ -10494,6 +10477,10 @@ strong {
   font-weight: 700;
 }
 
+p:last-child {
+  margin-bottom: 0;
+}
+
 .text-upper {
   text-transform: uppercase !important;
 }
@@ -10506,12 +10493,16 @@ strong {
   font-weight: 300 !important;
 }
 
-.text-bold {
+.text-normal {
   font-weight: 400 !important;
 }
 
 .text-strong {
   font-weight: 600 !important;
+}
+
+.text-stronger {
+  font-weight: 800 !important;
 }
 
 .text-black {
@@ -10534,21 +10525,75 @@ small .big {
   font-size: 80%;
 }
 
-h1.text-thin, .text-thin.title-1, h2.text-thin, .text-thin.title-2, h3.text-thin, .text-thin.title-3, h4.text-thin, .text-thin.title-4, h5.text-thin, .text-thin.title-5, h6.text-thin {
-  font-weight: 300 !important;
+/* Rewrite titles adding paragraph classes so we can have the same behaviors
+ * without troubling SEO/semantic
+ */
+h1, h2, h3, h4, h5, h6,
+.title-1, .title-2, .title-3, .title-4, .title-5, .title-6 {
+  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  color: #222222;
+  text-rendering: optimizeLegibility;
+  margin-top: 0.2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
 }
 
-h1.text-normal, .text-normal.title-1, h2.text-normal, .text-normal.title-2, h3.text-normal, .text-normal.title-3, h4.text-normal, .text-normal.title-4, h5.text-normal, .text-normal.title-5, h6.text-normal {
-  font-weight: 400 !important;
+h1, .title-1 {
+  font-size: 2.125rem;
 }
 
-h1.text-strong, .text-strong.title-1, h2.text-strong, .text-strong.title-2, h3.text-strong, .text-strong.title-3, h4.text-strong, .text-strong.title-4, h5.text-strong, .text-strong.title-5, h6.text-strong {
-  font-weight: 600 !important;
+h2, .title-2 {
+  font-size: 1.6875rem;
 }
 
-.big {
-  font-size: 1.4rem;
-  font-weight: 600;
+h3, .title-3 {
+  font-size: 1.375rem;
+}
+
+h4, .title-4 {
+  font-size: 1.125rem;
+}
+
+h5, .title-5 {
+  font-size: 1.125rem;
+}
+
+h6, .title-6 {
+  font-size: 1rem;
+}
+
+/*@media only screen and (min-width:40.0625em) {
+    //p, li, dd, dt{
+    //    font-size: $paragraph-font-size;
+    //}
+    h1, .title-1 { font-size: $h1-font-size - ($h1-font-reduction*0.75); }
+    h2, .title-2 { font-size: $h2-font-size - ($h2-font-reduction*0.75); }
+    h3, .title-3 { font-size: $h3-font-size - ($h3-font-reduction*0.75); }
+    h4, .title-4 { font-size: $h4-font-size - ($h4-font-reduction*0.75); }
+    h5, .title-5 { font-size: $h5-font-size - ($h5-font-reduction*0.75); }
+    h6, .title-6 { font-size: $h6-font-size - ($h6-font-reduction*0.75); }
+}*/
+@media only screen and (min-width: 90.0625em) {
+  h1, .title-1 {
+    font-size: 2.75rem;
+  }
+  h2, .title-2 {
+    font-size: 2.3125rem;
+  }
+  h3, .title-3 {
+    font-size: 1.6875rem;
+  }
+  h4, .title-4 {
+    font-size: 1.4375rem;
+  }
+  h5, .title-5 {
+    font-size: 1.125rem;
+  }
+  h6, .title-6 {
+    font-size: 1rem;
+  }
 }
 
 .underline:after {
@@ -10767,15 +10812,11 @@ ul.arrow.defer li > *:first-child:before {
      */
 }
 
-.panel h1:first-child, .panel .title-1:first-child,
+.panel h1:first-child,
 .panel h2:first-child,
-.panel .title-2:first-child,
 .panel h3:first-child,
-.panel .title-3:first-child,
 .panel h4:first-child,
-.panel .title-4:first-child,
 .panel h5:first-child,
-.panel .title-5:first-child,
 .panel h6:first-child,
 .panel p:first-child {
   margin-top: 0 !important;
@@ -11117,68 +11158,68 @@ ul.arrow.defer li > *:first-child:before {
   margin-bottom: 0;
 }
 
-.slick-container .slick-slide > .caption h1, .slick-container .slick-slide > .caption .title-1, .slick-container .slick-slide > .caption p.title-1 {
+.slick-container .slick-slide > .caption h1, .slick-container .slick-slide > .caption p.title-1 {
   font-size: 1rem;
 }
 
 @media only screen and (min-width: 40.0625em) {
-  .slick-container .slick-slide > .caption h1, .slick-container .slick-slide > .caption .title-1, .slick-container .slick-slide > .caption p.title-1 {
+  .slick-container .slick-slide > .caption h1, .slick-container .slick-slide > .caption p.title-1 {
     font-size: 1.3125rem;
   }
 }
 
 @media only screen and (min-width: 64.0625em) {
-  .slick-container .slick-slide > .caption h1, .slick-container .slick-slide > .caption .title-1, .slick-container .slick-slide > .caption p.title-1 {
+  .slick-container .slick-slide > .caption h1, .slick-container .slick-slide > .caption p.title-1 {
     font-size: 1.5rem;
   }
 }
 
 @media only screen and (min-width: 90.0625em) {
-  .slick-container .slick-slide > .caption h1, .slick-container .slick-slide > .caption .title-1, .slick-container .slick-slide > .caption p.title-1 {
+  .slick-container .slick-slide > .caption h1, .slick-container .slick-slide > .caption p.title-1 {
     font-size: 1.75rem;
   }
 }
 
-.slick-container .slick-slide > .caption h2, .slick-container .slick-slide > .caption .title-2, .slick-container .slick-slide > .caption p.title-2 {
+.slick-container .slick-slide > .caption h2, .slick-container .slick-slide > .caption p.title-2 {
   font-size: 0.75rem;
 }
 
 @media only screen and (min-width: 40.0625em) {
-  .slick-container .slick-slide > .caption h2, .slick-container .slick-slide > .caption .title-2, .slick-container .slick-slide > .caption p.title-2 {
+  .slick-container .slick-slide > .caption h2, .slick-container .slick-slide > .caption p.title-2 {
     font-size: 1.125rem;
   }
 }
 
 @media only screen and (min-width: 64.0625em) {
-  .slick-container .slick-slide > .caption h2, .slick-container .slick-slide > .caption .title-2, .slick-container .slick-slide > .caption p.title-2 {
+  .slick-container .slick-slide > .caption h2, .slick-container .slick-slide > .caption p.title-2 {
     font-size: 1.25rem;
   }
 }
 
 @media only screen and (min-width: 90.0625em) {
-  .slick-container .slick-slide > .caption h2, .slick-container .slick-slide > .caption .title-2, .slick-container .slick-slide > .caption p.title-2 {
+  .slick-container .slick-slide > .caption h2, .slick-container .slick-slide > .caption p.title-2 {
     font-size: 1.5rem;
   }
 }
 
-.slick-container .slick-slide > .caption h3, .slick-container .slick-slide > .caption .title-3, .slick-container .slick-slide > .caption p {
+.slick-container .slick-slide > .caption h3, .slick-container .slick-slide > .caption p {
   font-size: 0.75rem;
 }
 
 @media only screen and (min-width: 40.0625em) {
-  .slick-container .slick-slide > .caption h3, .slick-container .slick-slide > .caption .title-3, .slick-container .slick-slide > .caption p {
+  .slick-container .slick-slide > .caption h3, .slick-container .slick-slide > .caption p {
     font-size: 1.125rem;
   }
 }
 
 @media only screen and (min-width: 64.0625em) {
-  .slick-container .slick-slide > .caption h3, .slick-container .slick-slide > .caption .title-3, .slick-container .slick-slide > .caption p {
+  .slick-container .slick-slide > .caption h3, .slick-container .slick-slide > .caption p {
     font-size: 1.25rem;
   }
 }
 
 @media only screen and (min-width: 90.0625em) {
-  .slick-container .slick-slide > .caption h3, .slick-container .slick-slide > .caption .title-3, .slick-container .slick-slide > .caption p {
+  .slick-container .slick-slide > .caption h3, .slick-container .slick-slide > .caption p {
     font-size: 1.5rem;
   }
 }

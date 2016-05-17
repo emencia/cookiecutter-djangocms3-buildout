@@ -31,7 +31,6 @@
   "foundation/components/keystrokes",
   "foundation/components/labels",
   "foundation/components/magellan",
-  "foundation/components/orbit",
   "foundation/components/pagination",
   "foundation/components/panels",
   "foundation/components/pricing-tables",
@@ -72,21 +71,16 @@
 
 @import "vendor/cookie_law";
 //@import "vendor/magnific-popup";
-//@import "vendor/mmenu_load";
 //@import "vendor/pikaday";
-//@import "vendor/royalSlider";
 @import "vendor/slick";
 @import "vendor/slick-theme";
 
 @import "components/header";
 @import "components/footer";
 //@import "components/cms";
-//@import "components/porticus";
 //@import "components/zinnia";
 
 #body_content{
-    //@import "components/porticus";
-    //@import "components/zinnia";
     @import "components/contents";
 }
 
