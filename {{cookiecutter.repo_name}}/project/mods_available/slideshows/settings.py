@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-INSTALLED_APPS = add_to_tuple(INSTALLED_APPS, 
+INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
     'slideshows',
     'cmsplugin_slideshows',
 )
@@ -7,7 +7,6 @@ INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
 # Available templates to display a slideshow
 SLIDESHOWS_TEMPLATES = (
     ("slideshows/slides_show/default.html", "Slider default"),
-    ("slideshows/slides_show/royalslider.html", "Royal slider"),
 )
 
 # Available config file to initialize your slideshow Javascript stuff
