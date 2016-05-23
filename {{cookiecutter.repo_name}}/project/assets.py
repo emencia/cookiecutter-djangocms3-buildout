@@ -89,6 +89,9 @@ AVALAIBLE_BUNDLES.update({
         ## Throttling event from jquery-smartresize
         #"js/jquery/jquery.throttledresize.js",
 
+        # Image swapping plugin
+        "js/jquery/jquery.image-swapper.js",
+
         # equalize.js library
         "js/jquery/equalize.js",
 
