@@ -9,7 +9,7 @@ server {
     access_log  /var/log/nginx/{{ parts.VARS.NAME }}_access.log;
 
     location /.well-known/ {
-        root /usr/share/nginx/www;
+        root /var/www/html;
     }
 
     location / {
