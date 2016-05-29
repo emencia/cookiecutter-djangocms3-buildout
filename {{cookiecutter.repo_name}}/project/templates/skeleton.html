@@ -20,9 +20,9 @@
         {% block head_base_links %}{% assets "main_css" %}
             <link rel="stylesheet" href="{{ ASSET_URL }}">
         {% endassets %}{% endblock %}
-        
+
         {% block head_more_links %}{% endblock %}
-        
+
     {% endspaceless %}{% endblock %}
     {% render_block "css" %}
 </head>
@@ -56,12 +56,12 @@
                     {{ '{%' }} block menu_general_language {{ '%}' }}{{ '{%' }} include 'menu/custom_language_chooser.html' {{ '%}' }}{{ '{%' }} endblock {{ '%}' }}{% endif %}
                 </ul>{% endif %}
 {% raw %}
-                
+
             </section>{% endblock %}
         </nav>
     </div>
     {% endspaceless %}{% endblock %}
-    
+
     {% block subheader_container %}{% endblock %}
 
     {% block content_container %}<div id="body_content"{% block content_container_attrs %}{% endblock %}>
@@ -81,6 +81,8 @@
         </div>
     </footer>
     {% endspaceless %}{% endblock %}
+
+    {% if debug %}<div id="watch-for-current-mquery"><small>Current MQuery</small><span class="value"></span></div>{% endif %}
 
     {% render_block "js" %}
     {% spaceless %}

@@ -1,6 +1,5 @@
 /*
  **
- **
  ** This is the main frontend Javascript where all components will be initialized
  **
  ** WARNING: Don't enable things that you don't need, keep your frontend script
@@ -49,6 +48,10 @@ jQuery(window).load(function () {
 });
 
 jQuery(document).ready(function($) {
+    // Init MediaQuery watcher (look into addons.js for more infos)
+    $('#watch-for-current-mquery').initCurrentMediaQuery();
+    $('#watch-for-current-mquery').watchForCurrentMediaQuery();
+
     /*
     * Initialize Foundation
     */
@@ -57,7 +60,7 @@ jQuery(document).ready(function($) {
     /*
      * Naive stuff for debugging elements
      *
-     * Just add element name as prefix on each element
+     * Just add element name as prefix on each element.
      */
     /*$('h1,h2,h3,h4,h5,h6,p,li,dd,dt', '.prefix-dom-items').each(function() {
         var $this = $(this),
@@ -85,5 +88,7 @@ jQuery(document).ready(function($) {
     // resize event to recalculate min-height for background image container
     $(window).on("debouncedresize", function( event ) {
         $("img[data-imgbg-status='processed']").swapImageToBackground('resize_height');
+        // MediaQuery watcher on resize
+        $('#watch-for-current-mquery').watchForCurrentMediaQuery();
     });
 });

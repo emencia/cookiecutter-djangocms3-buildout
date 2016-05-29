@@ -6,6 +6,15 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 1.2.2 - 2016/05/29
+--------------------------
+
+* Freezed to ``djangocms-text-ckeditor==2.9.3``, close #55;
+* Upgraded to ``porticus==1.1.0``, close #54;
+* Upgraded to ``cmsplugin-porticus==0.4.1``, close #54;
+* Upgraded to ``cmsplugin-zinnia==0.8.1``, close #53;
+* Added "CurrentMediaQuery" plugin and enable it only when Django debug mode is on;
+
 Version 1.2.1 - 2016/05/17
 --------------------------
 
