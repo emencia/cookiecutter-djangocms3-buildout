@@ -4,8 +4,8 @@ Available and enabled assets bundles for this project
 It uses 'nested bundles' technic in the 'main available bundles' to regroup
 app bundles into a single file.
 
-Commonly we don't use Asset bundle for CSS because regrouping is often managed
-with Compass.
+NOTE: For sanity, remember to add a line in Makefile 'assets' action for each
+      leading bundle to remove their previous minification file (*.min.*).
 """
 from django_assets import Bundle, register
 
@@ -19,7 +19,7 @@ AVALAIBLE_BUNDLES = {
     # App bundle for Modernizr, compatible for all Foundation releases
     'app_modernizr_js': Bundle(
         "js/foundation5/vendor/modernizr.js",
-        filters='yui_js',
+        filters='closure_js',
         output='js/modernizr.%(version)s.js'
     ),
 
@@ -46,7 +46,7 @@ AVALAIBLE_BUNDLES = {
         "js/foundation5/foundation/foundation.tab.js",
         "js/foundation5/foundation/foundation.tooltip.js",
         "js/foundation5/foundation/foundation.topbar.js",
-        filters='yui_js',
+        filters='closure_js',
         output='js/app_foundation5.%(version)s.js'
     ),
 
@@ -56,7 +56,7 @@ AVALAIBLE_BUNDLES = {
         "js/pikaday/pikaday.js",
         "js/pikaday/pikaday.jquery.js",
         #"js/pikaday/jquery.timepicker.js",
-        filters='yui_js',
+        filters='closure_js',
         output='js/app_pikaday.%(version)s.js'
     ),
 }
@@ -118,7 +118,7 @@ AVALAIBLE_BUNDLES.update({
         # libraries from bundles
         "js/app.js",
 
-        filters='yui_js',
+        filters='closure_js',
         output='js/app.%(version)s.js'
     ),
 })

@@ -1,10 +1,22 @@
 .. _emencia_paste_djangocms_3: https://github.com/emencia/emencia_paste_djangocms_3
 .. _jquery-smartresize: https://github.com/louisremi/jquery-smartresize
+.. _googleclosure: https://developers.google.com/closure/compiler/
 
 History
 =======
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
+
+Version 1.3.0 - 2016/06/12
+--------------------------
+
+* Added usage of `googleclosure`_ for Javascript minification instead of ``yuicompressor`` (caused many issues with recent scripts because yui is not maintained anymore against recent Ecmascript versions). Related to issue #50;
+
+    * ``closure`` is installed through a Python meta package alike ``yuicompressor``;
+    * ``yuicompressor`` is still used for CSS minification until we find something as stable;
+    * Added Makefile action ``delminifiedassets`` to clean previous minified files from leading assets bundles;
+
+* Added a note about `Ckeditor configurable sanitizer <https://github.com/divio/djangocms-text-ckeditor#configurable-sanitizer>`_ in its mod settings. Related to issue #46;
 
 Version 1.2.2 - 2016/05/29
 --------------------------

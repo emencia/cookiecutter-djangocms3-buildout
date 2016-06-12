@@ -2,7 +2,7 @@ PYTHON2_PATH=`which python2.7`
 VIRTUALENV_PYTHON2_ARG= --python $(PYTHON2_PATH)
 FOUNDATION_VERSION=5.5.3
 
-.PHONY: help install install-dev install-foundation clean delpyc assets syncf5 tar_data import_db reload
+.PHONY: help install install-dev install-foundation clean delpyc delminifiedassets assets syncf5 tar_data import_db reload
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -13,6 +13,7 @@ help:
 
 	@echo "  clean                -- to clean your local repository from all stuff created by buildout and instance usage"
 	@echo "  delpyc               -- to remove all *.pyc files, this is recursive from the current directory"
+	@echo "  delminifiedassets    -- to remove minified assets from leading assets bundles"
 	@echo
 	@echo "  assets               -- to minify all assets and collect static files"
 	@echo "  syncf5               -- to update staticfiles with Foundation sources (use this is you upgrade Foundation sources)"
@@ -26,11 +27,17 @@ help:
 delpyc:
 	find . -name "*\.pyc"|xargs rm -f
 
-clean: delpyc
+delminifiedassets:
+	@echo "* Cleaning previous minifications"
+	@rm -f project/webapp_statics/css/app.*.css project/static/css/app.*.css
+	@rm -f project/webapp_statics/js/app.*.js project/static/js/app.*.js
+	@rm -f project/webapp_statics/js/modernizr.*.js project/static/js/modernizr.*.js
+
+clean: delpyc delminifiedassets
 	rm -Rf bin pip-selfcheck.json gestus.cfg po_projects.cfg include eggs lib parts django-apps-src develop-eggs local .installed.cfg compass/.sass-cache project/webapp_statics/.webassets-cache
 
-assets:
-	rm -f project/static/css/app.*.css project/static/css/modernizr.*.css project/static/js/app.*.js
+assets: delminifiedassets
+	@echo "* Apply minifications"
 	django-instance collectstatic --pythonpath=project/ --noinput
 	django-instance assets build --pythonpath=project/
 	django-instance collectstatic --pythonpath=project/ --noinput

@@ -10,8 +10,9 @@ TEMPLATES[0]['DIRS'] = add_to_tuple(
     os.path.join(MOD_FILE, "templates")
 )
 
-# Defining CKEDITOR configs, note that django_ckeditor use CKEDITOR_CONFIGS 
-# settings but cmsplugin_ckeditor use CKEDITOR_SETTINGS so we must mirroring it
+# Defining CKEDITOR configs, note that django_ckeditor use CKEDITOR_CONFIGS
+# settings but 'djangocms_text_ckeditor' use CKEDITOR_SETTINGS so we must
+# mirroring it
 CKEDITOR_CONFIGS = CKEDITOR_SETTINGS = {
     'language': '{{ language }}',
     'toolbar': 'CMS',
@@ -20,7 +21,7 @@ CKEDITOR_CONFIGS = CKEDITOR_SETTINGS = {
     'contentsCss': "/static/css/ckeditor.css",
     # To enable showblocks on editor start without to use a button
     'startupOutlineBlocks': True,
-    # Disable element filter to enable full HTML5, also this will let 
+    # Disable element filter to enable full HTML5, also this will let
     # append any code, even bad syntax and malicious code, so be careful
     "removePlugins": "stylesheetparser",
     "allowedContent": True,
@@ -37,7 +38,7 @@ CKEDITOR_CONFIGS = CKEDITOR_SETTINGS = {
     'templates_files': [
         '/ckeditor/editor_site_templates.js'
     ],
-    
+
     # Available toolbars
     'toolbar_CMS': [
         ['Undo', 'Redo'],
@@ -54,12 +55,12 @@ CKEDITOR_CONFIGS = CKEDITOR_SETTINGS = {
         ['Image', '-', 'NumberedList', 'BulletedList', '-', 'Table', '-', 'CreateDiv', 'HorizontalRule', 'SpecialChar', '-', 'Templates'],
         # , 'Iframe' # Disabled because djangocms seems to sanitize it from the posted HTML
     ],
-    # Zinnia use a contained toolbar that does not herit from defaults, so we much mirror them
+    # Zinnia use a contained toolbar that does not herit from defaults, so we must mirror them
     'zinnia-content': {
         # Wider editor
         'width': '100%',
         'height': 400,
-        
+
         'toolbar': 'Zinnia',
         'toolbar_Zinnia': [
             ['Undo', 'Redo'],
@@ -103,8 +104,10 @@ CKEDITOR_EDITOR_TEMPLATES_NAMES_FILE = "manifest.json"
 CKEDITOR_EDITOR_JS_TEMPLATE = u"""CKEDITOR.addTemplates( 'default', {{imagesPath:"{imagespath}", templates: {json_list}}});"""
 
 # Changing some settings of html5lib sanitizer
-# This is only related to the cms ckeditor text plugin, not the simple
-# ckeditor one
+# This is only related to the cms ckeditor text plugin, not the legacy
+# ckeditor
+# For more flexible solution, you can implement a custom token parser see:
+# https://github.com/divio/djangocms-text-ckeditor#configurable-sanitizer
 TEXT_ADDITIONAL_ATTRIBUTES = (
     # For internal awful hack to not have href links in html (sic , but usefull)
     #'data-link',
