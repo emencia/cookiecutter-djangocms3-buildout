@@ -9,7 +9,7 @@
 
                     {% if page_obj.number > 2 %}
                     <li class="arrow time">
-                        <a href="?page=1">1</a></li>
+                    <a href="?{% url_replace 'page' 1 request.get_full_path %}">1</a></li>
                     </li>
                     {% if page_obj.number > 3 %}
                     <li class="unavailable"><a href="">&hellip;</a></li>
@@ -37,7 +37,7 @@
                   <li class="unavailable"><a href="">&hellip;</a></li>
                   {% endif %}
                   <li class="arrow time">
-                    <a href="?page={{ paginator.num_pages }}">{{ paginator.num_pages }}</a></li>
+                  <a href="?{% url_replace 'page' paginator.num_pages request.get_full_path %}">{{ paginator.num_pages }}</a></li>
                   </li>
                   {% endif %}
                   {% if page_obj.number != paginator.num_pages %}
