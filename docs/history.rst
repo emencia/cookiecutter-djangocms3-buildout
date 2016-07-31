@@ -7,6 +7,14 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 1.4.0 - Unreleased
+--------------------------
+
+* Upgraded to ``django==1.8.14``, close #63;
+* Upgraded to ``django-google-tools==1.1.0``, close #60;
+* Enable ``mptt`` through Zinnia settings, so we can use ``recursetree`` tag in ``categorie_tree.html`` zinnia template, close #57;
+* Restore ``PO-Projects-client`` installation, close #62;
+
 Version 1.3.0 - 2016/06/12
 --------------------------
 

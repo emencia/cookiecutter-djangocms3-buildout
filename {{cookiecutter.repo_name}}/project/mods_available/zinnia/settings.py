@@ -5,6 +5,7 @@ INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
     'zinnia',
     'cmsplugin_zinnia',
     'zinnia_ckeditor',
+    'mptt', # added to be able to use recursetree in categorie_tree.html
 )
 
 TEMPLATES[0]['OPTIONS']['context_processors'] = add_to_tuple(
