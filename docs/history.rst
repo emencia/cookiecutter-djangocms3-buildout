@@ -14,6 +14,7 @@ Version 1.4.0 - Unreleased
 * Upgraded to ``django-google-tools==1.1.0``, close #60;
 * Enable ``mptt`` through Zinnia settings, so we can use ``recursetree`` tag in ``categorie_tree.html`` zinnia template, close #57;
 * Restore ``PO-Projects-client`` installation, close #62;
+* Add some Javascript code in ``app.js`` to implement clickable slider from ``emencia-django-slideshows``, close #58;
 
 Version 1.3.0 - 2016/06/12
 --------------------------

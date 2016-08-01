@@ -45,6 +45,17 @@ jQuery(window).load(function () {
         'adaptiveHeight': true,
         'lazyLoad': 'ondemand'
     });
+    // Ensure optional clickable slider
+    $('.slick-container .item[data-link-external]').click(function(event) {
+        $(this).addClass("clickable");
+        if( $(this).attr('data-slide-url-target') && ($(this).attr('data-slide-url-target') == '_blank' || $(this).attr('data-slide-url-target') == 'blank') ){
+            window.open($(this).attr('data-slide-url'), '_blank');
+        } else {
+            window.location.href = $(this).attr('data-slide-url');
+        }
+        event.preventDefault();
+        return false;
+    });
 });
 
 jQuery(document).ready(function($) {
