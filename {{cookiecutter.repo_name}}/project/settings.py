@@ -16,6 +16,10 @@ VAR_PATH = join(BASE_DIR, 'var')
 
 DEBUG = True
 
+# Https is never enabled on default and development environment, only for
+# integration and production.
+HTTPS_ENABLED = False
+
 ADMINS = (
     #('Emencia', 'PUT_ADMIN_EMAIL_HERE'),
 )
@@ -239,13 +243,13 @@ def add_to_tuple(var, *args, **kw):
     * Avoid duplicates by checking whether the items are already there;
     * Add many items at once;
     * Allow to add the items before some other item, when order is important
-      (by default it appends). If the before item does not exist, just insert 
+      (by default it appends). If the before item does not exist, just insert
       the value at the end;
 
     Example:
 
         INSTALLED_APPS = add_to_tuple(INSTALLED_APPS, 'foo', 'bar')
-        
+
     Or:
 
         INSTALLED_APPS = add_to_tuple(INSTALLED_APPS, 'fifi', 'loulou', before='riri')
@@ -263,7 +267,7 @@ def add_to_tuple(var, *args, **kw):
     return tuple(var)
 
 # Shadow import using execfile for enabled mods
-# With execfile, the python script will be executed in the current context and so 
+# With execfile, the python script will be executed in the current context and so
 # can directly access to it (like using/modifying its variables)
 mods = join(PROJECT_PATH, 'mods_enabled')
 mods = [join(mods, x) for x in listdir(mods)]
