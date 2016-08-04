@@ -7,7 +7,7 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
-Version 1.4.0 - Unreleased
+Version 1.4.0 - 2016/08/05
 --------------------------
 
 * Upgraded to ``django==1.8.14``, close #63;
@@ -15,6 +15,7 @@ Version 1.4.0 - Unreleased
 * Enable ``mptt`` through Zinnia settings, so we can use ``recursetree`` tag in ``categorie_tree.html`` zinnia template, close #57;
 * Restore ``PO-Projects-client`` installation, close #62;
 * Add some Javascript code in ``app.js`` to implement clickable slider from ``emencia-django-slideshows``, close #58;
+* Added a template ``pagination.html`` for paginate object with generic class based view ``ViewList``;
 
 Version 1.3.0 - 2016/06/12
 --------------------------
