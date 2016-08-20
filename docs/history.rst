@@ -7,6 +7,11 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 1.4.1 - 2016/08/20
+--------------------------
+
+* Fixed ``cookiecutter.json`` so the settings files are rendered correctly with Jinja variable from cookiecutter during project generation, close #64;
+
 Version 1.4.0 - 2016/08/05
 --------------------------
 
