@@ -21,9 +21,4 @@ jQuery(document).ready(function($) {
             dropdown_menu.attr('id', dropdown_id).attr('data-dropdown-content', '');
         }
     });
-
-    /*
-    * Initialize Foundation after all event is binded
-    */
-    $(document).foundation();
 });

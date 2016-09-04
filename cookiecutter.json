@@ -29,6 +29,7 @@
             "project/utils",
             "project/webapp_statics",
             "project/urls.py",
+            "project/templates/cookieconsent.html",
             "project/templates/pagination.html",
             "project/templates/404.html",
             "project/templates/500.html",

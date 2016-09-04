@@ -1,4 +1,4 @@
-{% raw %}{% load i18n cms_tags menu_tags sekizai_tags assets cookie_law %}{% load static from staticfiles %}<!DOCTYPE html>
+{% raw %}{% load i18n cms_tags menu_tags sekizai_tags assets %}{% load static from staticfiles %}<!DOCTYPE html>
 <!--[if IE 8]> <html class="{% block html_attr_alt %}{% endblock %}no-js lt-ie9" lang="{{ LANGUAGE_CODE }}"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="{% block html_attr %}{% endblock %}no-js" lang="{{ LANGUAGE_CODE }}"> <!--<![endif]-->
 <head>
@@ -29,7 +29,6 @@
 
 <body{% block body_attr %}{% endblock %}>
     {% cms_toolbar %}
-    {% cookie_law_banner %}
     {% block header_topbar %}{% spaceless %}
     <div id="header-container"{% block header_topbar_attr %} class="contain-to-grid"{% endblock %}>
         <nav class="top-bar " data-topbar>
@@ -87,6 +86,7 @@
     {% render_block "js" %}
     {% spaceless %}
         {% block head_base_js %}
+            {% include 'cookieconsent.html' %}
             {% assets "app_modernizr_js" "main_js" %}
                 <script type="text/javascript" src="{{ ASSET_URL }}"></script>
             {% endassets %}

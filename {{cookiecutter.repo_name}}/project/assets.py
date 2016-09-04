@@ -89,6 +89,9 @@ AVALAIBLE_BUNDLES.update({
         ## Throttling event from jquery-smartresize
         #"js/jquery/jquery.throttledresize.js",
 
+        # Cookieconsent plugin
+        "js/jquery/cookieconsent.js",
+
         # Image swapping plugin
         "js/jquery/jquery.image-swapper.js",
 
@@ -107,9 +110,6 @@ AVALAIBLE_BUNDLES.update({
 
         # Slick.js library
         "js/jquery/slick.js",
-
-        # Emencia Cookie Law plugin
-        "js/cookie_law/cookie_law.js",
 
         # Some common various addons you can use
         "js/jquery/addons.js",

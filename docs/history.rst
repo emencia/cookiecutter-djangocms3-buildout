@@ -7,6 +7,12 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 1.4.2 - 2016/09/04
+--------------------------
+
+* Removed ``emencia-cookie-law`` in profit of a Javascript library `Cookie Consent <https://silktide.com/tools/cookie-consent/>`_ which works better with webapp caches;
+* Fixed ``js/jquery/button-dropdown-trick.js`` which contained unecessary Foundation init;
+
 Version 1.4.1 - 2016/08/20
 --------------------------
 

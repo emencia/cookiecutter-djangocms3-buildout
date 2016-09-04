@@ -11,7 +11,7 @@ import ast, copy, json, os, subprocess, sys
 # Sadly for now we dont have any clean way to automatically get the version from the
 # template, either using "git describe" or package version because hooks are applied
 # from the created project and are unaware of cookiecutter template location
-__version__ = "1.4.1"
+__version__ = "1.4.2"
 
 # Project directory path
 PROJECT_DIR = 'project'
@@ -76,7 +76,6 @@ class AppManager(object):
         'assets', # Used in templates
         'ckeditor', # Used in djangocms and another apps
         'cms',
-        'cookie_law', # For EU Cookie Law
         'emencia_utils', # Useful utilities
         'filebrowser', # Used in djangocms and another apps
         'google_tools', # Used for almost customer projects

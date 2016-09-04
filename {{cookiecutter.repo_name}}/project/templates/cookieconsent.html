@@ -1,0 +1,23 @@
+{% load i18n %}<script type="text/javascript">
+    window.cookieconsent_options = {
+        "container": "body",
+        "message": '{% blocktrans %}By continuing to browse without changing your settings, you accept the use of cookies in order to access services and offers based on your interests in order to improve the user experience on our site. Click on &quot;More info&quot; to find out more about configuring cookies.{% endblocktrans %}',
+        "dismiss": "{% blocktrans %}I accept{% endblocktrans %}",
+        "learnMore": "{% blocktrans %}More info{% endblocktrans %}",
+        "link": "{% blocktrans %}/cookie-policy/{% endblocktrans %}",
+        "theme": false,
+        "markup": [
+            '<div id="cookie-law-container" class="section {% templatetag openvariable %}containerClasses{% templatetag closevariable %}">',
+            '<div class="row larger">',
+            '<div class="small-12 large-8 xlarge-10 columns">',
+            '<p>{% templatetag openvariable %}options.message{% templatetag closevariable %}</p>',
+            '<p class="more"><a data-cc-if="options.link" target="{% templatetag openvariable %} options.target {% templatetag closevariable %}" class="cc_more_info" href="{% templatetag openvariable %}options.link || "#null"{% templatetag closevariable %}">{% templatetag openvariable %}options.learnMore{% templatetag closevariable %}</a></p>',
+            '</div>',
+            '<div class="small-12 large-4 xlarge-2 columns text-center">',
+            '<a href="#null" data-cc-event="click:dismiss" target="_blank" class="button small lightcoral1">{% templatetag openvariable %}options.dismiss{% templatetag closevariable %}</a>',
+            '</div>',
+            '</div>',
+            '</div>'
+        ]
+    };
+</script>
