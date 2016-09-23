@@ -11,6 +11,7 @@ Version 1.4.3 - Unreleased
 --------------------------
 
 * Fix minor typo on CookieConsent message quotes, close #66;
+* Disabled ``PO-Projects-client`` egg and buildout part again since nap is breaked, close #67;
 
 Version 1.4.2 - 2016/09/04
 --------------------------
