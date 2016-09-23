@@ -39,7 +39,7 @@ clean: delpyc delminifiedassets
 assets: delminifiedassets
 	@echo "* Apply minifications"
 	django-instance collectstatic --pythonpath=project/ --noinput
-	django-instance assets build --pythonpath=project/
+	django-instance assets --pythonpath=project/ build
 	django-instance collectstatic --pythonpath=project/ --noinput
 
 install-foundation:
