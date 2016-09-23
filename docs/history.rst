@@ -7,6 +7,11 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 1.4.3 - Unreleased
+--------------------------
+
+* Fix minor typo on CookieConsent message quotes, close #66;
+
 Version 1.4.2 - 2016/09/04
 --------------------------
 
