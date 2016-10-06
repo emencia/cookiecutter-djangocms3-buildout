@@ -11,6 +11,9 @@ Version 1.4.4 - Unreleased
 --------------------------
 
 * Upgraded to ``django==1.8.15``, close #68;
+* Fixed icomoon mod settings for ``sass`` dir new path, close #69;
+* Upgraded to ``django-debug-toolbar==1.5`` to fix a bug with sqlquery panel, close #70
+* Added makefile action ``livehtml`` for ``sphinx-autobuild`` usage (have to install it before, not in dependancies);
 
 Version 1.4.3 - 2016/09/24
 --------------------------
