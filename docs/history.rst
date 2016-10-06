@@ -7,6 +7,11 @@ History
 
 Versions come from git tags, not package version because, err.. this is not a Python package.
 
+Version 1.4.4 - Unreleased
+--------------------------
+
+* Upgraded to ``django==1.8.15``, close #68;
+
 Version 1.4.3 - 2016/09/24
 --------------------------
 
