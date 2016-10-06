@@ -47,3 +47,12 @@ def site_metas(request):
     Context processor to add the current *Site* metas to the context
     """
     return get_site_metas(is_secure=request.is_secure())
+
+
+def marketingtags_metas(request):
+    """
+    Context processor to expose ``settings.MARKETINGTAGS_ENABLED``.
+    """
+    return {
+        'MARKETINGTAGS_ENABLED': settings.MARKETINGTAGS_ENABLED,
+    }

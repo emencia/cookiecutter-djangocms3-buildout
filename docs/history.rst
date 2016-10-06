@@ -14,6 +14,7 @@ Version 1.4.4 - Unreleased
 * Fixed icomoon mod settings for ``sass`` dir new path, close #69;
 * Upgraded to ``django-debug-toolbar==1.5`` to fix a bug with sqlquery panel, close #70
 * Added makefile action ``livehtml`` for ``sphinx-autobuild`` usage (have to install it before, not in dependancies);
+* Added new settings ``MARKETINGTAGS_ENABLED`` (default value depend on ``DEBUG`` setting) to determine marketing tags display from ``skeleton.html``. Also added an additional context processor to expose this setting to default template context, close #71;
 
 Version 1.4.3 - 2016/09/24
 --------------------------

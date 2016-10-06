@@ -92,7 +92,7 @@
             {% endassets %}
         {% endblock %}
         {% block foot_more_js %}{% endblock %}
-        {% block marketing_stuff %}{% if not debug %}{% include 'marketing_tags.html' %}{% endif %}{% endblock %}
+        {% block marketing_stuff %}{% if MARKETINGTAGS_ENABLED %}{% include 'marketing_tags.html' %}{% endif %}{% endblock %}
     {% endspaceless %}
 </body>
 </html>

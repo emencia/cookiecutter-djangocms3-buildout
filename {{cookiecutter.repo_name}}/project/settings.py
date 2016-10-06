@@ -16,6 +16,11 @@ VAR_PATH = join(BASE_DIR, 'var')
 
 DEBUG = True
 
+# To control whether or not to display marketing tags stuff
+# At least used in 'skeleton.html'. This settings is exposed in every context
+# template since its related context processor is enabled.
+MARKETINGTAGS_ENABLED = DEBUG
+
 # Https is never enabled on default and development environment, only for
 # integration and production.
 HTTPS_ENABLED = False
