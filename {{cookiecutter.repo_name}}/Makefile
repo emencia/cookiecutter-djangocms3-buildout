@@ -47,17 +47,37 @@ install-foundation:
 	foundation new foundation5 --version=$(FOUNDATION_VERSION)
 	@echo "Foundation v$(FOUNDATION_VERSION) sources has been installed, now you should synchronize assets using 'syncf5' action"
 
-install:
+init:
 	virtualenv --no-site-packages --setuptools $(VIRTUALENV_PYTHON2_ARG) .
 	mkdir -p eggs
+
+pre_build:
 	bin/pip install 'setuptools>=19.1'
 	bin/pip install 'pip>=7.1.2'
 	bin/pip install 'zc.buildout==2.5.0'
+
+build:  pre_build
 	bin/buildout -v
+
+build_integration:  pre_build
+	bin/buildout -v -c integration.cfg
+
+build_production:  pre_build
+	bin/buildout -v -c production.cfg
+
+install: init build
 	bin/django-instance migrate
 	bin/django-instance createsuperuser
 
 install-dev: install install-foundation syncf5
+
+install_integration: init build_integration
+	bin/django-instance migrate
+	bin/django-instance createsuperuser
+
+install_production: init build_production
+	bin/django-instance migrate
+	bin/django-instance createsuperuser
 
 syncf5:
 	@echo "* Updating jQuery sources"
@@ -101,3 +121,9 @@ import_db:
 
 reload:
 	echo r > var/uwsgi.fifo
+
+test:
+	@bin/django-instance test
+
+flake8:
+	@bin/flake8 project --exit-zero
