@@ -126,4 +126,4 @@ test:
 	@bin/django-instance test
 
 flake8:
-	@bin/flake8 project --exit-zero
+	@bin/flake8 project --exclude=project/mods_available
