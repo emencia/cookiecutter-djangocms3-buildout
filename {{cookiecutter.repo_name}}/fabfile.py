@@ -5,8 +5,9 @@ from fabtools.python import virtualenv
 PATH = '~{{ cookiecutter.deploy_user }}/{{ cookiecutter.repo_name }}'
 USER = '{{ cookiecutter.deploy_user }}'
 DEV_HOST = '{{ cookiecutter.deploy_host }}'
-REPO_URI = 'git@{{ cookiecutter.repo_host }}:{{ cookiecutter.repo_username }}/{{ cookiecutter.repo_name }}.git'
+REPO_URI = 'git@{{ cookiecutter.repo_host }}:{{ cookiecutter.repo_username }}/{{ cookiecutter.repo_name }}.git' # noqa
 CONF_NAME = "{{ cookiecutter.repo_name }}.conf"
+
 
 @hosts(DEV_HOST)
 @task
