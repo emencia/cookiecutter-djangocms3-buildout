@@ -3,14 +3,20 @@
 """
 Post hooks to finish install
 
-When developing on this script, add "test" as first argument to use test mode with
-a dummy context else the script will fails (because the context is empty).
+When developing on this script, add "test" as first argument to use test mode
+with a dummy context else the script will fails (because the context is empty).
 """
-import ast, copy, json, os, subprocess, sys
+import ast
+import copy
+import json
+import os
+import subprocess
+import sys
 
-# Sadly for now we dont have any clean way to automatically get the version from the
-# template, either using "git describe" or package version because hooks are applied
-# from the created project and are unaware of cookiecutter template location
+# Sadly for now we dont have any clean way to automatically get the version
+# from the template, either using "git describe" or package version because
+# hooks are applied from the created project and are unaware of cookiecutter
+# template location
 __version__ = "1.4.4"
 
 # Project directory path
@@ -45,7 +51,8 @@ class Caller(object):
         self.cwd = cwd
 
     def __call__(self, *args):
-        popen = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=self.cwd)
+        popen = subprocess.Popen(args, stdout=subprocess.PIPE,
+                                 stderr=subprocess.PIPE, cwd=self.cwd)
         out, err = popen.communicate()
         if popen.returncode != 0:
             print args
@@ -73,16 +80,16 @@ class AppManager(object):
     BASE_APPS = [
         # This is the mod name, not the package or module name
         'admin_style',
-        'assets', # Used in templates
-        'ckeditor', # Used in djangocms and another apps
+        'assets',  # Used in templates
+        'ckeditor',  # Used in djangocms and another apps
         'cms',
-        'emencia_utils', # Useful utilities
-        'filebrowser', # Used in djangocms and another apps
-        'google_tools', # Used for almost customer projects
-        'icomoon', # For Icomoon webfont
-        'logentry', # Admin log entries browser
-        'site_metas', # Simple addon to expose some metas in all views
-        'sitemap', # Common sitemap for djangocms and another apps
+        'emencia_utils',  # Useful utilities
+        'filebrowser',  # Used in djangocms and another apps
+        'google_tools',  # Used for almost customer projects
+        'icomoon',  # For Icomoon webfont
+        'logentry',  # Admin log entries browser
+        'site_metas',  # Simple addon to expose some metas in all views
+        'sitemap',  # Common sitemap for djangocms and another apps
     ]
 
     # Optional apps enabled if their context value is "yes"
@@ -95,8 +102,8 @@ class AppManager(object):
         'enable_zinnia': 'zinnia',
     }
 
-    # Dependancies that will be added to enabled apps if their dependant is enabled
-    # Key is the app name, Value is a list of app names to add
+    # Dependancies that will be added to enabled apps if their dependant is
+    # enabled Key is the app name, Value is a list of app names to add
     DEPENDANCIES = {
         'accounts': ['crispy_forms', 'recaptcha'],
         'contact_form': ['crispy_forms', 'recaptcha'],
@@ -115,7 +122,7 @@ class AppManager(object):
         apps = [k for k in self.BASE_APPS]
 
         # Search for optional app variable name in context
-        for varname,appname in self.OPTIONAL_APPS.items():
+        for varname, appname in self.OPTIONAL_APPS.items():
             if varname in self.context and self.context.get(varname) == 'yes':
                 apps.append(appname)
 
@@ -139,7 +146,7 @@ class AppManager(object):
             os.path.join(self.project_dir, 'mods_enabled', name)
         ) for name in mods]
 
-        #print json.dumps(symlink_list, indent=4)
+        # print json.dumps(symlink_list, indent=4)
 
         # Create symlinks
         for target, linkfile in symlink_list:
@@ -169,7 +176,8 @@ def repository_init(context, project_dir, test_mode=False):
         call('git', 'add', '.')
     print "* First commit"
     if not test_mode:
-        call('git', 'commit', '-m', "First commit from 'cookiecutter-djangocms3-buildout=={}'".format(__version__))
+        message = "First commit from 'cookiecutter-djangocms3-buildout=={}'"
+        call('git', 'commit', '-m', message.format(__version__))
     print "* Configure remote origin on", repository_path
     if not test_mode:
         call('git', 'remote', 'add', 'origin', repository_path)
@@ -185,14 +193,14 @@ def store_project_context(context, project_dir, test_mode=False):
     del c['secret_key']
     del c['_copy_without_render']
     c.update({
-        #'generator': 'cookiecutter-djangocms3-buildout=={}'.format(get_template_version())
         'generator': 'cookiecutter-djangocms3-buildout=={}'.format(__version__)
     })
 
     destination = os.path.join(project_dir, '__init__.py')
 
     with open(destination, 'r') as infile:
-        content = infile.read().format(cookiecutter_context=json.dumps(c, indent=4))
+        content = infile.read().format(
+            cookiecutter_context=json.dumps(c, indent=4))
 
     if not test_mode:
         print "* Writing context into {}".format(project_dir)
@@ -200,7 +208,6 @@ def store_project_context(context, project_dir, test_mode=False):
             outfile.write(content)
     else:
         print "* Pretending to write context into: {}".format(destination)
-
 
 
 def get_template_version():
@@ -213,12 +220,12 @@ def get_template_version():
 
 
 if __name__ == "__main__":
-    import sys
     # Get the context to use and enable or not the test mode
     test_mode = False
-    if len(sys.argv)>1 and sys.argv[1].strip() == 'test':
+    if len(sys.argv) > 1 and sys.argv[1].strip() == 'test':
         context = TEST_CONTEXT
-        PROJECT_DIR = os.path.join('..', '{{cookiecutter.repo_name}}', PROJECT_DIR)
+        PROJECT_DIR = os.path.join('..', '{{cookiecutter.repo_name}}',
+                                   PROJECT_DIR)
         test_mode = True
     else:
         context = ast.literal_eval(COOKIE_CONTEXT)
@@ -241,11 +248,13 @@ if __name__ == "__main__":
     print_part_title("Go ahead")
     print "Your new project should be ready now."
     print
-    print "Just enter in '{{cookiecutter.repo_name}}' directory then launch following command to install it:"
+    print "Just enter in '{{cookiecutter.repo_name}}' directory then launch"\
+        " following command to install it:"
     print
     print "    make install"
     print
-    print "The project repository has been initialized, committed and configured for origin remote on:"
+    print "The project repository has been initialized, committed and"\
+        " configured for origin remote on:"
     print
     print "   ", repository_path
     print
