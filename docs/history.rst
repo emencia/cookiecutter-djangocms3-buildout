@@ -7,6 +7,11 @@ History
 
 Versions come from git tags.
 
+devel (next release)
+--------------------
+
+* Add files for use CI on project (with Jenkins/Fabric)
+
 Version 1.4.4 - 2016/10/06
 --------------------------
 
