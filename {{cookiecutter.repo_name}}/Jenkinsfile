@@ -1,0 +1,130 @@
+#!groovy
+
+DEFAULT_BRANCH = 'master'
+DEPLOYED_BRANCH = DEFAULT_BRANCH
+
+is_merge_request = env.gitlabTargetBranch != env.gitlabSourceBranch;
+def get_code() {
+    checkout scm
+    if (env.gitlabSourceBranch == null) {
+        checkout([
+            $class: 'GitSCM',
+            branches: [[name: "origin/${DEFAULT_BRANCH}"]],
+        ])
+    } else if (is_merge_request) {
+        echo "Pre Build Merge ${env.gitlabTargetBranch} and ${env.gitlabSourceBranch}"
+        checkout([
+            $class: 'GitSCM',
+            branches: [[name: "origin/${env.gitlabSourceBranch}"]],
+            extensions: [
+                [
+                    $class: 'PreBuildMerge',
+                    options: [
+                        fastForwardMode: 'NO_FF',
+                        mergeRemote: 'origin',
+                        mergeStrategy: 'MergeCommand.Strategy',
+                        mergeTarget: "${env.gitlabTargetBranch}"
+                    ]
+                ]
+            ]
+        ])
+    } else {
+        checkout([
+            $class: 'GitSCM',
+            branches: [[name: "origin/${env.gitlabSourceBranch}"]],
+        ])
+    }
+}
+
+def notify(text) {
+    if (is_merge_request) {
+        echo text
+        addGitLabMRComment text
+    }
+}
+
+notify "Building in ${env.BUILD_URL}"
+
+node('Clio07') {
+    withEnv(['LC_ALL=en_US.utf-8']) {
+    stage 'Checkout', {
+        get_code()
+    }
+    try {
+        gitlabBuilds(builds: [
+                'Quality & tests setup',
+                'Quality',
+                'Tests',
+        ]) {
+            stage 'Quality & tests setup', {
+                gitlabCommitStatus('Quality & tests setup') {
+                    if (!fileExists('./bin/python')) {
+                        sh 'make init'
+                    }
+                    sh 'make build'
+                }
+            }
+        }
+        stage 'Quality', {  
+            gitlabCommitStatus('Quality') {
+                sh 'make flake8'
+                }
+            }
+        stage 'Tests', {
+            gitlabCommitStatus('Tests') {
+                sh 'make test'
+                }
+            }
+    } catch (error) {
+        notify "There was an error when testing: ${error}"
+        throw error
+        }
+    }
+    notify "Seems pretty good ${env.BUILD_URL}"
+    if (env.gitlabSourceBranch == DEPLOYED_BRANCH && env.gitlabActionType == 'PUSH' || env.gitlabSourceBranch == null) {
+        try {
+            gitlabBuilds(builds: [
+                'Deploy',
+            ]) {
+                stage 'Deploy', {
+                    gitlabCommitStatus('Deploy') {
+                        sh 'fab deploy_dev'
+                    }
+                }
+            }
+        } catch (error) {
+            notify "There was an error when deploying: ${error}"
+            throw error
+        }
+    }
+    if (!is_merge_request && env.gitlabSourceBranch == DEPLOYED_BRANCH) {
+        stage 'Make changelog', {
+            gitlabCommitStatus('Make changelog') {
+                if (env.gitlabBefore && env.gitlabAfter) {
+                    changelog = sh(script: "git log --graph --oneline --decorate ${env.gitlabBefore}..${env.gitlabAfter} --", returnStdout: true);
+                } else {
+                    changelog = sh(script: "git log -n 1", returnStdout: true);
+                }
+                mail(
+                        from: '{{ cookiecutter.changelog_mail_from }}',
+                        to: '{{ cookiecutter.changelog_mail_to }}',
+                        subject: "${env.JOB_NAME} ${env.BUILD_DISPLAY_NAME}",
+                        body: """
+Project ${env.JOB_BASE_NAME} has completed ${env.BUILD_DISPLAY_NAME} and is deployed to integration.
+
+More details on [${env.JOB_NAME} ${env.BUILD_DISPLAY_NAME}](${env.BUILD_URL}).
+
+Changelog
+=========
+
+${changelog}
+
+--
+Jenkins
+${env.JENKINS_URL}
+""",
+            )
+            }
+        }
+    }
+}

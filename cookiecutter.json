@@ -12,6 +12,10 @@
         "enable_multiple_languages": "no",
 
         "enable_https": "yes",
+        "deploy_user": "django",
+        "deploy_host": "",
+        "changelog_mail_from": "",
+        "changelog_mail_to": "",
 
         "secret_key": "{% for column in items|slice(50) %}{{ 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'|random }}{% endfor %}",
 
