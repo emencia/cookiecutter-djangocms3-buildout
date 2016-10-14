@@ -36,12 +36,14 @@ class ContactBase(models.Model):
 class Contact(ContactBase):
     """
     Default enabled model
-    
+
     Contains common infos
     """
     phone = models.CharField(_('phone'), max_length=15)
     company = models.CharField(_('company'), max_length=250, blank=True)
     city = models.CharField(_('city'), max_length=255, blank=True)
     state = models.CharField(_('state/province'), max_length=255, blank=True)
-    country = models.ForeignKey(Country, verbose_name=_('country'), blank=True, null=True)
-    optin_newsletter = models.BooleanField(_("do you wish to receive the newsletter?"), default=False)
+    country = models.ForeignKey(Country, verbose_name=_('country'), blank=True,
+                                null=True)
+    optin_newsletter = models.BooleanField(
+        _("do you wish to receive the newsletter?"), default=False)

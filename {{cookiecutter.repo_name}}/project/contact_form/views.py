@@ -7,13 +7,14 @@ from django.views.generic.edit import FormView
 
 from .forms import ContactForm
 
+
 class ContactFormBaseView(FormView):
     """
     Base view for contact forms
     """
     template_name = 'contact_form/contact_form.html'
     form_class = ContactForm
-    
+
     def get_success_url(self):
         return reverse('contact_form_sent')
 

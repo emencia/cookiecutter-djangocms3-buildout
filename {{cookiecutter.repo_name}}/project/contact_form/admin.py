@@ -11,9 +11,11 @@ from import_export.admin import ImportExportModelAdmin
 # Import from here
 from models import Contact
 
+
 class ContactResource(resources.ModelResource):
     class Meta:
         model = Contact
+
 
 class ContactBaseAdmin(admin.ModelAdmin):
     date_hierarchy = 'creation_date'
@@ -22,8 +24,7 @@ class ContactBaseAdmin(admin.ModelAdmin):
     search_fields = ('first_name', 'last_name', 'email', 'message')
     fieldsets = ((None, {'fields': ('civility', 'first_name', 'last_name',
                                     'email',)}),
-                 (None, {'fields': ('message',)}),
-        )
+                 (None, {'fields': ('message',)}),)
     actions_on_top = False
     actions_on_bottom = True
 

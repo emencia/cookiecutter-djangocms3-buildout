@@ -17,6 +17,7 @@ from captcha.fields import ReCaptchaField
 
 from .models import CIVILITY_CHOICES, ContactBase, Contact
 
+
 def SimpleRowColumn(field, *args, **kwargs):
     """
     Shortcut for simple row with only a full column
@@ -27,6 +28,7 @@ def SimpleRowColumn(field, *args, **kwargs):
         Column(field),
     )
 
+
 class ContactFormBase(ModelForm):
     """
     Contact base form, you cant use it directly because the used
@@ -36,10 +38,9 @@ class ContactFormBase(ModelForm):
     required_css_class = 'required'
     mail_subject_template = 'contact_form/contact_form_subject.txt'
     mail_content_template = 'contact_form/contact_form.txt'
- 
+
     def __init__(self, *args, **kwargs):
         super(ContactFormBase, self).__init__(*args, **kwargs)
-      
         self.helper = FormHelper()
         self.helper.form_action = '.'
 
@@ -49,7 +50,8 @@ class ContactFormBase(ModelForm):
         context = {'contact': contact}
         context.update(get_site_metas())
 
-        subject = ''.join(render_to_string(self.mail_subject_template, context).splitlines())
+        subject = ''.join(render_to_string(self.mail_subject_template,
+                                           context).splitlines())
         content = render_to_string(self.mail_content_template, context)
 
         send_mail(subject, content,
@@ -61,17 +63,19 @@ class ContactFormBase(ModelForm):
 
     class Meta:
         model = ContactBase
-        fields = ('civility','first_name','last_name','email','message',)
+        fields = ('civility', 'first_name', 'last_name', 'email', 'message',)
+
 
 class ContactForm(ContactFormBase):
     """Contact Form"""
-    captcha = ReCaptchaField(attrs={'theme' : 'clean'})
-  
+    captcha = ReCaptchaField(attrs={'theme': 'clean'})
+
     def __init__(self, *args, **kwargs):
         super(ContactFormBase, self).__init__(*args, **kwargs)
-      
-        self.fields['civility'].choices = (('', _('civility')),) + CIVILITY_CHOICES
-      
+
+        self.fields['civility'].choices = (('',
+                                           _('civility')),) + CIVILITY_CHOICES
+
         self.helper = FormHelper()
         self.helper.attrs = {'data_abide': ''}
         self.helper.form_action = '.'
@@ -79,6 +83,6 @@ class ContactForm(ContactFormBase):
 
     class Meta:
         model = Contact
-        fields = ('civility','first_name','last_name','email','message',
-                  'phone','company','city','state','country',
+        fields = ('civility', 'first_name', 'last_name', 'email', 'message',
+                  'phone', 'company', 'city', 'state', 'country',
                   'optin_newsletter', 'captcha')
