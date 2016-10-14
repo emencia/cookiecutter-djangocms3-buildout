@@ -2,13 +2,12 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+
 class UserProfile(models.Model):
     """
     User profile datas
-    
-    This is a simple extend to user model:
-    
-        https://docs.djangoproject.com/en/1.7/topics/auth/customizing/#extending-the-existing-user-model
+
+    This is a simple extend to user model
     """
     user = models.OneToOneField(User, verbose_name=_('user'))
 
@@ -18,4 +17,5 @@ class UserProfile(models.Model):
     postal_code = models.CharField(_('Postal code'), max_length=15, blank=True)
     city = models.CharField(_('City'), max_length=100, blank=True)
     country = models.CharField(_('Country'), max_length=100, blank=True)
-    phone = models.CharField(_('Professional phone number'), max_length=25, blank=True)
+    phone = models.CharField(_('Professional phone number'), max_length=25,
+                             blank=True)

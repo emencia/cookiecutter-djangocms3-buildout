@@ -36,8 +36,8 @@ def send_activation_pending_email(user, site, user_profile):
         'user': user,
         'user_profile': user_profile,
     }
-    subject = render_to_string('registration/activation_pending_email_subject.txt',
-                               context)
+    subject_tpl = "registration/activation_pending_email_subject.txt"
+    subject = render_to_string(subject_tpl, context)
     # Email subject *must not* contain newlines
     subject = ''.join(subject.splitlines())
 

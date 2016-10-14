@@ -1,25 +1,29 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
 
 from crispy_forms.helper import FormHelper
-from crispy_forms_foundation.layout import Layout, Fieldset, Row, Column, ButtonHolder, Submit
+from crispy_forms_foundation.layout import Layout, Fieldset, Row, Column
+from crispy_forms_foundation.layout import ButtonHolder, Submit
 
 from registration.forms import RegistrationFormUniqueEmail
 
+
 def dummy_form_helper():
     """
-    Return a very simple form helper that will only display the input fields from the 
-    form and the csrf.
-    
-    <form/> tag and submit button is at your charge in the templates, fields are 
-    automatically selected from the form and csrf is inserted.
+    Return a very simple form helper that will only display the input fields
+    from the form and the csrf.
+
+    <form/> tag and submit button is at your charge in the templates, fields
+    are automatically selected from the form and csrf is inserted.
     """
     helper = FormHelper()
     helper.form_tag = False
-    
+
     return helper
+
 
 class AuthenticationFormAccounts(AuthenticationForm):
     """
@@ -27,8 +31,8 @@ class AuthenticationFormAccounts(AuthenticationForm):
     """
     def __init__(self, *args, **kwargs):
         self.helper = dummy_form_helper()
-        
         super(AuthenticationFormAccounts, self).__init__(*args, **kwargs)
+
 
 class PasswordChangeFormAccounts(PasswordChangeForm):
     """
@@ -36,8 +40,8 @@ class PasswordChangeFormAccounts(PasswordChangeForm):
     """
     def __init__(self, *args, **kwargs):
         self.helper = dummy_form_helper()
-        
         super(PasswordChangeFormAccounts, self).__init__(*args, **kwargs)
+
 
 class PasswordResetFormAccounts(PasswordResetForm):
     """
@@ -45,8 +49,8 @@ class PasswordResetFormAccounts(PasswordResetForm):
     """
     def __init__(self, *args, **kwargs):
         self.helper = dummy_form_helper()
-        
         super(PasswordResetFormAccounts, self).__init__(*args, **kwargs)
+
 
 class SetPasswordFormAccounts(SetPasswordForm):
     """
@@ -54,9 +58,7 @@ class SetPasswordFormAccounts(SetPasswordForm):
     """
     def __init__(self, *args, **kwargs):
         self.helper = dummy_form_helper()
-        
         super(SetPasswordFormAccounts, self).__init__(*args, **kwargs)
-
 
 
 class RegistrationFormAccounts(RegistrationFormUniqueEmail):
@@ -67,12 +69,14 @@ class RegistrationFormAccounts(RegistrationFormUniqueEmail):
     last_name = forms.CharField(label=_('Lastname'))
     company = forms.CharField(label=_('Company'))
     function = forms.CharField(label=_('Function'))
-    address = forms.CharField(label=_('Address'), required=False, widget=forms.Textarea(attrs={'rows':3}))
+    address = forms.CharField(label=_('Address'), required=False,
+                              widget=forms.Textarea(attrs={'rows': 3}))
     postal_code = forms.CharField(label=_('Postal code'), required=False)
     city = forms.CharField(label=_('City'), required=False)
     country = forms.CharField(label=_('Country'), required=False)
-    phone = forms.CharField(label=_('Professional phone number'), required=False)
-    
+    phone = forms.CharField(label=_('Professional phone number'),
+                            required=False)
+
     def __init__(self, *args, **kwargs):
         self.helper = FormHelper()
         self.helper.form_action = '.'
@@ -163,10 +167,11 @@ class RegistrationFormAccounts(RegistrationFormUniqueEmail):
             ),
             Row(
                 Column(
-                    ButtonHolder( Submit('submit', _('Submit')), css_class="text-right" ),
+                    ButtonHolder(Submit('submit', _('Submit')),
+                                 css_class="text-right"),
                     css_class='twelve'
                 ),
             )
         )
-        
+
         super(RegistrationFormAccounts, self).__init__(*args, **kwargs)
