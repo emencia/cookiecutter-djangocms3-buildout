@@ -1,3 +1,4 @@
+# flake8: noqa
 from project.settings import *
 
 DEBUG = False

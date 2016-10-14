@@ -5,7 +5,8 @@
 from os import listdir
 from os.path import abspath, dirname, isfile, join
 
-gettext = lambda s: s
+
+def gettext(s): return s
 
 # Root of buildout project
 BASE_DIR = dirname(dirname(abspath(__file__)))
@@ -26,7 +27,7 @@ MARKETINGTAGS_ENABLED = not(DEBUG)
 HTTPS_ENABLED = False
 
 ADMINS = (
-    #('Emencia', 'PUT_ADMIN_EMAIL_HERE'),
+    # ('Emencia', 'PUT_ADMIN_EMAIL_HERE'),
 )
 
 MANAGERS = ADMINS
@@ -48,7 +49,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['*'] # FIXME Put here the domain names
+ALLOWED_HOSTS = ['*']  # FIXME Put here the domain names
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -61,33 +62,33 @@ TIME_ZONE = 'Europe/Paris'
 LANGUAGE_CODE = 'fr'
 
 LANGUAGES = (
-    #("en-au", gettext(u"Australia")),
-    #("de", gettext(u"Deutschland")),
-    #("es", gettext(u"España")),
+    # ("en-au", gettext(u"Australia")),
+    # ("de", gettext(u"Deutschland")),
+    # ("es", gettext(u"España")),
     ("fr", gettext(u"France")),
-    #("zh-hk", gettext(u"Hong Kong")),
-    #("it", gettext(u"Italia")),
-    #("nl", gettext(u"Nederland")),
-    #("pl", gettext(u"Polska")),
-    #("ru", gettext(u"Россия")),
-    #("en-gb", gettext(u"United Kingdom")),
-    #("en", gettext(u"USA")),
-    #("ja", gettext(u"日本")),
-    #('zh-cn', gettext(u'中国')),
-    #("ko-kr", gettext(u"한국")),
+    # ("zh-hk", gettext(u"Hong Kong")),
+    # ("it", gettext(u"Italia")),
+    # ("nl", gettext(u"Nederland")),
+    # ("pl", gettext(u"Polska")),
+    # ("ru", gettext(u"Россия")),
+    # ("en-gb", gettext(u"United Kingdom")),
+    # ("en", gettext(u"USA")),
+    # ("ja", gettext(u"日本")),
+    # ('zh-cn', gettext(u'中国')),
+    # ("ko-kr", gettext(u"한국")),
 )
-## More knowed country locales
-#EXTRA_COUNTRY_LOCALES = LANGUAGES + (
-    #("pt-br", gettext(u"Brasil")),
-    #("es-cl", gettext(u"Chile")),
-    #("es-co", gettext(u"Colombia")),
-    #("cs", gettext(u"Czech Republic")),
-    #("ar-ma", gettext(u"Morocco")),
-    #("en-nz", gettext(u"New Zealand")),
-    #("hu-si", gettext(u"Slovenia")),
-    #("tr", gettext(u"Turkey")),
-    #("ss-za", gettext(u"South Africa")),
-#)
+# More knowed country locales
+# EXTRA_COUNTRY_LOCALES = LANGUAGES + (
+#   ("pt-br", gettext(u"Brasil")),
+#   ("es-cl", gettext(u"Chile")),
+#   ("es-co", gettext(u"Colombia")),
+#   ("cs", gettext(u"Czech Republic")),
+#   ("ar-ma", gettext(u"Morocco")),
+#   ("en-nz", gettext(u"New Zealand")),
+#   ("hu-si", gettext(u"Slovenia")),
+#   ("tr", gettext(u"Turkey")),
+#   ("ss-za", gettext(u"South Africa")),
+# )
 
 # A tuple of directories where Django looks for translation files
 LOCALE_PATHS = (
@@ -144,7 +145,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    #'django.contrib.sites.middleware.CurrentSiteMiddleware',
+    # 'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
@@ -205,7 +206,8 @@ LOGGING = {
     },
     'formatters': {
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d'
+                      ' %(thread)d %(message)s'
         },
     },
     'handlers': {
@@ -257,7 +259,8 @@ def add_to_tuple(var, *args, **kw):
 
     Or:
 
-        INSTALLED_APPS = add_to_tuple(INSTALLED_APPS, 'fifi', 'loulou', before='riri')
+        INSTALLED_APPS = add_to_tuple(INSTALLED_APPS, 'fifi', 'loulou',
+                                      before='riri')
     """
     before = kw.get('before')
 
@@ -272,8 +275,8 @@ def add_to_tuple(var, *args, **kw):
     return tuple(var)
 
 # Shadow import using execfile for enabled mods
-# With execfile, the python script will be executed in the current context and so
-# can directly access to it (like using/modifying its variables)
+# With execfile, the python script will be executed in the current context and
+# so can directly access to it (like using/modifying its variables)
 mods = join(PROJECT_PATH, 'mods_enabled')
 mods = [join(mods, x) for x in listdir(mods)]
 mods.sort()

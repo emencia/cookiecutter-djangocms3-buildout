@@ -1,3 +1,4 @@
+# flake8: noqa
 from project.settings import *
 
 DEBUG = False
@@ -25,7 +26,8 @@ RAVEN_CONFIG = {
 
 INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
 
-{% if cookiecutter.enable_https == 'yes' %}# Since https is enabled, recaptcha have to be ssl also
+{% if cookiecutter.enable_https == 'yes' %}
+# Since https is enabled, recaptcha have to be ssl also
 RECAPTCHA_USE_SSL = True{% endif %}
 
 {% if cookiecutter.enable_contact_form == 'yes' %}# For contact form emails

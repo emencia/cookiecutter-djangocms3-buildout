@@ -2,11 +2,8 @@
 """
 Common templates tags for porticus
 """
-#from django.conf import settings
 from django import template
 from django.conf import settings
-
-gettext = lambda s: s
 
 register = template.Library()
 

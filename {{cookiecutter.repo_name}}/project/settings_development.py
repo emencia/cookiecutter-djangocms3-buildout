@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Settings to use for development
 """

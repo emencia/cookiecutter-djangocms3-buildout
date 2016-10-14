@@ -26,9 +26,10 @@ AVALAIBLE_BUNDLES = {
     # App bundle for Foundation5
     'app_foundation5_js': Bundle(
         "js/foundation5/vendor/jquery.js",
-        #"js/foundation5/vendor/fastclick.js", # for Foundation development
-        #"js/foundation5/vendor/lodash.js", # for Foundation development
-        #"js/foundation5/vendor/jquery.placeholder.js", # for Foundation development
+        # "js/foundation5/vendor/fastclick.js", # for Foundation development
+        # "js/foundation5/vendor/lodash.js", # for Foundation development
+        # for Foundation development
+        # "js/foundation5/vendor/jquery.placeholder.js",
         "js/foundation5/vendor/jquery.cookie.js",
         "js/foundation5/foundation/foundation.js",
         "js/foundation5/foundation/foundation.abide.js",
@@ -36,7 +37,7 @@ AVALAIBLE_BUNDLES = {
         "js/foundation5/foundation/foundation.alert.js",
         "js/foundation5/foundation/foundation.clearing.js",
         "js/foundation5/foundation/foundation.dropdown.js",
-        #"js/foundation5/foundation/foundation.equalizer.js",
+        # "js/foundation5/foundation/foundation.equalizer.js",
         "js/foundation5/foundation/foundation.interchange.js",
         "js/foundation5/foundation/foundation.joyride.js",
         "js/foundation5/foundation/foundation.magellan.js",
@@ -55,7 +56,7 @@ AVALAIBLE_BUNDLES = {
     'app_pikaday_js': Bundle(
         "js/pikaday/pikaday.js",
         "js/pikaday/pikaday.jquery.js",
-        #"js/pikaday/jquery.timepicker.js",
+        # "js/pikaday/jquery.timepicker.js",
         filters='closure_js',
         output='js/app_pikaday.%(version)s.js'
     ),
@@ -83,11 +84,11 @@ AVALAIBLE_BUNDLES.update({
         # Foundation5 bundle
         AVALAIBLE_BUNDLES['app_foundation5_js'],
 
-        ## Debounce event from jquery-smartresize
-        #"js/jquery/jquery.debouncedresize.js",
+        # Debounce event from jquery-smartresize
+        # "js/jquery/jquery.debouncedresize.js",
 
-        ## Throttling event from jquery-smartresize
-        #"js/jquery/jquery.throttledresize.js",
+        # Throttling event from jquery-smartresize
+        # "js/jquery/jquery.throttledresize.js",
 
         # Cookieconsent plugin
         "js/jquery/cookieconsent.js",
@@ -99,14 +100,14 @@ AVALAIBLE_BUNDLES.update({
         "js/jquery/equalize.js",
 
         # Jquery FitVids library
-        #"js/jquery/jquery.fitvids.js",
+        # "js/jquery/jquery.fitvids.js",
 
         # Pikaday bundle with Moment.js script
-        #"js/jquery/moment.js",
-        #AVALAIBLE_BUNDLES['app_pikaday_js'],
+        # "js/jquery/moment.js",
+        # AVALAIBLE_BUNDLES['app_pikaday_js'],
 
         # Magnific popup library
-        #"js/jquery/magnific-popup.js",
+        # "js/jquery/magnific-popup.js",
 
         # Slick.js library
         "js/jquery/slick.js",
