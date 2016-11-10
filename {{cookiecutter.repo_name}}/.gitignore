@@ -33,6 +33,7 @@ Gemfile.lock
 
 # project db
 *.sqlite3
+/dumps
 
 # Third party config files
 gestus.cfg

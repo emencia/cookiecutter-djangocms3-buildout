@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.keep
+
+# Keep the datas folder, but ignore its content
+!datas/
+datas/*
+!datas/.keep
