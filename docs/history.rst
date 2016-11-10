@@ -12,6 +12,7 @@ devel (next release)
 
 * Add files for use CI on project (with Jenkins/Fabric)
 * Clean code with flake8 and add a rule for run flake8 into the Makefile
+* Add django-datadownloader app
 
 Version 1.4.4 - 2016/10/06
 --------------------------
