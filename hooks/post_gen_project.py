@@ -90,6 +90,8 @@ class AppManager(object):
         'logentry',  # Admin log entries browser
         'site_metas',  # Simple addon to expose some metas in all views
         'sitemap',  # Common sitemap for djangocms and another apps
+        'datadownloader', # Admin app for download db/media data
+        'sendfile', # Django app for delegate download to nginx
     ]
 
     # Optional apps enabled if their context value is "yes"
