@@ -28,6 +28,7 @@
             "project/contact_form",
             "project/locale",
             "project/media",
+            "project/protected_medias/datas",
             "project/mods_enabled",
             "project/static",
             "project/utils",
