@@ -114,8 +114,7 @@ tar_data:
 	@tar cvzf data_{{ cookiecutter.repo_name }}.tar.gz dumps project/media/
 
 import_db:
-	@bin/django-instance syncdb --all --noinput
-	@bin/django-instance migrate --fake
+	@bin/django-instance migrate
 	@echo "Running data loading from dump directory"
 	@bin/dataload
 
