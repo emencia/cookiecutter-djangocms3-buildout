@@ -64,10 +64,10 @@ server {
         alias {{ parts.buildout.directory }}/project/static/default_robots.txt;
     }
     {% endif %}
-    #location /protected_medias{
-    #    internal;
-    #    alias {{ parts.buildout.directory }}/project/protected_medias;
-    #}
+    location /protected_medias{
+        internal;
+        alias {{ parts.buildout.directory }}/project/protected_medias;
+    }
 
     location /admin {
         include                 /etc/nginx/uwsgi_params;
