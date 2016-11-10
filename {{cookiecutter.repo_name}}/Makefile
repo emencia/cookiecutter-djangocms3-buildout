@@ -118,6 +118,11 @@ import_db:
 	@echo "Running data loading from dump directory"
 	@bin/dataload
 
+rm_sqlite:
+	@rm database.sqlite3
+  
+reset_sqlite: rm_sqlite import_db
+
 reload:
 	echo r > var/uwsgi.fifo
 
