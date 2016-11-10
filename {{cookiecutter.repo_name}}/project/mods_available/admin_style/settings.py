@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-INSTALLED_APPS = add_to_tuple(INSTALLED_APPS, 
+INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
     'admin_shortcuts',
     'djangocms_admin_style',
     before="django.contrib.admin"
@@ -23,6 +23,10 @@ ADMIN_SHORTCUTS = [
             {
                 'url_name': 'admin:auth_user_changelist',
                 'title': gettext('Users'),
+            },
+            {
+                 'url_name': 'datadownloader_index',
+                 'title': gettext('Data Downloader'),
             },
         ]
     },
