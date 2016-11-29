@@ -3,3 +3,4 @@
 Pygments==1.6
 Sphinx==1.2.3
 sphinx-rtd-theme==0.1.6
+sphinx-autobuild

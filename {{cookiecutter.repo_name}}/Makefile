@@ -120,7 +120,7 @@ import_db:
 
 rm_sqlite:
 	@rm database.sqlite3
-  
+
 reset_sqlite: rm_sqlite import_db
 
 reload:

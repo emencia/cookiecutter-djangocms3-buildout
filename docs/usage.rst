@@ -6,12 +6,12 @@
 Usage
 =====
 
-Firstly, you produce the new project structure then deploy it locally and finally enjoy it (webdesign integration, development, etc..).
+Firstly, it will produce a new project structure then you will have to deploy it locally and finally enjoy it (webdesign integration, development, etc..).
 
-Produce project structure
-*************************
+Produced project structure
+**************************
 
-Quite simple, just invoke the `Cookiecutter`_ template to create a new project: ::
+Just invoke the `Cookiecutter`_ template to create a new project: ::
 
     cookiecutter https://github.com/emencia/cookiecutter-djangocms3-buildout
 
@@ -36,7 +36,7 @@ repo_host
 secret_key
     [Default:A random key]
 
-    The secret key to use in Django settings, you should let the default value.
+    The secret key to use in Django settings, you should let the default value (a randomly generated string).
 enable_accounts
     [Default:*no*]
 
@@ -65,16 +65,35 @@ enable_https
     [Default:*yes*]
 
     Use a dedicated nginx configuration to enable https only through *let's encrypt*.
+deploy_user
+    [Default:*django*]
 
-Take care that question about applications require a strict "yes" value to enable them, all other value are considered as a "no".
+    System user where project will be deployed to (in its home directory).
+deploy_host
+    [Default: Empty]
+
+    Host where to to deploy project using ssh.
+changelog_mail_from
+    [Default: Empty]
+
+    Email 'from' adress use to send deployment informations.
+changelog_mail_to
+    [Default: Empty]
+
+    Email 'to' adress use to send deployment informations.
+
 
 .. NOTE::
-   Once structure has been created, a git repository will be initialized on with a first commit.
+   Usually you won't need to care about fields starting with ``repo_`` or ``deploy_`` and just let their default values.
+
+Take care that question about applications require a strict ``yes`` value to enable them, all other value are considered as a ``no``.
+
+Once structure has been created, a GIT repository will be initialized with the right remote url and a first commit, ready to push.
 
 Deploy produced project
 ***********************
 
-Once a project has been created, you need to build it to use it. The process is simple. Do it in your project directory: ::
+When project has been created, you need to install it to use it. Do it in your project directory: ::
 
     make install
 

@@ -7,13 +7,13 @@ History
 
 Versions come from git tags.
 
-Version 1.4.4 - Unreleased
+Version 1.5.0 - 2016/11/29
 --------------------------
 
-* Add files for use CI on project (with Jenkins/Fabric)
-* Clean code with flake8 and add a rule for run flake8 into the Makefile
-* Add django-datadownloader app
-* Add init migration script on contact_form app
+* Added files to use Continuous Integration (*CI*) with Jenkins/Fabric;
+* Cleaned code with flake8 and add a rule to run flake8 into Makefile;
+* Added ``django-datadownloader``;
+* Added initial migration for ``project.contact_form``;
 * Upgraded to ``django==1.8.16``, close #72;
 
 Version 1.4.4 - 2016/10/06

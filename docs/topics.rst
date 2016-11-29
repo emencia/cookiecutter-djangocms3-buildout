@@ -64,7 +64,7 @@ When it's done you can reach the gallery on: ::
 
     /icomoon/
 
-.. warning::
+.. WARNING::
    You need to be authenticated to view the gallery.
 
 .. NOTE::
@@ -168,6 +168,9 @@ Take care, an Egg that is installed from a repository url is validated on its ve
 PO-Projects
 ***********
 
+.. WARNING::
+   This is on the way to be deprecated since the PO-project server future is not known.
+
 **It aims to ease PO translations management** between developpers and translation managers.
 
 The `PO-Projects client`_ is pre-configured in all created projects but disabled by default. When enabled, its config file is automatically generated (in ``po_projects.cfg``), don't edit this file because it will be regenerated each time buildout is used.
@@ -203,17 +206,6 @@ Pull action
     Then reload your webserver.
 
 Note that the client does not manage your repository, each time you change your PO files (from `Django`_ ``makemessages`` action or ``pull`` client action) you still have to commit them.
-
-Gestus
-******
-
-The `Gestus client`_ is pre-configured in all created projects, its config file is automatically generated (in ``gestus.cfg``), don't edit it because it will be regenerated each time buildout is used.
-
-You can register your environment with the following command : ::
-
-    gestus register
-
-Remember this should only be used in integration or production environment and you will have to fill a correct accounts in the ``EXTRANET`` part.
 
 Dr Dump
 *******

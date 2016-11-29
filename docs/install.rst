@@ -16,10 +16,7 @@ It's done.
 Created projects requirements
 *****************************
 
-.. NOTE::
-   If you allready have installed `Epaster`_, don't worry about this part.
-
-Although the template itself don't need anything but `Cookiecutter`_, a project created with this template will requires some libraries to build it and use it:
+Although the project template don't need anything but `Cookiecutter`_, a created project will requires some libraries to install it :
 
 * `virtualenv`_;
 * Python development library (commonly known as ``python-devel``);
@@ -36,4 +33,4 @@ The method to install them depends on your plateform :
 Also if you need to use a **PostgreSQL** database instead of the default **sqlite3** database, you will need a library to build **psycopg2**, this library is called ``libpq``.
 
 .. NOTE::
-   All created projects are shipped with a README file that contain all necessary details to build it and use it. This will be a simplified procedure with a **Makefile** command to launch the `buildout`_ process.
+   All created projects are shipped with a README file that should contains all necessary details to build it and use it. This will be a simplified procedure with a **Makefile** command to launch the `buildout`_ process.
