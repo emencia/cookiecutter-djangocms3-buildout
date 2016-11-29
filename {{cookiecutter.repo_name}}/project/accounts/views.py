@@ -12,8 +12,8 @@ from registration.backends.default.views import ActivationView as ActView
 
 from .models import UserProfile
 from .forms import AuthenticationFormAccounts, PasswordChangeFormAccounts
-from .form import PasswordResetFormAccounts, SetPasswordFormAccounts
-from .form import RegistrationFormAccounts
+from .forms import PasswordResetFormAccounts, SetPasswordFormAccounts
+from .forms import RegistrationFormAccounts
 
 from .email_sender import send_activation_email, send_activation_pending_email
 from .email_sender import send_confirmation_email
