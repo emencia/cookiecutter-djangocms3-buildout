@@ -1,7 +1,7 @@
+.. _pip: https://pip.pypa.io/
 .. _virtualenv: http://www.virtualenv.org/
 .. _buildout: http://www.buildout.org/
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _Epaster: https://github.com/emencia/Epaster
 
 =======
 Install
@@ -18,8 +18,11 @@ Created projects requirements
 
 Although the project template don't need anything but `Cookiecutter`_, a created project will requires some libraries to install it :
 
+* `pip`_;
 * `virtualenv`_;
-* Python development library (commonly known as ``python-devel``);
+* Python development library (commonly known as ``python-devel`` or ``python-dev``);
+* ``gcc``;
+* ``make``;
 * ``libjpeg``;
 * ``zlib``;
 * ``libfreetype``;
