@@ -7,6 +7,11 @@ History
 
 Versions come from git tags.
 
+Version 1.6.0 - Unreleased
+--------------------------
+
+* Upgraded to ``django==1.8.17``;
+
 Version 1.5.0 - 2016/11/29
 --------------------------
 
