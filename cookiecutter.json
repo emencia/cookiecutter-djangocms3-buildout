@@ -17,7 +17,7 @@
         "changelog_mail_from": "",
         "changelog_mail_to": "",
 
-        "secret_key": "{% for column in items|slice(50) %}{{ 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'|random }}{% endfor %}",
+        "secret_key": "{% for column in range(50) %}{{ 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'|random }}{% endfor %}",
 
         "_copy_without_render": [
             "*.gitignore",

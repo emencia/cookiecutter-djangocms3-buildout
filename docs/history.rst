@@ -10,6 +10,8 @@ Versions come from git tags.
 Version 1.6.0 - Unreleased
 --------------------------
 
+* Now require ``cookiecutter==1.4.0`` (although for now this should not break for >=1.1.0,<1.4.0);
+* Fixed typo on ``secret_key`` template part in ``cookiecutter.json``, close #73;
 * Updated project Readme;
 * Updated install documentation about required devel libraries;
 * Upgraded to ``django==1.8.17``;
