@@ -7,7 +7,17 @@ History
 
 Versions come from git tags.
 
-Version 1.6.0 - 2016/12/17
+Development - Unreleased
+------------------------
+
+First step
+..........
+
+* Upgraded to DjangoCMS==3.4.1;
+* Relaxed every DjangoCMS dependencies and plugins;
+* It works but ``cmsplugin-zinnia`` is broken with 3.4.x, there is an `issue <https://github.com/django-blog-zinnia/cmsplugin-zinnia/issues/62>`_ about that;
+
+Version 1.6.0 - 17/12/2016
 --------------------------
 
 * Now require ``cookiecutter==1.4.0`` (although for now this should not break for >=1.1.0,<1.4.0);
