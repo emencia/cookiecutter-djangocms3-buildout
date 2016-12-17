@@ -7,7 +7,7 @@ History
 
 Versions come from git tags.
 
-Version 1.6.0 - 17/12/2016
+Version 1.6.0 - 2016/12/17
 --------------------------
 
 * Now require ``cookiecutter==1.4.0`` (although for now this should not break for >=1.1.0,<1.4.0);
