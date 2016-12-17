@@ -5,7 +5,6 @@ INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
     'menus',  # helper for model independent hierarchical website navigation
     'sekizai',  # for javascript and css management
     'djangocms_snippet',
-    #'reversion', # not really needed for now
 )
 
 MIDDLEWARE_CLASSES = add_to_tuple(MIDDLEWARE_CLASSES,

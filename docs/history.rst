@@ -8,6 +8,25 @@ History
 
 Versions come from git tags.
 
+Development - Unreleased
+------------------------
+
+First step
+..........
+
+* Upgraded to DjangoCMS==3.4.1;
+* Relaxed every DjangoCMS dependencies and plugins;
+* It works but ``cmsplugin-zinnia`` is broken with 3.4.x, there is an `issue <https://github.com/django-blog-zinnia/cmsplugin-zinnia/issues/62>`_ about that;
+
+Second step
+...........
+
+* Upgraded to ``cmsplugin-porticus==0.6.0``;
+* Upgraded to ``cmsplugin-slideshows==0.2.0``;
+* Removed useless buildout parts for Po-project, Gestus and Extranet stuff;
+* Removed Sphinx from ``development.cfg`` eggs;
+* Added missing ``cms.middleware.utils.ApphookReloadMiddleware`` cms middleware;
+
 Version 1.7.0 - 2017/02/12
 --------------------------
 
