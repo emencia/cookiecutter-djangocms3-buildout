@@ -7,6 +7,16 @@ History
 
 Versions come from git tags.
 
+Development - Unreleased
+------------------------
+
+First step
+..........
+
+* Upgraded to DjangoCMS==3.4.1;
+* Relaxed every DjangoCMS dependencies and plugins;
+* It works but ``cmsplugin-zinnia`` is broken with 3.4.x, there is an `issue <https://github.com/django-blog-zinnia/cmsplugin-zinnia/issues/62>`_ about that;
+
 Version 1.7.0 - Unreleased
 --------------------------
 
