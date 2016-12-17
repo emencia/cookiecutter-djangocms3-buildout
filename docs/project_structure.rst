@@ -251,6 +251,13 @@ fashion than with the simple Django form API.
 **crispy-forms-foundation** is a supplement to implement the rendering with the structure 
 (tags, styles, etc.) used in `Foundation`_.
 
+datadownloader
+--------------
+
+.. _django-datadownloader: https://github.com/emencia/django-datadownloader
+
+Add `_django-datadownloader`_ to your project to manage data (media/db).
+
 debug_toolbar
 -------------
 

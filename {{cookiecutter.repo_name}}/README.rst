@@ -13,20 +13,23 @@ Install
 
 This Django project has been made with `cookiecutter-djangocms3-buildout`_  to be build with `buildout`_ system in a `virtualenv`_ environment.
 
-You'll have to install `virtualenv`_ on your system and some `Devel libraries`_ to compile some modules thereafter with `buildout`_.
+First you'll have to install `pip`_ and `virtualenv`_ on your system. Then some development libraries to compile some modules thereafter with `buildout`_.
 
-Install devel libraries using your ystem packages:
+Install them from your system packages:
 
-* Python development library (commonly known as ``python-devel``);
+* ``python-dev``;
+* ``gettext``;
+* ``gcc``;
+* ``make``;
 * ``libjpeg``;
 * ``zlib``;
 * ``libfreetype``;
 
-Then you install the project: ::
+Then install the project: ::
 
     make install
 
-Then activate the project virtual environment: ::
+And finally activate the project virtual environment: ::
 
     source bin/activate
 
@@ -38,15 +41,15 @@ Buildout environments
 When the default environment has been correctly installed, just rebuild the project for your environment using the right configuration file.
 
 For development environment: ::
-   
+
     buildout -c development.cfg
 
 For integration environment: ::
-   
+
     buildout -c integration.cfg
 
 For production environment: ::
-   
+
     buildout -c production.cfg
 
 With production and integration you'll have also to build the assets: ::
@@ -55,18 +58,24 @@ With production and integration you'll have also to build the assets: ::
 
 Environment and Django settings
 -------------------------------
-   
+
 Each environment has its own settings file to override default settings.
 
-These files allready exists with some settings commonly edited for their environment, so just fill them as you need.
+These files already exists with some settings commonly edited for their environment, so just fill them as you need.
 
-Never, ever, edit settings directly in the mods.
+Never, ever, edit settings directly in the mods for your environment requirements.
 
 Usage
 *****
 
-You won't never use anymore the old ``managed.py`` script to launch Django instance but ``django-instance`` script instead that will be installed in your ``bin/`` directory during the buildout process.
+You won't never use anymore the old ``managed.py`` script to launch Django instance but ``django-instance`` script instead. It will be installed in your ``bin/`` directory during the buildout process.
 
-So to launch the Django development server with defaut settings, you will do : ::
+So to launch the Django development server with default settings, you will do : ::
 
     django-instance runserver 0.0.0.0:8001
+
+To install database or apply Django migrations: ::
+
+    django-instance migrate
+
+See more details at `common topics around project usage <http://cookiecutter-djangocms3-buildout.readthedocs.io/en/latest/topics.html>`_

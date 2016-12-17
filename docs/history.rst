@@ -10,6 +10,8 @@ Versions come from git tags.
 Version 1.6.0 - Unreleased
 --------------------------
 
+* Updated project Readme;
+* Updated install documentation about required devel libraries;
 * Upgraded to ``django==1.8.17``;
 
 Version 1.5.0 - 2016/11/29
