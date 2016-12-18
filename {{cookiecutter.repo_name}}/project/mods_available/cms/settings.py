@@ -8,6 +8,11 @@ INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
 )
 
 MIDDLEWARE_CLASSES = add_to_tuple(MIDDLEWARE_CLASSES,
+    'cms.middleware.utils.ApphookReloadMiddleware',
+    before='django.contrib.sessions.middleware.SessionMiddleware',
+)
+
+MIDDLEWARE_CLASSES = add_to_tuple(MIDDLEWARE_CLASSES,
     'django.contrib.admindocs.middleware.XViewMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
