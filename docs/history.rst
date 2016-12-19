@@ -7,6 +7,13 @@ History
 
 Versions come from git tags.
 
+Version 1.7.0 - Unreleased
+--------------------------
+
+* fix new pep error E305
+* exclude migrations folder from flake8 check
+* use same ssl certification folder on dev host
+
 Version 1.6.0 - 2016/12/17
 --------------------------
 
