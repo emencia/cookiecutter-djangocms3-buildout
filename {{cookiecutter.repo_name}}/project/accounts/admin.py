@@ -8,4 +8,5 @@ class UserProfileAdmin(admin.ModelAdmin):
     raw_id_fields = ['user']
     search_fields = ('user__username', 'company',)
 
+
 admin.site.register(UserProfile, UserProfileAdmin)

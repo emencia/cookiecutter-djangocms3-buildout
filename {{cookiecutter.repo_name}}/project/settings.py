@@ -8,6 +8,7 @@ from os.path import abspath, dirname, isfile, join
 
 def gettext(s): return s
 
+
 # Root of buildout project
 BASE_DIR = dirname(dirname(abspath(__file__)))
 
@@ -273,6 +274,7 @@ def add_to_tuple(var, *args, **kw):
                 var.append(arg)
 
     return tuple(var)
+
 
 # Shadow import using execfile for enabled mods
 # With execfile, the python script will be executed in the current context and

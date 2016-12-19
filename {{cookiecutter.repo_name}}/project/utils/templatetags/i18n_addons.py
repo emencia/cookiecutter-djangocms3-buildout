@@ -21,6 +21,7 @@ def locale_title(locale_name):
         return locale_name
     return l.get(locale_name)
 
+
 register.simple_tag(locale_title)
 register.filter('locale_title', locale_title)
 
@@ -31,5 +32,6 @@ def is_valid_locale_name(locale_name):
     settings.EXTRA_COUNTRY_LOCALES or not
     """
     return (locale_name in dict(settings.EXTRA_COUNTRY_LOCALES))
+
 
 register.assignment_tag(is_valid_locale_name)

@@ -44,4 +44,5 @@ class ContactAdmin(ImportExportModelAdmin):
                                  'optin_newsletter')}),
                  (_('Address'), {'fields': ('city', 'state', 'country')}),)
 
+
 admin.site.register(Contact, ContactAdmin)
