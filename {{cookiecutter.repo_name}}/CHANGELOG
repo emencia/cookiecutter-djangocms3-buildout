@@ -1,0 +1,9 @@
+Changelog
+#########
+
+Revision history for {{ cookiecutter.project_name }}
+
+{% now "utc", "%y.%W.0" %} ({% now "utc", "%Y-%m-%d" %})
+--------------------
+
+* Project creation
