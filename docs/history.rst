@@ -13,6 +13,9 @@ Version 1.7.0 - Unreleased
 * fix new pep error E305
 * exclude migrations folder from flake8 check
 * use same ssl certification folder on dev host
+* add fabric script for install/deploy production version
+* add CHANGELOG file and build first release number with jinja2-time
+* use a .flake8 file for flake8 settings
 
 Version 1.6.0 - 2016/12/17
 --------------------------
