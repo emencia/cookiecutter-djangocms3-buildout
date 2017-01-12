@@ -16,6 +16,7 @@ Version 1.7.0 - Unreleased
 * add fabric script for install/deploy production version
 * add CHANGELOG file and build first release number with jinja2-time
 * use a .flake8 file for flake8 settings
+* fix bug in __init__.py generation that added trailing whitespace
 
 Version 1.6.0 - 2016/12/17
 --------------------------

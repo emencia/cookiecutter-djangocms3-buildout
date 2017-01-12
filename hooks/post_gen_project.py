@@ -202,7 +202,8 @@ def store_project_context(context, project_dir, test_mode=False):
 
     with open(destination, 'r') as infile:
         content = infile.read().format(
-            cookiecutter_context=json.dumps(c, indent=4))
+            cookiecutter_context=json.dumps(c, indent=4,
+                                            separators=(',', ': ')))
 
     if not test_mode:
         print "* Writing context into {}".format(project_dir)
