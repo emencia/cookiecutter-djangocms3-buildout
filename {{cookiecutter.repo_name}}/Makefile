@@ -76,8 +76,8 @@ install_integration: init build_integration
 	bin/django-instance createsuperuser
 
 install_production: init build_production
+	bin/django-instance migrate sites || true
 	bin/django-instance migrate
-	bin/django-instance createsuperuser
 
 syncf5:
 	@echo "* Updating jQuery sources"

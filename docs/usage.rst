@@ -72,7 +72,11 @@ deploy_user
 deploy_host
     [Default: Empty]
 
-    Host where to to deploy project using ssh.
+    Host where to to deploy project in integration mode (using ssh).
+prod_host
+    [Default: Empty]
+
+    Host where to to deploy project in production mode (using ssh).
 changelog_mail_from
     [Default: Empty]
 

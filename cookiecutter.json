@@ -14,6 +14,7 @@
         "enable_https": "yes",
         "deploy_user": "django",
         "deploy_host": "",
+        "prod_host": "",
         "changelog_mail_from": "",
         "changelog_mail_to": "",
 
