@@ -25,6 +25,7 @@
             "compass",
             "templates",
             "var",
+            ".flake8",
             "project/accounts",
             "project/contact_form",
             "project/locale",

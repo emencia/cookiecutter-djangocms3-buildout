@@ -1,0 +1,2 @@
+[flake8]
+exclude = mods_available, mods_enabled, migrations

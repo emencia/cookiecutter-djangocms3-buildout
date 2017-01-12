@@ -130,4 +130,4 @@ test:
 	@bin/django-instance test
 
 flake8:
-	@bin/flake8 project --exclude=project/mods_available,'project/*/migrations'
+	@bin/flake8 project
