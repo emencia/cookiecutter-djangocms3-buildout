@@ -9,6 +9,8 @@ ASSETS_DEBUG = False
 ASSETS_ROOT = STATIC_ROOT
 ASSETS_AUTO_BUILD = False
 
+ENABLE_STATICPAGES = False
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

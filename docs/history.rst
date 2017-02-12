@@ -25,6 +25,7 @@ Version 1.7.0 - Unreleased
 * Fixed cookieconsent template to use only simple quote ``'`` to surround variable strings, close #75;
 * Upgraded to ``crispy-forms-foundation==0.5.5``;
 * Removed unused ``pages/3_cols.html`` template and updated CMS settings to enable page template ``pages/free.html``;
+* Added sew setting ``ENABLE_STATICPAGES`` to enable staticpages ressources, default is true excepted for production, close #77;
 
 Version 1.6.0 - 2016/12/17
 --------------------------

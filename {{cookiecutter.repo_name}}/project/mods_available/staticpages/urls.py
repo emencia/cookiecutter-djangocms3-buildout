@@ -2,5 +2,5 @@
 from django.conf import settings
 from staticpages.urls import loaders
 
-if settings.DEBUG:
+if settings.ENABLE_STATICPAGES:
     urlpatterns = patterns('', *loaders.mount_staticpages(*settings.STATICPAGES_PROTOTYPES)) + urlpatterns
