@@ -17,7 +17,7 @@ import sys
 # from the template, either using "git describe" or package version because
 # hooks are applied from the created project and are unaware of cookiecutter
 # template location
-__version__ = "1.7.0-pre.3"
+__version__ = "1.7.0-pre.4"
 
 # Project directory path
 PROJECT_DIR = 'project'
@@ -83,6 +83,7 @@ class AppManager(object):
         'assets',  # Used in templates
         'ckeditor',  # Used in djangocms and another apps
         'cms',
+        'datadownloader',  # Admin app for download db/media data
         'emencia_utils',  # Useful utilities
         'filebrowser',  # Used in djangocms and another apps
         'google_tools',  # Used for almost customer projects
@@ -90,8 +91,8 @@ class AppManager(object):
         'logentry',  # Admin log entries browser
         'site_metas',  # Simple addon to expose some metas in all views
         'sitemap',  # Common sitemap for djangocms and another apps
-        'datadownloader',  # Admin app for download db/media data
         'sendfile',  # Django app for delegate download to nginx
+        'staticpages',  # To quickly start prototyping
     ]
 
     # Optional apps enabled if their context value is "yes"
@@ -104,9 +105,9 @@ class AppManager(object):
         'enable_zinnia': 'zinnia',
     }
 
-    # Dependancies that will be added to enabled apps if their dependant is
+    # Dependancies that will be added to enable apps if their dependency is
     # enabled Key is the app name, Value is a list of app names to add
-    DEPENDANCIES = {
+    DEPENDENCIES = {
         'accounts': ['crispy_forms', 'recaptcha'],
         'contact_form': ['crispy_forms', 'recaptcha'],
     }
@@ -130,8 +131,8 @@ class AppManager(object):
 
         # Search for dependancies
         for item in apps:
-            if item in self.DEPENDANCIES:
-                apps.extend(self.DEPENDANCIES.get(item))
+            if item in self.DEPENDENCIES:
+                apps.extend(self.DEPENDENCIES.get(item))
 
         return set(apps)
 

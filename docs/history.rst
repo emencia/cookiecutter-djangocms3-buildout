@@ -1,6 +1,7 @@
 .. _emencia_paste_djangocms_3: https://github.com/emencia/emencia_paste_djangocms_3
 .. _jquery-smartresize: https://github.com/louisremi/jquery-smartresize
 .. _googleclosure: https://developers.google.com/closure/compiler/
+.. _rCSSmin: https://github.com/ndparker/rcssmin
 
 History
 =======
@@ -17,15 +18,16 @@ Version 1.7.0 - Unreleased
 * Added project CHANGELOG file and build first release number with ``jinja2-time``;
 * Use a ``.flake8`` file for Flake8 settings
 * Fixed bug in generated project ``__init__.py`` file that was causing trailing whitespace;
-* Relaxed ``six`` and ``pyparsing``, close #84;
-* Change every occurrences of transition path ``{% load static from staticfiles %}`` to the recent one ``{% load static %}``, close #80;
-* Removed forgotten royalslider images, close #79;
-* Upgraded to ``django-datadownloader==0.2.3``, close #78;
-* Remove Sphinx from requirement in development.cfg, close #76;
 * Fixed cookieconsent template to use only simple quote ``'`` to surround variable strings, close #75;
+* Remove Sphinx from requirement in development.cfg, close #76;
+* Added new setting ``ENABLE_STATICPAGES`` to enable staticpages ressources, default is true excepted for production, close #77;
+* Upgraded to ``django-datadownloader==0.2.3``, close #78;
+* Removed forgotten royalslider images, close #79;
+* Change every occurrences of transition path ``{% load static from staticfiles %}`` to the recent one ``{% load static %}``, close #80;
+* Dropped yuicompressor usage in profit of `rCSSmin`_ filter, close #81 and close #56;
+* Relaxed ``six`` and ``pyparsing``, close #84;
 * Upgraded to ``crispy-forms-foundation==0.5.5``;
 * Removed unused ``pages/3_cols.html`` template and updated CMS settings to enable page template ``pages/free.html``;
-* Added sew setting ``ENABLE_STATICPAGES`` to enable staticpages ressources, default is true excepted for production, close #77;
 
 Version 1.6.0 - 2016/12/17
 --------------------------

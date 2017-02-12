@@ -1,7 +1,7 @@
 """
 Available and enabled assets bundles for this project
 
-It uses 'nested bundles' technic in the 'main available bundles' to regroup
+It uses 'nested bundles' technic in the main available bundles to package
 app bundles into a single file.
 
 NOTE: For sanity, remember to add a line in Makefile 'assets' action for each
@@ -9,12 +9,15 @@ NOTE: For sanity, remember to add a line in Makefile 'assets' action for each
 """
 from django_assets import Bundle, register
 
+# Register custom webasset filter for RCssMin minifier
+from webassets.filter import register_filter
+from project.utils.rcssmin_webassets_filter import RCSSMin
+register_filter(RCSSMin)
 
-"""
-BASE BUNDLES, contains common app/components bundles, do not register your
-main bundles here. However you can comment/uncomment some app files for your
-needs.
-"""
+
+# Available base bundles contains common app/components bundles, do not
+# register your main bundles here. However you can comment/uncomment some app
+# files for your needs.
 AVALAIBLE_BUNDLES = {
     # App bundle for Modernizr, compatible for all Foundation releases
     'app_modernizr_js': Bundle(
@@ -26,10 +29,6 @@ AVALAIBLE_BUNDLES = {
     # App bundle for Foundation5
     'app_foundation5_js': Bundle(
         "js/foundation5/vendor/jquery.js",
-        # "js/foundation5/vendor/fastclick.js", # for Foundation development
-        # "js/foundation5/vendor/lodash.js", # for Foundation development
-        # for Foundation development
-        # "js/foundation5/vendor/jquery.placeholder.js",
         "js/foundation5/vendor/jquery.cookie.js",
         "js/foundation5/foundation/foundation.js",
         "js/foundation5/foundation/foundation.abide.js",
@@ -37,12 +36,11 @@ AVALAIBLE_BUNDLES = {
         "js/foundation5/foundation/foundation.alert.js",
         "js/foundation5/foundation/foundation.clearing.js",
         "js/foundation5/foundation/foundation.dropdown.js",
-        # "js/foundation5/foundation/foundation.equalizer.js",
         "js/foundation5/foundation/foundation.interchange.js",
-        "js/foundation5/foundation/foundation.joyride.js",
-        "js/foundation5/foundation/foundation.magellan.js",
-        "js/foundation5/foundation/foundation.offcanvas.js",
-        "js/foundation5/foundation/foundation.reveal.js",
+        # "js/foundation5/foundation/foundation.joyride.js",
+        # "js/foundation5/foundation/foundation.magellan.js",
+        # "js/foundation5/foundation/foundation.offcanvas.js",
+        # "js/foundation5/foundation/foundation.reveal.js",
         "js/foundation5/foundation/foundation.slider.js",
         "js/foundation5/foundation/foundation.tab.js",
         "js/foundation5/foundation/foundation.tooltip.js",
@@ -69,17 +67,13 @@ MAIN AVAILABLE BUNDLES, this is where you will register your main Asset bundles
 AVALAIBLE_BUNDLES.update({
     # Main CSS bundle
     'main_css': Bundle(
-        # Flag CSS map, only usefull for multilingual projects
-        'css/flags.css',
-
-        # Main CSS
         'css/app.css',
 
-        filters='yui_css',
+        filters='rcssmin',
         output='css/app.%(version)s.css'
     ),
 
-    # JAVASCRIPT bundle common main frontend script
+    # Javascript bundle for common main frontend script
     'main_js': Bundle(
         # Foundation5 bundle
         AVALAIBLE_BUNDLES['app_foundation5_js'],
@@ -126,7 +120,7 @@ AVALAIBLE_BUNDLES.update({
 
 
 """
-ENABLE NEEDED BUNDLE HERE, only these bundles will be used
+Enable needed bundle here, only these bundles will be builded
 """
 ENABLED_BUNDLES = [
     'app_modernizr_js',
