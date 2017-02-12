@@ -19,6 +19,7 @@ Version 1.7.0 - Unreleased
 * Fixed bug in generated project ``__init__.py`` file that was causing trailing whitespace;
 * Relaxed ``six`` and ``pyparsing``, close #84;
 * Change every occurrences of transition path ``{% load static from staticfiles %}`` to the recent one ``{% load static %}``, close #80;
+* Removed forgotten royalslider images, close #79;
 
 Version 1.6.0 - 2016/12/17
 --------------------------
