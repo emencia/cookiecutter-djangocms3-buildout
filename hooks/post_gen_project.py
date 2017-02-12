@@ -17,7 +17,7 @@ import sys
 # from the template, either using "git describe" or package version because
 # hooks are applied from the created project and are unaware of cookiecutter
 # template location
-__version__ = "1.7.0-pre.2"
+__version__ = "1.7.0-pre.3"
 
 # Project directory path
 PROJECT_DIR = 'project'
