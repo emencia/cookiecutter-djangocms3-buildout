@@ -10,13 +10,14 @@ Versions come from git tags.
 Version 1.7.0 - Unreleased
 --------------------------
 
-* fix new pep error E305
-* exclude migrations folder from flake8 check
-* use same ssl certification folder on dev host
-* add fabric script for install/deploy production version
-* add CHANGELOG file and build first release number with jinja2-time
-* use a .flake8 file for flake8 settings
-* fix bug in __init__.py generation that added trailing whitespace
+* Fixed new pep error E305;
+* Excluded migrations folder from Flake8 check;
+* Use same SSL certification folder on dev host;
+* Added Fabric script for install/deploy production version;
+* Added project CHANGELOG file and build first release number with ``jinja2-time``;
+* Use a ``.flake8`` file for Flake8 settings
+* Fixed bug in generated project ``__init__.py`` file that was causing trailing whitespace;
+* Relaxed ``six`` and ``pyparsing``, close #84;
 
 Version 1.6.0 - 2016/12/17
 --------------------------
