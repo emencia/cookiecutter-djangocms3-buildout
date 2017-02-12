@@ -8,7 +8,7 @@ History
 
 Versions come from git tags.
 
-Version 1.7.0 - Unreleased
+Version 1.7.0 - 2017/02/12
 --------------------------
 
 * Fixed new pep error E305;
