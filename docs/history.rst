@@ -22,6 +22,7 @@ Version 1.7.0 - Unreleased
 * Removed forgotten royalslider images, close #79;
 * Upgraded to ``django-datadownloader==0.2.3``, close #78;
 * Remove Sphinx from requirement in development.cfg, close #76;
+* Fixed cookieconsent template to use only simple quote ``'`` to surround variable strings, close #75;
 
 Version 1.6.0 - 2016/12/17
 --------------------------
