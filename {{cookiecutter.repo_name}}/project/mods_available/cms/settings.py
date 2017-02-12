@@ -8,7 +8,7 @@ INSTALLED_APPS = add_to_tuple(INSTALLED_APPS,
     #'reversion', # not really needed for now
 )
 
-MIDDLEWARE_CLASSES = add_to_tuple(MIDDLEWARE_CLASSES, 
+MIDDLEWARE_CLASSES = add_to_tuple(MIDDLEWARE_CLASSES,
     'django.contrib.admindocs.middleware.XViewMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
@@ -24,10 +24,10 @@ TEMPLATES[0]['OPTIONS']['context_processors'] = add_to_tuple(
 )
 
 CMS_TEMPLATES = (
+    ('pages/free.html', 'Free HTML'),
     ('pages/1_cols.html', '1 column'),
     ('pages/2_cols.html', '2 columns'),
-    ('pages/2_cols.autonav.html', '2 columns (1col with auto-nav)'),
-    ('pages/3_cols.html', '3 columns'),
+    #('pages/2_cols.autonav.html', '2 columns (1col with auto-nav)'),
 )
 
 # Uncomment this to enable per-object user permission
