@@ -163,27 +163,21 @@ assets
 ------
 
 .. _django-assets: https://github.com/miracle2k/django-assets/
-.. _yuicompressor: http://yui.github.io/yuicompressor/
+.. _rcssmin: https://github.com/ndparker/rcssmin
 .. _googleclosure: https://developers.google.com/closure/compiler/
 
 Enable `django-assets`_ to combine and minify your *assets* (CSS, JS).
 
 There are two used minification libraries:
 
-* `yuicompressor`_ for CSS;
+* `rcssmin`_ for CSS;
 * `googleclosure`_ for Javascript;
 
-Both of them requires the installation of Java (OpenJDK installed on most Linux systems is sufficient), they are installed through some Python meta package from Pypi.
+``googleclosure`` requires a Java install (OpenJDK installed on most Linux systems is sufficient), it is installed through a Python meta package including a Jar file.
 
-In general, this mod is required. If you do not intend to use it, you will need to modify the project's default templates to remove all of its occurrences.
+Generally, this mod is required. If you do not intend to use it, you will need to modify the project's default templates to remove all of its occurrences.
 
-Assets are defined in ``project/assets.py`` and some apps can defined their own ``asset.py`` file but our main file does not use them.
-
-Our ``assets.py`` file is divised in three parts :
-
-* BASE BUNDLES: Only for app bundle like Foundation Javascript files, Modernizr files, etc..;
-* MAIN AVAILABLE BUNDLES: Where you defined main bundles for the frontend, use app bundles previously defined;
-* ENABLE NEEDED BUNDLE: Leading bundles you effectively want to use and expose in your templates. Bundle that are not defined here will not be reachable from templates and won't be minified;
+Assets are defined in ``project/assets.py`` and some apps can defined their own ``assets.py`` file but our main file does not use them.
 
 autobreadcrumbs
 ---------------
@@ -256,7 +250,9 @@ datadownloader
 
 .. _django-datadownloader: https://github.com/emencia/django-datadownloader
 
-Add `_django-datadownloader`_ to your project to manage data (media/db).
+Add `django-datadownloader`_ to your project to dump datas (media/db) from admin interface.
+
+When enabled, a link will be available on the main admin dashboard.
 
 debug_toolbar
 -------------
@@ -440,7 +436,12 @@ staticpages
 
 .. _emencia-django-staticpages: https://github.com/emencia/emencia-django-staticpages
 
-This mod uses `emencia-django-staticpages`_ to use static pages with a direct to template process, it replace the deprecated mod *prototype*.
+This mod uses `emencia-django-staticpages`_ to publish static pages with a
+*direct to template* view.
+
+Every ressources listed in ``settings.STATICPAGES_PROTOTYPES`` will be mounted
+if ``settings.ENABLE_STATICPAGES`` is ``True``. Default behavior is to enable
+these ressources on all environment excepted for production.
 
 thumbnails
 ----------

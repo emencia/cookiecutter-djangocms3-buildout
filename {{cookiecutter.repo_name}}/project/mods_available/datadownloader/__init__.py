@@ -1,5 +1,7 @@
 """
 .. _django-datadownloader: https://github.com/emencia/django-datadownloader
 
-Add `_django-datadownloader`_ to your project to manage data (media/db).
+Add `django-datadownloader`_ to your project to dump datas (media/db) from admin interface.
+
+When enabled, a link will be available on the main admin dashboard.
 """
