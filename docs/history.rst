@@ -17,6 +17,8 @@ Migrate to Foundation 6.3.1
 * Added bower config to get Foundation6 stuff;
 * Updated Boussole config to use Foundation6;
 * Updated assets bundles to use Foundation6;
+* Removed every Foundation5 assets;
+* Added Foundation 6.3.1 assets;
 
 Version 1.7.0 - 2017/02/12
 --------------------------
