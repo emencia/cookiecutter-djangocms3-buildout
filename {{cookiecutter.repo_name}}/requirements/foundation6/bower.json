@@ -1,0 +1,12 @@
+{
+  "name": "foundation6_sources",
+  "ignore": [
+  ],
+  "dependencies": {
+    "jquery": ">= 2.2.0",
+    "what-input": "4.0.3",
+    "modernizr": "2.8.3",
+    "jquery.cookie": "~1.4.0"
+  },
+  "private": true
+}

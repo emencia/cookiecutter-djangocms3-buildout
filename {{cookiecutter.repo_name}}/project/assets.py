@@ -26,27 +26,41 @@ AVALAIBLE_BUNDLES = {
         output='js/modernizr.%(version)s.js'
     ),
 
-    # App bundle for Foundation5
-    'app_foundation5_js': Bundle(
-        "js/foundation5/vendor/jquery.js",
-        "js/foundation5/vendor/jquery.cookie.js",
-        "js/foundation5/foundation/foundation.js",
-        "js/foundation5/foundation/foundation.abide.js",
-        "js/foundation5/foundation/foundation.accordion.js",
-        "js/foundation5/foundation/foundation.alert.js",
-        "js/foundation5/foundation/foundation.clearing.js",
-        "js/foundation5/foundation/foundation.dropdown.js",
-        "js/foundation5/foundation/foundation.interchange.js",
-        # "js/foundation5/foundation/foundation.joyride.js",
-        # "js/foundation5/foundation/foundation.magellan.js",
-        # "js/foundation5/foundation/foundation.offcanvas.js",
-        # "js/foundation5/foundation/foundation.reveal.js",
-        "js/foundation5/foundation/foundation.slider.js",
-        "js/foundation5/foundation/foundation.tab.js",
-        "js/foundation5/foundation/foundation.tooltip.js",
-        "js/foundation5/foundation/foundation.topbar.js",
+    'foundation6_js': Bundle(
+        "js/foundation/vendor/jquery.js",
+        #"js/foundation/vendor/motion-ui.js",
+        "js/foundation/vendor/what-input.js",
+        'js/foundation/plugins/foundation.core.js',
+        'js/foundation/plugins/foundation.util.box.js',
+        'js/foundation/plugins/foundation.util.keyboard.js',
+        'js/foundation/plugins/foundation.util.mediaQuery.js',
+        'js/foundation/plugins/foundation.util.motion.js',
+        'js/foundation/plugins/foundation.util.nest.js',
+        'js/foundation/plugins/foundation.util.timerAndImageLoader.js',
+        'js/foundation/plugins/foundation.util.touch.js',
+        'js/foundation/plugins/foundation.util.triggers.js',
+        'js/foundation/plugins/foundation.abide.js',
+        'js/foundation/plugins/foundation.accordion.js',
+        'js/foundation/plugins/foundation.accordionMenu.js',
+        'js/foundation/plugins/foundation.drilldown.js',
+        'js/foundation/plugins/foundation.dropdown.js',
+        'js/foundation/plugins/foundation.dropdownMenu.js',
+        'js/foundation/plugins/foundation.equalizer.js',
+        'js/foundation/plugins/foundation.interchange.js',
+        'js/foundation/plugins/foundation.magellan.js',
+        'js/foundation/plugins/foundation.offcanvas.js',
+        'js/foundation/plugins/foundation.orbit.js',
+        'js/foundation/plugins/foundation.responsiveMenu.js',
+        'js/foundation/plugins/foundation.responsiveToggle.js',
+        'js/foundation/plugins/foundation.reveal.js',
+        'js/foundation/plugins/foundation.slider.js',
+        'js/foundation/plugins/foundation.sticky.js',
+        'js/foundation/plugins/foundation.tabs.js',
+        'js/foundation/plugins/foundation.toggler.js',
+        'js/foundation/plugins/foundation.tooltip.js',
+        'js/foundation/plugins/foundation.zf.responsiveAccordionTabs.js',
         filters='closure_js',
-        output='js/app_foundation5.%(version)s.js'
+        output='js/foundation6.min.js'
     ),
 
     # App bundle for Pikaday jquery plugin (a datepicker) and optional
@@ -76,7 +90,7 @@ AVALAIBLE_BUNDLES.update({
     # Javascript bundle for common main frontend script
     'main_js': Bundle(
         # Foundation5 bundle
-        AVALAIBLE_BUNDLES['app_foundation5_js'],
+        AVALAIBLE_BUNDLES['foundation6_js'],
 
         # Debounce event from jquery-smartresize
         # "js/jquery/jquery.debouncedresize.js",

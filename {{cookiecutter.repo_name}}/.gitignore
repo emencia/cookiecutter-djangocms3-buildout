@@ -26,10 +26,10 @@ pip-selfcheck.json
 /var/log/uwsgi.log
 /var/log/error.log
 
-# Ruby & Compass
+# Ruby, Compass, Foundation, etc..
 Gemfile.lock
 .sass-cache
-/foundation5
+/foundation-sites
 
 # project db
 *.sqlite3

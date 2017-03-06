@@ -8,6 +8,16 @@ History
 
 Versions come from git tags.
 
+Version 1.8.0 - Unreleased
+--------------------------
+
+Migrate to Foundation 6.3.1
+
+* Updated Makefile for install-foundation action to correctly install and deploy Foundation6 sources;
+* Added bower config to get Foundation6 stuff;
+* Updated Boussole config to use Foundation6;
+* Updated assets bundles to use Foundation6;
+
 Version 1.7.0 - 2017/02/12
 --------------------------
 
