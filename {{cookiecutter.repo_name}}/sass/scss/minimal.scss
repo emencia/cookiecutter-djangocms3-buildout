@@ -2,23 +2,28 @@
  * Minimal CSS, contain all the content layout but not the header nor the
  * footer. Used in djangocms page render in admin
  */
-@import "settings";
-@import "foundation/settings";
+@charset "UTF-8";
 
-@import
-    "foundation/components/grid",
-    "foundation/components/button-groups",
-    "foundation/components/buttons",
-    "foundation/components/dropdown",
-    "foundation/components/dropdown-buttons",
-    "foundation/components/panels",
-    "foundation/components/type",
-    "foundation/components/tabs";
+@import "settings";
+@import 'foundation';
+
+@include foundation-grid;
+// @include foundation-flex-grid;
+@include foundation-typography;
+@include foundation-button;
+@include foundation-button-group;
+@include foundation-callout;
+@include foundation-dropdown;
+@include foundation-dropdown-menu;
+@include foundation-tabs;
+@include foundation-visibility-classes;
 
 @import "bourbon";
 
 @import "utils/mixins";
-@import "addons/minimal";
+
+/* TODO: addons are deprecated, import Sveetoy instead */
+// @import "addons/minimal";
 
 #content-main{
     @include foundation-content-base;

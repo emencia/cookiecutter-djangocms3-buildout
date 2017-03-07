@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*
  * Slick Theme to add layout stuff that does (should) not impact Slick behaviors
- * 
+ *
  * 'slick.scss' has to be loaded before
  */
 
@@ -189,12 +189,12 @@ $slick-opacity-not-active: 0.25 !default;
     &.slick-initialized{
         min-height: auto;
         background-image: none;
-        
+
         &>.item{
             display: block;
         }
     }
-    
+
     /* Styling slides inner elements like caption */
     .slick-slide{
         &>img{
@@ -206,86 +206,6 @@ $slick-opacity-not-active: 0.25 !default;
             max-width: 1000px;
             margin: auto;
             padding: 5rem 0.5rem;
-            
-            // Remove unnecessary bottom margin from last caption element
-            &>:last-child,
-            p > .button{
-                margin-bottom: 0;
-            }
-            
-            // Styling caption child elements
-            h1, p.title-1{
-                font-size: rem-calc(16px);
-                @media #{$medium-up} {
-                    font-size: rem-calc(21px);
-                }
-                @media #{$large-up} {
-                    font-size: rem-calc(24px);
-                }
-                @media #{$xlarge-up} {
-                    font-size: rem-calc(28px);
-                }
-            }
-            h2, p.title-2{
-                font-size: rem-calc(12px);
-                @media #{$medium-up} {
-                    font-size: rem-calc(18px);
-                }
-                @media #{$large-up} {
-                    font-size: rem-calc(20px);
-                }
-                @media #{$xlarge-up} {
-                    font-size: rem-calc(24px);
-                }
-            }
-            h3, p{
-                font-size: rem-calc(12px);
-                @media #{$medium-up} {
-                    font-size: rem-calc(18px);
-                }
-                @media #{$large-up} {
-                    font-size: rem-calc(20px);
-                }
-                @media #{$xlarge-up} {
-                    font-size: rem-calc(24px);
-                }
-            }
-            .button{
-                @media #{$small-only} {
-                    font-size: rem-calc(12px);
-                }
-            }
-            
-            img{
-                display: inline-block;
-            }
-            
-            // Special image for site logo
-            .logo img,
-            img.logo{
-                width: 85%;
-                @media #{$medium-up} {
-                    width: 50%;
-                }
-                @media #{$large-up} {
-                    width: 40%;
-                    margin-bottom: 2rem;
-                }
-                @media #{$xlarge-up} {
-                    width: 25%;
-                    margin-bottom: 2.5rem;
-                }
-            }
-            
-            .button{
-                margin-top: 1rem;
-                @media #{$large-up} {
-                    margin-top: 2rem;
-                }
-                @media #{$xlarge-up} {
-                    margin-top: 3rem;
-                }
-            }
         }
     }
 }

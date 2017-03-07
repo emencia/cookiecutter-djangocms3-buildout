@@ -1,29 +1,50 @@
-@import "foundation/functions";
+@import 'util/util';
 
-// 
-// FOUNDATION SETTINGS
-// See utils/_sample_settings.scss for a full list of available settings
-//
-
-//
-// Settings overrides goes below
-//
-
-// If false, will silent all deprecation warning for Compass mixins 
+// If false, will silent all deprecation warning for Compass mixins
 // in 'utils/deprecations'
 $emencia-compass-deprecation-warning: false;
 
-// Control wether a link to google open-sans font is included or not, default 
-// is true. Change value to 'false' if you dont use Open Sans in profit of 
-// other another font, to avoid loading OpenSans for nothing
-$include-open-sans: true;
+$font-family-opensans: 'Open Sans', sans-serif;
 
 // Consistant colors names facility
 $white: #ffffff;
 $black: #000000;
 
-// Enable xlarge and xxlarge columns class names into the grid
-$include-xl-html-grid-classes: false;
 
-// Larger row width for xlarge screens and more
-$row-larger-width: rem-calc(1328px);
+///
+/// FOUNDATION6 SETTINGS
+///
+
+
+// 1. Global
+// ---------
+
+$body-font-family: $font-family-opensans;
+$global-font-size: 16px;
+
+// Font weight
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+// F6 support
+$global-weight-normal: $font-weight-normal;
+$global-weight-bold: $font-weight-bold;
+
+
+// 2. Breakpoints
+// --------------
+
+$breakpoint-classes: (small medium large xlarge xxlarge);
+
+// Legacy media queries
+$small-up: screen;
+$medium-up: unquote('screen and #{breakpoint(medium)}');
+$large-up: unquote('screen and #{breakpoint(large)}');
+$xlarge-up: unquote('screen and #{breakpoint(xlarge)}');
+$xxlarge-up: unquote('screen and #{breakpoint(xxlarge)}');
+
+
+// 37. Top Bar
+// -----------
+
+$topbar-unstack-breakpoint: large;

@@ -98,8 +98,12 @@ install-foundation: clean-foundation
 	cp -r foundation-sites/vendor/modernizr/modernizr.js $(STATICDIR)/js/foundation/vendor/
 	cp -r foundation-sites/vendor/jquery.cookie/jquery.cookie.js $(STATICDIR)/js/foundation/vendor/
 	cp -r foundation-sites/vendor/what-input/dist/what-input.js $(STATICDIR)/js/foundation/vendor/
-	@echo "* Updating Foundation SASS sources"
+	@echo "* Updating Foundation SASS sources and dependencies"
 	cp -r foundation-sites/scss sass/foundation6
+	cp -r foundation-sites/_vendor/normalize-scss sass/
+	cp -r foundation-sites/_vendor/sassy-lists sass/
+	@echo "* Fix hardcoded paths in Foundation SASS sources"
+	sed -i 's|\.\./_vendor/|\.\./|g' sass/foundation6/foundation.scss
 
 scss:
 	@echo "- Compile '$(STATICDIR)/css/app.css' from 'sass/scss/app.scss'"

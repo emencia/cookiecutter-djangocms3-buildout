@@ -1,22 +1,5 @@
 /*
- * 
+ *
  * All stuff for page header
- * 
+ *
  */
-.top-bar-section{
-    // Auth menu
-    #auth-menu > strong{
-        color: $topbar-link-color;
-        line-height: $topbar-height;
-        padding: 0 $topbar-link-padding;
-    }
-    
-    // Language menu
-    #languageChooser{
-        a{
-            position: relative;
-            line-height: 1;
-            padding: rem-calc(15px) rem-calc(40px);
-        }
-    }
-}

@@ -1,54 +1,54 @@
 @charset "UTF-8";
 
 @import "settings";
+@import 'foundation';
+// @import 'motion-ui';
 
-/*
- * Full Foundation components import for development process
- *
- * WARNING: Do not use this full import when passing to production,
- * instead select all needed component one by one
- */
-@import "foundation";
-/*
- * All foundation components, one by one
-*/
-/*
-@import
-  "foundation/components/accordion",
-  "foundation/components/alert-boxes",
-  "foundation/components/block-grid",
-  "foundation/components/breadcrumbs",
-  "foundation/components/button-groups",
-  "foundation/components/buttons",
-  "foundation/components/clearing",
-  "foundation/components/dropdown",
-  "foundation/components/dropdown-buttons",
-  "foundation/components/flex-video",
-  "foundation/components/forms",
-  "foundation/components/grid",
-  "foundation/components/inline-lists",
-  "foundation/components/joyride",
-  "foundation/components/keystrokes",
-  "foundation/components/labels",
-  "foundation/components/magellan",
-  "foundation/components/pagination",
-  "foundation/components/panels",
-  "foundation/components/pricing-tables",
-  "foundation/components/progress-bars",
-  "foundation/components/reveal",
-  "foundation/components/side-nav",
-  "foundation/components/split-buttons",
-  "foundation/components/sub-nav",
-  "foundation/components/switches",
-  "foundation/components/tables",
-  "foundation/components/tabs",
-  "foundation/components/thumbs",
-  "foundation/components/tooltips",
-  "foundation/components/top-bar",
-  "foundation/components/type",
-  "foundation/components/offcanvas",
-  "foundation/components/visibility";
-*/
+@include foundation-global-styles;
+@include foundation-grid;
+// @include foundation-flex-grid;
+@include foundation-typography;
+@include foundation-button;
+@include foundation-forms;
+// @include foundation-range-input;
+@include foundation-accordion;
+@include foundation-accordion-menu;
+@include foundation-badge;
+@include foundation-breadcrumbs;
+@include foundation-button-group;
+@include foundation-callout;
+@include foundation-card;
+@include foundation-close-button;
+@include foundation-menu;
+@include foundation-menu-icon;
+@include foundation-drilldown-menu;
+@include foundation-dropdown;
+@include foundation-dropdown-menu;
+@include foundation-responsive-embed;
+@include foundation-label;
+@include foundation-media-object;
+@include foundation-off-canvas;
+@include foundation-orbit;
+@include foundation-pagination;
+@include foundation-progress-bar;
+// @include foundation-progress-element;
+// @include foundation-meter-element;
+@include foundation-slider;
+@include foundation-sticky;
+@include foundation-reveal;
+@include foundation-switch;
+@include foundation-table;
+@include foundation-tabs;
+@include foundation-thumbnail;
+@include foundation-title-bar;
+@include foundation-tooltip;
+@include foundation-top-bar;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
+// @include foundation-flex-classes;
+// @include motion-ui-transitions;
+// @include motion-ui-animations;
+
 
 /*
  * Bourbon library to have some useful mixins
@@ -67,7 +67,8 @@
 @import "utils/mixins";
 @import "components/icomoon";
 
-@import "addons/fullstack";
+/* TODO: addons are deprecated, import Sveetoy instead */
+// @import "addons/fullstack";
 
 @import "vendor/cookie_law";
 //@import "vendor/magnific-popup";

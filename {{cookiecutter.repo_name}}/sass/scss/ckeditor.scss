@@ -6,12 +6,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 Taken from the original ckeditor/content.css and adapted for Emencia
 
-Note that this does not includes the whole Foundation SCSS because it works on 
-"position:relative" which is a blocking style rule for the useful "magicline" ckeditor 
+Note that this does not includes the whole Foundation SCSS because it works on
+"position:relative" which is a blocking style rule for the useful "magicline" ckeditor
 plugin. But we include some SCSS from Foundation's components.
 */
+@charset "UTF-8";
+
 @import "settings";
-@import "foundation/components/grid";
+@import 'foundation';
 
 @import "utils/mixins";
 
@@ -112,10 +114,10 @@ img:hover {
 $bodyPadding: rem-calc(10px);
 .cke_editable{
     margin: auto;
-    width: ($row-width+($bodyPadding*2));
+    width: ($grid-row-width+($bodyPadding*2));
     max-width: 100%;
     padding: $bodyPadding;
-    
+
     @include foundation-content-base;
 }
 

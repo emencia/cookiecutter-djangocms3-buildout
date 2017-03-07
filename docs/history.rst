@@ -11,7 +11,7 @@ Versions come from git tags.
 Version 1.8.0 - Unreleased
 --------------------------
 
-Migrate to Foundation 6.3.1
+Migrate to Foundation 6.3.1, close #86:
 
 * Updated Makefile for install-foundation action to correctly install and deploy Foundation6 sources;
 * Added bower config to get Foundation6 stuff;
@@ -19,6 +19,12 @@ Migrate to Foundation 6.3.1
 * Updated assets bundles to use Foundation6;
 * Removed every Foundation5 assets;
 * Added Foundation 6.3.1 assets;
+* Drop ``scss/addons`` usage;
+* Update scss settings;
+* Update main scss files;
+* Added ``normalize`` and ``sassy-list`` Sass sources inside ``scss/`` since they are imported from Foundation6;
+* Rewrite hardcoded paths in ``foundation.scss`` during Foundation deployment;
+
 
 Version 1.7.0 - 2017/02/12
 --------------------------
