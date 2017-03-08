@@ -24,7 +24,8 @@ Migrate to Foundation 6.3.1, close #86:
 * Update main scss files;
 * Added ``normalize`` and ``sassy-list`` Sass sources inside ``scss/`` since they are imported from Foundation6;
 * Rewrite hardcoded paths in ``foundation.scss`` during Foundation deployment;
-
+* Added ``Sveetoy`` sources and enable it;
+* Removed ``scss/addons``, ``scss/utils``, ``scss/flags.scss``, ``scss/components/_cms.scss``, ``scss/_porticus.scss``, related to #83;
 
 Version 1.7.0 - 2017/02/12
 --------------------------

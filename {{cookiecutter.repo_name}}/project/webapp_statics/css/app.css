@@ -2300,7 +2300,7 @@ i {
 
 strong,
 b {
-  font-weight: 700;
+  font-weight: 800;
   line-height: inherit;
 }
 
@@ -2453,7 +2453,7 @@ dl {
 
 dl dt {
   margin-bottom: 0.3rem;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 blockquote {
@@ -3225,7 +3225,7 @@ select[multiple] {
   margin-top: -0.5rem;
   margin-bottom: 1rem;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #cc4b37;
 }
 
@@ -5550,7 +5550,7 @@ thead, tbody, tfoot {
 
 caption {
   padding: 0.5rem 0.625rem 0.625rem;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 thead {
@@ -5569,7 +5569,7 @@ thead tr, tfoot tr {
 
 thead th, thead td, tfoot th, tfoot td {
   padding: 0.5rem 0.625rem 0.625rem;
-  font-weight: 700;
+  font-weight: 800;
   text-align: left;
 }
 
@@ -5786,7 +5786,7 @@ a.thumbnail image {
   position: relative;
   display: inline-block;
   border-bottom: dotted 1px #8a8a8a;
-  font-weight: 700;
+  font-weight: 800;
   cursor: help;
 }
 
@@ -6147,39 +6147,953 @@ a.thumbnail image {
  * Bourbon library to have some useful mixins
  */
 /*
- * Deprecations about Compass mixins and functions
+ * Sveetoy library, enhance Foundation
  */
 /*
- * To notice about pending deprecation on Compass functions and mixins
  *
- * Some are just convenient/temporary replacement with just a warning
- * you can silent when setting '$emencia-compass-deprecation-warning' to 'false'
+ * Some useful common functions
+ *
  */
 /*
- * Warning deprecation, can be silented from setting 'sdss' and keep an 'somewhat alike' behavior
- * using settings
+ * Global stuff
+ */
+.position-relative {
+  position: relative;
+}
+
+img.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.expanded {
+  width: 100%;
+  height: auto;
+}
+
+/*
+ *
+ * Spaces
+ *
+ */
+[class^="v-space-"].top-only, [class*=" v-space-"].top-only {
+  padding-bottom: 0;
+}
+
+[class^="v-space-"].bottom-only, [class*=" v-space-"].bottom-only {
+  padding-top: 0;
+}
+
+[class^="h-space-"].left-only, [class*=" h-space-"].left-only {
+  padding-right: 0;
+}
+
+[class^="h-space-"].right-only, [class*=" h-space-"].right-only {
+  padding-left: 0;
+}
+
+.unmarged {
+  margin: 0 !important;
+}
+
+.unpadded {
+  padding: 0 !important;
+}
+
+/*
+ * Button enhancements
+ */
+button.unmarged,
+.button.unmarged {
+  margin: 0;
+}
+
+button.important,
+.button.important {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+button.full,
+.button.full {
+  width: 100%;
+}
+
+div button:last-child, div .button:last-child, p button:last-child, p .button:last-child, dd button:last-child, dd .button:last-child, li button:last-child, li .button:last-child {
+  margin-bottom: 0;
+}
+
+/*
+ *
+ * Typography
+ *
+ */
+p:last-child {
+  margin-bottom: 0;
+}
+
+/*
+    * Transform and decoration
+    */
+.text-upper {
+  text-transform: uppercase !important;
+}
+
+.text-important {
+  text-decoration: underline !important;
+}
+
+/*
+    * Various font weights
+    */
+.text-thin {
+  font-weight: 300 !important;
+}
+
+.text-normal {
+  font-weight: 400 !important;
+}
+
+b, .text-bold {
+  font-weight: 800 !important;
+}
+
+strong, .text-strong {
+  font-weight: 900;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+.text-black {
+  color: #000000 !important;
+}
+
+h1, .title-1 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h2, .title-2 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h3, .title-3 {
+  font-size: 1.1875rem;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h4, .title-4 {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h5, .title-5 {
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h6, .title-6 {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+@media print, screen and (min-width: 40em) {
+  h1, .title-1 {
+    font-size: 3rem;
+  }
+  h2, .title-2 {
+    font-size: 2.5rem;
+  }
+  h3, .title-3 {
+    font-size: 1.9375rem;
+  }
+  h4, .title-4 {
+    font-size: 1.5625rem;
+  }
+  h5, .title-5 {
+    font-size: 1.25rem;
+  }
+  h6, .title-6 {
+    font-size: 1rem;
+  }
+}
+
+.underline:after {
+  content: "";
+  display: block;
+}
+
+.underline.text-center:after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+hr {
+  clear: both;
+  height: 0;
+}
+
+/*
+ *
+ * Sections
+ *
+ */
+.block {
+  color: black;
+  background-color: #ffffff;
+}
+
+.block.unpadded,
+.block > .inner.unpadded {
+  padding: 0;
+}
+
+.block h1, .block .title-1 {
+  color: black;
+}
+
+.block h2, .block .title-2 {
+  color: black;
+}
+
+.block h3, .block .title-3 {
+  color: black;
+}
+
+.block h4, .block .title-4 {
+  color: black;
+}
+
+.block h5, .block .title-5 {
+  color: black;
+}
+
+.block h6, .block .title-6 {
+  color: black;
+}
+
+.block.white {
+  color: black;
+  background-color: #ffffff;
+}
+
+.block.white h1, .block.white .title-1 {
+  color: black;
+}
+
+.block.white h2, .block.white .title-2 {
+  color: black;
+}
+
+.block.white h3, .block.white .title-3 {
+  color: black;
+}
+
+.block.white h4, .block.white .title-4 {
+  color: black;
+}
+
+.block.white h5, .block.white .title-5 {
+  color: black;
+}
+
+.block.white h6, .block.white .title-6 {
+  color: black;
+}
+
+.block.black {
+  color: white;
+  background-color: #000000;
+}
+
+.block.black h1, .block.black .title-1 {
+  color: white;
+}
+
+.block.black h2, .block.black .title-2 {
+  color: white;
+}
+
+.block.black h3, .block.black .title-3 {
+  color: white;
+}
+
+.block.black h4, .block.black .title-4 {
+  color: white;
+}
+
+.block.black h5, .block.black .title-5 {
+  color: white;
+}
+
+.block.black h6, .block.black .title-6 {
+  color: white;
+}
+
+/*
+ *
+ * Boxes
+ *
+ */
+.box {
+  color: black;
+  background-color: #ffffff;
+  border-color: black;
+}
+
+.box > *:first-child {
+  margin-top: 0;
+}
+
+.box > *:last-child {
+  margin-bottom: 0;
+}
+
+.box.unpadded {
+  padding: 0;
+}
+
+.box h1, .box .title-1 {
+  color: black;
+}
+
+.box h2, .box .title-2 {
+  color: black;
+}
+
+.box h3, .box .title-3 {
+  color: black;
+}
+
+.box h4, .box .title-4 {
+  color: black;
+}
+
+.box h5, .box .title-5 {
+  color: black;
+}
+
+.box h6, .box .title-6 {
+  color: black;
+}
+
+.box.white {
+  color: black;
+  background-color: #ffffff;
+  border-color: black;
+}
+
+.box.white h1, .box.white .title-1 {
+  color: black;
+}
+
+.box.white h2, .box.white .title-2 {
+  color: black;
+}
+
+.box.white h3, .box.white .title-3 {
+  color: black;
+}
+
+.box.white h4, .box.white .title-4 {
+  color: black;
+}
+
+.box.white h5, .box.white .title-5 {
+  color: black;
+}
+
+.box.white h6, .box.white .title-6 {
+  color: black;
+}
+
+.box.black {
+  color: white;
+  background-color: #000000;
+  border-color: white;
+}
+
+.box.black h1, .box.black .title-1 {
+  color: white;
+}
+
+.box.black h2, .box.black .title-2 {
+  color: white;
+}
+
+.box.black h3, .box.black .title-3 {
+  color: white;
+}
+
+.box.black h4, .box.black .title-4 {
+  color: white;
+}
+
+.box.black h5, .box.black .title-5 {
+  color: white;
+}
+
+.box.black h6, .box.black .title-6 {
+  color: white;
+}
+
+/*
+ *
+ * For top-bar elements
+ *
  */
 /*
- * Error deprecation, those ones must not be used anymore because we can't reproduce their behavior
+ *
+ * Flexbox
+ */
+/*
+ * Create flex cell width rules
+ */
+/*
+ * Mixin to create cells widths with flexbox
+ *
+ * Will produce responsive class like:
+ *
+ *   .small-50{...}
+ *   .medium-50{...}
+ *   etc..
+ *
+ * Depending on mixin declarations.
+ *
+ * Usable in conjunction with ".cell".
+ */
+/*
+ * Mixin to create flexbox display property
+ *
+ * Will produce global and responsive classes like:
+ *
+ *   .flex{...}
+ *   .flex-small{...}
+ *   .flex-medium{...}
+ *   etc..
+ *
+ */
+/*
+ * Mixin to create flexbox direction property
+ *
+ * Will produce global and responsive classes like:
+ *
+ *   .direction-row{...}
+ *   .direction-small-row{...}
+ *   .direction-medium-row{...}
+ *   etc..
+ *
+ * For every direction.
+ *
+ */
+/*
+ * Mixin to create "simple" cells widths
+ * Mixin to simulate inline list, used as a fallback
+ *
+ * Reproduce the same name pattern as in mixin "sveetoy-flex-grid-classes"
+ */
+/*
+ *
+ * Flexbox
+ *
+ */
+/* TODO: Issue #17 */
+html.flexbox .flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+html.flexbox .flex-grid > .cell {
+  flex: 1 0 auto;
+  max-width: auto;
+  margin: 0;
+  list-style-type: none;
+}
+
+html.flexbox .flex-grid > .cell > p:last-child {
+  margin: 0;
+}
+
+html.flexbox .flex-grid > .cell.align-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+html.flexbox .flex-grid > .cell.align-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+html.flexbox .flex-grid > .cell.align-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+html.flexbox .flex-grid > .cell.align-around {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+html.flexbox .flex-grid > .cell.align-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media screen {
+  html.flexbox .flex-grid > .small-25 {
+    flex: 1 0 25%;
+    max-width: 25%;
+  }
+  html.flexbox .flex-grid > .small-33 {
+    flex: 1 0 33.3333%;
+    max-width: 33.3333%;
+  }
+  html.flexbox .flex-grid > .small-50 {
+    flex: 1 0 50%;
+    max-width: 50%;
+  }
+  html.flexbox .flex-grid > .small-75 {
+    flex: 1 0 75%;
+    max-width: 75%;
+  }
+  html.flexbox .flex-grid > .small-100 {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  html.flexbox .flex-grid > .medium-25 {
+    flex: 1 0 25%;
+    max-width: 25%;
+  }
+  html.flexbox .flex-grid > .medium-33 {
+    flex: 1 0 33.3333%;
+    max-width: 33.3333%;
+  }
+  html.flexbox .flex-grid > .medium-50 {
+    flex: 1 0 50%;
+    max-width: 50%;
+  }
+  html.flexbox .flex-grid > .medium-75 {
+    flex: 1 0 75%;
+    max-width: 75%;
+  }
+  html.flexbox .flex-grid > .medium-100 {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 64em) {
+  html.flexbox .flex-grid > .large-25 {
+    flex: 1 0 25%;
+    max-width: 25%;
+  }
+  html.flexbox .flex-grid > .large-33 {
+    flex: 1 0 33.3333%;
+    max-width: 33.3333%;
+  }
+  html.flexbox .flex-grid > .large-50 {
+    flex: 1 0 50%;
+    max-width: 50%;
+  }
+  html.flexbox .flex-grid > .large-75 {
+    flex: 1 0 75%;
+    max-width: 75%;
+  }
+  html.flexbox .flex-grid > .large-100 {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 75em) {
+  html.flexbox .flex-grid > .xlarge-25 {
+    flex: 1 0 25%;
+    max-width: 25%;
+  }
+  html.flexbox .flex-grid > .xlarge-33 {
+    flex: 1 0 33.3333%;
+    max-width: 33.3333%;
+  }
+  html.flexbox .flex-grid > .xlarge-50 {
+    flex: 1 0 50%;
+    max-width: 50%;
+  }
+  html.flexbox .flex-grid > .xlarge-75 {
+    flex: 1 0 75%;
+    max-width: 75%;
+  }
+  html.flexbox .flex-grid > .xlarge-100 {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+}
+
+html.flexbox .flex-grid.marged > .cell {
+  margin: 0.5rem;
+}
+
+@media screen {
+  html.flexbox .flex-grid.marged > .small-25 {
+    flex: 1 0 calc(25% - 1rem);
+    max-width: calc(25% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .small-33 {
+    flex: 1 0 calc(33.3333% - 1rem);
+    max-width: calc(33.3333% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .small-50 {
+    flex: 1 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .small-75 {
+    flex: 1 0 calc(75% - 1rem);
+    max-width: calc(75% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .small-100 {
+    flex: 1 0 calc(100% - 1rem);
+    max-width: calc(100% - 1rem);
+  }
+}
+
+@media screen and (min-width: 40em) {
+  html.flexbox .flex-grid.marged > .medium-25 {
+    flex: 1 0 calc(25% - 1rem);
+    max-width: calc(25% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .medium-33 {
+    flex: 1 0 calc(33.3333% - 1rem);
+    max-width: calc(33.3333% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .medium-50 {
+    flex: 1 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .medium-75 {
+    flex: 1 0 calc(75% - 1rem);
+    max-width: calc(75% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .medium-100 {
+    flex: 1 0 calc(100% - 1rem);
+    max-width: calc(100% - 1rem);
+  }
+}
+
+@media screen and (min-width: 64em) {
+  html.flexbox .flex-grid.marged > .large-25 {
+    flex: 1 0 calc(25% - 1rem);
+    max-width: calc(25% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .large-33 {
+    flex: 1 0 calc(33.3333% - 1rem);
+    max-width: calc(33.3333% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .large-50 {
+    flex: 1 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .large-75 {
+    flex: 1 0 calc(75% - 1rem);
+    max-width: calc(75% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .large-100 {
+    flex: 1 0 calc(100% - 1rem);
+    max-width: calc(100% - 1rem);
+  }
+}
+
+@media screen and (min-width: 75em) {
+  html.flexbox .flex-grid.marged > .xlarge-25 {
+    flex: 1 0 calc(25% - 1rem);
+    max-width: calc(25% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .xlarge-33 {
+    flex: 1 0 calc(33.3333% - 1rem);
+    max-width: calc(33.3333% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .xlarge-50 {
+    flex: 1 0 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .xlarge-75 {
+    flex: 1 0 calc(75% - 1rem);
+    max-width: calc(75% - 1rem);
+  }
+  html.flexbox .flex-grid.marged > .xlarge-100 {
+    flex: 1 0 calc(100% - 1rem);
+    max-width: calc(100% - 1rem);
+  }
+}
+
+html.flexbox .flex-grid .direction- {
+  display: flex;
+}
+
+html.flexbox .flex-grid.direction-row {
+  flex-direction: row;
+}
+
+html.flexbox .flex-grid.direction-row-reverse {
+  flex-direction: row-reverse;
+}
+
+html.flexbox .flex-grid.direction-column {
+  flex-direction: column;
+}
+
+html.flexbox .flex-grid.direction-column-reverse {
+  flex-direction: column-reverse;
+}
+
+@media screen {
+  html.flexbox .flex-grid .direction--small {
+    display: flex;
+  }
+  html.flexbox .flex-grid.direction-small-row {
+    flex-direction: row;
+  }
+  html.flexbox .flex-grid.direction-small-row-reverse {
+    flex-direction: row-reverse;
+  }
+  html.flexbox .flex-grid.direction-small-column {
+    flex-direction: column;
+  }
+  html.flexbox .flex-grid.direction-small-column-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  html.flexbox .flex-grid .direction--medium {
+    display: flex;
+  }
+  html.flexbox .flex-grid.direction-medium-row {
+    flex-direction: row;
+  }
+  html.flexbox .flex-grid.direction-medium-row-reverse {
+    flex-direction: row-reverse;
+  }
+  html.flexbox .flex-grid.direction-medium-column {
+    flex-direction: column;
+  }
+  html.flexbox .flex-grid.direction-medium-column-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width: 64em) {
+  html.flexbox .flex-grid .direction--large {
+    display: flex;
+  }
+  html.flexbox .flex-grid.direction-large-row {
+    flex-direction: row;
+  }
+  html.flexbox .flex-grid.direction-large-row-reverse {
+    flex-direction: row-reverse;
+  }
+  html.flexbox .flex-grid.direction-large-column {
+    flex-direction: column;
+  }
+  html.flexbox .flex-grid.direction-large-column-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width: 75em) {
+  html.flexbox .flex-grid .direction--xlarge {
+    display: flex;
+  }
+  html.flexbox .flex-grid.direction-xlarge-row {
+    flex-direction: row;
+  }
+  html.flexbox .flex-grid.direction-xlarge-row-reverse {
+    flex-direction: row-reverse;
+  }
+  html.flexbox .flex-grid.direction-xlarge-column {
+    flex-direction: column;
+  }
+  html.flexbox .flex-grid.direction-xlarge-column-reverse {
+    flex-direction: column-reverse;
+  }
+}
+
+/*
+ * Tables
+ */
+table.expand {
+  width: 100%;
+}
+
+/*
+ * Some usefull stuff for Grids
+ */
+.row.fluid {
+  max-width: 100%;
+}
+
+.row.fluid .row {
+  margin: auto;
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row.fluid .row::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.row.fluid .row.fluid {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 75em) {
+  .row.larger {
+    max-width: 83rem;
+  }
+}
+
+.row .columns.unpadded {
+  padding: 0;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .row .columns.unpadded {
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .row .columns.unpadded {
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {
+  .row .columns.unpadded {
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 75em) and (max-width: 89.9375em) {
+  .row .columns.unpadded {
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 90em) {
+  .row .columns.unpadded {
+    padding: 0;
+  }
+}
+
+/*
+ * Mixin to render list item pseudo-element with a custom bullet
+ *
+ * Default behavior without any arguments is to simply add character '>' as
+ * the bullet
+ *
+ * If needed you can use a webfont character instead of a character
+ */
+/*
+ * Bullet list using arrow icon as bullet
+ */
+ul.arrow {
+  list-style-type: none;
+}
+
+ul.arrow:not(.defer) li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+ul.arrow:not(.defer) li:before {
+  position: absolute;
+  top: 0.75rem;
+  left: 0;
+  width: 0.75rem;
+  font-family: icomoon;
+  content: ">";
+  -webkit-transform: translate(0%, -50%);
+  -moz-transform: translate(0%, -50%);
+  -o-transform: translate(0%, -50%);
+  -ms-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+}
+
+ul.arrow.defer li {
+  position: relative;
+}
+
+ul.arrow.defer li > *:first-child {
+  position: relative;
+  padding-left: 2rem;
+}
+
+ul.arrow.defer li > *:first-child:before {
+  position: absolute;
+  top: 0.6rem;
+  left: 0;
+  width: 0.75rem;
+  font-family: icomoon;
+  content: ">";
+  -webkit-transform: translate(0%, -50%);
+  -moz-transform: translate(0%, -50%);
+  -o-transform: translate(0%, -50%);
+  -ms-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+}
+
+/*
+ *
+ * For top-bar elements
+ *
  */
 /*
  * Used components
  */
 /*
- * Mixin to add font and background colors into a container and enforce these 
- * colors on its elements
+ * Cookie Law banner
  */
-/*
- * Vendor prefix for last break-inside syntax (not supported in Compass 0.x)
- */
-/*
- * Mixin to render list item pseudo element with custom bullet
- * 
- * Default behavior without any arguments is to simply add character '>' as 
- * the bullet
- * 
- * If needed you can use a webfont character instead of a character
- */
+#cookie-law-container {
+  padding: 0.625rem 0;
+}
+
+#cookie-law-container .explain p {
+  font-size: 0.75rem;
+  margin-bottom: 0.3125rem !important;
+}
+
+#cookie-law-container .explain p:last-child {
+  margin-bottom: 0 !important;
+}
+
 /*
  * Webfont for icons, font are commonly build from Icomoon service
  */
@@ -6247,23 +7161,6 @@ a.thumbnail image {
 
 .icon-uni61:before {
   content: "\61";
-}
-
-/* TODO: addons are deprecated, import Sveetoy instead */
-/*
- * Cookie Law banner
- */
-#cookie-law-container {
-  padding: 0.625rem 0;
-}
-
-#cookie-law-container .explain p {
-  font-size: 0.75rem;
-  margin-bottom: 0.3125rem !important;
-}
-
-#cookie-law-container .explain p:last-child {
-  margin-bottom: 0 !important;
 }
 
 /* Slider */
@@ -6575,12 +7472,12 @@ a.thumbnail image {
  * All stuff for page footer
  * 
  */
-#body_content {
-  /*
+/*
+ * Styles for Zinnia contents
+ */
+/*
  * Various content styles
  */
-}
-
 /*
  * Sometime, you need fallback hacks for some specific browsers, it should allways be
  * at the end to be able to override every others components

@@ -17,19 +17,8 @@ plugin. But we include some SCSS from Foundation's components.
  * Licensed under MIT Open Source
  */
 /*
- * Mixin to add font and background colors into a container and enforce these 
+ * Mixin to add font and background colors into a container and enforce these
  * colors on its elements
- */
-/*
- * Vendor prefix for last break-inside syntax (not supported in Compass 0.x)
- */
-/*
- * Mixin to render list item pseudo element with custom bullet
- * 
- * Default behavior without any arguments is to simply add character '>' as 
- * the bullet
- * 
- * If needed you can use a webfont character instead of a character
  */
 body {
   /* Font */

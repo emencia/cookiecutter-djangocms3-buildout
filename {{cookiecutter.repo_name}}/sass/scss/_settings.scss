@@ -21,14 +21,8 @@ $black: #000000;
 
 $body-font-family: $font-family-opensans;
 $global-font-size: 16px;
-
-// Font weight
-$font-weight-normal: 400;
-$font-weight-bold: 700;
-
-// F6 support
-$global-weight-normal: $font-weight-normal;
-$global-weight-bold: $font-weight-bold;
+$global-weight-normal: 400;
+$global-weight-bold: 800;
 
 
 // 2. Breakpoints
@@ -48,3 +42,53 @@ $xxlarge-up: unquote('screen and #{breakpoint(xxlarge)}');
 // -----------
 
 $topbar-unstack-breakpoint: large;
+
+
+
+///
+/// Sveetoy parts
+///
+
+// A1. Sveetoys Query Ranges
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Common available breakpoints taken from Foundation breakpoints
+$sveetoy-breakpoints: (
+    small: $small-up,
+    medium: $medium-up,
+    large: $large-up,
+    xlarge: $xlarge-up,
+);
+
+
+// A2. Sveetoys colors
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$white-color-scheme: (
+    background-color: $white,
+);
+$black-color-scheme: (
+    background-color: $black,
+);
+
+$sveetoy-colors-scheme-default: $white-color-scheme;
+
+$sveetoy-colors-schemes: (
+    white: $white-color-scheme,
+    black: $black-color-scheme,
+);
+
+$sveetoy-color-text-palette: (
+    white: $white,
+    black: $black,
+);
+
+
+// A3. Sveetoys typography
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// Thickness
+$font-weight-thin: 300;
+$font-weight-normal: $global-weight-normal;
+$font-weight-bold: $global-weight-bold;
+$font-weight-strong: 900;

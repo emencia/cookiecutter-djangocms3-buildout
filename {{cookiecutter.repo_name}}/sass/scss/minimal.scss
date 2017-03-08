@@ -20,10 +20,9 @@
 
 @import "bourbon";
 
-@import "utils/mixins";
+@import "sveetoy";
 
-/* TODO: addons are deprecated, import Sveetoy instead */
-// @import "addons/minimal";
+@import "components/mixins";
 
 #content-main{
     @include foundation-content-base;

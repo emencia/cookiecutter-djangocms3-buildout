@@ -15,7 +15,7 @@ plugin. But we include some SCSS from Foundation's components.
 @import "settings";
 @import 'foundation';
 
-@import "utils/mixins";
+@import "components/mixins";
 
 body
 {

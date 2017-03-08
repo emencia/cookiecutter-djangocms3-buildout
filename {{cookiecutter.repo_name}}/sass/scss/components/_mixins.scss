@@ -1,0 +1,99 @@
+// Base stuff to add for content with Foundation
+@mixin global-addons(){
+    // Image en bloc centré
+    img.centered{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    // Etire proportionellement l'image à la largeur de son conteneur
+    img.expanded{
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+/*
+ * Mixin to add font and background colors into a container and enforce these
+ * colors on its elements
+ */
+@mixin emencia-container-colors($font-color, $background-color, $h1-color: null, $h2-color: null, $h3-color: null, $h4-color: null, $h5-color: null, $link-color: null, $link-hover-color: null) {
+    color: $font-color;
+    background-color: $background-color;
+    // optionnal custom titles font color, fallback to common font color
+    $title-level-1-color: if($h1-color, $h1-color, $font-color);
+    $title-level-2-color: if($h2-color, $h2-color, $font-color);
+    $title-level-3-color: if($h3-color, $h3-color, $font-color);
+    $title-level-4-color: if($h4-color, $h4-color, $font-color);
+    $title-level-5-color: if($h5-color, $h5-color, $font-color);
+    $common-link-color: if($link-color, $link-color, inherit);
+    $common-link-hover-color: if($link-hover-color, $link-hover-color, inherit);
+
+    h1, .title-1{
+        color: $title-level-1-color;
+    }
+    h2, .title-2{
+        color: $title-level-2-color;
+    }
+    h3, .title-3{
+        color: $title-level-3-color;
+    }
+    h4, .title-4{
+        color: $title-level-4-color;
+    }
+    h5, .title-5{
+        color: $title-level-5-color;
+    }
+    h6, .title-6{
+        color: inherit;
+    }
+
+    a:not(.button){
+        color: $common-link-color;
+        &:hover{
+            color: $common-link-hover-color;
+        }
+    }
+}
+
+
+// Base stuff to add for content with Foundation
+@mixin global-addons {
+    // Image en bloc centré
+    img.centered {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    // Etire proportionellement l'image à la largeur de son conteneur
+    img.expanded {
+        width: 100%;
+        height: auto;
+    }
+}
+
+// Base stuff to add for content with Foundation
+@mixin foundation-content-base {
+    .nontabular-table {
+        vertical-align: top;
+    }
+    .table-fiftyfifty td {
+        width: 50%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 400;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 26px;
+    }
+    h3 {
+        font-size: 21px;
+    }
+    h4 {
+        font-size: 18px;
+    }
+}

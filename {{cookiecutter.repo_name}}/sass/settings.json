@@ -2,7 +2,8 @@
     "SOURCES_PATH": "scss",
     "LIBRARY_PATHS": [
         "foundation6",
-        "bourbon"
+        "bourbon",
+        "Sveetoy"
     ],
     "TARGET_PATH": "../project/webapp_statics/css",
     "OUTPUT_STYLES": "expanded",

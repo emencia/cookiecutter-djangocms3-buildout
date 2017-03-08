@@ -56,21 +56,15 @@
 @import "bourbon";
 
 /*
- * Deprecations about Compass mixins and functions
+ * Sveetoy library, enhance Foundation
  */
-@import "utils/deprecations";
+@import "sveetoy";
 
 /*
  * Used components
  */
-
-@import "utils/mixins";
-@import "components/icomoon";
-
-/* TODO: addons are deprecated, import Sveetoy instead */
-// @import "addons/fullstack";
-
 @import "vendor/cookie_law";
+@import "components/icomoon";
 //@import "vendor/magnific-popup";
 //@import "vendor/pikaday";
 @import "vendor/slick";
@@ -78,15 +72,11 @@
 
 @import "components/header";
 @import "components/footer";
-//@import "components/cms";
-//@import "components/zinnia";
-
-#body_content{
-    @import "components/contents";
-}
+@import "components/zinnia";
+@import "components/contents";
 
 /*
  * Sometime, you need fallback hacks for some specific browsers, it should allways be
  * at the end to be able to override every others components
  */
-@import "utils/browser_fallbacks";
+@import "sveetoy/utils/browser_fallbacks";
