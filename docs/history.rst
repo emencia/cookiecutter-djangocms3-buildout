@@ -26,6 +26,7 @@ Migrate to Foundation 6.3.1, close #86:
 * Rewrite hardcoded paths in ``foundation.scss`` during Foundation deployment;
 * Added ``Sveetoy`` sources and enable it;
 * Removed ``scss/addons``, ``scss/utils``, ``scss/flags.scss``, ``scss/components/_cms.scss``, ``scss/_porticus.scss``, related to #83;
+* Upgraded to ``crispy-forms-foundation==0.6.0``;
 
 Version 1.7.0 - 2017/02/12
 --------------------------
