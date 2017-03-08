@@ -21,7 +21,7 @@ register_filter(RCSSMin)
 AVALAIBLE_BUNDLES = {
     # App bundle for Modernizr, compatible for all Foundation releases
     'app_modernizr_js': Bundle(
-        "js/foundation5/vendor/modernizr.js",
+        "js/foundation/vendor/modernizr.js",
         filters='closure_js',
         output='js/modernizr.%(version)s.js'
     ),
@@ -89,7 +89,7 @@ AVALAIBLE_BUNDLES.update({
 
     # Javascript bundle for common main frontend script
     'main_js': Bundle(
-        # Foundation5 bundle
+        # Foundation bundle
         AVALAIBLE_BUNDLES['foundation6_js'],
 
         # Debounce event from jquery-smartresize
