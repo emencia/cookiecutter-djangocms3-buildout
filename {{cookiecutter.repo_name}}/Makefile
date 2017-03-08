@@ -1,6 +1,7 @@
 PYTHON2_PATH=`which python2.7`
 VIRTUALENV_PYTHON2_ARG= --python $(PYTHON2_PATH)
 FOUNDATION_VERSION=6.3.1
+SVEETOY_VERSION=0.6.0
 PROJECTDIR=project
 STATICDIR=$(PROJECTDIR)/webapp_statics
 
@@ -41,6 +42,8 @@ clean-foundation:
 	rm -Rf foundation-sites
 	rm -Rf $(STATICDIR)/js/foundation
 	rm -Rf sass/foundation6
+	rm -Rf sass/Sveetoy
+	rm -Rf Sveetoy-$(SVEETOY_VERSION)
 
 assets: delminifiedassets
 	@echo "* Apply minifications"
@@ -81,7 +84,7 @@ install_production: init build_production
 	bin/django-instance migrate
 
 install-foundation: clean-foundation
-	@echo "* Download Foundation $(FOUNDATION_VERSION) archive;"
+	@echo "* Install Foundation $(FOUNDATION_VERSION) sources;"
 	wget https://github.com/zurb/foundation-sites/archive/$(FOUNDATION_VERSION).tar.gz
 	@echo "* Open archive;"
 	tar xvzf $(FOUNDATION_VERSION).tar.gz
@@ -98,12 +101,20 @@ install-foundation: clean-foundation
 	cp -r foundation-sites/vendor/modernizr/modernizr.js $(STATICDIR)/js/foundation/vendor/
 	cp -r foundation-sites/vendor/jquery.cookie/jquery.cookie.js $(STATICDIR)/js/foundation/vendor/
 	cp -r foundation-sites/vendor/what-input/dist/what-input.js $(STATICDIR)/js/foundation/vendor/
-	@echo "* Updating Foundation SASS sources and dependencies"
+	@echo "* Updating Foundation Sass sources and dependencies"
 	cp -r foundation-sites/scss sass/foundation6
 	cp -r foundation-sites/_vendor/normalize-scss sass/
 	cp -r foundation-sites/_vendor/sassy-lists sass/
-	@echo "* Fix hardcoded paths in Foundation SASS sources"
+	@echo "* Fix hardcoded paths in Foundation Sass sources"
 	sed -i 's|\.\./_vendor/|\.\./|g' sass/foundation6/foundation.scss
+	@echo "* Install Sveetoy $(SVEETOY_VERSION) archive;"
+	wget https://github.com/sveetch/Sveetoy/archive/$(SVEETOY_VERSION).tar.gz
+	@echo "* Open archive;"
+	tar xvzf $(SVEETOY_VERSION).tar.gz
+	@echo "* Add Sveetoy to Sass sources;"
+	cp -r Sveetoy-$(SVEETOY_VERSION)/sources/sass/sveetoy sass/Sveetoy
+	@echo "* Delete archive;"
+	rm -Rf $(SVEETOY_VERSION).tar.gz Sveetoy-$(SVEETOY_VERSION)
 
 scss:
 	@echo "- Compile '$(STATICDIR)/css/app.css' from 'sass/scss/app.scss'"

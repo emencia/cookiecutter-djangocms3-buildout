@@ -1,0 +1,112 @@
+/*
+ *
+ * Flexbox
+ */
+
+/*
+ * Create flex cell width rules
+ */
+@mixin sveetoy-flex-cell-width($width, $less: null) {
+    @if $less == null {
+        flex: 1 0 $width;
+        max-width: $width;
+    } @else {
+        flex: 1 0 calc(#{$width} - #{$less});
+        max-width: calc(#{$width} - #{$less});
+    }
+}
+
+/*
+ * Mixin to create cells widths with flexbox
+ *
+ * Will produce responsive class like:
+ *
+ *   .small-50{...}
+ *   .medium-50{...}
+ *   etc..
+ *
+ * Depending on mixin declarations.
+ *
+ * Usable in conjunction with ".cell".
+ */
+@mixin sveetoy-flex-grid-classes($sizes, $viewport: small, $gutter: null) {
+    $gutter-substraction: null;
+    @if $gutter != null {
+        $gutter-substraction: $gutter*2;
+    }
+    @each $size in $sizes {
+        $width: percentage($size / 100);
+        $name: floor($size);
+        // Will name it like "&.small-50"
+        & > .#{$viewport}-#{$name} {
+            @include sveetoy-flex-cell-width($width, $less: $gutter-substraction);
+        }
+    }
+}
+
+/*
+ * Mixin to create flexbox display property
+ *
+ * Will produce global and responsive classes like:
+ *
+ *   .flex{...}
+ *   .flex-small{...}
+ *   .flex-medium{...}
+ *   etc..
+ *
+ */
+@mixin sveetoy-flex-display($viewport: null) {
+    $suffix: if($viewport, "-#{$viewport}", "");
+    .flex#{$suffix} {
+        display: flex;
+    }
+}
+
+/*
+ * Mixin to create flexbox direction property
+ *
+ * Will produce global and responsive classes like:
+ *
+ *   .direction-row{...}
+ *   .direction-small-row{...}
+ *   .direction-medium-row{...}
+ *   etc..
+ *
+ * For every direction.
+ *
+ */
+@mixin sveetoy-flex-direction($viewport: null) {
+    $suffix: if($viewport, "-#{$viewport}", "");
+    .direction-#{$suffix} {
+        display: flex;
+    }
+    &.direction#{$suffix}-row{
+        flex-direction: row;
+    }
+    &.direction#{$suffix}-row-reverse{
+        flex-direction: row-reverse;
+    }
+    &.direction#{$suffix}-column{
+        flex-direction: column;
+    }
+    &.direction#{$suffix}-column-reverse{
+        flex-direction: column-reverse;
+    }
+}
+
+/*
+ * Mixin to create "simple" cells widths
+ * Mixin to simulate inline list, used as a fallback
+ *
+ * Reproduce the same name pattern as in mixin "sveetoy-flex-grid-classes"
+ */
+@mixin sveetoy-simulate-grid-columns($sizes, $viewport: small) {
+    @each $size in $sizes {
+        $width: $size / 100;
+        $name: floor($size);
+        // Will name it like "&.small-50"
+        & > .#{$viewport}-#{$name} {
+            width: percentage($width);
+        }
+    }
+}
