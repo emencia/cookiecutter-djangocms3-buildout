@@ -17,6 +17,8 @@ cookiecutter-djangocms3-buildout
 
 A `Cookiecutter`_ template to produce a structure for a `Django CMS`_ project.
 
+**This project is no longer maintained**
+
 Features
 ********
 
